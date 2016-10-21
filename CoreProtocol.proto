@@ -1,0 +1,265 @@
+syntax = "proto2";
+option java_package = "com.mzm.poker.protobuf";
+option java_outer_classname = "CoreProtocol";
+
+import "GameProtocol.proto";
+
+//协议包，内部可包含多条协议内容
+message MessagePack {
+  required Cmd cmd = 1;//指令奖励
+  optional int32 version = 2;   //版本号 
+  optional int32 sessionId = 3; //sessionId
+  optional MessageContent content = 4; //协议内容
+}
+
+enum Cmd {
+	CMD_GETSERVER      =  0x010001;   //获取服务器信息
+	CMD_REGISTER       =  0x010002;   //普通注册指令
+	CMD_LOGIN          =  0x010003;   //普通登陆指令
+	CMD_GUEST_LOGIN    =  0x010005;   //游客登陆
+	CMD_HEART          =  0x010004;   //心跳
+	CMD_SMS            =  0x010006;   //短信发送
+
+	//玩家模块
+	CMD_PLAYER_INFO    =  0x020001;  //获取玩家信息
+	CMD_PLAYER_UPDATE  =  0x020002;  //修改玩家信息
+    CMD_INITPASSWD     =  0x020003;  //找回密码
+    CMD_NOTICE         =  0x020004;  //公告列表
+    CMD_SIGNLIST       =  0x020005;  //签到列表
+    CMD_SIGN           =  0x020006;  //请求签到
+    CMD_PLAYER_QUIT    =  0x020007;  //玩家退出游戏
+	CMD_PLAYER_KICK    =  0x020008;  //玩家被踢出游戏
+	CMD_DEPOSIT_STORE  =  0x020009;  //存钱
+	CMD_DEPOSIT_DRAW   =  0x02000A;  //取钱
+	CMD_DEPOSIT_GIVE   =  0x02000B;  //送钱 
+	CMD_DEPOSIT_RECEIVE = 0x02000C;  //接收 
+
+    //竞技部分
+	CMD_ENTERROOM      =  0x030001;  //进入房间
+	CMD_OUTROOM        =  0x030002;  //退出房间
+	CMD_ROOMINFO       =  0x030003;
+	CMD_PAIINFO        =  0x030004;  //下发牌局信息
+	CMD_SIT            =  0x030005;  //坐下
+	CMD_STANDUP        =  0x030006;  //起立
+	CMD_ROB_ZHUANG     =  0x030008;  //抢庄 
+	CMD_YAZHU          =  0x03000B;  //押注
+	CMD_CHAT      	   =  0x03000E;  //发送聊天信息
+  	CMD_ROOM_STATICS   =  0x030010;  //房间统计信息
+  	CMD_QZ_LIST        =  0x030011;  //抢庄列表
+  	CMD_DOWN_ZHUANG    =  0x030012;  //下庄
+  	CMD_BET_LIST       =  0x030013;  //下注列表
+  	CMD_ROOM_UIDS      =  0x030014;  //房间UID列表
+  	CMD_ROOM_PLAYER_LIST       =  0x030015;  //房间玩家详细信息列表
+
+  	CMD_ROOM_PLAYER_CHANGE = 0x030020;//牌局状态4信息,玩家金钱变化
+  	CMD_CARD_INFO      =  0x030021;//牌型信息
+  	CMD_PAI_BASE_INFO     =  0x030022;//牌局基础信息
+  	CMD_PAIINFO_3       =  0x030023;//状态3的牌局信息下发
+
+}
+
+enum ErrorCode{
+	ERROR_ACCOUNT_EXIT = 1001;//账号存在
+	ERROR_MUTI_LOGIN   = 1002;//重复登陆
+	ERROR_PWD_WRONG    = 1003;//密码错误
+	ERROR_PLAYER_NOT_EXIT = 1004;//玩家不存在
+	ERROR_NOBIND = 1005;//玩家未登录
+	ERROT_SIT_HAVEPLAYER = 1006;//座位有人
+	ERROR_CANT_SIGN = 1007;//不可签到
+	ERROT_NO_SIT    = 1008;//你没有坐下
+	ERROR_GOLD_NOT_ZHUANG = 1009;//金钱不够，无法抢庄
+	ERROR_CANT_BET = 1010;//当前不能下注
+	ERROR_ROOM_NOT_EXIT = 1011;//房间不存在
+	ERROR_BET_LARGER = 1012;//下注已经超过上限
+	ERROR_SIT_HAVESEAT = 1013;//你必须站起来才能再次坐下 
+
+	ERROR_DEPOSIT_MIN = 1014;//保险箱金币数量太小，无法赠送
+
+	ERROR_SMS_EXPIRE = 1015;//验证码过期
+	ERROR_SMS_WRONG = 1016;//验证码错误
+}
+
+//协议内容，内部为每次通信的数据模型
+message MessageContent {
+	required int32 result = 1;				//0正常 ,大于0 错误编码
+	optional string message=2;				//错误信息
+	
+	optional LCRetServer lcRetServer = 3;	//获取游戏服务器
+	optional CSRegsiter csRegister   = 4;	//普通注册
+	optional SCRegister scRegister   = 5;
+	optional CSLogin  csLogin        = 6;	//普通登陆
+	optional SCLogin  scLogin        = 7;  
+	
+	optional CSGuestLogin csGuestLogin       = 9;//游客登陆
+	optional SCGuestLogin scGuestLogin       = 10;
+
+	optional CSPlayerInfo csPlayerInfo       = 11;//获取玩家详细信息
+	optional SCPlayerInfo scPlayerInfo       = 12;//获取玩家详细信息
+	optional CSPlayerUpdate csPlayerUpdate   = 13;//更新玩家信息
+	optional CSEnterRoom csEnterRoom         = 14;//进入房间
+	optional SCEnterRoom scEnterRoom         = 20;
+	optional SCOutRoom   scOutRoom           = 15;//离开房间
+
+	optional SCRoomPlayerList scPlayerList   = 16;//房间内玩家详细信息
+	optional SCPaiInfo scPaiInfo             = 17;//牌局信息
+	optional CSSit csSit                     = 18;//坐下
+	optional SCSit scSit                     = 19;//坐下
+	
+	optional SCStandUp  scStandUp    = 21; //起立
+	
+	optional CSYaZhu csYaZhu         = 26;//押注
+	optional SCYaZhu scYazhu         = 27;
+	 
+	optional CSChat csChat           	 = 29;//聊天信息
+	optional SCChat scChat           	 = 33;//下行聊天信息
+	optional SCSignList signList     = 30;//签到列表
+	optional SCSign  scSgin 		 = 31;//下发签到奖励
+
+	optional SCNotice scNotice       = 32;//公告列表
+
+	optional SCRoomStatis scRoomStatis = 34;//下发房间统计信息
+
+	optional SCQZList  scQZlist = 35;//抢庄列表
+
+	optional SCZhuang scZhuang = 36;//抢庄
+
+	optional SCDownZhuang scDownZhuang = 37;//下庄
+
+	optional SCHeart scHeart = 38;//心跳
+
+	optional SCPlayerResultList scPlayerChangeList = 39;//牌局玩家变化
+
+	optional SCRoomUidList scUidList = 40;
+
+	optional CSRoomPlayer  csRoomPlayer = 41;
+
+	optional SCRoomPlayer scRoomPlayer = 42;
+
+	optional SCCardInfo scCardInfo = 43;
+
+	optional SCPaiBaseInfo scPaiBaseInfo = 44;
+
+	optional SCPaiInfo3  scPaiInfo3 = 45;
+
+	optional CSDepositStore csDepositStore = 46;//存保险箱
+	optional SCDepositStore scDepositStore = 47;
+
+	optional CSDepositDraw csDepositDraw = 48;//取钱
+	optional SCDepositDraw scDepositDraw = 49;
+
+	optional CSDepositGive csDepositGive = 50;//赠送 
+	optional SCDepositGive scDepositGive = 51;
+
+	optional SCDepositReceive scDepositReceive = 52;//接收
+
+	optional CSSMS csSMS = 53;//发送短信
+
+}
+
+//请求游戏服务器信息
+message LCRetServer{
+	optional string serverip =1;//服务器ip
+	optional int32 port = 2;    //服务器端口
+}
+
+//普通注册
+message CSRegsiter {
+	required string account = 1;//账号
+	required string password = 2;//密码
+	optional string seoid= 3;//推广码
+}
+
+message SCRegister {
+	required string account = 1;//玩家账号
+}
+
+//普通登陆
+message CSLogin{
+	required string account = 1;//玩家账号
+	required string password = 2;//密码
+}
+
+message SCLogin{
+	required string pic = 1;//头像
+	required string nickname = 2;//昵称
+	required int32 score = 3;//分数
+}
+
+//游客登录
+message CSGuestLogin{
+	optional string account = 1;//玩家账号
+}
+
+message SCGuestLogin{
+	required string account = 1;//玩家账号
+	required string pic = 2;//头像
+	required string nickname = 3;//昵称
+	required int32 score = 4;//分数
+}
+
+message CSPlayerInfo{
+	required string guid =1 ;
+}
+
+//玩家详细信息
+message SCPlayerInfo{
+	required string nickname =1 ;
+	optional int32 gold = 2;
+	optional string pic = 3;
+	optional int32 sex = 4;//性别 1男,0女
+	optional int32 uid = 5;
+	optional int32 deposit = 6;//存款
+
+}
+
+message CSPlayerUpdate{
+	optional string nickname =1 ;
+	optional string password = 2;
+	optional string pic = 3;
+	optional string mobile = 4;
+	optional int32 sex = 5;
+}
+
+message CSDepositStore{
+	optional int32 gold = 1;//存钱数量
+}
+
+message SCDepositStore{
+	optional int32 gold =1;//金币
+	optional int32 deposit =2;//存款
+}
+
+message CSDepositDraw{
+	optional int32 drawGold =1;//要取出的钱
+}
+
+message SCDepositDraw{
+	optional int32 gold = 1;//金币
+	optional int32 deposit = 2;//存款
+}
+
+message CSDepositGive{
+	optional string targetid = 1;//对方的guid
+	optional int32 drawGold =2;//要送的金币
+}
+
+message SCDepositGive{
+	optional int32 deposit = 2;//存款
+}
+
+message SCDepositReceive{
+	optional string senderid = 1;//发送者guid
+	optional string receiveid = 2;//接收者guid
+	optional int32 gold = 3;//被送了金币数
+	optional int32 deposit = 4;//当前存款数
+}
+
+message CSSMS{
+	optional string mobile =1;
+}
+
+
+
+
+
+

@@ -1,0 +1,222 @@
+syntax = "proto2";
+option java_package = "com.mzm.poker.protobuf";
+option java_outer_classname = "GameProtocol";
+  
+
+message CSEnterRoom{
+	required int32 roomid = 1;//普通房间1001，中级房间 1002，高级房间 1003
+}
+
+message SCEnterRoom{
+	optional string guid=1;
+	optional string nickname=2;
+	optional string pic=3;
+	optional int32 gold = 4;
+	optional int32 sex = 5;
+	optional int32 deposit =6;//保险箱金币
+}
+
+//离开房间
+message SCOutRoom{
+	required string guid= 1;//离开房间userid
+}
+
+message SCRoomPlayerList{
+	repeated StructPlayer roomPlayers= 1;
+	
+}
+
+
+message SCRoomUidList{
+	//repeated StructPlayer roomPlayers= 1;
+	repeated int32 uids=1;// 玩家uid
+	
+}
+
+//房间玩家信息
+message CSRoomPlayer{
+	optional int32 uids=1;//目前一次不能超过3个用户
+}
+
+message SCRoomPlayer{
+	optional StructPlayer roomPlayers= 1;
+}
+
+message SCPaiInfo{
+	required int32 paiStatus  = 1; //牌局状态   1 开始(抢庄),2 发牌(下注),3 下发结果
+	optional string count      = 2; //倒计时时间
+	optional string zhuangid  = 3; //庄guid
+	//repeated PlayerCard cards = 4; //下发的牌
+	optional PlayerBet bets   = 5; //玩家下注
+	repeated PlayerResult pr  = 6;//玩家变化
+	optional CardResult   cardResult    = 7;//牌局结果
+}
+
+message SCRoomStatis {
+	repeated int32 east6 = 1;//东6局 1,胜，0负
+	repeated int32 sourth6 = 2;//南6局
+	repeated int32 west6 = 3; //西6局
+	repeated int32 north6 = 4;//北6局
+	optional int32 total = 5 ;//总局数
+	optional int32 totaleast = 6;
+	optional int32 totalsourth = 7;
+	optional int32 totalwest = 8;
+	optional int32 totalnorth = 9;
+}
+
+message CSSit{
+	required int32 sitid=1;
+}
+
+message SCSit{
+	required int32 sitid=1;
+	required string guid=2;
+}
+message SCStandUp{
+	required int32 sitid=1;
+	required string guid=2;
+}
+
+message CSYaZhu{
+	required int32 pid =1;//东南西北1,2,3,4
+	optional int32 gold = 2;//押注金额
+	optional string coord = 3;//x坐标
+}
+message SCYaZhu{
+	optional string guid = 1;//押注玩家id
+	optional int32 gold = 2;//押注金额
+	optional int32 pid  = 4 ;//押注 ,东南西北1,2,3,4
+	optional string coord = 5;//坐标
+	optional PlayerBet bets   = 3; //玩家下注总数
+}
+
+
+message CSChat{
+	optional string message=1;//上行消息
+	optional int32 type = 2;//类型
+}
+
+message SCChat{
+
+	optional string guid = 1;//发送者guid
+	optional string message=2;//下发消息
+	optional int32 type = 3;//类型
+
+}
+
+message SCSignList{
+	optional int32  count=2; //签到次数
+	optional int32 signflag= 3;// 是否可签，0可签，1 不可签
+}
+
+message SCSign{
+	optional int32  count=1; //签到次数
+	optional int32  award= 2;//获得奖励金币
+	optional int32  playerGold = 3;//玩家获得奖励后的金币
+}
+
+//删掉
+message SCPlayerGoldChange{
+	optional int32 gold= 1;//当前金币
+}
+
+
+message PlayerCard{
+	required int32 pid=1; // 庄0 ,东南西北1,2,3,4
+	optional int32 c1=2;  //第一张牌
+	optional int32 c2=3;  //第二张牌
+	optional int32 c3=4;  //第三张牌
+	optional int32 c4=5;  //第四张牌
+	optional int32 c5=6;  //第五张牌
+}
+
+message CardResult{
+	optional int32 z1=1;  //庄    //1炸弹,2五小牛,3 五花牛,4牛牛,5->14 牛9->牛1,15无牛 
+	optional int32 z2=2;  //东
+	optional int32 z3=3;  //南
+	optional int32 z4=4;  //西
+	optional int32 z5=5;  //北
+
+	optional int32 r1 = 6; //胜负结果 东
+	optional int32 r2 = 7;//南 
+	optional int32 r3 = 8;//西
+	optional int32 r4 = 9;//北
+}
+
+message StructPlayer{
+	optional int32 uid=1;
+	optional string nickname=2;
+	optional string pic=3;
+	optional string guid = 4;
+	optional int32 gold = 5;
+	optional int32 seatid = 6;
+	optional int32 sex = 7;
+	repeated StructBet bets = 8;
+	optional int32 deposit =9;//保险箱金币
+}
+
+message StructBet{
+	optional int32 pid = 1;
+	optional int32 gold = 2;
+}
+
+message PlayerBet{
+	optional int32 z2=1;  //东
+	optional int32 z3=2;  //南
+	optional int32 z4=3;  //西
+	optional int32 z5=4;  //北
+}
+
+message PlayerResult{
+	required string userid=1;
+	optional int32 playerGold=2;
+}
+
+message SCNotice{
+	repeated StructNotice noticeList = 1;//公告
+}
+
+message StructNotice{
+	optional string title=1;
+	optional string content=2;
+	optional int32 createTime=3;
+}
+
+message SCQZList{
+	repeated string zhuangID=1;
+}
+
+message SCZhuang{
+	repeated string zhuangID=1;	
+}
+
+message SCDownZhuang{
+	repeated string zhuangID=1;	
+}
+
+message SCHeart{
+	required string currentTime = 1;//当前时间
+}
+
+message SCPlayerResultList{
+	repeated PlayerResult pr  = 2;//玩家变化
+}
+
+message SCCardInfo {
+	repeated PlayerCard cards = 1; //下发的牌
+}
+
+message SCPaiBaseInfo{
+	required int32 paiStatus  = 1; //牌局状态   1 开始(抢庄),2 发牌(下注),3 下发结果
+	optional string count      = 2; //倒计时时间
+	optional string zhuangid  = 3; //庄guid
+}
+
+message SCPaiInfo3{
+	optional PlayerBet bets   = 4; //玩家下注
+	optional CardResult   cardResult    = 5;//牌局结果
+}
+
+
+
+
