@@ -18,3 +18,6 @@ CREATE TABLE `fivepk_player_info` (
   UNIQUE KEY `nick_name` (`nick_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+alter table `fivepk_player_info` add COLUMN compare_history_cards VARCHAR(15);
+
+alter table `fivepk_player_info` add UNIQUE KEY `name` (name);

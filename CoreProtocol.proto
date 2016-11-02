@@ -19,6 +19,11 @@ enum Cmd {
 	CMD_GUEST_LOGIN    =  0x010005;   //游客登陆
 	CMD_HEART          =  0x010004;   //心跳
 	CMD_SMS            =  0x010006;   //短信发送
+	CMD_CARDS            =  0x010007;   //牌型
+	CMD_COMPARE_CARDS            =  0x010008;   //比大小
+	CMD_COMPARE_HISTORY_CARDS            =  0x010009;   //比倍历史牌型
+	
+	
 
 	//玩家模块
 	CMD_PLAYER_INFO    =  0x020001;  //获取玩家信息
@@ -93,12 +98,11 @@ message MessageContent {
 	optional CSGuestLogin csGuestLogin       = 9;//游客登陆
 	optional SCGuestLogin scGuestLogin       = 10;
 
-	optional CSPlayerInfo csPlayerInfo       = 11;//获取玩家详细信息
-	optional SCPlayerInfo scPlayerInfo       = 12;//获取玩家详细信息
-	optional CSPlayerUpdate csPlayerUpdate   = 13;//更新玩家信息
-	optional CSEnterRoom csEnterRoom         = 14;//进入房间
-	optional SCEnterRoom scEnterRoom         = 20;
-	optional SCOutRoom   scOutRoom           = 15;//离开房间
+	optional CSCards csCards       = 11;//牌型
+	optional SCCards scCards       = 12;
+	optional CompareHistoryCards compareHistoryCards       = 13;//历史牌型
+	optional CSCompareCard csCompareCard       = 14;//比大小
+	optional SCCompareCard scCompareCard       = 15;
 
 	optional SCRoomPlayerList scPlayerList   = 16;//房间内玩家详细信息
 	optional SCPaiInfo scPaiInfo             = 17;//牌局信息
@@ -199,6 +203,31 @@ message SCGuestLogin{
 
 message CSPlayerInfo{
 	required string guid =1 ;
+}
+
+message CSCards{
+	required int32 startIndex =1 ;//0-第一手牌 1-第二手牌
+	optional int32 betScore =2 ;//下注分数 100,500,1000,2000
+}
+
+message SCCards{
+	required int32 cardRate =1 ;//中奖倍率
+	required string cards =2 ;//牌型
+	optional string holdCards =3 ;//保牌牌型
+}
+
+message CompareHistoryCards{
+	required string cards =1 ;//历史牌型
+}
+
+message CSCompareCard{
+	required int32 bigSmall =1 ;//0-大 1-小
+	required int32 betScore =2 ;//下注分数
+}
+
+message SCCompareCard{
+	required int32 compareCard =1 ;//大小牌型2-A && 历史牌型
+	required string winScore =2 ;//当前赢分
 }
 
 //玩家详细信息

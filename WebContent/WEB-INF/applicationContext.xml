@@ -12,7 +12,8 @@
    	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.mzm.poker," />
+	<context:component-scan
+		base-package="com.mzm.firephoenix" />
 	<context:annotation-config />
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
@@ -82,13 +83,14 @@
 		</constructor-arg>
 	</bean>
 
-	<bean id="encoder" class="com.mzm.poker.mina.ByteEncoder" />
+	<bean id="encoder" class="com.mzm.firephoenix.mina.ByteEncoder" />
 
-	<bean id="decoder" class="com.mzm.poker.mina.ByteDecoder" />
+	<bean id="decoder" class="com.mzm.firephoenix.mina.ByteDecoder" />
 
 	<bean id="codecFilter" class="org.apache.mina.filter.codec.ProtocolCodecFilter">
 		<constructor-arg>
-			<bean class="com.mzm.poker.mina.ByteCodecFactory" autowire="byName" />
+			<bean class="com.mzm.firephoenix.mina.ByteCodecFactory"
+				autowire="byName" />
 		</constructor-arg>
 	</bean>
 
@@ -117,7 +119,7 @@
 	</bean>
 
 	<!--Game Server 帮定16888端口 -->
-	<bean id="gameHandler" class="com.mzm.poker.mina.GameHandler" />
+	<bean id="gameHandler" class="com.mzm.firephoenix.mina.GameHandler" />
 	<bean id="ioAcceptor16777" class="org.apache.mina.transport.socket.nio.NioSocketAcceptor"
 		init-method="bind" destroy-method="unbind" scope="singleton">
 		<property name="defaultLocalAddress" value="16111" />
