@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContextAware;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.mzm.firephoenix.logic.OfflineLogic;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
@@ -75,7 +76,7 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		}
 		String methodName = null;
 		for (FieldDescriptor string : messagePack.getContent().getAllFields().keySet()) {
-			if (string.getName().startsWith("cs")) {
+			if (string.getName().startsWith("cs") || string.getName().startsWith("cc")) {
 				methodName = string.getName();
 			}
 		}
@@ -121,9 +122,8 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 	@Override
 	public void sessionClosed(IoSession session) throws Exception {
 		logger.info("sessionClosed. session id=" + session.getId());
-		// SessionCloseExecutor executor = (SessionCloseExecutor)
-		// applicationContext.getBean("sessionCloseExecutor");
-		// executor.close(session);
+		OfflineLogic executor = (OfflineLogic) applicationContext.getBean("offlineLogic");
+		executor.sessionClosed(session);
 		session.close(true);
 	}
 

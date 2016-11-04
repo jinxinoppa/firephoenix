@@ -3,8 +3,6 @@ package com.mzm.firephoenix.dao.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mzm.firephoenix.cardutils.CardUtil;
-
 @Entity(tableName = "fivepk_player_info", primaryKey = "accountId")
 public class FivepkPlayerInfo extends AbstractEntity {
 	@Column(columnName = "account_id")
@@ -15,8 +13,10 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	private String nickName;
 	@Column(columnName = "pic")
 	private byte pic;
+	@Column(columnName = "coin")
+	private int coin;
 	@Column(columnName = "score")
-	private long score;
+	private int score;
 	@Column(columnName = "compare_history_cards")
 	private String compareHistoryCards;
 	@Column(isContinue = true)
@@ -58,11 +58,11 @@ public class FivepkPlayerInfo extends AbstractEntity {
 		updateFieldsList.add("pic");
 	}
 
-	public long getScore() {
+	public int getScore() {
 		return score;
 	}
 
-	public void setScore(long score) {
+	public void setScore(int score) {
 		this.score = score;
 		updateFieldsList.add("score");
 	}
@@ -76,48 +76,32 @@ public class FivepkPlayerInfo extends AbstractEntity {
 		updateFieldsList.add("name");
 	}
 
-	public List<Integer> getCompareHistoryCardsList() {
+	public void firstInLastOut(int compareCard) {
 		if (compareHistoryCards != null) {
-			String[] strArr = compareHistoryCards.split(",");
-			for (int i = 0; i < strArr.length; i++) {
-				compareHistoryCardsList.add(Integer.parseInt(strArr[i]));
-			}
-		} else {
-			for (int i = 0; i < 6; i++) {
-				compareHistoryCardsList.add((int) CardUtil.compareCard());
-			}
+			StringBuffer sb = new StringBuffer();
+			sb.append(compareCard).append(",").append(compareHistoryCards.substring(0, compareHistoryCards.lastIndexOf(",")));
+			setCompareHistoryCards(sb.toString());
 		}
-		return compareHistoryCardsList;
-	}
-
-	public void setCompareHistoryCardsList() {
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < compareHistoryCardsList.size(); i++) {
-			sb.append(compareHistoryCardsList.get(i)).append(",");
-		}
-		sb.deleteCharAt(sb.lastIndexOf(","));
-		setCompareHistoryCards(sb.toString());
 	}
 
 	public String getCompareHistoryCards() {
-		StringBuffer sb = new StringBuffer();
-		if (compareHistoryCards == null) {
-			for (int i = 0; i < 6; i++) {
-				sb.append(CardUtil.compareCard());
-				sb.append(",");
-			}
-			sb.deleteCharAt(sb.lastIndexOf(","));
-			setCompareHistoryCards(sb.toString());
-		}
 		return compareHistoryCards;
 	}
 
-	protected void setCompareHistoryCards(String compareHistoryCards) {
+	public void setCompareHistoryCards(String compareHistoryCards) {
 		this.compareHistoryCards = compareHistoryCards;
 		updateFieldsList.add("compareHistoryCards");
 	}
 
 	public void clearUpdateFieldsList() {
 		updateFieldsList.clear();
+	}
+
+	public int getCoin() {
+		return coin;
+	}
+
+	public void setCoin(int coin) {
+		this.coin = coin;
 	}
 }

@@ -130,6 +130,8 @@ public class SocketUtil {
 		case 65543:
 		case 65544:
 		case 65545:
+		case 65546:
+		case 65547:
 			return "card";
 		default:
 			return null;

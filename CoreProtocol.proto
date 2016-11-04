@@ -22,6 +22,8 @@ enum Cmd {
 	CMD_CARDS            =  0x010007;   //牌型
 	CMD_COMPARE_CARDS            =  0x010008;   //比大小
 	CMD_COMPARE_HISTORY_CARDS            =  0x010009;   //比倍历史牌型
+	CMD_WIN            =  0x01000A;   //二手牌比大小得分
+	CMD_COIN_SCORE     =  0x01000B;   //取分存分
 	
 	
 
@@ -82,6 +84,7 @@ enum ErrorCode{
 
 	ERROR_SMS_EXPIRE = 1015;//验证码过期
 	ERROR_SMS_WRONG = 1016;//验证码错误
+	ERROR_SMS_INVALID_PARAMETER = 1017;//传递的参数不正确
 }
 
 //协议内容，内部为每次通信的数据模型
@@ -100,12 +103,12 @@ message MessageContent {
 
 	optional CSCards csCards       = 11;//牌型
 	optional SCCards scCards       = 12;
-	optional CSCompareHistoryCards csCompareHistoryCards       = 13;//历史牌型
+	optional CCCompareHistoryCards ccCompareHistoryCards       = 13;//历史牌型
 	optional CSCompareCard csCompareCard       = 14;//比大小
 	optional SCCompareCard scCompareCard       = 15;
 
-	optional SCRoomPlayerList scPlayerList   = 16;//房间内玩家详细信息
-	optional SCPaiInfo scPaiInfo             = 17;//牌局信息
+	optional CSWin csWin   = 16;//二手牌比大小得分
+	optional CCCoinScore ccCoinScore             = 17;//取分存分
 	optional CSSit csSit                     = 18;//坐下
 	optional SCSit scSit                     = 19;//坐下
 	
@@ -187,6 +190,7 @@ message SCLogin{
 	required string pic = 1;//头像
 	required string nickname = 2;//昵称
 	required int32 score = 3;//分数
+	optional int32 coin = 4;//金币
 }
 
 //游客登录
@@ -218,7 +222,7 @@ message SCCards{
 	
 }
 
-message CSCompareHistoryCards{
+message CCCompareHistoryCards{
 	required string cards =1 ;//历史牌型
 }
 
@@ -230,6 +234,15 @@ message CSCompareCard{
 message SCCompareCard{
 	required int32 compareCard =1 ;//大小牌型2-A && 历史牌型
 	required int32 winScore =2 ;//当前赢分
+}
+
+message CSWin{
+	optional int32 win =1 ;//二手牌比大小得分
+}
+
+message CCCoinScore{
+	required int32 score = 1;//分数
+	required int32 coin = 2;//金币
 }
 
 //玩家详细信息

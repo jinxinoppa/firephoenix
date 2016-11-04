@@ -88,13 +88,12 @@ public class AccountLogic {
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{account}, new String[]{"name"});
 		session.setAttribute("accountId", fivepkPlayerInfo.getAccountId());
-		return MessageContent.newBuilder().setResult(0).setScLogin(SCLogin.newBuilder().setPic(String.valueOf(fivepkPlayerInfo.getPic())).setNickname(fivepkPlayerInfo.getNickName()).setScore(20000));
+		return MessageContent.newBuilder().setResult(0).setScLogin(SCLogin.newBuilder().setPic(String.valueOf(fivepkPlayerInfo.getPic())).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()).setCoin(0));
 	}
 
 	public Builder csGuestLogin(IoSession session, MessageContent content) {
 		int generatedKey = 0;
 		String pic = "1";
-		int score = 20000;
 		FivepkPlayerInfo fivepkPlayerInfo = null;
 		if (content.getCsGuestLogin().getAccount().isEmpty()) {
 			try {
@@ -127,9 +126,8 @@ public class AccountLogic {
 				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 			}
 			pic = String.valueOf(fivepkPlayerInfo.getPic());
-			score = (int) fivepkPlayerInfo.getScore();
 		}
 		session.setAttribute("accountId", fivepkPlayerInfo.getAccountId());
-		return MessageContent.newBuilder().setResult(0).setScGuestLogin(SCGuestLogin.newBuilder().setAccount(fivepkPlayerInfo.getName()).setPic(pic).setNickname(fivepkPlayerInfo.getNickName()).setScore(20000));
+		return MessageContent.newBuilder().setResult(0).setScGuestLogin(SCGuestLogin.newBuilder().setAccount(fivepkPlayerInfo.getName()).setPic(pic).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()));
 	}
 }
