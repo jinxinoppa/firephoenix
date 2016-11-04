@@ -13,11 +13,10 @@ import org.springframework.context.ApplicationContextAware;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.mzm.firephoenix.protobuf.CoreProtocol;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
-import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
+import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.utils.SocketUtil;
 
 /**
@@ -80,7 +79,6 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 				methodName = string.getName();
 			}
 		}
-
 		if (methodName == null) {
 			logger.error("methodName doesn't exist. cmdNumber: " + cmdNumber);
 			return;
@@ -103,7 +101,7 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		try {
 			returnBuilder = (Builder) m.invoke(executor, session, messagePack.getContent());
 		} catch (Exception e) {
-			logger.info(e.getMessage());
+			logger.info(e);
 		}
 		long diff = System.currentTimeMillis() - start;
 		if (diff > 1000) {
@@ -115,7 +113,6 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		logger.info("sent message pack : " + returnBuilder.toString());
 		session.write(returnMessagePack);
 	}
-
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
 		logger.info("sessionSent. session id=" + session.getId());

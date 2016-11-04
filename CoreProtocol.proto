@@ -1,5 +1,5 @@
 syntax = "proto2";
-option java_package = "com.mzm.poker.protobuf";
+option java_package = "com.mzm.firephoenix.protobuf";
 option java_outer_classname = "CoreProtocol";
 
 import "GameProtocol.proto";
@@ -100,7 +100,7 @@ message MessageContent {
 
 	optional CSCards csCards       = 11;//牌型
 	optional SCCards scCards       = 12;
-	optional CompareHistoryCards compareHistoryCards       = 13;//历史牌型
+	optional CSCompareHistoryCards csCompareHistoryCards       = 13;//历史牌型
 	optional CSCompareCard csCompareCard       = 14;//比大小
 	optional SCCompareCard scCompareCard       = 15;
 
@@ -208,15 +208,17 @@ message CSPlayerInfo{
 message CSCards{
 	required int32 startIndex =1 ;//0-第一手牌 1-第二手牌
 	optional int32 betScore =2 ;//下注分数 100,500,1000,2000
+	optional string holdCards =3 ;//保牌牌型
 }
 
 message SCCards{
 	required int32 cardRate =1 ;//中奖倍率
 	required string cards =2 ;//牌型
 	optional string holdCards =3 ;//保牌牌型
+	
 }
 
-message CompareHistoryCards{
+message CSCompareHistoryCards{
 	required string cards =1 ;//历史牌型
 }
 
@@ -227,7 +229,7 @@ message CSCompareCard{
 
 message SCCompareCard{
 	required int32 compareCard =1 ;//大小牌型2-A && 历史牌型
-	required string winScore =2 ;//当前赢分
+	required int32 winScore =2 ;//当前赢分
 }
 
 //玩家详细信息

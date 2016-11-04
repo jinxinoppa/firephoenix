@@ -3,8 +3,7 @@ package com.mzm.firephoenix.logic;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.mina.core.session.IoSession;
@@ -15,12 +14,13 @@ import com.mzm.firephoenix.cardutils.CardResult;
 import com.mzm.firephoenix.cardutils.CardUtil;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
-import com.mzm.firephoenix.protobuf.CoreProtocol.CompareHistoryCards;
+import com.mzm.firephoenix.protobuf.CoreProtocol.CSCompareHistoryCards;
 import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCards;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareCard;
+import com.sun.xml.internal.fastinfoset.util.StringArray;
 
 /**
  * 
@@ -34,11 +34,21 @@ public class CardLogic {
 	JdbcDaoSupport jdbcDaoSupport;
 
 	public static void main(String[] args) {
+		String holdCards = "3, 4, 1, 0";
+		if (holdCards != null && !holdCards.isEmpty()){
+			holdCards.trim();
+			String[] holdCardsArr = holdCards.split(",");
+			byte[] keepCards = new byte[holdCardsArr.length];
+			for (int i = 0; i < holdCardsArr.length; i++) {
+				keepCards[i] = Byte.parseByte(holdCardsArr[i].trim());
+			}
+		}
 		byte[] b = new byte[]{1, 2, 3, 4, 5};
 		String s = Arrays.toString(b);
 		System.out.println(s);
 		System.out.println(s.substring(1, s.length() - 1));
 	}
+	
 	public Builder csCards(IoSession session, MessageContent content) {
 		int startIndex = content.getCsCards().getStartIndex();
 		int betScore = content.getCsCards().getBetScore();
@@ -68,6 +78,17 @@ public class CardLogic {
 			if (cr.getKeepCards() != null && cr.getKeepCards().length == 5){
 				return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(cr.getWinType()).setCards(""));
 			}
+			String holdCards = content.getCsCards().getHoldCards();
+			if (holdCards != null && !holdCards.isEmpty()){
+				String[] holdCardsArr = holdCards.split(",");
+				byte[] keepCards = new byte[holdCardsArr.length];
+				for (int i = 0; i < holdCardsArr.length; i++) {
+					keepCards[i] = Byte.parseByte(holdCardsArr[i].trim());
+				}
+				cr.setKeepCards(keepCards);
+			} else {
+				cr.setKeepCards(null);
+			}
 			cr = CardUtil.secondRandomCards(cr);
 			String cardsStr = Arrays.toString(cr.getCards());
 			cardsStr = cardsStr.substring(1, cardsStr.length() - 1);
@@ -75,7 +96,7 @@ public class CardLogic {
 		}
 	}
 
-	public Builder compareHistoryCards(IoSession session, MessageContent content) {
+	public Builder csCompareHistoryCards(IoSession session, MessageContent content) {
 		long accountId = (long) session.getAttribute("accountId");
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
@@ -83,13 +104,13 @@ public class CardLogic {
 		}
 		String compareHistoryCards = fivepkPlayerInfo.getCompareHistoryCards();
 		jdbcDaoSupport.update(fivepkPlayerInfo);
-		return MessageContent.newBuilder().setResult(0).setCompareHistoryCards(CompareHistoryCards.newBuilder().setCards(compareHistoryCards));
+		return MessageContent.newBuilder().setResult(0).setCsCompareHistoryCards(CSCompareHistoryCards.newBuilder().setCards(compareHistoryCards));
 	}
 
 	public Builder csCompareCard(IoSession session, MessageContent content) {
 		int bigSmall = content.getCsCompareCard().getBigSmall();
 		int betScore = content.getCsCompareCard().getBetScore();
-		if (bigSmall != 0 || bigSmall != 1) {
+		if (bigSmall != 0 && bigSmall != 1) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 		}
 		int compareCard = CardUtil.compareCard();
@@ -110,7 +131,7 @@ public class CardLogic {
 		list.remove(list.size() - 1);
 		fivepkPlayerInfo.setCompareHistoryCardsList();
 		jdbcDaoSupport.update(fivepkPlayerInfo);
-		return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore("0"));
+		return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(0));
 	}
 
 }

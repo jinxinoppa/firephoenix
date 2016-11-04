@@ -253,7 +253,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.CSEnterRoom.class, com.mzm.firephoenix.protobuf.GameProtocol.CSEnterRoom.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.CSEnterRoom.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.CSEnterRoom.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -965,7 +965,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCEnterRoom.class, com.mzm.firephoenix.protobuf.GameProtocol.SCEnterRoom.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCEnterRoom.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCEnterRoom.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1786,7 +1786,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCOutRoom.class, com.mzm.firephoenix.protobuf.GameProtocol.SCOutRoom.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCOutRoom.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCOutRoom.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2292,7 +2292,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCRoomPlayerList.class, com.mzm.firephoenix.protobuf.GameProtocol.SCRoomPlayerList.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCRoomPlayerList.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCRoomPlayerList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2982,7 +2982,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCRoomUidList.class, com.mzm.firephoenix.protobuf.GameProtocol.SCRoomUidList.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCRoomUidList.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCRoomUidList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3467,7 +3467,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.CSRoomPlayer.class, com.mzm.firephoenix.protobuf.GameProtocol.CSRoomPlayer.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.CSRoomPlayer.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.CSRoomPlayer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3893,7 +3893,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCRoomPlayer.class, com.mzm.firephoenix.protobuf.GameProtocol.SCRoomPlayer.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCRoomPlayer.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCRoomPlayer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4869,7 +4869,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCPaiInfo.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPaiInfo.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCPaiInfo.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPaiInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6754,7 +6754,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCRoomStatis.class, com.mzm.firephoenix.protobuf.GameProtocol.SCRoomStatis.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCRoomStatis.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCRoomStatis.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7775,7 +7775,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.CSSit.class, com.mzm.firephoenix.protobuf.GameProtocol.CSSit.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.CSSit.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.CSSit.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8249,7 +8249,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCSit.class, com.mzm.firephoenix.protobuf.GameProtocol.SCSit.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCSit.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCSit.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8813,7 +8813,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.class, com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCStandUp.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9466,7 +9466,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.class, com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.CSYaZhu.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10381,7 +10381,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.class, com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCYaZhu.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11351,7 +11351,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.CSChat.class, com.mzm.firephoenix.protobuf.GameProtocol.CSChat.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.CSChat.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.CSChat.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12075,7 +12075,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCChat.class, com.mzm.firephoenix.protobuf.GameProtocol.SCChat.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCChat.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCChat.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12775,7 +12775,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCSignList.class, com.mzm.firephoenix.protobuf.GameProtocol.SCSignList.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCSignList.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCSignList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -13363,7 +13363,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCSign.class, com.mzm.firephoenix.protobuf.GameProtocol.SCSign.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCSign.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCSign.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -13910,7 +13910,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerGoldChange.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerGoldChange.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCPlayerGoldChange.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerGoldChange.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -14604,7 +14604,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.PlayerCard.class, com.mzm.firephoenix.protobuf.GameProtocol.PlayerCard.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.PlayerCard.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.PlayerCard.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -15741,7 +15741,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.CardResult.class, com.mzm.firephoenix.protobuf.GameProtocol.CardResult.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.CardResult.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.CardResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -17058,7 +17058,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.StructPlayer.class, com.mzm.firephoenix.protobuf.GameProtocol.StructPlayer.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.StructPlayer.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.StructPlayer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -18211,7 +18211,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.StructBet.class, com.mzm.firephoenix.protobuf.GameProtocol.StructBet.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.StructBet.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.StructBet.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -18820,7 +18820,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.PlayerBet.class, com.mzm.firephoenix.protobuf.GameProtocol.PlayerBet.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.PlayerBet.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.PlayerBet.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -19474,7 +19474,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.PlayerResult.class, com.mzm.firephoenix.protobuf.GameProtocol.PlayerResult.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.PlayerResult.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.PlayerResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -20037,7 +20037,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.class, com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCNotice.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -20881,7 +20881,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.class, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.StructNotice.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -21483,7 +21483,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCQZList.class, com.mzm.firephoenix.protobuf.GameProtocol.SCQZList.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCQZList.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCQZList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -21978,7 +21978,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCZhuang.class, com.mzm.firephoenix.protobuf.GameProtocol.SCZhuang.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCZhuang.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCZhuang.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -22473,7 +22473,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCDownZhuang.class, com.mzm.firephoenix.protobuf.GameProtocol.SCDownZhuang.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCDownZhuang.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCDownZhuang.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -22994,7 +22994,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCHeart.class, com.mzm.firephoenix.protobuf.GameProtocol.SCHeart.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCHeart.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCHeart.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -23546,7 +23546,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerResultList.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerResultList.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCPlayerResultList.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerResultList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -24341,7 +24341,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCCardInfo.class, com.mzm.firephoenix.protobuf.GameProtocol.SCCardInfo.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCCardInfo.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCCardInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -25258,7 +25258,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCPaiBaseInfo.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPaiBaseInfo.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCPaiBaseInfo.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPaiBaseInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -26011,7 +26011,7 @@ public final class GameProtocol {
                 com.mzm.firephoenix.protobuf.GameProtocol.SCPaiInfo3.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPaiInfo3.Builder.class);
       }
 
-      // Construct using com.mzm.poker.protobuf.GameProtocol.SCPaiInfo3.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPaiInfo3.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -26720,8 +26720,8 @@ public final class GameProtocol {
       "\n\tpaiStatus\030\001 \002(\005\022\r\n\005count\030\002 \001(\t\022\020\n\010zhua" +
       "ngid\030\003 \001(\t\"G\n\nSCPaiInfo3\022\030\n\004bets\030\004 \001(\0132\n" +
       ".PlayerBet\022\037\n\ncardResult\030\005 \001(\0132\013.CardRes" +
-      "ultB&\n\026com.mzm.poker.protobufB\014GameProto" +
-      "col"
+      "ultB,\n\034com.mzm.firephoenix.protobufB\014Gam" +
+      "eProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

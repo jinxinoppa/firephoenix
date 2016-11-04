@@ -1,6 +1,8 @@
 package com.mzm.firephoenix.dao.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity(tableName = "fivepk_account", primaryKey = "accountId")
 public class FivepkAccount extends AbstractEntity {
@@ -14,6 +16,8 @@ public class FivepkAccount extends AbstractEntity {
 	private String seoid;
 	@Column(columnName = "create_date")
 	private Date createDate;
+	@Column(isContinue = true)
+	private List<String> updateFieldsList = new ArrayList<String>(6);
 	public long getAccountId() {
 		return accountId;
 	}
@@ -52,5 +56,13 @@ public class FivepkAccount extends AbstractEntity {
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+
+	public List<String> getUpdateFieldsList() {
+		return updateFieldsList;
+	}
+
+	public void setUpdateFieldsList(List<String> updateFieldsList) {
+		this.updateFieldsList = updateFieldsList;
 	}
 }

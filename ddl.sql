@@ -21,3 +21,5 @@ CREATE TABLE `fivepk_player_info` (
 alter table `fivepk_player_info` add COLUMN compare_history_cards VARCHAR(15);
 
 alter table `fivepk_player_info` add UNIQUE KEY `name` (name);
+
+alter table fivepk_player_info modify compare_history_cards varchar(50) COLLATE utf8_bin default null;

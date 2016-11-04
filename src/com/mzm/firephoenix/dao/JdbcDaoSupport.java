@@ -66,7 +66,9 @@ public class JdbcDaoSupport {
 			Column column = updateField.getDeclaredAnnotation(Column.class);
 			updateField.setAccessible(true);
 			sql.append(" where ").append(column.columnName()).append(" = ").append(updateField.get(entity));
-			jdbcTemplate.update(sql.toString());
+			String sqlStr = sql.toString();
+			logger.info(sqlStr);
+			jdbcTemplate.update(sqlStr);
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -104,7 +106,9 @@ public class JdbcDaoSupport {
 		}
 		valueSb.deleteCharAt(valueSb.lastIndexOf(",")).deleteCharAt(valueSb.lastIndexOf(" ")).append("); ");
 		columnSb.deleteCharAt(columnSb.lastIndexOf(",")).deleteCharAt(columnSb.lastIndexOf(" ")).append(") ").append(valueSb.toString());
-		jdbcTemplate.update(columnSb.toString());
+		String sql = columnSb.toString();
+		logger.info(sql);
+		jdbcTemplate.update(sql);
 	}
 
 	public <T> Map<String, Object> queryMap(String sql) {
@@ -183,9 +187,7 @@ public class JdbcDaoSupport {
 
 			}
 		}
-		if (logger.isDebugEnabled()) {
-			logger.debug(sql);
-		}
+		logger.info(sql);
 
 		long start = System.currentTimeMillis();
 		List<T> list = null;
@@ -198,6 +200,21 @@ public class JdbcDaoSupport {
 		long diff = System.currentTimeMillis() - start;
 		if (diff > 1000) {
 			logger.info(requiredType + "----" + diff);
+		}
+		for (int i = 0; i < list.size(); i++) {
+			T t = list.get(i);
+			@SuppressWarnings("unchecked")
+			Class<? extends AbstractEntity> abstractEntity = (Class<? extends AbstractEntity>) t.getClass();
+			Field updateFieldsListField;
+			try {
+				updateFieldsListField = abstractEntity.getDeclaredField("updateFieldsList");
+				updateFieldsListField.setAccessible(true);
+				@SuppressWarnings("unchecked")
+				List<String> updateFieldsList = (List<String>) updateFieldsListField.get(t);
+				updateFieldsList.clear();
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}

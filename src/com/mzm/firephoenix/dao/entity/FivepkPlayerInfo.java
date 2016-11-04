@@ -116,4 +116,8 @@ public class FivepkPlayerInfo extends AbstractEntity {
 		this.compareHistoryCards = compareHistoryCards;
 		updateFieldsList.add("compareHistoryCards");
 	}
+
+	public void clearUpdateFieldsList() {
+		updateFieldsList.clear();
+	}
 }

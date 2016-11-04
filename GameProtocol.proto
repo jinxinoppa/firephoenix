@@ -1,5 +1,5 @@
 syntax = "proto2";
-option java_package = "com.mzm.poker.protobuf";
+option java_package = "com.mzm.firephoenix.protobuf";
 option java_outer_classname = "GameProtocol";
   
 
