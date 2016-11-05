@@ -33,7 +33,7 @@ public class CardLogic {
 	JdbcDaoSupport jdbcDaoSupport;
 
 	public static void main(String[] args) {
-		String holdCards = "1, 4, 3, 0";
+		String holdCards = "";
 		if (holdCards != null && !holdCards.isEmpty()) {
 			holdCards.trim();
 			String[] holdCardsArr = holdCards.split(",");
@@ -62,7 +62,7 @@ public class CardLogic {
 			session.setAttribute("cardResult", cr);
 			String cardsStr = Arrays.toString(cr.getCards());
 			cardsStr = cardsStr.substring(1, cardsStr.length() - 1);
-			if (cr.getKeepCards() == null) {
+			if (cr.getKeepCards() == null || cr.getKeepCards().length == 0) {
 				return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(cr.getWinType()).setCards(cardsStr));
 			}
 			String keepCards = Arrays.toString(cr.getKeepCards());
@@ -104,17 +104,16 @@ public class CardLogic {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 		}
 		String compareHistoryCards = fivepkPlayerInfo.getCompareHistoryCards();
-		if (compareHistoryCards == null){
+		if (compareHistoryCards == null) {
 			StringBuffer sb = new StringBuffer();
-			if (compareHistoryCards == null) {
-				for (int i = 0; i < 6; i++) {
-					sb.append(CardUtil.compareCard());
-					sb.append(",");
-				}
-				sb.deleteCharAt(sb.lastIndexOf(","));
+			for (int i = 0; i < 6; i++) {
+				sb.append(CardUtil.compareCard());
+				sb.append(",");
 			}
+			sb.deleteCharAt(sb.lastIndexOf(","));
 			fivepkPlayerInfo.setCompareHistoryCards(sb.toString());
 			jdbcDaoSupport.update(fivepkPlayerInfo);
+			compareHistoryCards = fivepkPlayerInfo.getCompareHistoryCards();
 		}
 		return MessageContent.newBuilder().setResult(0).setCcCompareHistoryCards(CCCompareHistoryCards.newBuilder().setCards(compareHistoryCards));
 	}
@@ -152,7 +151,7 @@ public class CardLogic {
 		return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(cr.getScore()));
 	}
 
-	public Builder csWin(IoSession session, MessageContent content){
+	public Builder csWin(IoSession session, MessageContent content) {
 		long accountId = (long) session.getAttribute("accountId");
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
@@ -169,8 +168,8 @@ public class CardLogic {
 		}
 		return MessageContent.newBuilder().setResult(0);
 	}
-	
-	public Builder ccCoinScore(IoSession session, MessageContent content){
+
+	public Builder ccCoinScore(IoSession session, MessageContent content) {
 		int coin = content.getCcCoinScore().getCoin();
 		int score = content.getCcCoinScore().getScore();
 		long accountId = (long) session.getAttribute("accountId");
@@ -178,9 +177,9 @@ public class CardLogic {
 		if (fivepkPlayerInfo == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 		}
-		if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore())){
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE); 
-		}
+//		if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore())) {
+//			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+//		}
 		fivepkPlayerInfo.setCoin(coin);
 		fivepkPlayerInfo.setScore(score);
 		jdbcDaoSupport.update(fivepkPlayerInfo);

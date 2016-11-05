@@ -102,7 +102,7 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		try {
 			returnBuilder = (Builder) m.invoke(executor, session, messagePack.getContent());
 		} catch (Exception e) {
-			logger.info(e);
+			logger.error(e.getMessage(), e);
 		}
 		long diff = System.currentTimeMillis() - start;
 		if (diff > 1000) {

@@ -24,6 +24,6 @@ alter table `fivepk_player_info` add UNIQUE KEY `name` (name);
 
 alter table fivepk_player_info modify compare_history_cards varchar(50) COLLATE utf8_bin default null;
 
-alter table fivepk_player_info modify score int(20) default 0;
+alter table fivepk_player_info modify score int(20) default 200000;
 
 alter table fivepk_player_info add COLUMN coin int(20) default 0 AFTER pic;

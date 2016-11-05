@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import com.mzm.firephoenix.dao.entity.AbstractEntity;
 import com.mzm.firephoenix.dao.entity.Column;
 import com.mzm.firephoenix.dao.entity.Entity;
+import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 
 @Repository("jdbcDaoSupport")
 public class JdbcDaoSupport {
@@ -81,27 +82,55 @@ public class JdbcDaoSupport {
 		StringBuffer valueSb = new StringBuffer();
 		valueSb.append("value (");
 		columnSb.append("insert into ").append(entityAnnotation.tableName()).append(" (");
-		Field[] field = c.getDeclaredFields();
 		Column column = null;
+		String insertFieldName = null;
+		Field insertField = null;
 		try {
-			for (Field field2 : field) {
-				field2.setAccessible(true);
-				column = field2.getAnnotation(Column.class);
-				if (column.isContinue() || column.isAutoIncrement()) {
-					continue;
-				}
-				if (field2.getType().getSimpleName().endsWith("String") || field2.getType().getSimpleName().endsWith("Date")) {
-					if (null == field2.get(entity)) {
+			Field insertFieldsListField = c.getDeclaredField("insertFieldsList");
+			insertFieldsListField.setAccessible(true);
+			@SuppressWarnings("unchecked")
+			List<String> insertFieldsList = (List<String>) insertFieldsListField.get(entity);
+			if (!insertFieldsList.isEmpty()){
+				for (int i = 0; i < insertFieldsList.size(); i++) {
+					insertFieldName = insertFieldsList.get(i);
+					insertField = c.getDeclaredField(insertFieldName);
+					insertField.setAccessible(true);
+					column = insertField.getAnnotation(Column.class);
+					if (column.isContinue() || column.isAutoIncrement()) {
 						continue;
-					} else {
-						valueSb.append("\"").append(field2.get(entity)).append("\", ");
 					}
-				} else {
-					valueSb.append(field2.get(entity)).append(", ");
+					if (insertField.getType().getSimpleName().endsWith("String") || insertField.getType().getSimpleName().endsWith("Date")) {
+						if (null == insertField.get(entity)) {
+							continue;
+						} else {
+							valueSb.append("\"").append(insertField.get(entity)).append("\", ");
+						}
+					} else {
+						valueSb.append(insertField.get(entity)).append(", ");
+					}
+					columnSb.append(column.columnName()).append(", ");
 				}
-				columnSb.append(column.columnName()).append(", ");
+			} else {
+				Field[] field = c.getDeclaredFields();
+				for (Field field2 : field) {
+					field2.setAccessible(true);
+					column = field2.getAnnotation(Column.class);
+					if (column.isContinue() || column.isAutoIncrement()) {
+						continue;
+					}
+					if (field2.getType().getSimpleName().endsWith("String") || field2.getType().getSimpleName().endsWith("Date")) {
+						if (null == field2.get(entity)) {
+							continue;
+						} else {
+							valueSb.append("\"").append(field2.get(entity)).append("\", ");
+						}
+					} else {
+						valueSb.append(field2.get(entity)).append(", ");
+					}
+					columnSb.append(column.columnName()).append(", ");
+				}
 			}
-		} catch (IllegalArgumentException | IllegalAccessException e) {
+		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
 			e.printStackTrace();
 		}
 		valueSb.deleteCharAt(valueSb.lastIndexOf(",")).deleteCharAt(valueSb.lastIndexOf(" ")).append("); ");

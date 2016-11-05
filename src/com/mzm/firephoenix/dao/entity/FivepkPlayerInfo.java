@@ -23,6 +23,9 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	private List<Integer> compareHistoryCardsList = new ArrayList<Integer>(6);
 	@Column(isContinue = true)
 	private List<String> updateFieldsList = new ArrayList<String>(6);
+	@Column(isContinue = true)
+	private List<String> insertFieldsList = new ArrayList<String>(6);
+
 	public FivepkPlayerInfo() {
 	}
 
@@ -30,6 +33,9 @@ public class FivepkPlayerInfo extends AbstractEntity {
 		this.accountId = accountId;
 		this.name = name;
 		this.nickName = nickName;
+		insertFieldsList.add("accountId");
+		insertFieldsList.add("name");
+		insertFieldsList.add("nickName");
 	}
 
 	public long getAccountId() {
@@ -103,5 +109,6 @@ public class FivepkPlayerInfo extends AbstractEntity {
 
 	public void setCoin(int coin) {
 		this.coin = coin;
+		updateFieldsList.add("coin");
 	}
 }
