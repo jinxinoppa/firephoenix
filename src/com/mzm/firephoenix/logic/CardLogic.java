@@ -252,8 +252,17 @@ public class CardLogic {
 		if (fivepkPlayerInfo == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 		}
-		if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore())) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+		CardResult cr = (CardResult) session.getAttribute("cardResult");
+		if (cr == null) {
+			if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore())) {
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			}
+		} else {
+			if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore() - cr.getBet())) {
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			}
+			cr.setBet(0);
+			session.setAttribute("cardResult", cr);
 		}
 		fivepkPlayerInfo.setCoin(coin);
 		fivepkPlayerInfo.setScore(score);

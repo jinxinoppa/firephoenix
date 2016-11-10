@@ -102,66 +102,66 @@ public final class CoreProtocol {
      */
     CMD_COIN_SCORE(10, 65547),
     /**
-     * <code>CMD_PLAYER_INFO = 131073;</code>
+     * <code>CMD_PLAYER_NICK_NAME = 131073;</code>
      *
      * <pre>
      *玩家模块
      * </pre>
      */
-    CMD_PLAYER_INFO(11, 131073),
+    CMD_PLAYER_NICK_NAME(11, 131073),
     /**
-     * <code>CMD_PLAYER_UPDATE = 131074;</code>
+     * <code>CMD_PLAYER_PIC = 131074;</code>
      *
      * <pre>
-     *修改玩家信息
+     *修改头像
      * </pre>
      */
-    CMD_PLAYER_UPDATE(12, 131074),
+    CMD_PLAYER_PIC(12, 131074),
     /**
-     * <code>CMD_INITPASSWD = 131075;</code>
+     * <code>CMD_MACHINE_LIST = 131075;</code>
      *
      * <pre>
-     *找回密码
+     *机台列表
      * </pre>
      */
-    CMD_INITPASSWD(13, 131075),
+    CMD_MACHINE_LIST(13, 131075),
     /**
-     * <code>CMD_NOTICE = 131076;</code>
+     * <code>CMD_MACHINE_INFO = 131076;</code>
      *
      * <pre>
-     *公告列表
+     *单台机台信息
      * </pre>
      */
-    CMD_NOTICE(14, 131076),
+    CMD_MACHINE_INFO(14, 131076),
     /**
-     * <code>CMD_SIGNLIST = 131077;</code>
+     * <code>CMD_MACHINE_ENTER = 131077;</code>
      *
      * <pre>
-     *签到列表
+     *选择机台
      * </pre>
      */
-    CMD_SIGNLIST(15, 131077),
+    CMD_MACHINE_ENTER(15, 131077),
     /**
-     * <code>CMD_SIGN = 131078;</code>
+     * <code>CMD_MACHINE_LEAVE = 131078;</code>
      *
      * <pre>
-     *请求签到
+     *离开机台
      * </pre>
      */
-    CMD_SIGN(16, 131078),
+    CMD_MACHINE_LEAVE(16, 131078),
     /**
-     * <code>CMD_PLAYER_QUIT = 131079;</code>
+     * <code>CMD_MACHINE_STAY = 131079;</code>
      *
      * <pre>
-     *玩家退出游戏
+     *是否留机
      * </pre>
      */
-    CMD_PLAYER_QUIT(17, 131079),
+    CMD_MACHINE_STAY(17, 131079),
     /**
      * <code>CMD_PLAYER_KICK = 131080;</code>
      *
      * <pre>
-     *玩家被踢出游戏
+     *绑定账号
      * </pre>
      */
     CMD_PLAYER_KICK(18, 131080),
@@ -436,66 +436,66 @@ public final class CoreProtocol {
      */
     public static final int CMD_COIN_SCORE_VALUE = 65547;
     /**
-     * <code>CMD_PLAYER_INFO = 131073;</code>
+     * <code>CMD_PLAYER_NICK_NAME = 131073;</code>
      *
      * <pre>
      *玩家模块
      * </pre>
      */
-    public static final int CMD_PLAYER_INFO_VALUE = 131073;
+    public static final int CMD_PLAYER_NICK_NAME_VALUE = 131073;
     /**
-     * <code>CMD_PLAYER_UPDATE = 131074;</code>
+     * <code>CMD_PLAYER_PIC = 131074;</code>
      *
      * <pre>
-     *修改玩家信息
+     *修改头像
      * </pre>
      */
-    public static final int CMD_PLAYER_UPDATE_VALUE = 131074;
+    public static final int CMD_PLAYER_PIC_VALUE = 131074;
     /**
-     * <code>CMD_INITPASSWD = 131075;</code>
+     * <code>CMD_MACHINE_LIST = 131075;</code>
      *
      * <pre>
-     *找回密码
+     *机台列表
      * </pre>
      */
-    public static final int CMD_INITPASSWD_VALUE = 131075;
+    public static final int CMD_MACHINE_LIST_VALUE = 131075;
     /**
-     * <code>CMD_NOTICE = 131076;</code>
+     * <code>CMD_MACHINE_INFO = 131076;</code>
      *
      * <pre>
-     *公告列表
+     *单台机台信息
      * </pre>
      */
-    public static final int CMD_NOTICE_VALUE = 131076;
+    public static final int CMD_MACHINE_INFO_VALUE = 131076;
     /**
-     * <code>CMD_SIGNLIST = 131077;</code>
+     * <code>CMD_MACHINE_ENTER = 131077;</code>
      *
      * <pre>
-     *签到列表
+     *选择机台
      * </pre>
      */
-    public static final int CMD_SIGNLIST_VALUE = 131077;
+    public static final int CMD_MACHINE_ENTER_VALUE = 131077;
     /**
-     * <code>CMD_SIGN = 131078;</code>
+     * <code>CMD_MACHINE_LEAVE = 131078;</code>
      *
      * <pre>
-     *请求签到
+     *离开机台
      * </pre>
      */
-    public static final int CMD_SIGN_VALUE = 131078;
+    public static final int CMD_MACHINE_LEAVE_VALUE = 131078;
     /**
-     * <code>CMD_PLAYER_QUIT = 131079;</code>
+     * <code>CMD_MACHINE_STAY = 131079;</code>
      *
      * <pre>
-     *玩家退出游戏
+     *是否留机
      * </pre>
      */
-    public static final int CMD_PLAYER_QUIT_VALUE = 131079;
+    public static final int CMD_MACHINE_STAY_VALUE = 131079;
     /**
      * <code>CMD_PLAYER_KICK = 131080;</code>
      *
      * <pre>
-     *玩家被踢出游戏
+     *绑定账号
      * </pre>
      */
     public static final int CMD_PLAYER_KICK_VALUE = 131080;
@@ -698,13 +698,13 @@ public final class CoreProtocol {
         case 65545: return CMD_COMPARE_HISTORY_CARDS;
         case 65546: return CMD_WIN;
         case 65547: return CMD_COIN_SCORE;
-        case 131073: return CMD_PLAYER_INFO;
-        case 131074: return CMD_PLAYER_UPDATE;
-        case 131075: return CMD_INITPASSWD;
-        case 131076: return CMD_NOTICE;
-        case 131077: return CMD_SIGNLIST;
-        case 131078: return CMD_SIGN;
-        case 131079: return CMD_PLAYER_QUIT;
+        case 131073: return CMD_PLAYER_NICK_NAME;
+        case 131074: return CMD_PLAYER_PIC;
+        case 131075: return CMD_MACHINE_LIST;
+        case 131076: return CMD_MACHINE_INFO;
+        case 131077: return CMD_MACHINE_ENTER;
+        case 131078: return CMD_MACHINE_LEAVE;
+        case 131079: return CMD_MACHINE_STAY;
         case 131080: return CMD_PLAYER_KICK;
         case 131081: return CMD_DEPOSIT_STORE;
         case 131082: return CMD_DEPOSIT_DRAW;
@@ -2490,167 +2490,179 @@ public final class CoreProtocol {
     com.mzm.firephoenix.protobuf.CoreProtocol.CCCoinScoreOrBuilder getCcCoinScoreOrBuilder();
 
     /**
-     * <code>optional .CSSit csSit = 18;</code>
+     * <code>optional .CCNickName ccNickName = 18;</code>
      *
      * <pre>
-     *坐下
+     *修改玩家昵称
      * </pre>
      */
-    boolean hasCsSit();
+    boolean hasCcNickName();
     /**
-     * <code>optional .CSSit csSit = 18;</code>
+     * <code>optional .CCNickName ccNickName = 18;</code>
      *
      * <pre>
-     *坐下
+     *修改玩家昵称
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.CSSit getCsSit();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName getCcNickName();
     /**
-     * <code>optional .CSSit csSit = 18;</code>
+     * <code>optional .CCNickName ccNickName = 18;</code>
      *
      * <pre>
-     *坐下
+     *修改玩家昵称
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.CSSitOrBuilder getCsSitOrBuilder();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCNickNameOrBuilder getCcNickNameOrBuilder();
 
     /**
-     * <code>optional .SCSit scSit = 19;</code>
+     * <code>optional .CCHeadPic ccHeadPic = 19;</code>
      *
      * <pre>
-     *坐下
+     *修改头像
      * </pre>
      */
-    boolean hasScSit();
+    boolean hasCcHeadPic();
     /**
-     * <code>optional .SCSit scSit = 19;</code>
+     * <code>optional .CCHeadPic ccHeadPic = 19;</code>
      *
      * <pre>
-     *坐下
+     *修改头像
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCSit getScSit();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic getCcHeadPic();
     /**
-     * <code>optional .SCSit scSit = 19;</code>
+     * <code>optional .CCHeadPic ccHeadPic = 19;</code>
      *
      * <pre>
-     *坐下
+     *修改头像
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCSitOrBuilder getScSitOrBuilder();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPicOrBuilder getCcHeadPicOrBuilder();
 
     /**
-     * <code>optional .SCStandUp scStandUp = 21;</code>
+     * <code>optional .SCMachineList scMachineList = 21;</code>
      *
      * <pre>
-     *起立
+     *机台列表
      * </pre>
      */
-    boolean hasScStandUp();
+    boolean hasScMachineList();
     /**
-     * <code>optional .SCStandUp scStandUp = 21;</code>
+     * <code>optional .SCMachineList scMachineList = 21;</code>
      *
      * <pre>
-     *起立
+     *机台列表
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp getScStandUp();
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList getScMachineList();
     /**
-     * <code>optional .SCStandUp scStandUp = 21;</code>
+     * <code>optional .SCMachineList scMachineList = 21;</code>
      *
      * <pre>
-     *起立
+     *机台列表
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCStandUpOrBuilder getScStandUpOrBuilder();
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineListOrBuilder getScMachineListOrBuilder();
 
     /**
-     * <code>optional .CSYaZhu csYaZhu = 26;</code>
+     * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
      *
      * <pre>
-     *押注
+     *单台机台信息
      * </pre>
      */
-    boolean hasCsYaZhu();
+    boolean hasScMachineInfo();
     /**
-     * <code>optional .CSYaZhu csYaZhu = 26;</code>
+     * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
      *
      * <pre>
-     *押注
+     *单台机台信息
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu getCsYaZhu();
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getScMachineInfo();
     /**
-     * <code>optional .CSYaZhu csYaZhu = 26;</code>
+     * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
      *
      * <pre>
-     *押注
+     *单台机台信息
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhuOrBuilder getCsYaZhuOrBuilder();
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder getScMachineInfoOrBuilder();
 
     /**
-     * <code>optional .SCYaZhu scYazhu = 27;</code>
+     * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+     *
+     * <pre>
+     *选择机台
+     * </pre>
      */
-    boolean hasScYazhu();
+    boolean hasCcEnterMachine();
     /**
-     * <code>optional .SCYaZhu scYazhu = 27;</code>
+     * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+     *
+     * <pre>
+     *选择机台
+     * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu getScYazhu();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine getCcEnterMachine();
     /**
-     * <code>optional .SCYaZhu scYazhu = 27;</code>
+     * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+     *
+     * <pre>
+     *选择机台
+     * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhuOrBuilder getScYazhuOrBuilder();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachineOrBuilder getCcEnterMachineOrBuilder();
 
     /**
-     * <code>optional .CSChat csChat = 29;</code>
+     * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
      *
      * <pre>
-     *聊天信息
+     *离开机台
      * </pre>
      */
-    boolean hasCsChat();
+    boolean hasCcLeaveMachine();
     /**
-     * <code>optional .CSChat csChat = 29;</code>
+     * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
      *
      * <pre>
-     *聊天信息
+     *离开机台
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.CSChat getCsChat();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine getCcLeaveMachine();
     /**
-     * <code>optional .CSChat csChat = 29;</code>
+     * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
      *
      * <pre>
-     *聊天信息
+     *离开机台
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.CSChatOrBuilder getCsChatOrBuilder();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachineOrBuilder getCcLeaveMachineOrBuilder();
 
     /**
-     * <code>optional .SCChat scChat = 33;</code>
+     * <code>optional .CCMachineStay ccMachineStay = 33;</code>
      *
      * <pre>
-     *下行聊天信息
+     *是否留机
      * </pre>
      */
-    boolean hasScChat();
+    boolean hasCcMachineStay();
     /**
-     * <code>optional .SCChat scChat = 33;</code>
+     * <code>optional .CCMachineStay ccMachineStay = 33;</code>
      *
      * <pre>
-     *下行聊天信息
+     *是否留机
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCChat getScChat();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay getCcMachineStay();
     /**
-     * <code>optional .SCChat scChat = 33;</code>
+     * <code>optional .CCMachineStay ccMachineStay = 33;</code>
      *
      * <pre>
-     *下行聊天信息
+     *是否留机
      * </pre>
      */
-    com.mzm.firephoenix.protobuf.GameProtocol.SCChatOrBuilder getScChatOrBuilder();
+    com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStayOrBuilder getCcMachineStayOrBuilder();
 
     /**
      * <code>optional .SCSignList signList = 30;</code>
@@ -3361,79 +3373,79 @@ public final class CoreProtocol {
               break;
             }
             case 146: {
-              com.mzm.firephoenix.protobuf.GameProtocol.CSSit.Builder subBuilder = null;
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder subBuilder = null;
               if (((bitField0_ & 0x00010000) == 0x00010000)) {
-                subBuilder = csSit_.toBuilder();
+                subBuilder = ccNickName_.toBuilder();
               }
-              csSit_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.CSSit.PARSER, extensionRegistry);
+              ccNickName_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(csSit_);
-                csSit_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(ccNickName_);
+                ccNickName_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00010000;
               break;
             }
             case 154: {
-              com.mzm.firephoenix.protobuf.GameProtocol.SCSit.Builder subBuilder = null;
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder subBuilder = null;
               if (((bitField0_ & 0x00020000) == 0x00020000)) {
-                subBuilder = scSit_.toBuilder();
+                subBuilder = ccHeadPic_.toBuilder();
               }
-              scSit_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.SCSit.PARSER, extensionRegistry);
+              ccHeadPic_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(scSit_);
-                scSit_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(ccHeadPic_);
+                ccHeadPic_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00020000;
               break;
             }
             case 170: {
-              com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.Builder subBuilder = null;
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder subBuilder = null;
               if (((bitField0_ & 0x00040000) == 0x00040000)) {
-                subBuilder = scStandUp_.toBuilder();
+                subBuilder = scMachineList_.toBuilder();
               }
-              scStandUp_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.PARSER, extensionRegistry);
+              scMachineList_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(scStandUp_);
-                scStandUp_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(scMachineList_);
+                scMachineList_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00040000;
               break;
             }
             case 210: {
-              com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.Builder subBuilder = null;
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder subBuilder = null;
               if (((bitField0_ & 0x00080000) == 0x00080000)) {
-                subBuilder = csYaZhu_.toBuilder();
+                subBuilder = scMachineInfo_.toBuilder();
               }
-              csYaZhu_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.PARSER, extensionRegistry);
+              scMachineInfo_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(csYaZhu_);
-                csYaZhu_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(scMachineInfo_);
+                scMachineInfo_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00080000;
               break;
             }
             case 218: {
-              com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.Builder subBuilder = null;
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder subBuilder = null;
               if (((bitField0_ & 0x00100000) == 0x00100000)) {
-                subBuilder = scYazhu_.toBuilder();
+                subBuilder = ccEnterMachine_.toBuilder();
               }
-              scYazhu_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.PARSER, extensionRegistry);
+              ccEnterMachine_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(scYazhu_);
-                scYazhu_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(ccEnterMachine_);
+                ccEnterMachine_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00100000;
               break;
             }
             case 234: {
-              com.mzm.firephoenix.protobuf.GameProtocol.CSChat.Builder subBuilder = null;
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder subBuilder = null;
               if (((bitField0_ & 0x00200000) == 0x00200000)) {
-                subBuilder = csChat_.toBuilder();
+                subBuilder = ccLeaveMachine_.toBuilder();
               }
-              csChat_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.CSChat.PARSER, extensionRegistry);
+              ccLeaveMachine_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(csChat_);
-                csChat_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(ccLeaveMachine_);
+                ccLeaveMachine_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00200000;
               break;
@@ -3478,14 +3490,14 @@ public final class CoreProtocol {
               break;
             }
             case 266: {
-              com.mzm.firephoenix.protobuf.GameProtocol.SCChat.Builder subBuilder = null;
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder subBuilder = null;
               if (((bitField0_ & 0x00400000) == 0x00400000)) {
-                subBuilder = scChat_.toBuilder();
+                subBuilder = ccMachineStay_.toBuilder();
               }
-              scChat_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.SCChat.PARSER, extensionRegistry);
+              ccMachineStay_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(scChat_);
-                scChat_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(ccMachineStay_);
+                ccMachineStay_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00400000;
               break;
@@ -4256,223 +4268,235 @@ public final class CoreProtocol {
       return ccCoinScore_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCCoinScore.getDefaultInstance() : ccCoinScore_;
     }
 
-    public static final int CSSIT_FIELD_NUMBER = 18;
-    private com.mzm.firephoenix.protobuf.GameProtocol.CSSit csSit_;
+    public static final int CCNICKNAME_FIELD_NUMBER = 18;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName ccNickName_;
     /**
-     * <code>optional .CSSit csSit = 18;</code>
+     * <code>optional .CCNickName ccNickName = 18;</code>
      *
      * <pre>
-     *坐下
+     *修改玩家昵称
      * </pre>
      */
-    public boolean hasCsSit() {
+    public boolean hasCcNickName() {
       return ((bitField0_ & 0x00010000) == 0x00010000);
     }
     /**
-     * <code>optional .CSSit csSit = 18;</code>
+     * <code>optional .CCNickName ccNickName = 18;</code>
      *
      * <pre>
-     *坐下
+     *修改玩家昵称
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.CSSit getCsSit() {
-      return csSit_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSSit.getDefaultInstance() : csSit_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName getCcNickName() {
+      return ccNickName_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.getDefaultInstance() : ccNickName_;
     }
     /**
-     * <code>optional .CSSit csSit = 18;</code>
+     * <code>optional .CCNickName ccNickName = 18;</code>
      *
      * <pre>
-     *坐下
+     *修改玩家昵称
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.CSSitOrBuilder getCsSitOrBuilder() {
-      return csSit_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSSit.getDefaultInstance() : csSit_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickNameOrBuilder getCcNickNameOrBuilder() {
+      return ccNickName_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.getDefaultInstance() : ccNickName_;
     }
 
-    public static final int SCSIT_FIELD_NUMBER = 19;
-    private com.mzm.firephoenix.protobuf.GameProtocol.SCSit scSit_;
+    public static final int CCHEADPIC_FIELD_NUMBER = 19;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic ccHeadPic_;
     /**
-     * <code>optional .SCSit scSit = 19;</code>
+     * <code>optional .CCHeadPic ccHeadPic = 19;</code>
      *
      * <pre>
-     *坐下
+     *修改头像
      * </pre>
      */
-    public boolean hasScSit() {
+    public boolean hasCcHeadPic() {
       return ((bitField0_ & 0x00020000) == 0x00020000);
     }
     /**
-     * <code>optional .SCSit scSit = 19;</code>
+     * <code>optional .CCHeadPic ccHeadPic = 19;</code>
      *
      * <pre>
-     *坐下
+     *修改头像
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCSit getScSit() {
-      return scSit_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCSit.getDefaultInstance() : scSit_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic getCcHeadPic() {
+      return ccHeadPic_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.getDefaultInstance() : ccHeadPic_;
     }
     /**
-     * <code>optional .SCSit scSit = 19;</code>
+     * <code>optional .CCHeadPic ccHeadPic = 19;</code>
      *
      * <pre>
-     *坐下
+     *修改头像
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCSitOrBuilder getScSitOrBuilder() {
-      return scSit_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCSit.getDefaultInstance() : scSit_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPicOrBuilder getCcHeadPicOrBuilder() {
+      return ccHeadPic_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.getDefaultInstance() : ccHeadPic_;
     }
 
-    public static final int SCSTANDUP_FIELD_NUMBER = 21;
-    private com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp scStandUp_;
+    public static final int SCMACHINELIST_FIELD_NUMBER = 21;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList scMachineList_;
     /**
-     * <code>optional .SCStandUp scStandUp = 21;</code>
+     * <code>optional .SCMachineList scMachineList = 21;</code>
      *
      * <pre>
-     *起立
+     *机台列表
      * </pre>
      */
-    public boolean hasScStandUp() {
+    public boolean hasScMachineList() {
       return ((bitField0_ & 0x00040000) == 0x00040000);
     }
     /**
-     * <code>optional .SCStandUp scStandUp = 21;</code>
+     * <code>optional .SCMachineList scMachineList = 21;</code>
      *
      * <pre>
-     *起立
+     *机台列表
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp getScStandUp() {
-      return scStandUp_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.getDefaultInstance() : scStandUp_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList getScMachineList() {
+      return scMachineList_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.getDefaultInstance() : scMachineList_;
     }
     /**
-     * <code>optional .SCStandUp scStandUp = 21;</code>
+     * <code>optional .SCMachineList scMachineList = 21;</code>
      *
      * <pre>
-     *起立
+     *机台列表
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCStandUpOrBuilder getScStandUpOrBuilder() {
-      return scStandUp_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.getDefaultInstance() : scStandUp_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineListOrBuilder getScMachineListOrBuilder() {
+      return scMachineList_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.getDefaultInstance() : scMachineList_;
     }
 
-    public static final int CSYAZHU_FIELD_NUMBER = 26;
-    private com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu csYaZhu_;
+    public static final int SCMACHINEINFO_FIELD_NUMBER = 26;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo scMachineInfo_;
     /**
-     * <code>optional .CSYaZhu csYaZhu = 26;</code>
+     * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
      *
      * <pre>
-     *押注
+     *单台机台信息
      * </pre>
      */
-    public boolean hasCsYaZhu() {
+    public boolean hasScMachineInfo() {
       return ((bitField0_ & 0x00080000) == 0x00080000);
     }
     /**
-     * <code>optional .CSYaZhu csYaZhu = 26;</code>
+     * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
      *
      * <pre>
-     *押注
+     *单台机台信息
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu getCsYaZhu() {
-      return csYaZhu_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.getDefaultInstance() : csYaZhu_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getScMachineInfo() {
+      return scMachineInfo_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance() : scMachineInfo_;
     }
     /**
-     * <code>optional .CSYaZhu csYaZhu = 26;</code>
+     * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
      *
      * <pre>
-     *押注
+     *单台机台信息
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhuOrBuilder getCsYaZhuOrBuilder() {
-      return csYaZhu_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.getDefaultInstance() : csYaZhu_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder getScMachineInfoOrBuilder() {
+      return scMachineInfo_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance() : scMachineInfo_;
     }
 
-    public static final int SCYAZHU_FIELD_NUMBER = 27;
-    private com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu scYazhu_;
+    public static final int CCENTERMACHINE_FIELD_NUMBER = 27;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine ccEnterMachine_;
     /**
-     * <code>optional .SCYaZhu scYazhu = 27;</code>
+     * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+     *
+     * <pre>
+     *选择机台
+     * </pre>
      */
-    public boolean hasScYazhu() {
+    public boolean hasCcEnterMachine() {
       return ((bitField0_ & 0x00100000) == 0x00100000);
     }
     /**
-     * <code>optional .SCYaZhu scYazhu = 27;</code>
-     */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu getScYazhu() {
-      return scYazhu_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.getDefaultInstance() : scYazhu_;
-    }
-    /**
-     * <code>optional .SCYaZhu scYazhu = 27;</code>
-     */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhuOrBuilder getScYazhuOrBuilder() {
-      return scYazhu_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.getDefaultInstance() : scYazhu_;
-    }
-
-    public static final int CSCHAT_FIELD_NUMBER = 29;
-    private com.mzm.firephoenix.protobuf.GameProtocol.CSChat csChat_;
-    /**
-     * <code>optional .CSChat csChat = 29;</code>
+     * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
      *
      * <pre>
-     *聊天信息
+     *选择机台
      * </pre>
      */
-    public boolean hasCsChat() {
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine getCcEnterMachine() {
+      return ccEnterMachine_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance() : ccEnterMachine_;
+    }
+    /**
+     * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+     *
+     * <pre>
+     *选择机台
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachineOrBuilder getCcEnterMachineOrBuilder() {
+      return ccEnterMachine_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance() : ccEnterMachine_;
+    }
+
+    public static final int CCLEAVEMACHINE_FIELD_NUMBER = 29;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine ccLeaveMachine_;
+    /**
+     * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
+     *
+     * <pre>
+     *离开机台
+     * </pre>
+     */
+    public boolean hasCcLeaveMachine() {
       return ((bitField0_ & 0x00200000) == 0x00200000);
     }
     /**
-     * <code>optional .CSChat csChat = 29;</code>
+     * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
      *
      * <pre>
-     *聊天信息
+     *离开机台
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.CSChat getCsChat() {
-      return csChat_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSChat.getDefaultInstance() : csChat_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine getCcLeaveMachine() {
+      return ccLeaveMachine_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance() : ccLeaveMachine_;
     }
     /**
-     * <code>optional .CSChat csChat = 29;</code>
+     * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
      *
      * <pre>
-     *聊天信息
+     *离开机台
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.CSChatOrBuilder getCsChatOrBuilder() {
-      return csChat_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSChat.getDefaultInstance() : csChat_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachineOrBuilder getCcLeaveMachineOrBuilder() {
+      return ccLeaveMachine_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance() : ccLeaveMachine_;
     }
 
-    public static final int SCCHAT_FIELD_NUMBER = 33;
-    private com.mzm.firephoenix.protobuf.GameProtocol.SCChat scChat_;
+    public static final int CCMACHINESTAY_FIELD_NUMBER = 33;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay ccMachineStay_;
     /**
-     * <code>optional .SCChat scChat = 33;</code>
+     * <code>optional .CCMachineStay ccMachineStay = 33;</code>
      *
      * <pre>
-     *下行聊天信息
+     *是否留机
      * </pre>
      */
-    public boolean hasScChat() {
+    public boolean hasCcMachineStay() {
       return ((bitField0_ & 0x00400000) == 0x00400000);
     }
     /**
-     * <code>optional .SCChat scChat = 33;</code>
+     * <code>optional .CCMachineStay ccMachineStay = 33;</code>
      *
      * <pre>
-     *下行聊天信息
+     *是否留机
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCChat getScChat() {
-      return scChat_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCChat.getDefaultInstance() : scChat_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay getCcMachineStay() {
+      return ccMachineStay_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance() : ccMachineStay_;
     }
     /**
-     * <code>optional .SCChat scChat = 33;</code>
+     * <code>optional .CCMachineStay ccMachineStay = 33;</code>
      *
      * <pre>
-     *下行聊天信息
+     *是否留机
      * </pre>
      */
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCChatOrBuilder getScChatOrBuilder() {
-      return scChat_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCChat.getDefaultInstance() : scChat_;
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStayOrBuilder getCcMachineStayOrBuilder() {
+      return ccMachineStay_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance() : ccMachineStay_;
     }
 
     public static final int SIGNLIST_FIELD_NUMBER = 30;
@@ -5202,26 +5226,44 @@ public final class CoreProtocol {
           return false;
         }
       }
-      if (hasCsSit()) {
-        if (!getCsSit().isInitialized()) {
+      if (hasCcNickName()) {
+        if (!getCcNickName().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
       }
-      if (hasScSit()) {
-        if (!getScSit().isInitialized()) {
+      if (hasCcHeadPic()) {
+        if (!getCcHeadPic().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
       }
-      if (hasScStandUp()) {
-        if (!getScStandUp().isInitialized()) {
+      if (hasScMachineList()) {
+        if (!getScMachineList().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
       }
-      if (hasCsYaZhu()) {
-        if (!getCsYaZhu().isInitialized()) {
+      if (hasScMachineInfo()) {
+        if (!getScMachineInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasCcEnterMachine()) {
+        if (!getCcEnterMachine().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasCcLeaveMachine()) {
+        if (!getCcLeaveMachine().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasCcMachineStay()) {
+        if (!getCcMachineStay().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -5305,22 +5347,22 @@ public final class CoreProtocol {
         output.writeMessage(17, getCcCoinScore());
       }
       if (((bitField0_ & 0x00010000) == 0x00010000)) {
-        output.writeMessage(18, getCsSit());
+        output.writeMessage(18, getCcNickName());
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        output.writeMessage(19, getScSit());
+        output.writeMessage(19, getCcHeadPic());
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
-        output.writeMessage(21, getScStandUp());
+        output.writeMessage(21, getScMachineList());
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
-        output.writeMessage(26, getCsYaZhu());
+        output.writeMessage(26, getScMachineInfo());
       }
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
-        output.writeMessage(27, getScYazhu());
+        output.writeMessage(27, getCcEnterMachine());
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
-        output.writeMessage(29, getCsChat());
+        output.writeMessage(29, getCcLeaveMachine());
       }
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
         output.writeMessage(30, getSignList());
@@ -5332,7 +5374,7 @@ public final class CoreProtocol {
         output.writeMessage(32, getScNotice());
       }
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
-        output.writeMessage(33, getScChat());
+        output.writeMessage(33, getCcMachineStay());
       }
       if (((bitField0_ & 0x04000000) == 0x04000000)) {
         output.writeMessage(34, getScRoomStatis());
@@ -5469,27 +5511,27 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(18, getCsSit());
+          .computeMessageSize(18, getCcNickName());
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(19, getScSit());
+          .computeMessageSize(19, getCcHeadPic());
       }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(21, getScStandUp());
+          .computeMessageSize(21, getScMachineList());
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(26, getCsYaZhu());
+          .computeMessageSize(26, getScMachineInfo());
       }
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(27, getScYazhu());
+          .computeMessageSize(27, getCcEnterMachine());
       }
       if (((bitField0_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(29, getCsChat());
+          .computeMessageSize(29, getCcLeaveMachine());
       }
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5505,7 +5547,7 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(33, getScChat());
+          .computeMessageSize(33, getCcMachineStay());
       }
       if (((bitField0_ & 0x04000000) == 0x04000000)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5713,13 +5755,13 @@ public final class CoreProtocol {
           getScCompareCardFieldBuilder();
           getCsWinFieldBuilder();
           getCcCoinScoreFieldBuilder();
-          getCsSitFieldBuilder();
-          getScSitFieldBuilder();
-          getScStandUpFieldBuilder();
-          getCsYaZhuFieldBuilder();
-          getScYazhuFieldBuilder();
-          getCsChatFieldBuilder();
-          getScChatFieldBuilder();
+          getCcNickNameFieldBuilder();
+          getCcHeadPicFieldBuilder();
+          getScMachineListFieldBuilder();
+          getScMachineInfoFieldBuilder();
+          getCcEnterMachineFieldBuilder();
+          getCcLeaveMachineFieldBuilder();
+          getCcMachineStayFieldBuilder();
           getSignListFieldBuilder();
           getScSginFieldBuilder();
           getScNoticeFieldBuilder();
@@ -5835,46 +5877,46 @@ public final class CoreProtocol {
           ccCoinScoreBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00008000);
-        if (csSitBuilder_ == null) {
-          csSit_ = null;
+        if (ccNickNameBuilder_ == null) {
+          ccNickName_ = null;
         } else {
-          csSitBuilder_.clear();
+          ccNickNameBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00010000);
-        if (scSitBuilder_ == null) {
-          scSit_ = null;
+        if (ccHeadPicBuilder_ == null) {
+          ccHeadPic_ = null;
         } else {
-          scSitBuilder_.clear();
+          ccHeadPicBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00020000);
-        if (scStandUpBuilder_ == null) {
-          scStandUp_ = null;
+        if (scMachineListBuilder_ == null) {
+          scMachineList_ = null;
         } else {
-          scStandUpBuilder_.clear();
+          scMachineListBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00040000);
-        if (csYaZhuBuilder_ == null) {
-          csYaZhu_ = null;
+        if (scMachineInfoBuilder_ == null) {
+          scMachineInfo_ = null;
         } else {
-          csYaZhuBuilder_.clear();
+          scMachineInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00080000);
-        if (scYazhuBuilder_ == null) {
-          scYazhu_ = null;
+        if (ccEnterMachineBuilder_ == null) {
+          ccEnterMachine_ = null;
         } else {
-          scYazhuBuilder_.clear();
+          ccEnterMachineBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00100000);
-        if (csChatBuilder_ == null) {
-          csChat_ = null;
+        if (ccLeaveMachineBuilder_ == null) {
+          ccLeaveMachine_ = null;
         } else {
-          csChatBuilder_.clear();
+          ccLeaveMachineBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00200000);
-        if (scChatBuilder_ == null) {
-          scChat_ = null;
+        if (ccMachineStayBuilder_ == null) {
+          ccMachineStay_ = null;
         } else {
-          scChatBuilder_.clear();
+          ccMachineStayBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00400000);
         if (signListBuilder_ == null) {
@@ -6164,58 +6206,58 @@ public final class CoreProtocol {
         if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
           to_bitField0_ |= 0x00010000;
         }
-        if (csSitBuilder_ == null) {
-          result.csSit_ = csSit_;
+        if (ccNickNameBuilder_ == null) {
+          result.ccNickName_ = ccNickName_;
         } else {
-          result.csSit_ = csSitBuilder_.build();
+          result.ccNickName_ = ccNickNameBuilder_.build();
         }
         if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
           to_bitField0_ |= 0x00020000;
         }
-        if (scSitBuilder_ == null) {
-          result.scSit_ = scSit_;
+        if (ccHeadPicBuilder_ == null) {
+          result.ccHeadPic_ = ccHeadPic_;
         } else {
-          result.scSit_ = scSitBuilder_.build();
+          result.ccHeadPic_ = ccHeadPicBuilder_.build();
         }
         if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
           to_bitField0_ |= 0x00040000;
         }
-        if (scStandUpBuilder_ == null) {
-          result.scStandUp_ = scStandUp_;
+        if (scMachineListBuilder_ == null) {
+          result.scMachineList_ = scMachineList_;
         } else {
-          result.scStandUp_ = scStandUpBuilder_.build();
+          result.scMachineList_ = scMachineListBuilder_.build();
         }
         if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
           to_bitField0_ |= 0x00080000;
         }
-        if (csYaZhuBuilder_ == null) {
-          result.csYaZhu_ = csYaZhu_;
+        if (scMachineInfoBuilder_ == null) {
+          result.scMachineInfo_ = scMachineInfo_;
         } else {
-          result.csYaZhu_ = csYaZhuBuilder_.build();
+          result.scMachineInfo_ = scMachineInfoBuilder_.build();
         }
         if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
           to_bitField0_ |= 0x00100000;
         }
-        if (scYazhuBuilder_ == null) {
-          result.scYazhu_ = scYazhu_;
+        if (ccEnterMachineBuilder_ == null) {
+          result.ccEnterMachine_ = ccEnterMachine_;
         } else {
-          result.scYazhu_ = scYazhuBuilder_.build();
+          result.ccEnterMachine_ = ccEnterMachineBuilder_.build();
         }
         if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
           to_bitField0_ |= 0x00200000;
         }
-        if (csChatBuilder_ == null) {
-          result.csChat_ = csChat_;
+        if (ccLeaveMachineBuilder_ == null) {
+          result.ccLeaveMachine_ = ccLeaveMachine_;
         } else {
-          result.csChat_ = csChatBuilder_.build();
+          result.ccLeaveMachine_ = ccLeaveMachineBuilder_.build();
         }
         if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
           to_bitField0_ |= 0x00400000;
         }
-        if (scChatBuilder_ == null) {
-          result.scChat_ = scChat_;
+        if (ccMachineStayBuilder_ == null) {
+          result.ccMachineStay_ = ccMachineStay_;
         } else {
-          result.scChat_ = scChatBuilder_.build();
+          result.ccMachineStay_ = ccMachineStayBuilder_.build();
         }
         if (((from_bitField0_ & 0x00800000) == 0x00800000)) {
           to_bitField0_ |= 0x00800000;
@@ -6468,26 +6510,26 @@ public final class CoreProtocol {
         if (other.hasCcCoinScore()) {
           mergeCcCoinScore(other.getCcCoinScore());
         }
-        if (other.hasCsSit()) {
-          mergeCsSit(other.getCsSit());
+        if (other.hasCcNickName()) {
+          mergeCcNickName(other.getCcNickName());
         }
-        if (other.hasScSit()) {
-          mergeScSit(other.getScSit());
+        if (other.hasCcHeadPic()) {
+          mergeCcHeadPic(other.getCcHeadPic());
         }
-        if (other.hasScStandUp()) {
-          mergeScStandUp(other.getScStandUp());
+        if (other.hasScMachineList()) {
+          mergeScMachineList(other.getScMachineList());
         }
-        if (other.hasCsYaZhu()) {
-          mergeCsYaZhu(other.getCsYaZhu());
+        if (other.hasScMachineInfo()) {
+          mergeScMachineInfo(other.getScMachineInfo());
         }
-        if (other.hasScYazhu()) {
-          mergeScYazhu(other.getScYazhu());
+        if (other.hasCcEnterMachine()) {
+          mergeCcEnterMachine(other.getCcEnterMachine());
         }
-        if (other.hasCsChat()) {
-          mergeCsChat(other.getCsChat());
+        if (other.hasCcLeaveMachine()) {
+          mergeCcLeaveMachine(other.getCcLeaveMachine());
         }
-        if (other.hasScChat()) {
-          mergeScChat(other.getScChat());
+        if (other.hasCcMachineStay()) {
+          mergeCcMachineStay(other.getCcMachineStay());
         }
         if (other.hasSignList()) {
           mergeSignList(other.getSignList());
@@ -6622,23 +6664,38 @@ public final class CoreProtocol {
             return false;
           }
         }
-        if (hasCsSit()) {
-          if (!getCsSit().isInitialized()) {
+        if (hasCcNickName()) {
+          if (!getCcNickName().isInitialized()) {
             return false;
           }
         }
-        if (hasScSit()) {
-          if (!getScSit().isInitialized()) {
+        if (hasCcHeadPic()) {
+          if (!getCcHeadPic().isInitialized()) {
             return false;
           }
         }
-        if (hasScStandUp()) {
-          if (!getScStandUp().isInitialized()) {
+        if (hasScMachineList()) {
+          if (!getScMachineList().isInitialized()) {
             return false;
           }
         }
-        if (hasCsYaZhu()) {
-          if (!getCsYaZhu().isInitialized()) {
+        if (hasScMachineInfo()) {
+          if (!getScMachineInfo().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasCcEnterMachine()) {
+          if (!getCcEnterMachine().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasCcLeaveMachine()) {
+          if (!getCcLeaveMachine().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasCcMachineStay()) {
+          if (!getCcMachineStay().isInitialized()) {
             return false;
           }
         }
@@ -8809,1046 +8866,1082 @@ public final class CoreProtocol {
         return ccCoinScoreBuilder_;
       }
 
-      private com.mzm.firephoenix.protobuf.GameProtocol.CSSit csSit_ = null;
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName ccNickName_ = null;
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.CSSit, com.mzm.firephoenix.protobuf.GameProtocol.CSSit.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSSitOrBuilder> csSitBuilder_;
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickNameOrBuilder> ccNickNameBuilder_;
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public boolean hasCsSit() {
+      public boolean hasCcNickName() {
         return ((bitField0_ & 0x00010000) == 0x00010000);
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSSit getCsSit() {
-        if (csSitBuilder_ == null) {
-          return csSit_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSSit.getDefaultInstance() : csSit_;
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName getCcNickName() {
+        if (ccNickNameBuilder_ == null) {
+          return ccNickName_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.getDefaultInstance() : ccNickName_;
         } else {
-          return csSitBuilder_.getMessage();
+          return ccNickNameBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public Builder setCsSit(com.mzm.firephoenix.protobuf.GameProtocol.CSSit value) {
-        if (csSitBuilder_ == null) {
+      public Builder setCcNickName(com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName value) {
+        if (ccNickNameBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          csSit_ = value;
+          ccNickName_ = value;
           onChanged();
         } else {
-          csSitBuilder_.setMessage(value);
+          ccNickNameBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00010000;
         return this;
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public Builder setCsSit(
-          com.mzm.firephoenix.protobuf.GameProtocol.CSSit.Builder builderForValue) {
-        if (csSitBuilder_ == null) {
-          csSit_ = builderForValue.build();
+      public Builder setCcNickName(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder builderForValue) {
+        if (ccNickNameBuilder_ == null) {
+          ccNickName_ = builderForValue.build();
           onChanged();
         } else {
-          csSitBuilder_.setMessage(builderForValue.build());
+          ccNickNameBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00010000;
         return this;
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public Builder mergeCsSit(com.mzm.firephoenix.protobuf.GameProtocol.CSSit value) {
-        if (csSitBuilder_ == null) {
+      public Builder mergeCcNickName(com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName value) {
+        if (ccNickNameBuilder_ == null) {
           if (((bitField0_ & 0x00010000) == 0x00010000) &&
-              csSit_ != null &&
-              csSit_ != com.mzm.firephoenix.protobuf.GameProtocol.CSSit.getDefaultInstance()) {
-            csSit_ =
-              com.mzm.firephoenix.protobuf.GameProtocol.CSSit.newBuilder(csSit_).mergeFrom(value).buildPartial();
+              ccNickName_ != null &&
+              ccNickName_ != com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.getDefaultInstance()) {
+            ccNickName_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.newBuilder(ccNickName_).mergeFrom(value).buildPartial();
           } else {
-            csSit_ = value;
+            ccNickName_ = value;
           }
           onChanged();
         } else {
-          csSitBuilder_.mergeFrom(value);
+          ccNickNameBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00010000;
         return this;
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public Builder clearCsSit() {
-        if (csSitBuilder_ == null) {
-          csSit_ = null;
+      public Builder clearCcNickName() {
+        if (ccNickNameBuilder_ == null) {
+          ccNickName_ = null;
           onChanged();
         } else {
-          csSitBuilder_.clear();
+          ccNickNameBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00010000);
         return this;
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSSit.Builder getCsSitBuilder() {
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder getCcNickNameBuilder() {
         bitField0_ |= 0x00010000;
         onChanged();
-        return getCsSitFieldBuilder().getBuilder();
+        return getCcNickNameFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSSitOrBuilder getCsSitOrBuilder() {
-        if (csSitBuilder_ != null) {
-          return csSitBuilder_.getMessageOrBuilder();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickNameOrBuilder getCcNickNameOrBuilder() {
+        if (ccNickNameBuilder_ != null) {
+          return ccNickNameBuilder_.getMessageOrBuilder();
         } else {
-          return csSit_ == null ?
-              com.mzm.firephoenix.protobuf.GameProtocol.CSSit.getDefaultInstance() : csSit_;
+          return ccNickName_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.getDefaultInstance() : ccNickName_;
         }
       }
       /**
-       * <code>optional .CSSit csSit = 18;</code>
+       * <code>optional .CCNickName ccNickName = 18;</code>
        *
        * <pre>
-       *坐下
+       *修改玩家昵称
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.CSSit, com.mzm.firephoenix.protobuf.GameProtocol.CSSit.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSSitOrBuilder> 
-          getCsSitFieldBuilder() {
-        if (csSitBuilder_ == null) {
-          csSitBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.CSSit, com.mzm.firephoenix.protobuf.GameProtocol.CSSit.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSSitOrBuilder>(
-                  getCsSit(),
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickNameOrBuilder> 
+          getCcNickNameFieldBuilder() {
+        if (ccNickNameBuilder_ == null) {
+          ccNickNameBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickNameOrBuilder>(
+                  getCcNickName(),
                   getParentForChildren(),
                   isClean());
-          csSit_ = null;
+          ccNickName_ = null;
         }
-        return csSitBuilder_;
+        return ccNickNameBuilder_;
       }
 
-      private com.mzm.firephoenix.protobuf.GameProtocol.SCSit scSit_ = null;
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic ccHeadPic_ = null;
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCSit, com.mzm.firephoenix.protobuf.GameProtocol.SCSit.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCSitOrBuilder> scSitBuilder_;
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPicOrBuilder> ccHeadPicBuilder_;
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public boolean hasScSit() {
+      public boolean hasCcHeadPic() {
         return ((bitField0_ & 0x00020000) == 0x00020000);
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCSit getScSit() {
-        if (scSitBuilder_ == null) {
-          return scSit_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCSit.getDefaultInstance() : scSit_;
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic getCcHeadPic() {
+        if (ccHeadPicBuilder_ == null) {
+          return ccHeadPic_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.getDefaultInstance() : ccHeadPic_;
         } else {
-          return scSitBuilder_.getMessage();
+          return ccHeadPicBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public Builder setScSit(com.mzm.firephoenix.protobuf.GameProtocol.SCSit value) {
-        if (scSitBuilder_ == null) {
+      public Builder setCcHeadPic(com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic value) {
+        if (ccHeadPicBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          scSit_ = value;
+          ccHeadPic_ = value;
           onChanged();
         } else {
-          scSitBuilder_.setMessage(value);
+          ccHeadPicBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00020000;
         return this;
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public Builder setScSit(
-          com.mzm.firephoenix.protobuf.GameProtocol.SCSit.Builder builderForValue) {
-        if (scSitBuilder_ == null) {
-          scSit_ = builderForValue.build();
+      public Builder setCcHeadPic(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder builderForValue) {
+        if (ccHeadPicBuilder_ == null) {
+          ccHeadPic_ = builderForValue.build();
           onChanged();
         } else {
-          scSitBuilder_.setMessage(builderForValue.build());
+          ccHeadPicBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00020000;
         return this;
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public Builder mergeScSit(com.mzm.firephoenix.protobuf.GameProtocol.SCSit value) {
-        if (scSitBuilder_ == null) {
+      public Builder mergeCcHeadPic(com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic value) {
+        if (ccHeadPicBuilder_ == null) {
           if (((bitField0_ & 0x00020000) == 0x00020000) &&
-              scSit_ != null &&
-              scSit_ != com.mzm.firephoenix.protobuf.GameProtocol.SCSit.getDefaultInstance()) {
-            scSit_ =
-              com.mzm.firephoenix.protobuf.GameProtocol.SCSit.newBuilder(scSit_).mergeFrom(value).buildPartial();
+              ccHeadPic_ != null &&
+              ccHeadPic_ != com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.getDefaultInstance()) {
+            ccHeadPic_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.newBuilder(ccHeadPic_).mergeFrom(value).buildPartial();
           } else {
-            scSit_ = value;
+            ccHeadPic_ = value;
           }
           onChanged();
         } else {
-          scSitBuilder_.mergeFrom(value);
+          ccHeadPicBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00020000;
         return this;
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public Builder clearScSit() {
-        if (scSitBuilder_ == null) {
-          scSit_ = null;
+      public Builder clearCcHeadPic() {
+        if (ccHeadPicBuilder_ == null) {
+          ccHeadPic_ = null;
           onChanged();
         } else {
-          scSitBuilder_.clear();
+          ccHeadPicBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCSit.Builder getScSitBuilder() {
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder getCcHeadPicBuilder() {
         bitField0_ |= 0x00020000;
         onChanged();
-        return getScSitFieldBuilder().getBuilder();
+        return getCcHeadPicFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCSitOrBuilder getScSitOrBuilder() {
-        if (scSitBuilder_ != null) {
-          return scSitBuilder_.getMessageOrBuilder();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPicOrBuilder getCcHeadPicOrBuilder() {
+        if (ccHeadPicBuilder_ != null) {
+          return ccHeadPicBuilder_.getMessageOrBuilder();
         } else {
-          return scSit_ == null ?
-              com.mzm.firephoenix.protobuf.GameProtocol.SCSit.getDefaultInstance() : scSit_;
+          return ccHeadPic_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.getDefaultInstance() : ccHeadPic_;
         }
       }
       /**
-       * <code>optional .SCSit scSit = 19;</code>
+       * <code>optional .CCHeadPic ccHeadPic = 19;</code>
        *
        * <pre>
-       *坐下
+       *修改头像
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCSit, com.mzm.firephoenix.protobuf.GameProtocol.SCSit.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCSitOrBuilder> 
-          getScSitFieldBuilder() {
-        if (scSitBuilder_ == null) {
-          scSitBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.SCSit, com.mzm.firephoenix.protobuf.GameProtocol.SCSit.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCSitOrBuilder>(
-                  getScSit(),
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPicOrBuilder> 
+          getCcHeadPicFieldBuilder() {
+        if (ccHeadPicBuilder_ == null) {
+          ccHeadPicBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPicOrBuilder>(
+                  getCcHeadPic(),
                   getParentForChildren(),
                   isClean());
-          scSit_ = null;
+          ccHeadPic_ = null;
         }
-        return scSitBuilder_;
+        return ccHeadPicBuilder_;
       }
 
-      private com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp scStandUp_ = null;
+      private com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList scMachineList_ = null;
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp, com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCStandUpOrBuilder> scStandUpBuilder_;
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineListOrBuilder> scMachineListBuilder_;
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public boolean hasScStandUp() {
+      public boolean hasScMachineList() {
         return ((bitField0_ & 0x00040000) == 0x00040000);
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp getScStandUp() {
-        if (scStandUpBuilder_ == null) {
-          return scStandUp_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.getDefaultInstance() : scStandUp_;
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList getScMachineList() {
+        if (scMachineListBuilder_ == null) {
+          return scMachineList_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.getDefaultInstance() : scMachineList_;
         } else {
-          return scStandUpBuilder_.getMessage();
+          return scMachineListBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public Builder setScStandUp(com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp value) {
-        if (scStandUpBuilder_ == null) {
+      public Builder setScMachineList(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList value) {
+        if (scMachineListBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          scStandUp_ = value;
+          scMachineList_ = value;
           onChanged();
         } else {
-          scStandUpBuilder_.setMessage(value);
+          scMachineListBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00040000;
         return this;
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public Builder setScStandUp(
-          com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.Builder builderForValue) {
-        if (scStandUpBuilder_ == null) {
-          scStandUp_ = builderForValue.build();
+      public Builder setScMachineList(
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder builderForValue) {
+        if (scMachineListBuilder_ == null) {
+          scMachineList_ = builderForValue.build();
           onChanged();
         } else {
-          scStandUpBuilder_.setMessage(builderForValue.build());
+          scMachineListBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00040000;
         return this;
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public Builder mergeScStandUp(com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp value) {
-        if (scStandUpBuilder_ == null) {
+      public Builder mergeScMachineList(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList value) {
+        if (scMachineListBuilder_ == null) {
           if (((bitField0_ & 0x00040000) == 0x00040000) &&
-              scStandUp_ != null &&
-              scStandUp_ != com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.getDefaultInstance()) {
-            scStandUp_ =
-              com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.newBuilder(scStandUp_).mergeFrom(value).buildPartial();
+              scMachineList_ != null &&
+              scMachineList_ != com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.getDefaultInstance()) {
+            scMachineList_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.newBuilder(scMachineList_).mergeFrom(value).buildPartial();
           } else {
-            scStandUp_ = value;
+            scMachineList_ = value;
           }
           onChanged();
         } else {
-          scStandUpBuilder_.mergeFrom(value);
+          scMachineListBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00040000;
         return this;
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public Builder clearScStandUp() {
-        if (scStandUpBuilder_ == null) {
-          scStandUp_ = null;
+      public Builder clearScMachineList() {
+        if (scMachineListBuilder_ == null) {
+          scMachineList_ = null;
           onChanged();
         } else {
-          scStandUpBuilder_.clear();
+          scMachineListBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00040000);
         return this;
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.Builder getScStandUpBuilder() {
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder getScMachineListBuilder() {
         bitField0_ |= 0x00040000;
         onChanged();
-        return getScStandUpFieldBuilder().getBuilder();
+        return getScMachineListFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCStandUpOrBuilder getScStandUpOrBuilder() {
-        if (scStandUpBuilder_ != null) {
-          return scStandUpBuilder_.getMessageOrBuilder();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineListOrBuilder getScMachineListOrBuilder() {
+        if (scMachineListBuilder_ != null) {
+          return scMachineListBuilder_.getMessageOrBuilder();
         } else {
-          return scStandUp_ == null ?
-              com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.getDefaultInstance() : scStandUp_;
+          return scMachineList_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.getDefaultInstance() : scMachineList_;
         }
       }
       /**
-       * <code>optional .SCStandUp scStandUp = 21;</code>
+       * <code>optional .SCMachineList scMachineList = 21;</code>
        *
        * <pre>
-       *起立
+       *机台列表
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp, com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCStandUpOrBuilder> 
-          getScStandUpFieldBuilder() {
-        if (scStandUpBuilder_ == null) {
-          scStandUpBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp, com.mzm.firephoenix.protobuf.GameProtocol.SCStandUp.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCStandUpOrBuilder>(
-                  getScStandUp(),
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineListOrBuilder> 
+          getScMachineListFieldBuilder() {
+        if (scMachineListBuilder_ == null) {
+          scMachineListBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineListOrBuilder>(
+                  getScMachineList(),
                   getParentForChildren(),
                   isClean());
-          scStandUp_ = null;
+          scMachineList_ = null;
         }
-        return scStandUpBuilder_;
+        return scMachineListBuilder_;
       }
 
-      private com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu csYaZhu_ = null;
+      private com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo scMachineInfo_ = null;
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu, com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhuOrBuilder> csYaZhuBuilder_;
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder> scMachineInfoBuilder_;
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public boolean hasCsYaZhu() {
+      public boolean hasScMachineInfo() {
         return ((bitField0_ & 0x00080000) == 0x00080000);
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu getCsYaZhu() {
-        if (csYaZhuBuilder_ == null) {
-          return csYaZhu_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.getDefaultInstance() : csYaZhu_;
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getScMachineInfo() {
+        if (scMachineInfoBuilder_ == null) {
+          return scMachineInfo_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance() : scMachineInfo_;
         } else {
-          return csYaZhuBuilder_.getMessage();
+          return scMachineInfoBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public Builder setCsYaZhu(com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu value) {
-        if (csYaZhuBuilder_ == null) {
+      public Builder setScMachineInfo(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo value) {
+        if (scMachineInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          csYaZhu_ = value;
+          scMachineInfo_ = value;
           onChanged();
         } else {
-          csYaZhuBuilder_.setMessage(value);
+          scMachineInfoBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00080000;
         return this;
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public Builder setCsYaZhu(
-          com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.Builder builderForValue) {
-        if (csYaZhuBuilder_ == null) {
-          csYaZhu_ = builderForValue.build();
+      public Builder setScMachineInfo(
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder builderForValue) {
+        if (scMachineInfoBuilder_ == null) {
+          scMachineInfo_ = builderForValue.build();
           onChanged();
         } else {
-          csYaZhuBuilder_.setMessage(builderForValue.build());
+          scMachineInfoBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00080000;
         return this;
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public Builder mergeCsYaZhu(com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu value) {
-        if (csYaZhuBuilder_ == null) {
+      public Builder mergeScMachineInfo(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo value) {
+        if (scMachineInfoBuilder_ == null) {
           if (((bitField0_ & 0x00080000) == 0x00080000) &&
-              csYaZhu_ != null &&
-              csYaZhu_ != com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.getDefaultInstance()) {
-            csYaZhu_ =
-              com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.newBuilder(csYaZhu_).mergeFrom(value).buildPartial();
+              scMachineInfo_ != null &&
+              scMachineInfo_ != com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance()) {
+            scMachineInfo_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.newBuilder(scMachineInfo_).mergeFrom(value).buildPartial();
           } else {
-            csYaZhu_ = value;
+            scMachineInfo_ = value;
           }
           onChanged();
         } else {
-          csYaZhuBuilder_.mergeFrom(value);
+          scMachineInfoBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00080000;
         return this;
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public Builder clearCsYaZhu() {
-        if (csYaZhuBuilder_ == null) {
-          csYaZhu_ = null;
+      public Builder clearScMachineInfo() {
+        if (scMachineInfoBuilder_ == null) {
+          scMachineInfo_ = null;
           onChanged();
         } else {
-          csYaZhuBuilder_.clear();
+          scMachineInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00080000);
         return this;
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.Builder getCsYaZhuBuilder() {
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder getScMachineInfoBuilder() {
         bitField0_ |= 0x00080000;
         onChanged();
-        return getCsYaZhuFieldBuilder().getBuilder();
+        return getScMachineInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhuOrBuilder getCsYaZhuOrBuilder() {
-        if (csYaZhuBuilder_ != null) {
-          return csYaZhuBuilder_.getMessageOrBuilder();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder getScMachineInfoOrBuilder() {
+        if (scMachineInfoBuilder_ != null) {
+          return scMachineInfoBuilder_.getMessageOrBuilder();
         } else {
-          return csYaZhu_ == null ?
-              com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.getDefaultInstance() : csYaZhu_;
+          return scMachineInfo_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance() : scMachineInfo_;
         }
       }
       /**
-       * <code>optional .CSYaZhu csYaZhu = 26;</code>
+       * <code>optional .SCMachineInfo scMachineInfo = 26;</code>
        *
        * <pre>
-       *押注
+       *单台机台信息
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu, com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhuOrBuilder> 
-          getCsYaZhuFieldBuilder() {
-        if (csYaZhuBuilder_ == null) {
-          csYaZhuBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu, com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhu.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSYaZhuOrBuilder>(
-                  getCsYaZhu(),
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder> 
+          getScMachineInfoFieldBuilder() {
+        if (scMachineInfoBuilder_ == null) {
+          scMachineInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder>(
+                  getScMachineInfo(),
                   getParentForChildren(),
                   isClean());
-          csYaZhu_ = null;
+          scMachineInfo_ = null;
         }
-        return csYaZhuBuilder_;
+        return scMachineInfoBuilder_;
       }
 
-      private com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu scYazhu_ = null;
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine ccEnterMachine_ = null;
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu, com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhuOrBuilder> scYazhuBuilder_;
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachineOrBuilder> ccEnterMachineBuilder_;
       /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
        */
-      public boolean hasScYazhu() {
+      public boolean hasCcEnterMachine() {
         return ((bitField0_ & 0x00100000) == 0x00100000);
       }
       /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu getScYazhu() {
-        if (scYazhuBuilder_ == null) {
-          return scYazhu_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.getDefaultInstance() : scYazhu_;
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine getCcEnterMachine() {
+        if (ccEnterMachineBuilder_ == null) {
+          return ccEnterMachine_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance() : ccEnterMachine_;
         } else {
-          return scYazhuBuilder_.getMessage();
+          return ccEnterMachineBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
        */
-      public Builder setScYazhu(com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu value) {
-        if (scYazhuBuilder_ == null) {
+      public Builder setCcEnterMachine(com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine value) {
+        if (ccEnterMachineBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          scYazhu_ = value;
+          ccEnterMachine_ = value;
           onChanged();
         } else {
-          scYazhuBuilder_.setMessage(value);
+          ccEnterMachineBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00100000;
         return this;
       }
       /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
        */
-      public Builder setScYazhu(
-          com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.Builder builderForValue) {
-        if (scYazhuBuilder_ == null) {
-          scYazhu_ = builderForValue.build();
+      public Builder setCcEnterMachine(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder builderForValue) {
+        if (ccEnterMachineBuilder_ == null) {
+          ccEnterMachine_ = builderForValue.build();
           onChanged();
         } else {
-          scYazhuBuilder_.setMessage(builderForValue.build());
+          ccEnterMachineBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00100000;
         return this;
       }
       /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
        */
-      public Builder mergeScYazhu(com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu value) {
-        if (scYazhuBuilder_ == null) {
+      public Builder mergeCcEnterMachine(com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine value) {
+        if (ccEnterMachineBuilder_ == null) {
           if (((bitField0_ & 0x00100000) == 0x00100000) &&
-              scYazhu_ != null &&
-              scYazhu_ != com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.getDefaultInstance()) {
-            scYazhu_ =
-              com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.newBuilder(scYazhu_).mergeFrom(value).buildPartial();
+              ccEnterMachine_ != null &&
+              ccEnterMachine_ != com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance()) {
+            ccEnterMachine_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.newBuilder(ccEnterMachine_).mergeFrom(value).buildPartial();
           } else {
-            scYazhu_ = value;
+            ccEnterMachine_ = value;
           }
           onChanged();
         } else {
-          scYazhuBuilder_.mergeFrom(value);
+          ccEnterMachineBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00100000;
         return this;
       }
       /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
        */
-      public Builder clearScYazhu() {
-        if (scYazhuBuilder_ == null) {
-          scYazhu_ = null;
+      public Builder clearCcEnterMachine() {
+        if (ccEnterMachineBuilder_ == null) {
+          ccEnterMachine_ = null;
           onChanged();
         } else {
-          scYazhuBuilder_.clear();
+          ccEnterMachineBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00100000);
         return this;
       }
       /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
-       */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.Builder getScYazhuBuilder() {
-        bitField0_ |= 0x00100000;
-        onChanged();
-        return getScYazhuFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
-       */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhuOrBuilder getScYazhuOrBuilder() {
-        if (scYazhuBuilder_ != null) {
-          return scYazhuBuilder_.getMessageOrBuilder();
-        } else {
-          return scYazhu_ == null ?
-              com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.getDefaultInstance() : scYazhu_;
-        }
-      }
-      /**
-       * <code>optional .SCYaZhu scYazhu = 27;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu, com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhuOrBuilder> 
-          getScYazhuFieldBuilder() {
-        if (scYazhuBuilder_ == null) {
-          scYazhuBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu, com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhu.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCYaZhuOrBuilder>(
-                  getScYazhu(),
-                  getParentForChildren(),
-                  isClean());
-          scYazhu_ = null;
-        }
-        return scYazhuBuilder_;
-      }
-
-      private com.mzm.firephoenix.protobuf.GameProtocol.CSChat csChat_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.CSChat, com.mzm.firephoenix.protobuf.GameProtocol.CSChat.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSChatOrBuilder> csChatBuilder_;
-      /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
        *
        * <pre>
-       *聊天信息
+       *选择机台
        * </pre>
        */
-      public boolean hasCsChat() {
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder getCcEnterMachineBuilder() {
+        bitField0_ |= 0x00100000;
+        onChanged();
+        return getCcEnterMachineFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachineOrBuilder getCcEnterMachineOrBuilder() {
+        if (ccEnterMachineBuilder_ != null) {
+          return ccEnterMachineBuilder_.getMessageOrBuilder();
+        } else {
+          return ccEnterMachine_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance() : ccEnterMachine_;
+        }
+      }
+      /**
+       * <code>optional .CCEnterMachine ccEnterMachine = 27;</code>
+       *
+       * <pre>
+       *选择机台
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachineOrBuilder> 
+          getCcEnterMachineFieldBuilder() {
+        if (ccEnterMachineBuilder_ == null) {
+          ccEnterMachineBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachineOrBuilder>(
+                  getCcEnterMachine(),
+                  getParentForChildren(),
+                  isClean());
+          ccEnterMachine_ = null;
+        }
+        return ccEnterMachineBuilder_;
+      }
+
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine ccLeaveMachine_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachineOrBuilder> ccLeaveMachineBuilder_;
+      /**
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
+       *
+       * <pre>
+       *离开机台
+       * </pre>
+       */
+      public boolean hasCcLeaveMachine() {
         return ((bitField0_ & 0x00200000) == 0x00200000);
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSChat getCsChat() {
-        if (csChatBuilder_ == null) {
-          return csChat_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.CSChat.getDefaultInstance() : csChat_;
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine getCcLeaveMachine() {
+        if (ccLeaveMachineBuilder_ == null) {
+          return ccLeaveMachine_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance() : ccLeaveMachine_;
         } else {
-          return csChatBuilder_.getMessage();
+          return ccLeaveMachineBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
-      public Builder setCsChat(com.mzm.firephoenix.protobuf.GameProtocol.CSChat value) {
-        if (csChatBuilder_ == null) {
+      public Builder setCcLeaveMachine(com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine value) {
+        if (ccLeaveMachineBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          csChat_ = value;
+          ccLeaveMachine_ = value;
           onChanged();
         } else {
-          csChatBuilder_.setMessage(value);
+          ccLeaveMachineBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00200000;
         return this;
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
-      public Builder setCsChat(
-          com.mzm.firephoenix.protobuf.GameProtocol.CSChat.Builder builderForValue) {
-        if (csChatBuilder_ == null) {
-          csChat_ = builderForValue.build();
+      public Builder setCcLeaveMachine(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder builderForValue) {
+        if (ccLeaveMachineBuilder_ == null) {
+          ccLeaveMachine_ = builderForValue.build();
           onChanged();
         } else {
-          csChatBuilder_.setMessage(builderForValue.build());
+          ccLeaveMachineBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00200000;
         return this;
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
-      public Builder mergeCsChat(com.mzm.firephoenix.protobuf.GameProtocol.CSChat value) {
-        if (csChatBuilder_ == null) {
+      public Builder mergeCcLeaveMachine(com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine value) {
+        if (ccLeaveMachineBuilder_ == null) {
           if (((bitField0_ & 0x00200000) == 0x00200000) &&
-              csChat_ != null &&
-              csChat_ != com.mzm.firephoenix.protobuf.GameProtocol.CSChat.getDefaultInstance()) {
-            csChat_ =
-              com.mzm.firephoenix.protobuf.GameProtocol.CSChat.newBuilder(csChat_).mergeFrom(value).buildPartial();
+              ccLeaveMachine_ != null &&
+              ccLeaveMachine_ != com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance()) {
+            ccLeaveMachine_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.newBuilder(ccLeaveMachine_).mergeFrom(value).buildPartial();
           } else {
-            csChat_ = value;
+            ccLeaveMachine_ = value;
           }
           onChanged();
         } else {
-          csChatBuilder_.mergeFrom(value);
+          ccLeaveMachineBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00200000;
         return this;
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
-      public Builder clearCsChat() {
-        if (csChatBuilder_ == null) {
-          csChat_ = null;
+      public Builder clearCcLeaveMachine() {
+        if (ccLeaveMachineBuilder_ == null) {
+          ccLeaveMachine_ = null;
           onChanged();
         } else {
-          csChatBuilder_.clear();
+          ccLeaveMachineBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00200000);
         return this;
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSChat.Builder getCsChatBuilder() {
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder getCcLeaveMachineBuilder() {
         bitField0_ |= 0x00200000;
         onChanged();
-        return getCsChatFieldBuilder().getBuilder();
+        return getCcLeaveMachineFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.CSChatOrBuilder getCsChatOrBuilder() {
-        if (csChatBuilder_ != null) {
-          return csChatBuilder_.getMessageOrBuilder();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachineOrBuilder getCcLeaveMachineOrBuilder() {
+        if (ccLeaveMachineBuilder_ != null) {
+          return ccLeaveMachineBuilder_.getMessageOrBuilder();
         } else {
-          return csChat_ == null ?
-              com.mzm.firephoenix.protobuf.GameProtocol.CSChat.getDefaultInstance() : csChat_;
+          return ccLeaveMachine_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance() : ccLeaveMachine_;
         }
       }
       /**
-       * <code>optional .CSChat csChat = 29;</code>
+       * <code>optional .CCLeaveMachine ccLeaveMachine = 29;</code>
        *
        * <pre>
-       *聊天信息
+       *离开机台
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.CSChat, com.mzm.firephoenix.protobuf.GameProtocol.CSChat.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSChatOrBuilder> 
-          getCsChatFieldBuilder() {
-        if (csChatBuilder_ == null) {
-          csChatBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.CSChat, com.mzm.firephoenix.protobuf.GameProtocol.CSChat.Builder, com.mzm.firephoenix.protobuf.GameProtocol.CSChatOrBuilder>(
-                  getCsChat(),
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachineOrBuilder> 
+          getCcLeaveMachineFieldBuilder() {
+        if (ccLeaveMachineBuilder_ == null) {
+          ccLeaveMachineBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachineOrBuilder>(
+                  getCcLeaveMachine(),
                   getParentForChildren(),
                   isClean());
-          csChat_ = null;
+          ccLeaveMachine_ = null;
         }
-        return csChatBuilder_;
+        return ccLeaveMachineBuilder_;
       }
 
-      private com.mzm.firephoenix.protobuf.GameProtocol.SCChat scChat_ = null;
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay ccMachineStay_ = null;
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCChat, com.mzm.firephoenix.protobuf.GameProtocol.SCChat.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCChatOrBuilder> scChatBuilder_;
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStayOrBuilder> ccMachineStayBuilder_;
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public boolean hasScChat() {
+      public boolean hasCcMachineStay() {
         return ((bitField0_ & 0x00400000) == 0x00400000);
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCChat getScChat() {
-        if (scChatBuilder_ == null) {
-          return scChat_ == null ? com.mzm.firephoenix.protobuf.GameProtocol.SCChat.getDefaultInstance() : scChat_;
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay getCcMachineStay() {
+        if (ccMachineStayBuilder_ == null) {
+          return ccMachineStay_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance() : ccMachineStay_;
         } else {
-          return scChatBuilder_.getMessage();
+          return ccMachineStayBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public Builder setScChat(com.mzm.firephoenix.protobuf.GameProtocol.SCChat value) {
-        if (scChatBuilder_ == null) {
+      public Builder setCcMachineStay(com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay value) {
+        if (ccMachineStayBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          scChat_ = value;
+          ccMachineStay_ = value;
           onChanged();
         } else {
-          scChatBuilder_.setMessage(value);
+          ccMachineStayBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00400000;
         return this;
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public Builder setScChat(
-          com.mzm.firephoenix.protobuf.GameProtocol.SCChat.Builder builderForValue) {
-        if (scChatBuilder_ == null) {
-          scChat_ = builderForValue.build();
+      public Builder setCcMachineStay(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder builderForValue) {
+        if (ccMachineStayBuilder_ == null) {
+          ccMachineStay_ = builderForValue.build();
           onChanged();
         } else {
-          scChatBuilder_.setMessage(builderForValue.build());
+          ccMachineStayBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00400000;
         return this;
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public Builder mergeScChat(com.mzm.firephoenix.protobuf.GameProtocol.SCChat value) {
-        if (scChatBuilder_ == null) {
+      public Builder mergeCcMachineStay(com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay value) {
+        if (ccMachineStayBuilder_ == null) {
           if (((bitField0_ & 0x00400000) == 0x00400000) &&
-              scChat_ != null &&
-              scChat_ != com.mzm.firephoenix.protobuf.GameProtocol.SCChat.getDefaultInstance()) {
-            scChat_ =
-              com.mzm.firephoenix.protobuf.GameProtocol.SCChat.newBuilder(scChat_).mergeFrom(value).buildPartial();
+              ccMachineStay_ != null &&
+              ccMachineStay_ != com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance()) {
+            ccMachineStay_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.newBuilder(ccMachineStay_).mergeFrom(value).buildPartial();
           } else {
-            scChat_ = value;
+            ccMachineStay_ = value;
           }
           onChanged();
         } else {
-          scChatBuilder_.mergeFrom(value);
+          ccMachineStayBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00400000;
         return this;
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public Builder clearScChat() {
-        if (scChatBuilder_ == null) {
-          scChat_ = null;
+      public Builder clearCcMachineStay() {
+        if (ccMachineStayBuilder_ == null) {
+          ccMachineStay_ = null;
           onChanged();
         } else {
-          scChatBuilder_.clear();
+          ccMachineStayBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00400000);
         return this;
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCChat.Builder getScChatBuilder() {
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder getCcMachineStayBuilder() {
         bitField0_ |= 0x00400000;
         onChanged();
-        return getScChatFieldBuilder().getBuilder();
+        return getCcMachineStayFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCChatOrBuilder getScChatOrBuilder() {
-        if (scChatBuilder_ != null) {
-          return scChatBuilder_.getMessageOrBuilder();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStayOrBuilder getCcMachineStayOrBuilder() {
+        if (ccMachineStayBuilder_ != null) {
+          return ccMachineStayBuilder_.getMessageOrBuilder();
         } else {
-          return scChat_ == null ?
-              com.mzm.firephoenix.protobuf.GameProtocol.SCChat.getDefaultInstance() : scChat_;
+          return ccMachineStay_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance() : ccMachineStay_;
         }
       }
       /**
-       * <code>optional .SCChat scChat = 33;</code>
+       * <code>optional .CCMachineStay ccMachineStay = 33;</code>
        *
        * <pre>
-       *下行聊天信息
+       *是否留机
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.SCChat, com.mzm.firephoenix.protobuf.GameProtocol.SCChat.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCChatOrBuilder> 
-          getScChatFieldBuilder() {
-        if (scChatBuilder_ == null) {
-          scChatBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.SCChat, com.mzm.firephoenix.protobuf.GameProtocol.SCChat.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCChatOrBuilder>(
-                  getScChat(),
+          com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStayOrBuilder> 
+          getCcMachineStayFieldBuilder() {
+        if (ccMachineStayBuilder_ == null) {
+          ccMachineStayBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStayOrBuilder>(
+                  getCcMachineStay(),
                   getParentForChildren(),
                   isClean());
-          scChat_ = null;
+          ccMachineStay_ = null;
         }
-        return scChatBuilder_;
+        return ccMachineStayBuilder_;
       }
 
       private com.mzm.firephoenix.protobuf.GameProtocol.SCSignList signList_ = null;
@@ -23022,112 +23115,49 @@ public final class CoreProtocol {
 
   }
 
-  public interface SCPlayerInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SCPlayerInfo)
+  public interface CCNickNameOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CCNickName)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string nickname = 1;</code>
+     * <code>required string nickName = 1;</code>
+     *
+     * <pre>
+     *昵称 result=0 成功
+     * </pre>
      */
-    boolean hasNickname();
+    boolean hasNickName();
     /**
-     * <code>required string nickname = 1;</code>
+     * <code>required string nickName = 1;</code>
+     *
+     * <pre>
+     *昵称 result=0 成功
+     * </pre>
      */
-    java.lang.String getNickname();
+    java.lang.String getNickName();
     /**
-     * <code>required string nickname = 1;</code>
+     * <code>required string nickName = 1;</code>
+     *
+     * <pre>
+     *昵称 result=0 成功
+     * </pre>
      */
     com.google.protobuf.ByteString
-        getNicknameBytes();
-
-    /**
-     * <code>optional int32 gold = 2;</code>
-     */
-    boolean hasGold();
-    /**
-     * <code>optional int32 gold = 2;</code>
-     */
-    int getGold();
-
-    /**
-     * <code>optional string pic = 3;</code>
-     */
-    boolean hasPic();
-    /**
-     * <code>optional string pic = 3;</code>
-     */
-    java.lang.String getPic();
-    /**
-     * <code>optional string pic = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getPicBytes();
-
-    /**
-     * <code>optional int32 sex = 4;</code>
-     *
-     * <pre>
-     *性别 1男,0女
-     * </pre>
-     */
-    boolean hasSex();
-    /**
-     * <code>optional int32 sex = 4;</code>
-     *
-     * <pre>
-     *性别 1男,0女
-     * </pre>
-     */
-    int getSex();
-
-    /**
-     * <code>optional int32 uid = 5;</code>
-     */
-    boolean hasUid();
-    /**
-     * <code>optional int32 uid = 5;</code>
-     */
-    int getUid();
-
-    /**
-     * <code>optional int32 deposit = 6;</code>
-     *
-     * <pre>
-     *存款
-     * </pre>
-     */
-    boolean hasDeposit();
-    /**
-     * <code>optional int32 deposit = 6;</code>
-     *
-     * <pre>
-     *存款
-     * </pre>
-     */
-    int getDeposit();
+        getNickNameBytes();
   }
   /**
-   * Protobuf type {@code SCPlayerInfo}
-   *
-   * <pre>
-   *玩家详细信息
-   * </pre>
+   * Protobuf type {@code CCNickName}
    */
-  public  static final class SCPlayerInfo extends
+  public  static final class CCNickName extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:SCPlayerInfo)
-      SCPlayerInfoOrBuilder {
-    // Use SCPlayerInfo.newBuilder() to construct.
-    private SCPlayerInfo(com.google.protobuf.GeneratedMessage.Builder builder) {
+      // @@protoc_insertion_point(message_implements:CCNickName)
+      CCNickNameOrBuilder {
+    // Use CCNickName.newBuilder() to construct.
+    private CCNickName(com.google.protobuf.GeneratedMessage.Builder builder) {
       super(builder);
     }
-    private SCPlayerInfo() {
-      nickname_ = "";
-      gold_ = 0;
-      pic_ = "";
-      sex_ = 0;
-      uid_ = 0;
-      deposit_ = 0;
+    private CCNickName() {
+      nickName_ = "";
     }
 
     @java.lang.Override
@@ -23135,7 +23165,7 @@ public final class CoreProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SCPlayerInfo(
+    private CCNickName(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
       this();
@@ -23160,33 +23190,7 @@ public final class CoreProtocol {
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              nickname_ = bs;
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              gold_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              pic_ = bs;
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              sex_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              uid_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              deposit_ = input.readInt32();
+              nickName_ = bs;
               break;
             }
           }
@@ -23204,30 +23208,38 @@ public final class CoreProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCPlayerInfo_descriptor;
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCNickName_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCPlayerInfo_fieldAccessorTable
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCNickName_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo.Builder.class);
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder.class);
     }
 
     private int bitField0_;
     public static final int NICKNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object nickname_;
+    private volatile java.lang.Object nickName_;
     /**
-     * <code>required string nickname = 1;</code>
+     * <code>required string nickName = 1;</code>
+     *
+     * <pre>
+     *昵称 result=0 成功
+     * </pre>
      */
-    public boolean hasNickname() {
+    public boolean hasNickName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string nickname = 1;</code>
+     * <code>required string nickName = 1;</code>
+     *
+     * <pre>
+     *昵称 result=0 成功
+     * </pre>
      */
-    public java.lang.String getNickname() {
-      java.lang.Object ref = nickname_;
+    public java.lang.String getNickName() {
+      java.lang.Object ref = nickName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -23235,144 +23247,30 @@ public final class CoreProtocol {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          nickname_ = s;
+          nickName_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string nickname = 1;</code>
+     * <code>required string nickName = 1;</code>
+     *
+     * <pre>
+     *昵称 result=0 成功
+     * </pre>
      */
     public com.google.protobuf.ByteString
-        getNicknameBytes() {
-      java.lang.Object ref = nickname_;
+        getNickNameBytes() {
+      java.lang.Object ref = nickName_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        nickname_ = b;
+        nickName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int GOLD_FIELD_NUMBER = 2;
-    private int gold_;
-    /**
-     * <code>optional int32 gold = 2;</code>
-     */
-    public boolean hasGold() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 gold = 2;</code>
-     */
-    public int getGold() {
-      return gold_;
-    }
-
-    public static final int PIC_FIELD_NUMBER = 3;
-    private volatile java.lang.Object pic_;
-    /**
-     * <code>optional string pic = 3;</code>
-     */
-    public boolean hasPic() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string pic = 3;</code>
-     */
-    public java.lang.String getPic() {
-      java.lang.Object ref = pic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          pic_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string pic = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPicBytes() {
-      java.lang.Object ref = pic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        pic_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int SEX_FIELD_NUMBER = 4;
-    private int sex_;
-    /**
-     * <code>optional int32 sex = 4;</code>
-     *
-     * <pre>
-     *性别 1男,0女
-     * </pre>
-     */
-    public boolean hasSex() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 sex = 4;</code>
-     *
-     * <pre>
-     *性别 1男,0女
-     * </pre>
-     */
-    public int getSex() {
-      return sex_;
-    }
-
-    public static final int UID_FIELD_NUMBER = 5;
-    private int uid_;
-    /**
-     * <code>optional int32 uid = 5;</code>
-     */
-    public boolean hasUid() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 uid = 5;</code>
-     */
-    public int getUid() {
-      return uid_;
-    }
-
-    public static final int DEPOSIT_FIELD_NUMBER = 6;
-    private int deposit_;
-    /**
-     * <code>optional int32 deposit = 6;</code>
-     *
-     * <pre>
-     *存款
-     * </pre>
-     */
-    public boolean hasDeposit() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 deposit = 6;</code>
-     *
-     * <pre>
-     *存款
-     * </pre>
-     */
-    public int getDeposit() {
-      return deposit_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -23381,7 +23279,7 @@ public final class CoreProtocol {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasNickname()) {
+      if (!hasNickName()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -23392,22 +23290,7 @@ public final class CoreProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getNicknameBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, gold_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getPicBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, sex_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, uid_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, deposit_);
+        output.writeBytes(1, getNickNameBytes());
       }
       unknownFields.writeTo(output);
     }
@@ -23420,27 +23303,7 @@ public final class CoreProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getNicknameBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, gold_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getPicBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, sex_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, uid_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, deposit_);
+          .computeBytesSize(1, getNickNameBytes());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -23448,53 +23311,53 @@ public final class CoreProtocol {
     }
 
     private static final long serialVersionUID = 0L;
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(byte[] data)
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(java.io.InputStream input)
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseDelimitedFrom(java.io.InputStream input)
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseDelimitedFrom(
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parseFrom(
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -23505,7 +23368,7 @@ public final class CoreProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo prototype) {
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -23520,29 +23383,25 @@ public final class CoreProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code SCPlayerInfo}
-     *
-     * <pre>
-     *玩家详细信息
-     * </pre>
+     * Protobuf type {@code CCNickName}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SCPlayerInfo)
-        com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfoOrBuilder {
+        // @@protoc_insertion_point(builder_implements:CCNickName)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCNickNameOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCPlayerInfo_descriptor;
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCNickName_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCPlayerInfo_fieldAccessorTable
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCNickName_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo.Builder.class);
+                com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.Builder.class);
       }
 
-      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo.newBuilder()
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -23558,103 +23417,56 @@ public final class CoreProtocol {
       }
       public Builder clear() {
         super.clear();
-        nickname_ = "";
+        nickName_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        gold_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        pic_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        sex_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        uid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        deposit_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCPlayerInfo_descriptor;
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCNickName_descriptor;
       }
 
-      public com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo getDefaultInstanceForType() {
-        return com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo.getDefaultInstance();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.getDefaultInstance();
       }
 
-      public com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo build() {
-        com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo result = buildPartial();
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo buildPartial() {
-        com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo result = new com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo(this);
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName result = new com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.nickname_ = nickname_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.gold_ = gold_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.pic_ = pic_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.sex_ = sex_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.uid_ = uid_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.deposit_ = deposit_;
+        result.nickName_ = nickName_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo) {
-          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo)other);
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo other) {
-        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo.getDefaultInstance()) return this;
-        if (other.hasNickname()) {
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName.getDefaultInstance()) return this;
+        if (other.hasNickName()) {
           bitField0_ |= 0x00000001;
-          nickname_ = other.nickname_;
+          nickName_ = other.nickName_;
           onChanged();
-        }
-        if (other.hasGold()) {
-          setGold(other.getGold());
-        }
-        if (other.hasPic()) {
-          bitField0_ |= 0x00000004;
-          pic_ = other.pic_;
-          onChanged();
-        }
-        if (other.hasSex()) {
-          setSex(other.getSex());
-        }
-        if (other.hasUid()) {
-          setUid(other.getUid());
-        }
-        if (other.hasDeposit()) {
-          setDeposit(other.getDeposit());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -23662,7 +23474,7 @@ public final class CoreProtocol {
       }
 
       public final boolean isInitialized() {
-        if (!hasNickname()) {
+        if (!hasNickName()) {
           return false;
         }
         return true;
@@ -23672,11 +23484,11 @@ public final class CoreProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo parsedMessage = null;
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo) e.getUnfinishedMessage();
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -23687,24 +23499,32 @@ public final class CoreProtocol {
       }
       private int bitField0_;
 
-      private java.lang.Object nickname_ = "";
+      private java.lang.Object nickName_ = "";
       /**
-       * <code>required string nickname = 1;</code>
+       * <code>required string nickName = 1;</code>
+       *
+       * <pre>
+       *昵称 result=0 成功
+       * </pre>
        */
-      public boolean hasNickname() {
+      public boolean hasNickName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string nickname = 1;</code>
+       * <code>required string nickName = 1;</code>
+       *
+       * <pre>
+       *昵称 result=0 成功
+       * </pre>
        */
-      public java.lang.String getNickname() {
-        java.lang.Object ref = nickname_;
+      public java.lang.String getNickName() {
+        java.lang.Object ref = nickName_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            nickname_ = s;
+            nickName_ = s;
           }
           return s;
         } else {
@@ -23712,314 +23532,94 @@ public final class CoreProtocol {
         }
       }
       /**
-       * <code>required string nickname = 1;</code>
+       * <code>required string nickName = 1;</code>
+       *
+       * <pre>
+       *昵称 result=0 成功
+       * </pre>
        */
       public com.google.protobuf.ByteString
-          getNicknameBytes() {
-        java.lang.Object ref = nickname_;
+          getNickNameBytes() {
+        java.lang.Object ref = nickName_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          nickname_ = b;
+          nickName_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string nickname = 1;</code>
+       * <code>required string nickName = 1;</code>
+       *
+       * <pre>
+       *昵称 result=0 成功
+       * </pre>
        */
-      public Builder setNickname(
+      public Builder setNickName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        nickname_ = value;
+        nickName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string nickname = 1;</code>
+       * <code>required string nickName = 1;</code>
+       *
+       * <pre>
+       *昵称 result=0 成功
+       * </pre>
        */
-      public Builder clearNickname() {
+      public Builder clearNickName() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        nickname_ = getDefaultInstance().getNickname();
+        nickName_ = getDefaultInstance().getNickName();
         onChanged();
         return this;
       }
       /**
-       * <code>required string nickname = 1;</code>
+       * <code>required string nickName = 1;</code>
+       *
+       * <pre>
+       *昵称 result=0 成功
+       * </pre>
        */
-      public Builder setNicknameBytes(
+      public Builder setNickNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        nickname_ = value;
+        nickName_ = value;
         onChanged();
         return this;
       }
 
-      private int gold_ ;
-      /**
-       * <code>optional int32 gold = 2;</code>
-       */
-      public boolean hasGold() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 gold = 2;</code>
-       */
-      public int getGold() {
-        return gold_;
-      }
-      /**
-       * <code>optional int32 gold = 2;</code>
-       */
-      public Builder setGold(int value) {
-        bitField0_ |= 0x00000002;
-        gold_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 gold = 2;</code>
-       */
-      public Builder clearGold() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        gold_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object pic_ = "";
-      /**
-       * <code>optional string pic = 3;</code>
-       */
-      public boolean hasPic() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string pic = 3;</code>
-       */
-      public java.lang.String getPic() {
-        java.lang.Object ref = pic_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            pic_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string pic = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPicBytes() {
-        java.lang.Object ref = pic_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          pic_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string pic = 3;</code>
-       */
-      public Builder setPic(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        pic_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string pic = 3;</code>
-       */
-      public Builder clearPic() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        pic_ = getDefaultInstance().getPic();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string pic = 3;</code>
-       */
-      public Builder setPicBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        pic_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int sex_ ;
-      /**
-       * <code>optional int32 sex = 4;</code>
-       *
-       * <pre>
-       *性别 1男,0女
-       * </pre>
-       */
-      public boolean hasSex() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 sex = 4;</code>
-       *
-       * <pre>
-       *性别 1男,0女
-       * </pre>
-       */
-      public int getSex() {
-        return sex_;
-      }
-      /**
-       * <code>optional int32 sex = 4;</code>
-       *
-       * <pre>
-       *性别 1男,0女
-       * </pre>
-       */
-      public Builder setSex(int value) {
-        bitField0_ |= 0x00000008;
-        sex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 sex = 4;</code>
-       *
-       * <pre>
-       *性别 1男,0女
-       * </pre>
-       */
-      public Builder clearSex() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        sex_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int uid_ ;
-      /**
-       * <code>optional int32 uid = 5;</code>
-       */
-      public boolean hasUid() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 uid = 5;</code>
-       */
-      public int getUid() {
-        return uid_;
-      }
-      /**
-       * <code>optional int32 uid = 5;</code>
-       */
-      public Builder setUid(int value) {
-        bitField0_ |= 0x00000010;
-        uid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 uid = 5;</code>
-       */
-      public Builder clearUid() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        uid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int deposit_ ;
-      /**
-       * <code>optional int32 deposit = 6;</code>
-       *
-       * <pre>
-       *存款
-       * </pre>
-       */
-      public boolean hasDeposit() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 deposit = 6;</code>
-       *
-       * <pre>
-       *存款
-       * </pre>
-       */
-      public int getDeposit() {
-        return deposit_;
-      }
-      /**
-       * <code>optional int32 deposit = 6;</code>
-       *
-       * <pre>
-       *存款
-       * </pre>
-       */
-      public Builder setDeposit(int value) {
-        bitField0_ |= 0x00000020;
-        deposit_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 deposit = 6;</code>
-       *
-       * <pre>
-       *存款
-       * </pre>
-       */
-      public Builder clearDeposit() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        deposit_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:SCPlayerInfo)
+      // @@protoc_insertion_point(builder_scope:CCNickName)
     }
 
-    // @@protoc_insertion_point(class_scope:SCPlayerInfo)
-    private static final com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:CCNickName)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo();
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName();
     }
 
-    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo getDefaultInstance() {
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    public static final com.google.protobuf.Parser<SCPlayerInfo> PARSER =
-        new com.google.protobuf.AbstractParser<SCPlayerInfo>() {
-      public SCPlayerInfo parsePartialFrom(
+    public static final com.google.protobuf.Parser<CCNickName> PARSER =
+        new com.google.protobuf.AbstractParser<CCNickName>() {
+      public CCNickName parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         try {
-          return new SCPlayerInfo(input, extensionRegistry);
+          return new CCNickName(input, extensionRegistry);
         } catch (RuntimeException e) {
           if (e.getCause() instanceof
               com.google.protobuf.InvalidProtocolBufferException) {
@@ -24032,11 +23632,3398 @@ public final class CoreProtocol {
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SCPlayerInfo> getParserForType() {
+    public com.google.protobuf.Parser<CCNickName> getParserForType() {
       return PARSER;
     }
 
-    public com.mzm.firephoenix.protobuf.CoreProtocol.SCPlayerInfo getDefaultInstanceForType() {
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CCHeadPicOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CCHeadPic)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 headPic = 1;</code>
+     *
+     * <pre>
+     *头像 result=0 成功
+     * </pre>
+     */
+    boolean hasHeadPic();
+    /**
+     * <code>required int32 headPic = 1;</code>
+     *
+     * <pre>
+     *头像 result=0 成功
+     * </pre>
+     */
+    int getHeadPic();
+  }
+  /**
+   * Protobuf type {@code CCHeadPic}
+   */
+  public  static final class CCHeadPic extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CCHeadPic)
+      CCHeadPicOrBuilder {
+    // Use CCHeadPic.newBuilder() to construct.
+    private CCHeadPic(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CCHeadPic() {
+      headPic_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CCHeadPic(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              headPic_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCHeadPic_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCHeadPic_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int HEADPIC_FIELD_NUMBER = 1;
+    private int headPic_;
+    /**
+     * <code>required int32 headPic = 1;</code>
+     *
+     * <pre>
+     *头像 result=0 成功
+     * </pre>
+     */
+    public boolean hasHeadPic() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 headPic = 1;</code>
+     *
+     * <pre>
+     *头像 result=0 成功
+     * </pre>
+     */
+    public int getHeadPic() {
+      return headPic_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasHeadPic()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, headPic_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, headPic_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CCHeadPic}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CCHeadPic)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPicOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCHeadPic_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCHeadPic_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        headPic_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCHeadPic_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic result = new com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.headPic_ = headPic_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic.getDefaultInstance()) return this;
+        if (other.hasHeadPic()) {
+          setHeadPic(other.getHeadPic());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasHeadPic()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int headPic_ ;
+      /**
+       * <code>required int32 headPic = 1;</code>
+       *
+       * <pre>
+       *头像 result=0 成功
+       * </pre>
+       */
+      public boolean hasHeadPic() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 headPic = 1;</code>
+       *
+       * <pre>
+       *头像 result=0 成功
+       * </pre>
+       */
+      public int getHeadPic() {
+        return headPic_;
+      }
+      /**
+       * <code>required int32 headPic = 1;</code>
+       *
+       * <pre>
+       *头像 result=0 成功
+       * </pre>
+       */
+      public Builder setHeadPic(int value) {
+        bitField0_ |= 0x00000001;
+        headPic_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 headPic = 1;</code>
+       *
+       * <pre>
+       *头像 result=0 成功
+       * </pre>
+       */
+      public Builder clearHeadPic() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        headPic_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CCHeadPic)
+    }
+
+    // @@protoc_insertion_point(class_scope:CCHeadPic)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CCHeadPic> PARSER =
+        new com.google.protobuf.AbstractParser<CCHeadPic>() {
+      public CCHeadPic parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CCHeadPic(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CCHeadPic> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCHeadPic getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SCMachineListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCMachineList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    java.util.List<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo> 
+        getScMachineInfoList();
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getScMachineInfo(int index);
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    int getScMachineInfoCount();
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    java.util.List<? extends com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder> 
+        getScMachineInfoOrBuilderList();
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder getScMachineInfoOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code SCMachineList}
+   */
+  public  static final class SCMachineList extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCMachineList)
+      SCMachineListOrBuilder {
+    // Use SCMachineList.newBuilder() to construct.
+    private SCMachineList(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCMachineList() {
+      scMachineInfo_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCMachineList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                scMachineInfo_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              scMachineInfo_.add(input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          scMachineInfo_ = java.util.Collections.unmodifiableList(scMachineInfo_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder.class);
+    }
+
+    public static final int SCMACHINEINFO_FIELD_NUMBER = 1;
+    private java.util.List<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo> scMachineInfo_;
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    public java.util.List<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo> getScMachineInfoList() {
+      return scMachineInfo_;
+    }
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    public java.util.List<? extends com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder> 
+        getScMachineInfoOrBuilderList() {
+      return scMachineInfo_;
+    }
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    public int getScMachineInfoCount() {
+      return scMachineInfo_.size();
+    }
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getScMachineInfo(int index) {
+      return scMachineInfo_.get(index);
+    }
+    /**
+     * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+     *
+     * <pre>
+     *机台信息
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder getScMachineInfoOrBuilder(
+        int index) {
+      return scMachineInfo_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getScMachineInfoCount(); i++) {
+        if (!getScMachineInfo(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < scMachineInfo_.size(); i++) {
+        output.writeMessage(1, scMachineInfo_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < scMachineInfo_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, scMachineInfo_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCMachineList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCMachineList)
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getScMachineInfoFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (scMachineInfoBuilder_ == null) {
+          scMachineInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          scMachineInfoBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineList_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList result = new com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList(this);
+        int from_bitField0_ = bitField0_;
+        if (scMachineInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            scMachineInfo_ = java.util.Collections.unmodifiableList(scMachineInfo_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.scMachineInfo_ = scMachineInfo_;
+        } else {
+          result.scMachineInfo_ = scMachineInfoBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList.getDefaultInstance()) return this;
+        if (scMachineInfoBuilder_ == null) {
+          if (!other.scMachineInfo_.isEmpty()) {
+            if (scMachineInfo_.isEmpty()) {
+              scMachineInfo_ = other.scMachineInfo_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureScMachineInfoIsMutable();
+              scMachineInfo_.addAll(other.scMachineInfo_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.scMachineInfo_.isEmpty()) {
+            if (scMachineInfoBuilder_.isEmpty()) {
+              scMachineInfoBuilder_.dispose();
+              scMachineInfoBuilder_ = null;
+              scMachineInfo_ = other.scMachineInfo_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              scMachineInfoBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getScMachineInfoFieldBuilder() : null;
+            } else {
+              scMachineInfoBuilder_.addAllMessages(other.scMachineInfo_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getScMachineInfoCount(); i++) {
+          if (!getScMachineInfo(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo> scMachineInfo_ =
+        java.util.Collections.emptyList();
+      private void ensureScMachineInfoIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          scMachineInfo_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo>(scMachineInfo_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder> scMachineInfoBuilder_;
+
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public java.util.List<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo> getScMachineInfoList() {
+        if (scMachineInfoBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(scMachineInfo_);
+        } else {
+          return scMachineInfoBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public int getScMachineInfoCount() {
+        if (scMachineInfoBuilder_ == null) {
+          return scMachineInfo_.size();
+        } else {
+          return scMachineInfoBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getScMachineInfo(int index) {
+        if (scMachineInfoBuilder_ == null) {
+          return scMachineInfo_.get(index);
+        } else {
+          return scMachineInfoBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder setScMachineInfo(
+          int index, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo value) {
+        if (scMachineInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScMachineInfoIsMutable();
+          scMachineInfo_.set(index, value);
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder setScMachineInfo(
+          int index, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder builderForValue) {
+        if (scMachineInfoBuilder_ == null) {
+          ensureScMachineInfoIsMutable();
+          scMachineInfo_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder addScMachineInfo(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo value) {
+        if (scMachineInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScMachineInfoIsMutable();
+          scMachineInfo_.add(value);
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder addScMachineInfo(
+          int index, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo value) {
+        if (scMachineInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScMachineInfoIsMutable();
+          scMachineInfo_.add(index, value);
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder addScMachineInfo(
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder builderForValue) {
+        if (scMachineInfoBuilder_ == null) {
+          ensureScMachineInfoIsMutable();
+          scMachineInfo_.add(builderForValue.build());
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder addScMachineInfo(
+          int index, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder builderForValue) {
+        if (scMachineInfoBuilder_ == null) {
+          ensureScMachineInfoIsMutable();
+          scMachineInfo_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder addAllScMachineInfo(
+          java.lang.Iterable<? extends com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo> values) {
+        if (scMachineInfoBuilder_ == null) {
+          ensureScMachineInfoIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, scMachineInfo_);
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder clearScMachineInfo() {
+        if (scMachineInfoBuilder_ == null) {
+          scMachineInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public Builder removeScMachineInfo(int index) {
+        if (scMachineInfoBuilder_ == null) {
+          ensureScMachineInfoIsMutable();
+          scMachineInfo_.remove(index);
+          onChanged();
+        } else {
+          scMachineInfoBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder getScMachineInfoBuilder(
+          int index) {
+        return getScMachineInfoFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder getScMachineInfoOrBuilder(
+          int index) {
+        if (scMachineInfoBuilder_ == null) {
+          return scMachineInfo_.get(index);  } else {
+          return scMachineInfoBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public java.util.List<? extends com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder> 
+           getScMachineInfoOrBuilderList() {
+        if (scMachineInfoBuilder_ != null) {
+          return scMachineInfoBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(scMachineInfo_);
+        }
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder addScMachineInfoBuilder() {
+        return getScMachineInfoFieldBuilder().addBuilder(
+            com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder addScMachineInfoBuilder(
+          int index) {
+        return getScMachineInfoFieldBuilder().addBuilder(
+            index, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SCMachineInfo scMachineInfo = 1;</code>
+       *
+       * <pre>
+       *机台信息
+       * </pre>
+       */
+      public java.util.List<com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder> 
+           getScMachineInfoBuilderList() {
+        return getScMachineInfoFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder> 
+          getScMachineInfoFieldBuilder() {
+        if (scMachineInfoBuilder_ == null) {
+          scMachineInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder>(
+                  scMachineInfo_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          scMachineInfo_ = null;
+        }
+        return scMachineInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCMachineList)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCMachineList)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCMachineList> PARSER =
+        new com.google.protobuf.AbstractParser<SCMachineList>() {
+      public SCMachineList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCMachineList(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCMachineList> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SCMachineInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCMachineInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    boolean hasMachineId();
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    int getMachineId();
+
+    /**
+     * <code>required int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-待机1-在线2-留机
+     * </pre>
+     */
+    boolean hasMachineType();
+    /**
+     * <code>required int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-待机1-在线2-留机
+     * </pre>
+     */
+    int getMachineType();
+
+    /**
+     * <code>optional string nickName = 3;</code>
+     *
+     * <pre>
+     *在线玩家昵称
+     * </pre>
+     */
+    boolean hasNickName();
+    /**
+     * <code>optional string nickName = 3;</code>
+     *
+     * <pre>
+     *在线玩家昵称
+     * </pre>
+     */
+    java.lang.String getNickName();
+    /**
+     * <code>optional string nickName = 3;</code>
+     *
+     * <pre>
+     *在线玩家昵称
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getNickNameBytes();
+  }
+  /**
+   * Protobuf type {@code SCMachineInfo}
+   */
+  public  static final class SCMachineInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCMachineInfo)
+      SCMachineInfoOrBuilder {
+    // Use SCMachineInfo.newBuilder() to construct.
+    private SCMachineInfo(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCMachineInfo() {
+      machineId_ = 0;
+      machineType_ = 0;
+      nickName_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCMachineInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              machineId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              machineType_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              nickName_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MACHINEID_FIELD_NUMBER = 1;
+    private int machineId_;
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public boolean hasMachineId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public int getMachineId() {
+      return machineId_;
+    }
+
+    public static final int MACHINETYPE_FIELD_NUMBER = 2;
+    private int machineType_;
+    /**
+     * <code>required int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-待机1-在线2-留机
+     * </pre>
+     */
+    public boolean hasMachineType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-待机1-在线2-留机
+     * </pre>
+     */
+    public int getMachineType() {
+      return machineType_;
+    }
+
+    public static final int NICKNAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object nickName_;
+    /**
+     * <code>optional string nickName = 3;</code>
+     *
+     * <pre>
+     *在线玩家昵称
+     * </pre>
+     */
+    public boolean hasNickName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string nickName = 3;</code>
+     *
+     * <pre>
+     *在线玩家昵称
+     * </pre>
+     */
+    public java.lang.String getNickName() {
+      java.lang.Object ref = nickName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          nickName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string nickName = 3;</code>
+     *
+     * <pre>
+     *在线玩家昵称
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getNickNameBytes() {
+      java.lang.Object ref = nickName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMachineId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMachineType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, machineId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, machineType_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getNickNameBytes());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, machineId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, machineType_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getNickNameBytes());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCMachineInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCMachineInfo)
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        machineId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        machineType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nickName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineInfo_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo result = new com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.machineId_ = machineId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.machineType_ = machineType_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.nickName_ = nickName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance()) return this;
+        if (other.hasMachineId()) {
+          setMachineId(other.getMachineId());
+        }
+        if (other.hasMachineType()) {
+          setMachineType(other.getMachineType());
+        }
+        if (other.hasNickName()) {
+          bitField0_ |= 0x00000004;
+          nickName_ = other.nickName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMachineId()) {
+          return false;
+        }
+        if (!hasMachineType()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int machineId_ ;
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public boolean hasMachineId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public int getMachineId() {
+        return machineId_;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(int value) {
+        bitField0_ |= 0x00000001;
+        machineId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder clearMachineId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        machineId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int machineType_ ;
+      /**
+       * <code>required int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-待机1-在线2-留机
+       * </pre>
+       */
+      public boolean hasMachineType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-待机1-在线2-留机
+       * </pre>
+       */
+      public int getMachineType() {
+        return machineType_;
+      }
+      /**
+       * <code>required int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-待机1-在线2-留机
+       * </pre>
+       */
+      public Builder setMachineType(int value) {
+        bitField0_ |= 0x00000002;
+        machineType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-待机1-在线2-留机
+       * </pre>
+       */
+      public Builder clearMachineType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        machineType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nickName_ = "";
+      /**
+       * <code>optional string nickName = 3;</code>
+       *
+       * <pre>
+       *在线玩家昵称
+       * </pre>
+       */
+      public boolean hasNickName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string nickName = 3;</code>
+       *
+       * <pre>
+       *在线玩家昵称
+       * </pre>
+       */
+      public java.lang.String getNickName() {
+        java.lang.Object ref = nickName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            nickName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string nickName = 3;</code>
+       *
+       * <pre>
+       *在线玩家昵称
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getNickNameBytes() {
+        java.lang.Object ref = nickName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string nickName = 3;</code>
+       *
+       * <pre>
+       *在线玩家昵称
+       * </pre>
+       */
+      public Builder setNickName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        nickName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickName = 3;</code>
+       *
+       * <pre>
+       *在线玩家昵称
+       * </pre>
+       */
+      public Builder clearNickName() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        nickName_ = getDefaultInstance().getNickName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickName = 3;</code>
+       *
+       * <pre>
+       *在线玩家昵称
+       * </pre>
+       */
+      public Builder setNickNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        nickName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCMachineInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCMachineInfo)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCMachineInfo> PARSER =
+        new com.google.protobuf.AbstractParser<SCMachineInfo>() {
+      public SCMachineInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCMachineInfo(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCMachineInfo> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CCEnterMachineOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CCEnterMachine)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    boolean hasMachineId();
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    int getMachineId();
+  }
+  /**
+   * Protobuf type {@code CCEnterMachine}
+   */
+  public  static final class CCEnterMachine extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CCEnterMachine)
+      CCEnterMachineOrBuilder {
+    // Use CCEnterMachine.newBuilder() to construct.
+    private CCEnterMachine(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CCEnterMachine() {
+      machineId_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CCEnterMachine(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              machineId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCEnterMachine_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCEnterMachine_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MACHINEID_FIELD_NUMBER = 1;
+    private int machineId_;
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public boolean hasMachineId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public int getMachineId() {
+      return machineId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMachineId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, machineId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, machineId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CCEnterMachine}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CCEnterMachine)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachineOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCEnterMachine_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCEnterMachine_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        machineId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCEnterMachine_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine result = new com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.machineId_ = machineId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance()) return this;
+        if (other.hasMachineId()) {
+          setMachineId(other.getMachineId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMachineId()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int machineId_ ;
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public boolean hasMachineId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public int getMachineId() {
+        return machineId_;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(int value) {
+        bitField0_ |= 0x00000001;
+        machineId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder clearMachineId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        machineId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CCEnterMachine)
+    }
+
+    // @@protoc_insertion_point(class_scope:CCEnterMachine)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CCEnterMachine> PARSER =
+        new com.google.protobuf.AbstractParser<CCEnterMachine>() {
+      public CCEnterMachine parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CCEnterMachine(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CCEnterMachine> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CCLeaveMachineOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CCLeaveMachine)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    boolean hasMachineId();
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    int getMachineId();
+  }
+  /**
+   * Protobuf type {@code CCLeaveMachine}
+   */
+  public  static final class CCLeaveMachine extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CCLeaveMachine)
+      CCLeaveMachineOrBuilder {
+    // Use CCLeaveMachine.newBuilder() to construct.
+    private CCLeaveMachine(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CCLeaveMachine() {
+      machineId_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CCLeaveMachine(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              machineId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCLeaveMachine_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCLeaveMachine_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MACHINEID_FIELD_NUMBER = 1;
+    private int machineId_;
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public boolean hasMachineId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public int getMachineId() {
+      return machineId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMachineId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, machineId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, machineId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CCLeaveMachine}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CCLeaveMachine)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachineOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCLeaveMachine_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCLeaveMachine_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        machineId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCLeaveMachine_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine result = new com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.machineId_ = machineId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance()) return this;
+        if (other.hasMachineId()) {
+          setMachineId(other.getMachineId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMachineId()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int machineId_ ;
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public boolean hasMachineId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public int getMachineId() {
+        return machineId_;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(int value) {
+        bitField0_ |= 0x00000001;
+        machineId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder clearMachineId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        machineId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CCLeaveMachine)
+    }
+
+    // @@protoc_insertion_point(class_scope:CCLeaveMachine)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CCLeaveMachine> PARSER =
+        new com.google.protobuf.AbstractParser<CCLeaveMachine>() {
+      public CCLeaveMachine parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CCLeaveMachine(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CCLeaveMachine> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CCMachineStayOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CCMachineStay)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    boolean hasMachineId();
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    int getMachineId();
+
+    /**
+     * <code>optional int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-取消留机1-留机
+     * </pre>
+     */
+    boolean hasMachineType();
+    /**
+     * <code>optional int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-取消留机1-留机
+     * </pre>
+     */
+    int getMachineType();
+  }
+  /**
+   * Protobuf type {@code CCMachineStay}
+   */
+  public  static final class CCMachineStay extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CCMachineStay)
+      CCMachineStayOrBuilder {
+    // Use CCMachineStay.newBuilder() to construct.
+    private CCMachineStay(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CCMachineStay() {
+      machineId_ = 0;
+      machineType_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CCMachineStay(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              machineId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              machineType_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCMachineStay_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCMachineStay_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MACHINEID_FIELD_NUMBER = 1;
+    private int machineId_;
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public boolean hasMachineId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public int getMachineId() {
+      return machineId_;
+    }
+
+    public static final int MACHINETYPE_FIELD_NUMBER = 2;
+    private int machineType_;
+    /**
+     * <code>optional int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-取消留机1-留机
+     * </pre>
+     */
+    public boolean hasMachineType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 machineType = 2;</code>
+     *
+     * <pre>
+     *0-取消留机1-留机
+     * </pre>
+     */
+    public int getMachineType() {
+      return machineType_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMachineId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, machineId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, machineType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, machineId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, machineType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CCMachineStay}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CCMachineStay)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStayOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCMachineStay_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCMachineStay_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.class, com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        machineId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        machineType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CCMachineStay_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay result = new com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.machineId_ = machineId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.machineType_ = machineType_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance()) return this;
+        if (other.hasMachineId()) {
+          setMachineId(other.getMachineId());
+        }
+        if (other.hasMachineType()) {
+          setMachineType(other.getMachineType());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMachineId()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int machineId_ ;
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public boolean hasMachineId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public int getMachineId() {
+        return machineId_;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(int value) {
+        bitField0_ |= 0x00000001;
+        machineId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder clearMachineId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        machineId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int machineType_ ;
+      /**
+       * <code>optional int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-取消留机1-留机
+       * </pre>
+       */
+      public boolean hasMachineType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-取消留机1-留机
+       * </pre>
+       */
+      public int getMachineType() {
+        return machineType_;
+      }
+      /**
+       * <code>optional int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-取消留机1-留机
+       * </pre>
+       */
+      public Builder setMachineType(int value) {
+        bitField0_ |= 0x00000002;
+        machineType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 machineType = 2;</code>
+       *
+       * <pre>
+       *0-取消留机1-留机
+       * </pre>
+       */
+      public Builder clearMachineType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        machineType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CCMachineStay)
+    }
+
+    // @@protoc_insertion_point(class_scope:CCMachineStay)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CCMachineStay> PARSER =
+        new com.google.protobuf.AbstractParser<CCMachineStay>() {
+      public CCMachineStay parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CCMachineStay(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CCMachineStay> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -29541,10 +32528,40 @@ public final class CoreProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CCCoinScore_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_SCPlayerInfo_descriptor;
+    internal_static_CCNickName_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_SCPlayerInfo_fieldAccessorTable;
+      internal_static_CCNickName_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CCHeadPic_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CCHeadPic_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCMachineList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCMachineList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCMachineInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCMachineInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CCEnterMachine_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CCEnterMachine_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CCLeaveMachine_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CCLeaveMachine_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CCMachineStay_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CCMachineStay_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CSPlayerUpdate_descriptor;
   private static
@@ -29602,7 +32619,7 @@ public final class CoreProtocol {
       "\n\022CoreProtocol.proto\032\022GameProtocol.proto" +
       "\"f\n\013MessagePack\022\021\n\003cmd\030\001 \002(\0162\004.Cmd\022\017\n\007ve" +
       "rsion\030\002 \001(\005\022\021\n\tsessionId\030\003 \001(\005\022 \n\007conten" +
-      "t\030\004 \001(\0132\017.MessageContent\"\355\013\n\016MessageCont" +
+      "t\030\004 \001(\0132\017.MessageContent\"\277\014\n\016MessageCont" +
       "ent\022\016\n\006result\030\001 \002(\005\022\017\n\007message\030\002 \001(\t\022!\n\013" +
       "lcRetServer\030\003 \001(\0132\014.LCRetServer\022\037\n\ncsReg" +
       "ister\030\004 \001(\0132\013.CSRegsiter\022\037\n\nscRegister\030\005" +
@@ -29615,104 +32632,112 @@ public final class CoreProtocol {
       "reHistoryCards\022%\n\rcsCompareCard\030\016 \001(\0132\016." +
       "CSCompareCard\022%\n\rscCompareCard\030\017 \001(\0132\016.S" +
       "CCompareCard\022\025\n\005csWin\030\020 \001(\0132\006.CSWin\022!\n\013c" +
-      "cCoinScore\030\021 \001(\0132\014.CCCoinScore\022\025\n\005csSit\030" +
-      "\022 \001(\0132\006.CSSit\022\025\n\005scSit\030\023 \001(\0132\006.SCSit\022\035\n\t" +
-      "scStandUp\030\025 \001(\0132\n.SCStandUp\022\031\n\007csYaZhu\030\032" +
-      " \001(\0132\010.CSYaZhu\022\031\n\007scYazhu\030\033 \001(\0132\010.SCYaZh",
-      "u\022\027\n\006csChat\030\035 \001(\0132\007.CSChat\022\027\n\006scChat\030! \001" +
-      "(\0132\007.SCChat\022\035\n\010signList\030\036 \001(\0132\013.SCSignLi" +
-      "st\022\027\n\006scSgin\030\037 \001(\0132\007.SCSign\022\033\n\010scNotice\030" +
-      "  \001(\0132\t.SCNotice\022#\n\014scRoomStatis\030\" \001(\0132\r" +
-      ".SCRoomStatis\022\033\n\010scQZlist\030# \001(\0132\t.SCQZLi" +
-      "st\022\033\n\010scZhuang\030$ \001(\0132\t.SCZhuang\022#\n\014scDow" +
-      "nZhuang\030% \001(\0132\r.SCDownZhuang\022\031\n\007scHeart\030" +
-      "& \001(\0132\010.SCHeart\022/\n\022scPlayerChangeList\030\' " +
-      "\001(\0132\023.SCPlayerResultList\022!\n\tscUidList\030( " +
-      "\001(\0132\016.SCRoomUidList\022#\n\014csRoomPlayer\030) \001(",
-      "\0132\r.CSRoomPlayer\022#\n\014scRoomPlayer\030* \001(\0132\r" +
-      ".SCRoomPlayer\022\037\n\nscCardInfo\030+ \001(\0132\013.SCCa" +
-      "rdInfo\022%\n\rscPaiBaseInfo\030, \001(\0132\016.SCPaiBas" +
-      "eInfo\022\037\n\nscPaiInfo3\030- \001(\0132\013.SCPaiInfo3\022\'" +
-      "\n\016csDepositStore\030. \001(\0132\017.CSDepositStore\022" +
-      "\'\n\016scDepositStore\030/ \001(\0132\017.SCDepositStore" +
-      "\022%\n\rcsDepositDraw\0300 \001(\0132\016.CSDepositDraw\022" +
-      "%\n\rscDepositDraw\0301 \001(\0132\016.SCDepositDraw\022%" +
-      "\n\rcsDepositGive\0302 \001(\0132\016.CSDepositGive\022%\n" +
-      "\rscDepositGive\0303 \001(\0132\016.SCDepositGive\022+\n\020",
-      "scDepositReceive\0304 \001(\0132\021.SCDepositReceiv" +
-      "e\022\025\n\005csSMS\0305 \001(\0132\006.CSSMS\"-\n\013LCRetServer\022" +
-      "\020\n\010serverip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\">\n\nCSReg" +
-      "siter\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t" +
-      "\022\r\n\005seoid\030\003 \001(\t\"\035\n\nSCRegister\022\017\n\007account" +
-      "\030\001 \002(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010pa" +
-      "ssword\030\002 \002(\t\"E\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010" +
-      "nickname\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 " +
-      "\001(\005\"\037\n\014CSGuestLogin\022\017\n\007account\030\001 \001(\t\"M\n\014" +
-      "SCGuestLogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002 \002",
-      "(\005\022\020\n\010nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\"\034\n\014C" +
-      "SPlayerInfo\022\014\n\004guid\030\001 \002(\t\"B\n\007CSCards\022\022\n\n" +
-      "startIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\tho" +
-      "ldCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardRate\030\001 \002" +
-      "(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 \001(\t\"&\n\025" +
-      "CCCompareHistoryCards\022\r\n\005cards\030\001 \002(\t\"3\n\r" +
-      "CSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020\n\010betSc" +
-      "ore\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013compareCar" +
-      "d\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\"\024\n\005CSWin\022\013\n\003wi" +
-      "n\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 \002(\005\022\014\n",
-      "\004coin\030\002 \002(\005\"f\n\014SCPlayerInfo\022\020\n\010nickname\030" +
-      "\001 \002(\t\022\014\n\004gold\030\002 \001(\005\022\013\n\003pic\030\003 \001(\t\022\013\n\003sex\030" +
-      "\004 \001(\005\022\013\n\003uid\030\005 \001(\005\022\017\n\007deposit\030\006 \001(\005\"^\n\016C" +
-      "SPlayerUpdate\022\020\n\010nickname\030\001 \001(\t\022\020\n\010passw" +
-      "ord\030\002 \001(\t\022\013\n\003pic\030\003 \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013" +
-      "\n\003sex\030\005 \001(\005\"\036\n\016CSDepositStore\022\014\n\004gold\030\001 " +
-      "\001(\005\"/\n\016SCDepositStore\022\014\n\004gold\030\001 \001(\005\022\017\n\007d" +
-      "eposit\030\002 \001(\005\"!\n\rCSDepositDraw\022\020\n\010drawGol" +
-      "d\030\001 \001(\005\".\n\rSCDepositDraw\022\014\n\004gold\030\001 \001(\005\022\017" +
-      "\n\007deposit\030\002 \001(\005\"3\n\rCSDepositGive\022\020\n\010targ",
-      "etid\030\001 \001(\t\022\020\n\010drawGold\030\002 \001(\005\" \n\rSCDeposi" +
-      "tGive\022\017\n\007deposit\030\002 \001(\005\"V\n\020SCDepositRecei" +
-      "ve\022\020\n\010senderid\030\001 \001(\t\022\021\n\treceiveid\030\002 \001(\t\022" +
-      "\014\n\004gold\030\003 \001(\005\022\017\n\007deposit\030\004 \001(\005\"\027\n\005CSSMS\022" +
-      "\016\n\006mobile\030\001 \001(\t*\204\007\n\003Cmd\022\023\n\rCMD_GETSERVER" +
-      "\020\201\200\004\022\022\n\014CMD_REGISTER\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200" +
-      "\004\022\025\n\017CMD_GUEST_LOGIN\020\205\200\004\022\017\n\tCMD_HEART\020\204\200" +
-      "\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\tCMD_CARDS\020\207\200\004\022\027\n\021CMD" +
-      "_COMPARE_CARDS\020\210\200\004\022\037\n\031CMD_COMPARE_HISTOR" +
-      "Y_CARDS\020\211\200\004\022\r\n\007CMD_WIN\020\212\200\004\022\024\n\016CMD_COIN_S",
-      "CORE\020\213\200\004\022\025\n\017CMD_PLAYER_INFO\020\201\200\010\022\027\n\021CMD_P" +
-      "LAYER_UPDATE\020\202\200\010\022\024\n\016CMD_INITPASSWD\020\203\200\010\022\020" +
-      "\n\nCMD_NOTICE\020\204\200\010\022\022\n\014CMD_SIGNLIST\020\205\200\010\022\016\n\010" +
-      "CMD_SIGN\020\206\200\010\022\025\n\017CMD_PLAYER_QUIT\020\207\200\010\022\025\n\017C" +
-      "MD_PLAYER_KICK\020\210\200\010\022\027\n\021CMD_DEPOSIT_STORE\020" +
-      "\211\200\010\022\026\n\020CMD_DEPOSIT_DRAW\020\212\200\010\022\026\n\020CMD_DEPOS" +
-      "IT_GIVE\020\213\200\010\022\031\n\023CMD_DEPOSIT_RECEIVE\020\214\200\010\022\023" +
-      "\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUTROOM\020\202\200\014\022\022" +
-      "\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAIINFO\020\204\200\014\022\r\n" +
-      "\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014\022\024\n\016CMD_R",
-      "OB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022\016\n\010CMD_CH" +
-      "AT\020\216\200\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014\022\021\n\013CMD_QZ" +
-      "_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222\200\014\022\022\n\014CMD_" +
-      "BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014\022\032\n\024CMD" +
-      "_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PLAYER" +
-      "_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021CMD_" +
-      "PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014*\333" +
-      "\004\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EXIT\020\351\007\022\025\n" +
-      "\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PWD_WRONG\020" +
-      "\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007\022\021\n\014ERROR_",
-      "NOBIND\020\355\007\022\031\n\024ERROT_SIT_HAVEPLAYER\020\356\007\022\024\n\017" +
-      "ERROR_CANT_SIGN\020\357\007\022\021\n\014ERROT_NO_SIT\020\360\007\022\032\n" +
-      "\025ERROR_GOLD_NOT_ZHUANG\020\361\007\022\023\n\016ERROR_CANT_" +
-      "BET\020\362\007\022\030\n\023ERROR_ROOM_NOT_EXIT\020\363\007\022\025\n\020ERRO" +
-      "R_BET_LARGER\020\364\007\022\027\n\022ERROR_SIT_HAVESEAT\020\365\007" +
-      "\022\026\n\021ERROR_DEPOSIT_MIN\020\366\007\022\025\n\020ERROR_SMS_EX" +
-      "PIRE\020\367\007\022\024\n\017ERROR_SMS_WRONG\020\370\007\022 \n\033ERROR_S" +
-      "MS_INVALID_PARAMETER\020\371\007\022\034\n\027ERROR_ACCOUNT" +
-      "_RECONNECT\020\372\007\022\033\n\026ERROR_CARD_BET_SCORE_0\020" +
-      "\320\017\022\037\n\032ERROR_CARD_GUEST_COINSCORE\020\321\017\022$\n\037E",
-      "RROR_CARD_BET_SCORE_NOT_ENOUGH\020\322\017\0221\n,ERR" +
-      "OR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUG" +
-      "H\020\323\017B,\n\034com.mzm.firephoenix.protobufB\014Co" +
-      "reProtocol"
+      "cCoinScore\030\021 \001(\0132\014.CCCoinScore\022\037\n\nccNick" +
+      "Name\030\022 \001(\0132\013.CCNickName\022\035\n\tccHeadPic\030\023 \001" +
+      "(\0132\n.CCHeadPic\022%\n\rscMachineList\030\025 \001(\0132\016." +
+      "SCMachineList\022%\n\rscMachineInfo\030\032 \001(\0132\016.S",
+      "CMachineInfo\022\'\n\016ccEnterMachine\030\033 \001(\0132\017.C" +
+      "CEnterMachine\022\'\n\016ccLeaveMachine\030\035 \001(\0132\017." +
+      "CCLeaveMachine\022%\n\rccMachineStay\030! \001(\0132\016." +
+      "CCMachineStay\022\035\n\010signList\030\036 \001(\0132\013.SCSign" +
+      "List\022\027\n\006scSgin\030\037 \001(\0132\007.SCSign\022\033\n\010scNotic" +
+      "e\030  \001(\0132\t.SCNotice\022#\n\014scRoomStatis\030\" \001(\013" +
+      "2\r.SCRoomStatis\022\033\n\010scQZlist\030# \001(\0132\t.SCQZ" +
+      "List\022\033\n\010scZhuang\030$ \001(\0132\t.SCZhuang\022#\n\014scD" +
+      "ownZhuang\030% \001(\0132\r.SCDownZhuang\022\031\n\007scHear" +
+      "t\030& \001(\0132\010.SCHeart\022/\n\022scPlayerChangeList\030",
+      "\' \001(\0132\023.SCPlayerResultList\022!\n\tscUidList\030" +
+      "( \001(\0132\016.SCRoomUidList\022#\n\014csRoomPlayer\030) " +
+      "\001(\0132\r.CSRoomPlayer\022#\n\014scRoomPlayer\030* \001(\013" +
+      "2\r.SCRoomPlayer\022\037\n\nscCardInfo\030+ \001(\0132\013.SC" +
+      "CardInfo\022%\n\rscPaiBaseInfo\030, \001(\0132\016.SCPaiB" +
+      "aseInfo\022\037\n\nscPaiInfo3\030- \001(\0132\013.SCPaiInfo3" +
+      "\022\'\n\016csDepositStore\030. \001(\0132\017.CSDepositStor" +
+      "e\022\'\n\016scDepositStore\030/ \001(\0132\017.SCDepositSto" +
+      "re\022%\n\rcsDepositDraw\0300 \001(\0132\016.CSDepositDra" +
+      "w\022%\n\rscDepositDraw\0301 \001(\0132\016.SCDepositDraw",
+      "\022%\n\rcsDepositGive\0302 \001(\0132\016.CSDepositGive\022" +
+      "%\n\rscDepositGive\0303 \001(\0132\016.SCDepositGive\022+" +
+      "\n\020scDepositReceive\0304 \001(\0132\021.SCDepositRece" +
+      "ive\022\025\n\005csSMS\0305 \001(\0132\006.CSSMS\"-\n\013LCRetServe" +
+      "r\022\020\n\010serverip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\">\n\nCSR" +
+      "egsiter\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002" +
+      "(\t\022\r\n\005seoid\030\003 \001(\t\"\035\n\nSCRegister\022\017\n\007accou" +
+      "nt\030\001 \002(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010" +
+      "password\030\002 \002(\t\"E\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020" +
+      "\n\010nickname\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030",
+      "\004 \001(\005\"\037\n\014CSGuestLogin\022\017\n\007account\030\001 \001(\t\"M" +
+      "\n\014SCGuestLogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002" +
+      " \002(\005\022\020\n\010nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\"\034\n" +
+      "\014CSPlayerInfo\022\014\n\004guid\030\001 \002(\t\"B\n\007CSCards\022\022" +
+      "\n\nstartIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\t" +
+      "holdCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardRate\030\001" +
+      " \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 \001(\t\"&" +
+      "\n\025CCCompareHistoryCards\022\r\n\005cards\030\001 \002(\t\"3" +
+      "\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020\n\010bet" +
+      "Score\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013compareC",
+      "ard\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\"\024\n\005CSWin\022\013\n\003" +
+      "win\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 \002(\005\022" +
+      "\014\n\004coin\030\002 \002(\005\"\036\n\nCCNickName\022\020\n\010nickName\030" +
+      "\001 \002(\t\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"6\n\rS" +
+      "CMachineList\022%\n\rscMachineInfo\030\001 \003(\0132\016.SC" +
+      "MachineInfo\"I\n\rSCMachineInfo\022\021\n\tmachineI" +
+      "d\030\001 \002(\005\022\023\n\013machineType\030\002 \002(\005\022\020\n\010nickName" +
+      "\030\003 \001(\t\"#\n\016CCEnterMachine\022\021\n\tmachineId\030\001 " +
+      "\002(\005\"#\n\016CCLeaveMachine\022\021\n\tmachineId\030\001 \002(\005" +
+      "\"7\n\rCCMachineStay\022\021\n\tmachineId\030\001 \002(\005\022\023\n\013",
+      "machineType\030\002 \001(\005\"^\n\016CSPlayerUpdate\022\020\n\010n" +
+      "ickname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003" +
+      " \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSD" +
+      "epositStore\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositSt" +
+      "ore\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCS" +
+      "DepositDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDepos" +
+      "itDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n" +
+      "\rCSDepositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010draw" +
+      "Gold\030\002 \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002" +
+      " \001(\005\"V\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001",
+      "(\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007d" +
+      "eposit\030\004 \001(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t*\235\007" +
+      "\n\003Cmd\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGIST" +
+      "ER\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOG" +
+      "IN\020\205\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017" +
+      "\n\tCMD_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004" +
+      "\022\037\n\031CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD" +
+      "_WIN\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\032\n\024CMD_PL" +
+      "AYER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLAYER_PIC\020\202\200\010" +
+      "\022\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020CMD_MACHINE_",
+      "INFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER\020\205\200\010\022\027\n\021CMD" +
+      "_MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MACHINE_STAY\020\207" +
+      "\200\010\022\025\n\017CMD_PLAYER_KICK\020\210\200\010\022\027\n\021CMD_DEPOSIT" +
+      "_STORE\020\211\200\010\022\026\n\020CMD_DEPOSIT_DRAW\020\212\200\010\022\026\n\020CM" +
+      "D_DEPOSIT_GIVE\020\213\200\010\022\031\n\023CMD_DEPOSIT_RECEIV" +
+      "E\020\214\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUTROO" +
+      "M\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAIINFO" +
+      "\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014\022\024" +
+      "\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022\016\n" +
+      "\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014\022\021\n",
+      "\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222\200\014\022" +
+      "\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014" +
+      "\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_ROOM" +
+      "_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022" +
+      "\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_" +
+      "3\020\243\200\014*\333\004\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EXI" +
+      "T\020\351\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PWD" +
+      "_WRONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007\022\021\n" +
+      "\014ERROR_NOBIND\020\355\007\022\031\n\024ERROT_SIT_HAVEPLAYER" +
+      "\020\356\007\022\024\n\017ERROR_CANT_SIGN\020\357\007\022\021\n\014ERROT_NO_SI",
+      "T\020\360\007\022\032\n\025ERROR_GOLD_NOT_ZHUANG\020\361\007\022\023\n\016ERRO" +
+      "R_CANT_BET\020\362\007\022\030\n\023ERROR_ROOM_NOT_EXIT\020\363\007\022" +
+      "\025\n\020ERROR_BET_LARGER\020\364\007\022\027\n\022ERROR_SIT_HAVE" +
+      "SEAT\020\365\007\022\026\n\021ERROR_DEPOSIT_MIN\020\366\007\022\025\n\020ERROR" +
+      "_SMS_EXPIRE\020\367\007\022\024\n\017ERROR_SMS_WRONG\020\370\007\022 \n\033" +
+      "ERROR_SMS_INVALID_PARAMETER\020\371\007\022\034\n\027ERROR_" +
+      "ACCOUNT_RECONNECT\020\372\007\022\033\n\026ERROR_CARD_BET_S" +
+      "CORE_0\020\320\017\022\037\n\032ERROR_CARD_GUEST_COINSCORE\020" +
+      "\321\017\022$\n\037ERROR_CARD_BET_SCORE_NOT_ENOUGH\020\322\017" +
+      "\0221\n,ERROR_CARD_COMPARE_CARD_BET_SCORE_NO",
+      "T_ENOUGH\020\323\017B,\n\034com.mzm.firephoenix.proto" +
+      "bufB\014CoreProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -29738,7 +32763,7 @@ public final class CoreProtocol {
     internal_static_MessageContent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MessageContent_descriptor,
-        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CsSit", "ScSit", "ScStandUp", "CsYaZhu", "ScYazhu", "CsChat", "ScChat", "SignList", "ScSgin", "ScNotice", "ScRoomStatis", "ScQZlist", "ScZhuang", "ScDownZhuang", "ScHeart", "ScPlayerChangeList", "ScUidList", "CsRoomPlayer", "ScRoomPlayer", "ScCardInfo", "ScPaiBaseInfo", "ScPaiInfo3", "CsDepositStore", "ScDepositStore", "CsDepositDraw", "ScDepositDraw", "CsDepositGive", "ScDepositGive", "ScDepositReceive", "CsSMS", });
+        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CcNickName", "CcHeadPic", "ScMachineList", "ScMachineInfo", "CcEnterMachine", "CcLeaveMachine", "CcMachineStay", "SignList", "ScSgin", "ScNotice", "ScRoomStatis", "ScQZlist", "ScZhuang", "ScDownZhuang", "ScHeart", "ScPlayerChangeList", "ScUidList", "CsRoomPlayer", "ScRoomPlayer", "ScCardInfo", "ScPaiBaseInfo", "ScPaiInfo3", "CsDepositStore", "ScDepositStore", "CsDepositDraw", "ScDepositDraw", "CsDepositGive", "ScDepositGive", "ScDepositReceive", "CsSMS", });
     internal_static_LCRetServer_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_LCRetServer_fieldAccessorTable = new
@@ -29829,62 +32854,98 @@ public final class CoreProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCCoinScore_descriptor,
         new java.lang.String[] { "Score", "Coin", });
-    internal_static_SCPlayerInfo_descriptor =
+    internal_static_CCNickName_descriptor =
       getDescriptor().getMessageTypes().get(17);
-    internal_static_SCPlayerInfo_fieldAccessorTable = new
+    internal_static_CCNickName_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_SCPlayerInfo_descriptor,
-        new java.lang.String[] { "Nickname", "Gold", "Pic", "Sex", "Uid", "Deposit", });
-    internal_static_CSPlayerUpdate_descriptor =
+        internal_static_CCNickName_descriptor,
+        new java.lang.String[] { "NickName", });
+    internal_static_CCHeadPic_descriptor =
       getDescriptor().getMessageTypes().get(18);
+    internal_static_CCHeadPic_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CCHeadPic_descriptor,
+        new java.lang.String[] { "HeadPic", });
+    internal_static_SCMachineList_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_SCMachineList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCMachineList_descriptor,
+        new java.lang.String[] { "ScMachineInfo", });
+    internal_static_SCMachineInfo_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_SCMachineInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCMachineInfo_descriptor,
+        new java.lang.String[] { "MachineId", "MachineType", "NickName", });
+    internal_static_CCEnterMachine_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_CCEnterMachine_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CCEnterMachine_descriptor,
+        new java.lang.String[] { "MachineId", });
+    internal_static_CCLeaveMachine_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_CCLeaveMachine_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CCLeaveMachine_descriptor,
+        new java.lang.String[] { "MachineId", });
+    internal_static_CCMachineStay_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_CCMachineStay_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CCMachineStay_descriptor,
+        new java.lang.String[] { "MachineId", "MachineType", });
+    internal_static_CSPlayerUpdate_descriptor =
+      getDescriptor().getMessageTypes().get(24);
     internal_static_CSPlayerUpdate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSPlayerUpdate_descriptor,
         new java.lang.String[] { "Nickname", "Password", "Pic", "Mobile", "Sex", });
     internal_static_CSDepositStore_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_CSDepositStore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSDepositStore_descriptor,
         new java.lang.String[] { "Gold", });
     internal_static_SCDepositStore_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_SCDepositStore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositStore_descriptor,
         new java.lang.String[] { "Gold", "Deposit", });
     internal_static_CSDepositDraw_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_CSDepositDraw_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSDepositDraw_descriptor,
         new java.lang.String[] { "DrawGold", });
     internal_static_SCDepositDraw_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_SCDepositDraw_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositDraw_descriptor,
         new java.lang.String[] { "Gold", "Deposit", });
     internal_static_CSDepositGive_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_CSDepositGive_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSDepositGive_descriptor,
         new java.lang.String[] { "Targetid", "DrawGold", });
     internal_static_SCDepositGive_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_SCDepositGive_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositGive_descriptor,
         new java.lang.String[] { "Deposit", });
     internal_static_SCDepositReceive_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_SCDepositReceive_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositReceive_descriptor,
         new java.lang.String[] { "Senderid", "Receiveid", "Gold", "Deposit", });
     internal_static_CSSMS_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_CSSMS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSSMS_descriptor,

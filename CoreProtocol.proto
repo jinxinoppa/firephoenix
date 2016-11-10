@@ -28,14 +28,17 @@ enum Cmd {
 	
 
 	//玩家模块
-	CMD_PLAYER_INFO    =  0x020001;  //获取玩家信息
-	CMD_PLAYER_UPDATE  =  0x020002;  //修改玩家信息
-    CMD_INITPASSWD     =  0x020003;  //找回密码
-    CMD_NOTICE         =  0x020004;  //公告列表
-    CMD_SIGNLIST       =  0x020005;  //签到列表
-    CMD_SIGN           =  0x020006;  //请求签到
-    CMD_PLAYER_QUIT    =  0x020007;  //玩家退出游戏
-	CMD_PLAYER_KICK    =  0x020008;  //玩家被踢出游戏
+	CMD_PLAYER_NICK_NAME = 0x020001;  //修改玩家昵称
+	CMD_PLAYER_PIC    =  0x020002;  //修改头像
+    CMD_MACHINE_LIST     =  0x020003;  //机台列表
+    CMD_MACHINE_INFO         =  0x020004;  //单台机台信息
+    CMD_MACHINE_ENTER       =  0x020005;  //选择机台
+    CMD_MACHINE_LEAVE      =  0x020006;  //离开机台
+    CMD_MACHINE_STAY    =  0x020007;  //是否留机
+    CMD_PLAYER_KICK    =  0x020008;  //绑定账号
+    
+    
+	
 	CMD_DEPOSIT_STORE  =  0x020009;  //存钱
 	CMD_DEPOSIT_DRAW   =  0x02000A;  //取钱
 	CMD_DEPOSIT_GIVE   =  0x02000B;  //送钱 
@@ -115,16 +118,16 @@ message MessageContent {
 
 	optional CSWin csWin   = 16;//二手牌比大小得分
 	optional CCCoinScore ccCoinScore             = 17;//取分存分
-	optional CSSit csSit                     = 18;//坐下
-	optional SCSit scSit                     = 19;//坐下
+	optional CCNickName ccNickName                     = 18;//修改玩家昵称
+	optional CCHeadPic ccHeadPic                     = 19;//修改头像
 	
-	optional SCStandUp  scStandUp    = 21; //起立
+	optional SCMachineList  scMachineList    = 21;//机台列表
 	
-	optional CSYaZhu csYaZhu         = 26;//押注
-	optional SCYaZhu scYazhu         = 27;
+	optional SCMachineInfo scMachineInfo         = 26;//单台机台信息
+	optional CCEnterMachine ccEnterMachine         = 27;//选择机台
 	 
-	optional CSChat csChat           	 = 29;//聊天信息
-	optional SCChat scChat           	 = 33;//下行聊天信息
+	optional CCLeaveMachine ccLeaveMachine           	 = 29;//离开机台
+	optional CCMachineStay ccMachineStay           	 = 33;//是否留机
 	optional SCSignList signList     = 30;//签到列表
 	optional SCSign  scSgin 		 = 31;//下发签到奖励
 
@@ -251,15 +254,39 @@ message CCCoinScore{
 	required int32 coin = 2;//金币
 }
 
-//玩家详细信息
-message SCPlayerInfo{
-	required string nickname =1 ;
-	optional int32 gold = 2;
-	optional string pic = 3;
-	optional int32 sex = 4;//性别 1男,0女
-	optional int32 uid = 5;
-	optional int32 deposit = 6;//存款
+message CCNickName{
+	required string nickName = 1;//昵称 result=0 成功
+}
 
+message CCHeadPic{
+	required int32 headPic = 1;//头像 result=0 成功
+}
+
+//message CSMachineList {
+	//required int32 machineList = 1;	
+//}
+
+message SCMachineList{
+	repeated  SCMachineInfo scMachineInfo = 1;//机台信息
+}
+
+message SCMachineInfo{
+	required int32 machineId = 1;//机台id
+	required int32 machineType = 2;//0-待机1-在线2-留机
+	optional string nickName = 3;//在线玩家昵称
+}
+
+message CCEnterMachine{
+	required int32 machineId = 1;//机台id
+}
+
+message CCLeaveMachine {
+	required int32 machineId = 1;//机台id
+}
+
+message CCMachineStay {
+	required int32 machineId = 1;//机台id
+	optional int32 machineType = 2;//0-取消留机1-留机
 }
 
 message CSPlayerUpdate{
