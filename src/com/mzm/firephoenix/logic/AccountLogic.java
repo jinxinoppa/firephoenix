@@ -14,6 +14,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Component;
 
+import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.entity.FivepkAccount;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
@@ -43,13 +44,13 @@ public class AccountLogic {
 		if (account.isEmpty() || password.isEmpty() || seoid.isEmpty()) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 		}
-		logger.debug(jdbcDaoSupport.toString());
 		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
 		if (fivepkAccount == null) {
 			fivepkAccount = new FivepkAccount();
 			fivepkAccount.setName(account);
 			fivepkAccount.setPassword(password);
 			fivepkAccount.setSeoid(seoid);
+			fivepkAccount.setAccountType(GameConstant.ACCOUNT_TYPE_PLAYER);
 			try {
 				int generatedKey = jdbcDaoSupport.getJdbcTemplate().execute(new ConnectionCallback<Integer>() {
 
@@ -66,8 +67,10 @@ public class AccountLogic {
 						return generatedKey;
 					}
 				});
-				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, account, "玩家@" + generatedKey);
+				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "玩家@" + generatedKey, GameConstant.ACCOUNT_DEFAULT_PIC);
 				jdbcDaoSupport.save(fivepkPlayerInfo);
+				session.setAttributeIfAbsent(GameConstant.SESSION_IS_REGISTERED, GameConstant.SESSION_IS_REGISTERED_VALUE);
+				session.setAttributeIfAbsent("accountId", fivepkPlayerInfo.getAccountId());
 			} catch (Exception e) {
 				throw e;
 			}
@@ -78,24 +81,34 @@ public class AccountLogic {
 	}
 
 	public Builder csLogin(IoSession session, MessageContent content) {
-		String account = content.getCsLogin().getAccount();
+		String name = content.getCsLogin().getAccount();
 		String password = content.getCsLogin().getPassword();
-		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
-		if (fivepkAccount == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
-		} else if (!fivepkAccount.getPassword().equals(password)) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PWD_WRONG_VALUE);
+		Integer isRegistered = (Integer) session.getAttribute(GameConstant.SESSION_IS_REGISTERED);
+		long accountId = 0;
+		if (isRegistered == null || isRegistered != null && isRegistered != GameConstant.SESSION_IS_REGISTERED_VALUE) {
+			FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{name}, new String[]{"name"});
+			if (fivepkAccount == null) {
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			} else if (!fivepkAccount.getPassword().equals(password)) {
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PWD_WRONG_VALUE);
+			}
+			accountId = fivepkAccount.getAccountId();
+		} else {
+			accountId = (Long) session.getAttribute("accountId");
 		}
-		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{account}, new String[]{"name"});
-		session.setAttribute("accountId", fivepkPlayerInfo.getAccountId());
-		return MessageContent.newBuilder().setResult(0).setScLogin(SCLogin.newBuilder().setPic(String.valueOf(fivepkPlayerInfo.getPic())).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()).setCoin(0));
+		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
+		session.setAttributeIfAbsent("accountId", fivepkPlayerInfo.getAccountId());
+		session.removeAttribute(GameConstant.SESSION_IS_REGISTERED);
+		session.setAttributeIfAbsent(GameConstant.SESSION_ACCOUNT_TYPE, GameConstant.ACCOUNT_TYPE_PLAYER);
+		return MessageContent.newBuilder().setResult(0).setScLogin(SCLogin.newBuilder().setPic(fivepkPlayerInfo.getPic()).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()).setCoin(fivepkPlayerInfo.getCoin()));
 	}
 
 	public Builder csGuestLogin(IoSession session, MessageContent content) {
 		int generatedKey = 0;
-		String pic = "1";
+		byte pic = GameConstant.ACCOUNT_DEFAULT_PIC;
 		FivepkPlayerInfo fivepkPlayerInfo = null;
-		if (content.getCsGuestLogin().getAccount().isEmpty()) {
+		String accountId = content.getCsGuestLogin().getAccount();
+		if (accountId == null || accountId != null && accountId.isEmpty()) {
 			try {
 				generatedKey = jdbcDaoSupport.getJdbcTemplate().execute(new ConnectionCallback<Integer>() {
 
@@ -112,22 +125,21 @@ public class AccountLogic {
 						return generatedKey;
 					}
 				});
-				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, String.valueOf(generatedKey), "游客@" + generatedKey);
+				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic);
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 			} catch (Exception e) {
-				logger.error(e.getMessage());
 				throw e;
 			}
 		} else {
-			String account = content.getCsGuestLogin().getAccount();
-			fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{account}, new String[]{"name"});
+			fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 			if (fivepkPlayerInfo == null) {
-				logger.debug("guest login wrong account : [" + account + "]");
+				logger.debug("guest login wrong account : [" + accountId + "]");
 				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 			}
-			pic = String.valueOf(fivepkPlayerInfo.getPic());
+			pic = fivepkPlayerInfo.getPic();
 		}
 		session.setAttribute("accountId", fivepkPlayerInfo.getAccountId());
-		return MessageContent.newBuilder().setResult(0).setScGuestLogin(SCGuestLogin.newBuilder().setAccount(fivepkPlayerInfo.getName()).setPic(pic).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()));
+		session.setAttribute(GameConstant.SESSION_ACCOUNT_TYPE, GameConstant.ACCOUNT_TYPE_GUEST);
+		return MessageContent.newBuilder().setResult(0).setScGuestLogin(SCGuestLogin.newBuilder().setAccount(String.valueOf(fivepkPlayerInfo.getAccountId())).setPic(pic).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()));
 	}
 }

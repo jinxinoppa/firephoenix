@@ -27,3 +27,10 @@ alter table fivepk_player_info modify compare_history_cards varchar(50) COLLATE 
 alter table fivepk_player_info modify score int(20) default 200000;
 
 alter table fivepk_player_info add COLUMN coin int(20) default 0 AFTER pic;
+
+//2016-11-07
+alter table `fivepk_account` add column account_type smallint(1) default 0 COMMENT '0-游客1-普通玩家' after seoid;
+
+update fivepk_account set account_type = 1 where name is not null;
+
+alter table fivepk_player_info drop column name;

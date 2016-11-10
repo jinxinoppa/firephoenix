@@ -14,6 +14,8 @@ public class FivepkAccount extends AbstractEntity {
 	private String password;
 	@Column(columnName = "seoid")
 	private String seoid;
+	@Column(columnName = "account_type")
+	private byte accountType;
 	@Column(columnName = "create_date")
 	private Date createDate;
 	@Column(isContinue = true)
@@ -64,5 +66,13 @@ public class FivepkAccount extends AbstractEntity {
 
 	public void setUpdateFieldsList(List<String> updateFieldsList) {
 		this.updateFieldsList = updateFieldsList;
+	}
+
+	public byte getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(byte accountType) {
+		this.accountType = accountType;
 	}
 }

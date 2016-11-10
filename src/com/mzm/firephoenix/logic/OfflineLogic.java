@@ -21,14 +21,13 @@ public class OfflineLogic {
 		if (cr == null) {
 			return;
 		}
-		int score = cr.getScore();
-		if (score > 0) {
+		if (cr.getWin() > 0){
 			long accountId = (long) session.getAttribute("accountId");
 			FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 			if (fivepkPlayerInfo == null) {
 				return;
 			}
-			fivepkPlayerInfo.setScore(score + fivepkPlayerInfo.getScore());
+			fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet());
 			jdbcDaoSupport.update(fivepkPlayerInfo);
 		}
 	}

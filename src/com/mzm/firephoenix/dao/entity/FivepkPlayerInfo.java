@@ -7,8 +7,6 @@ import java.util.List;
 public class FivepkPlayerInfo extends AbstractEntity {
 	@Column(columnName = "account_id")
 	private long accountId;
-	@Column(columnName = "name")
-	private String name;
 	@Column(columnName = "nick_name")
 	private String nickName;
 	@Column(columnName = "pic")
@@ -29,13 +27,13 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	public FivepkPlayerInfo() {
 	}
 
-	public FivepkPlayerInfo(long accountId, String name, String nickName) {
+	public FivepkPlayerInfo(long accountId, String nickName, byte pic) {
 		this.accountId = accountId;
-		this.name = name;
 		this.nickName = nickName;
+		this.pic = pic;
 		insertFieldsList.add("accountId");
-		insertFieldsList.add("name");
 		insertFieldsList.add("nickName");
+		insertFieldsList.add("pic");
 	}
 
 	public long getAccountId() {
@@ -71,15 +69,6 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	public void setScore(int score) {
 		this.score = score;
 		updateFieldsList.add("score");
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-		updateFieldsList.add("name");
 	}
 
 	public void firstInLastOut(int compareCard) {

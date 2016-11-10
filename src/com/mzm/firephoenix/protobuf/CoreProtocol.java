@@ -921,6 +921,46 @@ public final class CoreProtocol {
      * </pre>
      */
     ERROR_SMS_INVALID_PARAMETER(16, 1017),
+    /**
+     * <code>ERROR_ACCOUNT_RECONNECT = 1018;</code>
+     *
+     * <pre>
+     *请重新登录
+     * </pre>
+     */
+    ERROR_ACCOUNT_RECONNECT(17, 1018),
+    /**
+     * <code>ERROR_CARD_BET_SCORE_0 = 2000;</code>
+     *
+     * <pre>
+     *比倍分数不能为0
+     * </pre>
+     */
+    ERROR_CARD_BET_SCORE_0(18, 2000),
+    /**
+     * <code>ERROR_CARD_GUEST_COINSCORE = 2001;</code>
+     *
+     * <pre>
+     *游客不能存取分
+     * </pre>
+     */
+    ERROR_CARD_GUEST_COINSCORE(19, 2001),
+    /**
+     * <code>ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;</code>
+     *
+     * <pre>
+     *发牌下分分数不足
+     * </pre>
+     */
+    ERROR_CARD_BET_SCORE_NOT_ENOUGH(20, 2002),
+    /**
+     * <code>ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;</code>
+     *
+     * <pre>
+     *比倍下分分数不足
+     * </pre>
+     */
+    ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH(21, 2003),
     ;
 
     /**
@@ -1059,6 +1099,46 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int ERROR_SMS_INVALID_PARAMETER_VALUE = 1017;
+    /**
+     * <code>ERROR_ACCOUNT_RECONNECT = 1018;</code>
+     *
+     * <pre>
+     *请重新登录
+     * </pre>
+     */
+    public static final int ERROR_ACCOUNT_RECONNECT_VALUE = 1018;
+    /**
+     * <code>ERROR_CARD_BET_SCORE_0 = 2000;</code>
+     *
+     * <pre>
+     *比倍分数不能为0
+     * </pre>
+     */
+    public static final int ERROR_CARD_BET_SCORE_0_VALUE = 2000;
+    /**
+     * <code>ERROR_CARD_GUEST_COINSCORE = 2001;</code>
+     *
+     * <pre>
+     *游客不能存取分
+     * </pre>
+     */
+    public static final int ERROR_CARD_GUEST_COINSCORE_VALUE = 2001;
+    /**
+     * <code>ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;</code>
+     *
+     * <pre>
+     *发牌下分分数不足
+     * </pre>
+     */
+    public static final int ERROR_CARD_BET_SCORE_NOT_ENOUGH_VALUE = 2002;
+    /**
+     * <code>ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;</code>
+     *
+     * <pre>
+     *比倍下分分数不足
+     * </pre>
+     */
+    public static final int ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH_VALUE = 2003;
 
 
     public final int getNumber() {
@@ -1084,6 +1164,11 @@ public final class CoreProtocol {
         case 1015: return ERROR_SMS_EXPIRE;
         case 1016: return ERROR_SMS_WRONG;
         case 1017: return ERROR_SMS_INVALID_PARAMETER;
+        case 1018: return ERROR_ACCOUNT_RECONNECT;
+        case 2000: return ERROR_CARD_BET_SCORE_0;
+        case 2001: return ERROR_CARD_GUEST_COINSCORE;
+        case 2002: return ERROR_CARD_BET_SCORE_NOT_ENOUGH;
+        case 2003: return ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH;
         default: return null;
       }
     }
@@ -15896,7 +15981,7 @@ public final class CoreProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string pic = 1;</code>
+     * <code>required int32 pic = 1;</code>
      *
      * <pre>
      *头像
@@ -15904,22 +15989,13 @@ public final class CoreProtocol {
      */
     boolean hasPic();
     /**
-     * <code>required string pic = 1;</code>
+     * <code>required int32 pic = 1;</code>
      *
      * <pre>
      *头像
      * </pre>
      */
-    java.lang.String getPic();
-    /**
-     * <code>required string pic = 1;</code>
-     *
-     * <pre>
-     *头像
-     * </pre>
-     */
-    com.google.protobuf.ByteString
-        getPicBytes();
+    int getPic();
 
     /**
      * <code>required string nickname = 2;</code>
@@ -15993,7 +16069,7 @@ public final class CoreProtocol {
       super(builder);
     }
     private SCLogin() {
-      pic_ = "";
+      pic_ = 0;
       nickname_ = "";
       score_ = 0;
       coin_ = 0;
@@ -16026,10 +16102,9 @@ public final class CoreProtocol {
               }
               break;
             }
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+            case 8: {
               bitField0_ |= 0x00000001;
-              pic_ = bs;
+              pic_ = input.readInt32();
               break;
             }
             case 18: {
@@ -16075,9 +16150,9 @@ public final class CoreProtocol {
 
     private int bitField0_;
     public static final int PIC_FIELD_NUMBER = 1;
-    private volatile java.lang.Object pic_;
+    private int pic_;
     /**
-     * <code>required string pic = 1;</code>
+     * <code>required int32 pic = 1;</code>
      *
      * <pre>
      *头像
@@ -16087,45 +16162,14 @@ public final class CoreProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string pic = 1;</code>
+     * <code>required int32 pic = 1;</code>
      *
      * <pre>
      *头像
      * </pre>
      */
-    public java.lang.String getPic() {
-      java.lang.Object ref = pic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          pic_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string pic = 1;</code>
-     *
-     * <pre>
-     *头像
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getPicBytes() {
-      java.lang.Object ref = pic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        pic_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getPic() {
+      return pic_;
     }
 
     public static final int NICKNAME_FIELD_NUMBER = 2;
@@ -16253,7 +16297,7 @@ public final class CoreProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getPicBytes());
+        output.writeInt32(1, pic_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getNicknameBytes());
@@ -16275,7 +16319,7 @@ public final class CoreProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getPicBytes());
+          .computeInt32Size(1, pic_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -16401,7 +16445,7 @@ public final class CoreProtocol {
       }
       public Builder clear() {
         super.clear();
-        pic_ = "";
+        pic_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         nickname_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -16466,9 +16510,7 @@ public final class CoreProtocol {
       public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCLogin other) {
         if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCLogin.getDefaultInstance()) return this;
         if (other.hasPic()) {
-          bitField0_ |= 0x00000001;
-          pic_ = other.pic_;
-          onChanged();
+          setPic(other.getPic());
         }
         if (other.hasNickname()) {
           bitField0_ |= 0x00000002;
@@ -16518,9 +16560,9 @@ public final class CoreProtocol {
       }
       private int bitField0_;
 
-      private java.lang.Object pic_ = "";
+      private int pic_ ;
       /**
-       * <code>required string pic = 1;</code>
+       * <code>required int32 pic = 1;</code>
        *
        * <pre>
        *头像
@@ -16530,65 +16572,30 @@ public final class CoreProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string pic = 1;</code>
+       * <code>required int32 pic = 1;</code>
        *
        * <pre>
        *头像
        * </pre>
        */
-      public java.lang.String getPic() {
-        java.lang.Object ref = pic_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            pic_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getPic() {
+        return pic_;
       }
       /**
-       * <code>required string pic = 1;</code>
+       * <code>required int32 pic = 1;</code>
        *
        * <pre>
        *头像
        * </pre>
        */
-      public com.google.protobuf.ByteString
-          getPicBytes() {
-        java.lang.Object ref = pic_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          pic_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string pic = 1;</code>
-       *
-       * <pre>
-       *头像
-       * </pre>
-       */
-      public Builder setPic(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      public Builder setPic(int value) {
+        bitField0_ |= 0x00000001;
         pic_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string pic = 1;</code>
+       * <code>required int32 pic = 1;</code>
        *
        * <pre>
        *头像
@@ -16596,24 +16603,7 @@ public final class CoreProtocol {
        */
       public Builder clearPic() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        pic_ = getDefaultInstance().getPic();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string pic = 1;</code>
-       *
-       * <pre>
-       *头像
-       * </pre>
-       */
-      public Builder setPicBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        pic_ = value;
+        pic_ = 0;
         onChanged();
         return this;
       }
@@ -17416,7 +17406,7 @@ public final class CoreProtocol {
         getAccountBytes();
 
     /**
-     * <code>required string pic = 2;</code>
+     * <code>required int32 pic = 2;</code>
      *
      * <pre>
      *头像
@@ -17424,22 +17414,13 @@ public final class CoreProtocol {
      */
     boolean hasPic();
     /**
-     * <code>required string pic = 2;</code>
+     * <code>required int32 pic = 2;</code>
      *
      * <pre>
      *头像
      * </pre>
      */
-    java.lang.String getPic();
-    /**
-     * <code>required string pic = 2;</code>
-     *
-     * <pre>
-     *头像
-     * </pre>
-     */
-    com.google.protobuf.ByteString
-        getPicBytes();
+    int getPic();
 
     /**
      * <code>required string nickname = 3;</code>
@@ -17497,7 +17478,7 @@ public final class CoreProtocol {
     }
     private SCGuestLogin() {
       account_ = "";
-      pic_ = "";
+      pic_ = 0;
       nickname_ = "";
       score_ = 0;
     }
@@ -17535,10 +17516,9 @@ public final class CoreProtocol {
               account_ = bs;
               break;
             }
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+            case 16: {
               bitField0_ |= 0x00000002;
-              pic_ = bs;
+              pic_ = input.readInt32();
               break;
             }
             case 26: {
@@ -17633,9 +17613,9 @@ public final class CoreProtocol {
     }
 
     public static final int PIC_FIELD_NUMBER = 2;
-    private volatile java.lang.Object pic_;
+    private int pic_;
     /**
-     * <code>required string pic = 2;</code>
+     * <code>required int32 pic = 2;</code>
      *
      * <pre>
      *头像
@@ -17645,45 +17625,14 @@ public final class CoreProtocol {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string pic = 2;</code>
+     * <code>required int32 pic = 2;</code>
      *
      * <pre>
      *头像
      * </pre>
      */
-    public java.lang.String getPic() {
-      java.lang.Object ref = pic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          pic_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string pic = 2;</code>
-     *
-     * <pre>
-     *头像
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getPicBytes() {
-      java.lang.Object ref = pic_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        pic_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getPic() {
+      return pic_;
     }
 
     public static final int NICKNAME_FIELD_NUMBER = 3;
@@ -17795,7 +17744,7 @@ public final class CoreProtocol {
         output.writeBytes(1, getAccountBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getPicBytes());
+        output.writeInt32(2, pic_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getNicknameBytes());
@@ -17818,7 +17767,7 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getPicBytes());
+          .computeInt32Size(2, pic_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -17942,7 +17891,7 @@ public final class CoreProtocol {
         super.clear();
         account_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        pic_ = "";
+        pic_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         nickname_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -18010,9 +17959,7 @@ public final class CoreProtocol {
           onChanged();
         }
         if (other.hasPic()) {
-          bitField0_ |= 0x00000002;
-          pic_ = other.pic_;
-          onChanged();
+          setPic(other.getPic());
         }
         if (other.hasNickname()) {
           bitField0_ |= 0x00000004;
@@ -18162,9 +18109,9 @@ public final class CoreProtocol {
         return this;
       }
 
-      private java.lang.Object pic_ = "";
+      private int pic_ ;
       /**
-       * <code>required string pic = 2;</code>
+       * <code>required int32 pic = 2;</code>
        *
        * <pre>
        *头像
@@ -18174,65 +18121,30 @@ public final class CoreProtocol {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string pic = 2;</code>
+       * <code>required int32 pic = 2;</code>
        *
        * <pre>
        *头像
        * </pre>
        */
-      public java.lang.String getPic() {
-        java.lang.Object ref = pic_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            pic_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getPic() {
+        return pic_;
       }
       /**
-       * <code>required string pic = 2;</code>
+       * <code>required int32 pic = 2;</code>
        *
        * <pre>
        *头像
        * </pre>
        */
-      public com.google.protobuf.ByteString
-          getPicBytes() {
-        java.lang.Object ref = pic_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          pic_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string pic = 2;</code>
-       *
-       * <pre>
-       *头像
-       * </pre>
-       */
-      public Builder setPic(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+      public Builder setPic(int value) {
+        bitField0_ |= 0x00000002;
         pic_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string pic = 2;</code>
+       * <code>required int32 pic = 2;</code>
        *
        * <pre>
        *头像
@@ -18240,24 +18152,7 @@ public final class CoreProtocol {
        */
       public Builder clearPic() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        pic_ = getDefaultInstance().getPic();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string pic = 2;</code>
-       *
-       * <pre>
-       *头像
-       * </pre>
-       */
-      public Builder setPicBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        pic_ = value;
+        pic_ = 0;
         onChanged();
         return this;
       }
@@ -29750,11 +29645,11 @@ public final class CoreProtocol {
       "siter\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t" +
       "\022\r\n\005seoid\030\003 \001(\t\"\035\n\nSCRegister\022\017\n\007account" +
       "\030\001 \002(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010pa" +
-      "ssword\030\002 \002(\t\"E\n\007SCLogin\022\013\n\003pic\030\001 \002(\t\022\020\n\010" +
+      "ssword\030\002 \002(\t\"E\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010" +
       "nickname\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 " +
       "\001(\005\"\037\n\014CSGuestLogin\022\017\n\007account\030\001 \001(\t\"M\n\014" +
       "SCGuestLogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002 \002",
-      "(\t\022\020\n\010nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\"\034\n\014C" +
+      "(\005\022\020\n\010nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\"\034\n\014C" +
       "SPlayerInfo\022\014\n\004guid\030\001 \002(\t\"B\n\007CSCards\022\022\n\n" +
       "startIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\tho" +
       "ldCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardRate\030\001 \002" +
@@ -29800,8 +29695,8 @@ public final class CoreProtocol {
       "BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014\022\032\n\024CMD" +
       "_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PLAYER" +
       "_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021CMD_" +
-      "PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014*\246" +
-      "\003\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EXIT\020\351\007\022\025\n" +
+      "PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014*\333" +
+      "\004\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EXIT\020\351\007\022\025\n" +
       "\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PWD_WRONG\020" +
       "\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007\022\021\n\014ERROR_",
       "NOBIND\020\355\007\022\031\n\024ERROT_SIT_HAVEPLAYER\020\356\007\022\024\n\017" +
@@ -29811,8 +29706,13 @@ public final class CoreProtocol {
       "R_BET_LARGER\020\364\007\022\027\n\022ERROR_SIT_HAVESEAT\020\365\007" +
       "\022\026\n\021ERROR_DEPOSIT_MIN\020\366\007\022\025\n\020ERROR_SMS_EX" +
       "PIRE\020\367\007\022\024\n\017ERROR_SMS_WRONG\020\370\007\022 \n\033ERROR_S" +
-      "MS_INVALID_PARAMETER\020\371\007B,\n\034com.mzm.firep" +
-      "hoenix.protobufB\014CoreProtocol"
+      "MS_INVALID_PARAMETER\020\371\007\022\034\n\027ERROR_ACCOUNT" +
+      "_RECONNECT\020\372\007\022\033\n\026ERROR_CARD_BET_SCORE_0\020" +
+      "\320\017\022\037\n\032ERROR_CARD_GUEST_COINSCORE\020\321\017\022$\n\037E",
+      "RROR_CARD_BET_SCORE_NOT_ENOUGH\020\322\017\0221\n,ERR" +
+      "OR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUG" +
+      "H\020\323\017B,\n\034com.mzm.firephoenix.protobufB\014Co" +
+      "reProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

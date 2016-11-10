@@ -186,19 +186,19 @@ public class JdbcDaoSupport {
 		Entity entityAnnotation = (Entity) c.getAnnotation(Entity.class);
 		StringBuffer sql = new StringBuffer();
 		sql.append("select * from ").append(entityAnnotation.tableName()).append(" where ");
-		Field updateField = null;
+		Field queryField = null;
 		Column column = null;
 		try {
 			if (whereArgs == null) {
-				updateField = c.getDeclaredField(entityAnnotation.primaryKey());
-				updateField.setAccessible(true);
-				column = updateField.getDeclaredAnnotation(Column.class);
+				queryField = c.getDeclaredField(entityAnnotation.primaryKey());
+				queryField.setAccessible(true);
+				column = queryField.getDeclaredAnnotation(Column.class);
 				sql.append(column.columnName()).append(" = ?");
 			} else {
 				for (int i = 0; i < whereArgs.length; i++) {
-					updateField = c.getDeclaredField(whereArgs[i]);
-					updateField.setAccessible(true);
-					column = updateField.getDeclaredAnnotation(Column.class);
+					queryField = c.getDeclaredField(whereArgs[i]);
+					queryField.setAccessible(true);
+					column = queryField.getDeclaredAnnotation(Column.class);
 					sql.append(column.columnName()).append(" = ?").append(" and ");
 				}
 				sql.delete(sql.length() - 5, sql.length());

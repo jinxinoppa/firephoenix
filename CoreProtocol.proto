@@ -85,6 +85,12 @@ enum ErrorCode{
 	ERROR_SMS_EXPIRE = 1015;//验证码过期
 	ERROR_SMS_WRONG = 1016;//验证码错误
 	ERROR_SMS_INVALID_PARAMETER = 1017;//传递的参数不正确
+	ERROR_ACCOUNT_RECONNECT = 1018;//请重新登录
+	
+	ERROR_CARD_BET_SCORE_0 = 2000;//比倍分数不能为0
+	ERROR_CARD_GUEST_COINSCORE = 2001;//游客不能存取分
+	ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;//发牌下分分数不足
+	ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;//比倍下分分数不足
 }
 
 //协议内容，内部为每次通信的数据模型
@@ -187,7 +193,7 @@ message CSLogin{
 }
 
 message SCLogin{
-	required string pic = 1;//头像
+	required int32 pic = 1;//头像
 	required string nickname = 2;//昵称
 	required int32 score = 3;//分数
 	optional int32 coin = 4;//金币
@@ -200,7 +206,7 @@ message CSGuestLogin{
 
 message SCGuestLogin{
 	required string account = 1;//玩家账号
-	required string pic = 2;//头像
+	required int32 pic = 2;//头像
 	required string nickname = 3;//昵称
 	required int32 score = 4;//分数
 }
