@@ -3,10 +3,10 @@ package com.mzm.firephoenix.logic;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.mina.core.session.IoSession;
+import org.oppa.utils.cardutils.CardResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mzm.firephoenix.cardutils.CardResult;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 
@@ -21,7 +21,7 @@ public class OfflineLogic {
 		if (cr == null) {
 			return;
 		}
-		if (cr.getWin() > 0){
+		if (cr.getWin() > 0) {
 			long accountId = (long) session.getAttribute("accountId");
 			FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 			if (fivepkPlayerInfo == null) {

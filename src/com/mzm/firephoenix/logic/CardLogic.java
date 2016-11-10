@@ -5,11 +5,11 @@ import java.util.Arrays;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.mina.core.session.IoSession;
+import org.oppa.utils.cardutils.CardResult;
+import org.oppa.utils.cardutils.CardUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mzm.firephoenix.cardutils.CardResult;
-import com.mzm.firephoenix.cardutils.CardUtil;
 import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;

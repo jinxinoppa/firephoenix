@@ -11,12 +11,12 @@ public class SocketUtil {
 	public final static Log logger = LogFactory.getLog(SocketUtil.class);
 
 	public static void main(String args[]) throws UnsupportedEncodingException {
-//		byte[] b = short2bytes((short)-6);
-//		short s = bytes2short(b);
-//		System.out.println(s);
-		//142704644
+		// byte[] b = short2bytes((short)-6);
+		// short s = bytes2short(b);
+		// System.out.println(s);
+		// 142704644
 		//
-//		byte[] b = {8,81,80,4};
+		// byte[] b = {8,81,80,4};
 		byte[] b = int2bytes(25);
 		int a = byte2Int(b);
 		System.out.println(a);
@@ -48,13 +48,13 @@ public class SocketUtil {
 		}
 		return b;
 	}
-//	public static byte[] int2bytes(int num) {
-//		byte[] b = new byte[4];
-//		for (int i = 0, j = 3; i < 4; i++, j--) {
-//			b[i] = (byte) (num >>> (24 - j * 8));
-//		}
-//		return b;
-//	}
+	// public static byte[] int2bytes(int num) {
+	// byte[] b = new byte[4];
+	// for (int i = 0, j = 3; i < 4; i++, j--) {
+	// b[i] = (byte) (num >>> (24 - j * 8));
+	// }
+	// return b;
+	// }
 
 	public static int byte2Int(byte[] b) {
 		int mask = 0xff;
@@ -69,14 +69,14 @@ public class SocketUtil {
 	}
 
 	public static int bytesToInt(byte[] bytes) {
-		int value= 0;
-	       for (int i = 0; i < 4; i++) {
-	           int shift= (4 - 1 - i) * 8;
-	           value +=(bytes[i + 4] & 0x000000FF) << shift;
-	       }
-	       return value;
+		int value = 0;
+		for (int i = 0; i < 4; i++) {
+			int shift = (4 - 1 - i) * 8;
+			value += (bytes[i + 4] & 0x000000FF) << shift;
+		}
+		return value;
 	}
-	
+
 	public static byte[] createReturnMessage(short act, Object... args) {
 		byte[] actByte = short2bytes(act);
 		byte[] data = convert2Byte(true, args);
@@ -89,7 +89,7 @@ public class SocketUtil {
 			Object o = args[i];
 			byte[] temp = ArrayUtils.EMPTY_BYTE_ARRAY;
 			if (o.getClass().equals(Byte.class)) {
-				temp = new byte[] { (Byte) o };
+				temp = new byte[]{(Byte) o};
 			} else if (o.getClass().equals(Short.class)) {
 				temp = short2bytes((Short) o);
 			} else if (o.getClass().equals(Integer.class)) {
@@ -121,20 +121,23 @@ public class SocketUtil {
 		return data;
 	}
 
-	public static String getLogicName(int cmdNumber){
+	public static String getLogicName(int cmdNumber) {
 		switch (cmdNumber) {
-		case 65538:
-		case 65539:
-		case 65541:
-			return "account";
-		case 65543:
-		case 65544:
-		case 65545:
-		case 65546:
-		case 65547:
-			return "card";
-		default:
-			return null;
+			case 65538 :
+			case 65539 :
+			case 65541 :
+			case 131073 :
+			case 131074 :
+			case 131080 :
+				return "account";
+			case 65543 :
+			case 65544 :
+			case 65545 :
+			case 65546 :
+			case 65547 :
+				return "card";
+			default :
+				return null;
 		}
 	}
 }

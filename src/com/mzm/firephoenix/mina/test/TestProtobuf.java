@@ -17,15 +17,14 @@ public class TestProtobuf {
 		messageContentBuilder.setLcRetServer(lcRetServerBuilder);
 		CoreProtocol.CSDepositDraw.Builder csDepositDrawBuilder = CoreProtocol.CSDepositDraw.newBuilder();
 		csDepositDrawBuilder.setDrawGold(1);
-		messageContentBuilder.setCsDepositDraw(csDepositDrawBuilder);
 		messagePackBuilder.setContent(messageContentBuilder);
 		System.out.println(messagePackBuilder.getContent().toString());
 		String name = null;
 		for (FieldDescriptor string : messagePackBuilder.getContent().getAllFields().keySet()) {
-			if (string.getName().startsWith("sc") || string.getName().startsWith("cs")){
-				name = string.getName().substring(2);	
+			if (string.getName().startsWith("sc") || string.getName().startsWith("cs")) {
+				name = string.getName().substring(2);
 			}
 		}
-		FieldDescriptor scfd = (FieldDescriptor)messagePackBuilder.getContent().getField(MessageContent.getDescriptor().findFieldByName("sc" + name));
+		FieldDescriptor scfd = (FieldDescriptor) messagePackBuilder.getContent().getField(MessageContent.getDescriptor().findFieldByName("sc" + name));
 	}
 }

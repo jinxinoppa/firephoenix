@@ -34,3 +34,15 @@ alter table `fivepk_account` add column account_type smallint(1) default 0 COMME
 update fivepk_account set account_type = 1 where name is not null;
 
 alter table fivepk_player_info drop column name;
+
+//2016-11-10
+CREATE TABLE `fivepk_seo` (
+  `auto_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `seoid` varchar(50) NOT NULL,
+  `seo_machine_id` int(5) NOT NULL,
+  `seo_machine_type` smallint(1) DEFAULT 0,
+  `account_id` bigint(20) DEFAULT '0',
+  `seo_machine_stay_time` timestamp NULL,
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`auto_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

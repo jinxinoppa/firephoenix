@@ -19,7 +19,6 @@ import org.springframework.stereotype.Repository;
 import com.mzm.firephoenix.dao.entity.AbstractEntity;
 import com.mzm.firephoenix.dao.entity.Column;
 import com.mzm.firephoenix.dao.entity.Entity;
-import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 
 @Repository("jdbcDaoSupport")
 public class JdbcDaoSupport {
@@ -28,11 +27,6 @@ public class JdbcDaoSupport {
 
 	@Resource
 	JdbcTemplate jdbcTemplate;
-
-	@Deprecated
-	public int updateOrInsert(String sql) {
-		return jdbcTemplate.update(sql);
-	}
 
 	public void update(AbstractEntity entity) {
 		Class<? extends AbstractEntity> c = entity.getClass();
@@ -90,7 +84,7 @@ public class JdbcDaoSupport {
 			insertFieldsListField.setAccessible(true);
 			@SuppressWarnings("unchecked")
 			List<String> insertFieldsList = (List<String>) insertFieldsListField.get(entity);
-			if (!insertFieldsList.isEmpty()){
+			if (!insertFieldsList.isEmpty()) {
 				for (int i = 0; i < insertFieldsList.size(); i++) {
 					insertFieldName = insertFieldsList.get(i);
 					insertField = c.getDeclaredField(insertFieldName);
@@ -179,41 +173,68 @@ public class JdbcDaoSupport {
 		return query(requiredType, null, qm, null);
 	}
 
+	public List<String> queryGroupBy(@SuppressWarnings("rawtypes") Class requiredType, QueryMeta qm) {
+		assert null != requiredType;
+		@SuppressWarnings("unchecked")
+		Class<? extends AbstractEntity> c = (Class<? extends AbstractEntity>) requiredType;
+		Entity entityAnnotation = (Entity) c.getAnnotation(Entity.class);
+		StringBuffer sql = new StringBuffer();
+		sql.append("select " + qm.getGroupBy() + " from ").append(entityAnnotation.tableName()).append(" group by " + qm.getGroupBy());
+		logger.info(sql);
+
+		long start = System.currentTimeMillis();
+		List<String> list = null;
+		try {
+			list = jdbcTemplate.queryForList(sql.toString(), String.class);
+		} catch (DataAccessException ex) {
+			logger.error(ex, ex);
+			throw ex;
+		}
+		long diff = System.currentTimeMillis() - start;
+		if (diff > 1000) {
+			logger.info(requiredType + "----" + diff);
+		}
+		return list;
+	}
+
 	public <T> List<T> query(Class<T> requiredType, Object[] args, QueryMeta qm, String[] whereArgs) {
 		assert null != requiredType;
 		@SuppressWarnings("unchecked")
 		Class<? extends AbstractEntity> c = (Class<? extends AbstractEntity>) requiredType;
 		Entity entityAnnotation = (Entity) c.getAnnotation(Entity.class);
 		StringBuffer sql = new StringBuffer();
-		sql.append("select * from ").append(entityAnnotation.tableName()).append(" where ");
-		Field queryField = null;
-		Column column = null;
-		try {
-			if (whereArgs == null) {
-				queryField = c.getDeclaredField(entityAnnotation.primaryKey());
-				queryField.setAccessible(true);
-				column = queryField.getDeclaredAnnotation(Column.class);
-				sql.append(column.columnName()).append(" = ?");
-			} else {
-				for (int i = 0; i < whereArgs.length; i++) {
-					queryField = c.getDeclaredField(whereArgs[i]);
+		if (qm != null && StringUtils.isNotEmpty(qm.getGroupBy())) {
+			sql.append("select " + qm.getGroupBy() + " from ").append(entityAnnotation.tableName()).append(" group by " + qm.getGroupBy());
+		} else {
+			sql.append("select * from ").append(entityAnnotation.tableName()).append(" where ");
+			Field queryField = null;
+			Column column = null;
+			try {
+				if (whereArgs == null) {
+					queryField = c.getDeclaredField(entityAnnotation.primaryKey());
 					queryField.setAccessible(true);
 					column = queryField.getDeclaredAnnotation(Column.class);
-					sql.append(column.columnName()).append(" = ?").append(" and ");
+					sql.append(column.columnName()).append(" = ?");
+				} else {
+					for (int i = 0; i < whereArgs.length; i++) {
+						queryField = c.getDeclaredField(whereArgs[i]);
+						queryField.setAccessible(true);
+						column = queryField.getDeclaredAnnotation(Column.class);
+						sql.append(column.columnName()).append(" = ?").append(" and ");
+					}
+					sql.delete(sql.length() - 5, sql.length());
 				}
-				sql.delete(sql.length() - 5, sql.length());
-			}
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException e) {
-			e.printStackTrace();
-		};
-		if (null != qm) {
-			if (StringUtils.isNotEmpty(qm.getSort())) {
-				sql.append(" order by " + qm.getSort() + " " + qm.getDir());
-			}
-			if (0 <= qm.getFirstResult() && 0 < qm.getMaxResults() && 0 <= qm.getLastResult()) {
-				sql.append(" limit ?,?");
-				args = ArrayUtils.addAll(args, new Object[]{qm.getFirstResult(), qm.getMaxResults()});
-
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException e) {
+				e.printStackTrace();
+			};
+			if (null != qm) {
+				if (StringUtils.isNotEmpty(qm.getSort())) {
+					sql.append(" order by " + qm.getSort() + " " + qm.getDir());
+				}
+				if (0 <= qm.getFirstResult() && 0 < qm.getMaxResults() && 0 <= qm.getLastResult()) {
+					sql.append(" limit ?,?");
+					args = ArrayUtils.addAll(args, new Object[]{qm.getFirstResult(), qm.getMaxResults()});
+				}
 			}
 		}
 		logger.info(sql);
@@ -237,10 +258,12 @@ public class JdbcDaoSupport {
 			Field updateFieldsListField;
 			try {
 				updateFieldsListField = abstractEntity.getDeclaredField("updateFieldsList");
-				updateFieldsListField.setAccessible(true);
-				@SuppressWarnings("unchecked")
-				List<String> updateFieldsList = (List<String>) updateFieldsListField.get(t);
-				updateFieldsList.clear();
+				if (updateFieldsListField != null) {
+					updateFieldsListField.setAccessible(true);
+					@SuppressWarnings("unchecked")
+					List<String> updateFieldsList = (List<String>) updateFieldsListField.get(t);
+					updateFieldsList.clear();
+				}
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
 			}

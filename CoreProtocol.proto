@@ -2,7 +2,7 @@ syntax = "proto2";
 option java_package = "com.mzm.firephoenix.protobuf";
 option java_outer_classname = "CoreProtocol";
 
-import "GameProtocol.proto";
+//import "GameProtocol.proto";
 
 //协议包，内部可包含多条协议内容
 message MessagePack {
@@ -35,7 +35,7 @@ enum Cmd {
     CMD_MACHINE_ENTER       =  0x020005;  //选择机台
     CMD_MACHINE_LEAVE      =  0x020006;  //离开机台
     CMD_MACHINE_STAY    =  0x020007;  //是否留机
-    CMD_PLAYER_KICK    =  0x020008;  //绑定账号
+    CMD_PLAYER_BINDING    =  0x020008;  //绑定账号
     
     
 	
@@ -94,6 +94,8 @@ enum ErrorCode{
 	ERROR_CARD_GUEST_COINSCORE = 2001;//游客不能存取分
 	ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;//发牌下分分数不足
 	ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;//比倍下分分数不足
+	ERROR_NO_BUILDING = 2004;//已经绑定的玩家不能再次绑定
+	ERROR_NO_NULL_NICK_NAME = 2005;//昵称不能为空
 }
 
 //协议内容，内部为每次通信的数据模型
@@ -121,55 +123,14 @@ message MessageContent {
 	optional CCNickName ccNickName                     = 18;//修改玩家昵称
 	optional CCHeadPic ccHeadPic                     = 19;//修改头像
 	
-	optional SCMachineList  scMachineList    = 21;//机台列表
+	optional SCMachineList  scMachineList    = 20;//机台列表
 	
-	optional SCMachineInfo scMachineInfo         = 26;//单台机台信息
-	optional CCEnterMachine ccEnterMachine         = 27;//选择机台
+	optional SCMachineInfo scMachineInfo         = 21;//单台机台信息
+	optional CCEnterMachine ccEnterMachine         = 22;//选择机台
 	 
-	optional CCLeaveMachine ccLeaveMachine           	 = 29;//离开机台
-	optional CCMachineStay ccMachineStay           	 = 33;//是否留机
-	optional SCSignList signList     = 30;//签到列表
-	optional SCSign  scSgin 		 = 31;//下发签到奖励
-
-	optional SCNotice scNotice       = 32;//公告列表
-
-	optional SCRoomStatis scRoomStatis = 34;//下发房间统计信息
-
-	optional SCQZList  scQZlist = 35;//抢庄列表
-
-	optional SCZhuang scZhuang = 36;//抢庄
-
-	optional SCDownZhuang scDownZhuang = 37;//下庄
-
-	optional SCHeart scHeart = 38;//心跳
-
-	optional SCPlayerResultList scPlayerChangeList = 39;//牌局玩家变化
-
-	optional SCRoomUidList scUidList = 40;
-
-	optional CSRoomPlayer  csRoomPlayer = 41;
-
-	optional SCRoomPlayer scRoomPlayer = 42;
-
-	optional SCCardInfo scCardInfo = 43;
-
-	optional SCPaiBaseInfo scPaiBaseInfo = 44;
-
-	optional SCPaiInfo3  scPaiInfo3 = 45;
-
-	optional CSDepositStore csDepositStore = 46;//存保险箱
-	optional SCDepositStore scDepositStore = 47;
-
-	optional CSDepositDraw csDepositDraw = 48;//取钱
-	optional SCDepositDraw scDepositDraw = 49;
-
-	optional CSDepositGive csDepositGive = 50;//赠送 
-	optional SCDepositGive scDepositGive = 51;
-
-	optional SCDepositReceive scDepositReceive = 52;//接收
-
-	optional CSSMS csSMS = 53;//发送短信
-
+	optional CCLeaveMachine ccLeaveMachine           	 = 23;//离开机台
+	optional CCMachineStay ccMachineStay           	 = 24;//是否留机
+	optional CCBinding ccBinding     = 25;//绑定账号
 }
 
 //请求游戏服务器信息
@@ -273,7 +234,8 @@ message SCMachineList{
 message SCMachineInfo{
 	required int32 machineId = 1;//机台id
 	required int32 machineType = 2;//0-待机1-在线2-留机
-	optional string nickName = 3;//在线玩家昵称
+	optional int32 pic = 3;//头像
+	optional string nickName = 4;//在线玩家昵称
 }
 
 message CCEnterMachine{
@@ -287,6 +249,12 @@ message CCLeaveMachine {
 message CCMachineStay {
 	required int32 machineId = 1;//机台id
 	optional int32 machineType = 2;//0-取消留机1-留机
+}
+
+message CCBinding {
+	required string account = 1;//账号
+	required string password = 2;//密码
+	required string seoid= 3;//推广码
 }
 
 message CSPlayerUpdate{

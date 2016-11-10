@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -19,10 +20,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
+import com.mzm.firephoenix.dao.QueryMeta;
 import com.mzm.firephoenix.dao.entity.AbstractEntity;
 import com.mzm.firephoenix.dao.entity.Column;
 import com.mzm.firephoenix.dao.entity.Entity;
 import com.mzm.firephoenix.dao.entity.FivepkAccount;
+import com.mzm.firephoenix.dao.entity.FivepkSeoIdList;
 import com.mzm.firephoenix.junits.BaseTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -125,14 +128,12 @@ System.out.println(sql);
 	@Test
 	public void saveTest() {
 		String sql = "insert into `fivepk_player_info` (account_id, name, nick_name) values (" + 1 + ", " + 2 + ", \"玩家@" + 1 + "\")";
-		int i = jdbcDaoSupport.updateOrInsert(sql);
 	}
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void selectTest() {
-//		TableTest tableTest = jdbcDaoSupport.queryOne("select * from table_test where column_a = ?", TableTest.class, new Object[]{11});
-//		System.out.println(tableTest.getColumnA());
+		List<String> list = jdbcDaoSupport.queryGroupBy(FivepkSeoIdList.class, new QueryMeta("seoid"));
 	}
 
 	@Ignore
@@ -147,7 +148,6 @@ System.out.println(sql);
 	@Ignore
 	@Test
 	public void updateTest() {
-		jdbcDaoSupport.updateOrInsert("update `table_test` set column_g = 'abcd' where column_a = 14");
 	}
 
 	@Ignore

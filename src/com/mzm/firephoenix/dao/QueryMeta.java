@@ -14,12 +14,15 @@ public final class QueryMeta {
 
 	private final int maxResults;
 
+	private final String groupBy;
+
 	public QueryMeta(int first, int max) {
 		this.firstResult = first;
 		this.lastResult = first + max;
 		this.maxResults = max;
 		this.sort = null;
 		this.dir = null;
+		this.groupBy = null;
 	}
 
 	public QueryMeta(int first, int max, String sort, Order order) {
@@ -28,6 +31,7 @@ public final class QueryMeta {
 		this.maxResults = max;
 		this.sort = sort;
 		this.dir = order;
+		this.groupBy = null;
 	}
 
 	public QueryMeta(String sort, Order order) {
@@ -36,6 +40,16 @@ public final class QueryMeta {
 		this.firstResult = 0;
 		this.lastResult = 0;
 		this.maxResults = 0;
+		this.groupBy = null;
+	}
+
+	public QueryMeta(String groupBy) {
+		this.firstResult = 0;
+		this.lastResult = 0;
+		this.maxResults = 0;
+		this.sort = null;
+		this.dir = null;
+		this.groupBy = groupBy;
 	}
 
 	public String getSort() {
@@ -56,5 +70,9 @@ public final class QueryMeta {
 
 	public int getLastResult() {
 		return lastResult;
+	}
+
+	public String getGroupBy() {
+		return groupBy;
 	}
 }
