@@ -82,9 +82,7 @@ enum ErrorCode{
 	ERROR_ROOM_NOT_EXIT = 1011;//房间不存在
 	ERROR_BET_LARGER = 1012;//下注已经超过上限
 	ERROR_SIT_HAVESEAT = 1013;//你必须站起来才能再次坐下 
-
 	ERROR_DEPOSIT_MIN = 1014;//保险箱金币数量太小，无法赠送
-
 	ERROR_SMS_EXPIRE = 1015;//验证码过期
 	ERROR_SMS_WRONG = 1016;//验证码错误
 	ERROR_SMS_INVALID_PARAMETER = 1017;//传递的参数不正确
@@ -96,6 +94,8 @@ enum ErrorCode{
 	ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;//比倍下分分数不足
 	ERROR_NO_BUILDING = 2004;//已经绑定的玩家不能再次绑定
 	ERROR_NO_NULL_NICK_NAME = 2005;//昵称不能为空
+	ERROR_NO_LOGIN_SEOID = 2006;//代理商没有注册
+	ERROR_NICK_NAME_COUNT = 2007;//昵称只能修改一次
 }
 
 //协议内容，内部为每次通信的数据模型
@@ -161,6 +161,7 @@ message SCLogin{
 	required string nickname = 2;//昵称
 	required int32 score = 3;//分数
 	optional int32 coin = 4;//金币
+	required int32 nickNameCount = 5;//修改昵称次数
 }
 
 //游客登录
@@ -173,6 +174,7 @@ message SCGuestLogin{
 	required int32 pic = 2;//头像
 	required string nickname = 3;//昵称
 	required int32 score = 4;//分数
+	required int32 nickNameCount = 5;//修改昵称次数
 }
 
 message CSPlayerInfo{

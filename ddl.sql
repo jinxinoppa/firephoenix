@@ -46,3 +46,6 @@ CREATE TABLE `fivepk_seo` (
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`auto_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+//2016-11-11
+alter table `fivepk_player_info` add column nick_name_count int(5) DEFAULT 0;

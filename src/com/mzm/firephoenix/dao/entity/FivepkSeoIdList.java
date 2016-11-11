@@ -1,8 +1,5 @@
 package com.mzm.firephoenix.dao.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity(tableName = "fivepk_seo")
 public class FivepkSeoIdList extends AbstractEntity {
 	@Column(columnName = "seoid")

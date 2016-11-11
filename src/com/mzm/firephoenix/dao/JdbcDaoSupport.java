@@ -36,7 +36,7 @@ public class JdbcDaoSupport {
 		String updateFieldName = null;
 		Field updateField = null;
 		try {
-			Field updateFieldsListField = c.getDeclaredField("updateFieldsList");
+			Field updateFieldsListField = c.getField("updateFieldsList");
 			updateFieldsListField.setAccessible(true);
 			@SuppressWarnings("unchecked")
 			List<String> updateFieldsList = (List<String>) updateFieldsListField.get(entity);
@@ -65,7 +65,7 @@ public class JdbcDaoSupport {
 			logger.info(sqlStr);
 			jdbcTemplate.update(sqlStr);
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
+			logger.error(e, e);
 		}
 	}
 
@@ -80,7 +80,7 @@ public class JdbcDaoSupport {
 		String insertFieldName = null;
 		Field insertField = null;
 		try {
-			Field insertFieldsListField = c.getDeclaredField("insertFieldsList");
+			Field insertFieldsListField = c.getField("insertFieldsList");
 			insertFieldsListField.setAccessible(true);
 			@SuppressWarnings("unchecked")
 			List<String> insertFieldsList = (List<String>) insertFieldsListField.get(entity);
@@ -125,7 +125,7 @@ public class JdbcDaoSupport {
 				}
 			}
 		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-			e.printStackTrace();
+			logger.error(e, e);
 		}
 		valueSb.deleteCharAt(valueSb.lastIndexOf(",")).deleteCharAt(valueSb.lastIndexOf(" ")).append("); ");
 		columnSb.deleteCharAt(columnSb.lastIndexOf(",")).deleteCharAt(columnSb.lastIndexOf(" ")).append(") ").append(valueSb.toString());
@@ -188,7 +188,6 @@ public class JdbcDaoSupport {
 			list = jdbcTemplate.queryForList(sql.toString(), String.class);
 		} catch (DataAccessException ex) {
 			logger.error(ex, ex);
-			throw ex;
 		}
 		long diff = System.currentTimeMillis() - start;
 		if (diff > 1000) {
@@ -203,38 +202,34 @@ public class JdbcDaoSupport {
 		Class<? extends AbstractEntity> c = (Class<? extends AbstractEntity>) requiredType;
 		Entity entityAnnotation = (Entity) c.getAnnotation(Entity.class);
 		StringBuffer sql = new StringBuffer();
-		if (qm != null && StringUtils.isNotEmpty(qm.getGroupBy())) {
-			sql.append("select " + qm.getGroupBy() + " from ").append(entityAnnotation.tableName()).append(" group by " + qm.getGroupBy());
-		} else {
-			sql.append("select * from ").append(entityAnnotation.tableName()).append(" where ");
-			Field queryField = null;
-			Column column = null;
-			try {
-				if (whereArgs == null) {
-					queryField = c.getDeclaredField(entityAnnotation.primaryKey());
+		sql.append("select * from ").append(entityAnnotation.tableName()).append(" where ");
+		Field queryField = null;
+		Column column = null;
+		try {
+			if (whereArgs == null) {
+				queryField = c.getDeclaredField(entityAnnotation.primaryKey());
+				queryField.setAccessible(true);
+				column = queryField.getDeclaredAnnotation(Column.class);
+				sql.append(column.columnName()).append(" = ?");
+			} else {
+				for (int i = 0; i < whereArgs.length; i++) {
+					queryField = c.getDeclaredField(whereArgs[i]);
 					queryField.setAccessible(true);
 					column = queryField.getDeclaredAnnotation(Column.class);
-					sql.append(column.columnName()).append(" = ?");
-				} else {
-					for (int i = 0; i < whereArgs.length; i++) {
-						queryField = c.getDeclaredField(whereArgs[i]);
-						queryField.setAccessible(true);
-						column = queryField.getDeclaredAnnotation(Column.class);
-						sql.append(column.columnName()).append(" = ?").append(" and ");
-					}
-					sql.delete(sql.length() - 5, sql.length());
+					sql.append(column.columnName()).append(" = ?").append(" and ");
 				}
-			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException e) {
-				e.printStackTrace();
-			};
-			if (null != qm) {
-				if (StringUtils.isNotEmpty(qm.getSort())) {
-					sql.append(" order by " + qm.getSort() + " " + qm.getDir());
-				}
-				if (0 <= qm.getFirstResult() && 0 < qm.getMaxResults() && 0 <= qm.getLastResult()) {
-					sql.append(" limit ?,?");
-					args = ArrayUtils.addAll(args, new Object[]{qm.getFirstResult(), qm.getMaxResults()});
-				}
+				sql.delete(sql.length() - 5, sql.length());
+			}
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException e) {
+			logger.error(e, e);
+		};
+		if (null != qm) {
+			if (StringUtils.isNotEmpty(qm.getSort())) {
+				sql.append(" order by " + qm.getSort() + " " + qm.getDir());
+			}
+			if (0 <= qm.getFirstResult() && 0 < qm.getMaxResults() && 0 <= qm.getLastResult()) {
+				sql.append(" limit ?,?");
+				args = ArrayUtils.addAll(args, new Object[]{qm.getFirstResult(), qm.getMaxResults()});
 			}
 		}
 		logger.info(sql);
@@ -257,15 +252,13 @@ public class JdbcDaoSupport {
 			Class<? extends AbstractEntity> abstractEntity = (Class<? extends AbstractEntity>) t.getClass();
 			Field updateFieldsListField;
 			try {
-				updateFieldsListField = abstractEntity.getDeclaredField("updateFieldsList");
-				if (updateFieldsListField != null) {
-					updateFieldsListField.setAccessible(true);
-					@SuppressWarnings("unchecked")
-					List<String> updateFieldsList = (List<String>) updateFieldsListField.get(t);
-					updateFieldsList.clear();
-				}
+				updateFieldsListField = abstractEntity.getField("updateFieldsList");
+				updateFieldsListField.setAccessible(true);
+				@SuppressWarnings("unchecked")
+				List<String> updateFieldsList = (List<String>) updateFieldsListField.get(t);
+				updateFieldsList.clear();
 			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-				e.printStackTrace();
+				logger.error(e, e);
 			}
 		}
 		return list;

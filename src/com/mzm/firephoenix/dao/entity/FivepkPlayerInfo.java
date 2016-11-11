@@ -1,8 +1,5 @@
 package com.mzm.firephoenix.dao.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity(tableName = "fivepk_player_info", primaryKey = "accountId")
 public class FivepkPlayerInfo extends AbstractEntity {
 	@Column(columnName = "account_id")
@@ -17,12 +14,8 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	private int score;
 	@Column(columnName = "compare_history_cards")
 	private String compareHistoryCards;
-	@Column(isContinue = true)
-	private List<Integer> compareHistoryCardsList = new ArrayList<Integer>(6);
-	@Column(isContinue = true)
-	private List<String> updateFieldsList = new ArrayList<String>(6);
-	@Column(isContinue = true)
-	private List<String> insertFieldsList = new ArrayList<String>(6);
+	@Column(columnName = "nick_name_count")
+	private int nickNameCount;
 
 	public FivepkPlayerInfo() {
 	}
@@ -99,5 +92,14 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	public void setCoin(int coin) {
 		this.coin = coin;
 		updateFieldsList.add("coin");
+	}
+
+	public int getNickNameCount() {
+		return nickNameCount;
+	}
+
+	public void setNickNameCount(int nickNameCount) {
+		this.nickNameCount = nickNameCount;
+		updateFieldsList.add("nickNameCount");
 	}
 }

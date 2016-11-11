@@ -7,6 +7,8 @@ import org.oppa.utils.cardutils.CardResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.mzm.firephoenix.cache.GameCache;
+import com.mzm.firephoenix.cache.PlayerInfo;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 
@@ -17,12 +19,15 @@ public class OfflineLogic {
 	JdbcDaoSupport jdbcDaoSupport;
 
 	public void sessionClosed(IoSession session) {
+		long accountId = (long) session.getAttribute("accountId");
+		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+		GameCache.removeIoSession(playerInfo.getSeoId(), session);
+		GameCache.removePlayerInfo(accountId);
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
 			return;
 		}
 		if (cr.getWin() > 0) {
-			long accountId = (long) session.getAttribute("accountId");
 			FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 			if (fivepkPlayerInfo == null) {
 				return;
@@ -30,5 +35,6 @@ public class OfflineLogic {
 			fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet());
 			jdbcDaoSupport.update(fivepkPlayerInfo);
 		}
+
 	}
 }

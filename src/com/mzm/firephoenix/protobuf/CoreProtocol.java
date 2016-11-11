@@ -977,6 +977,22 @@ public final class CoreProtocol {
      * </pre>
      */
     ERROR_NO_NULL_NICK_NAME(23, 2005),
+    /**
+     * <code>ERROR_NO_LOGIN_SEOID = 2006;</code>
+     *
+     * <pre>
+     *代理商没有注册
+     * </pre>
+     */
+    ERROR_NO_LOGIN_SEOID(24, 2006),
+    /**
+     * <code>ERROR_NICK_NAME_COUNT = 2007;</code>
+     *
+     * <pre>
+     *昵称只能修改一次
+     * </pre>
+     */
+    ERROR_NICK_NAME_COUNT(25, 2007),
     ;
 
     /**
@@ -1171,6 +1187,22 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int ERROR_NO_NULL_NICK_NAME_VALUE = 2005;
+    /**
+     * <code>ERROR_NO_LOGIN_SEOID = 2006;</code>
+     *
+     * <pre>
+     *代理商没有注册
+     * </pre>
+     */
+    public static final int ERROR_NO_LOGIN_SEOID_VALUE = 2006;
+    /**
+     * <code>ERROR_NICK_NAME_COUNT = 2007;</code>
+     *
+     * <pre>
+     *昵称只能修改一次
+     * </pre>
+     */
+    public static final int ERROR_NICK_NAME_COUNT_VALUE = 2007;
 
 
     public final int getNumber() {
@@ -1203,6 +1235,8 @@ public final class CoreProtocol {
         case 2003: return ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH;
         case 2004: return ERROR_NO_BUILDING;
         case 2005: return ERROR_NO_NULL_NICK_NAME;
+        case 2006: return ERROR_NO_LOGIN_SEOID;
+        case 2007: return ERROR_NICK_NAME_COUNT;
         default: return null;
       }
     }
@@ -11184,6 +11218,23 @@ public final class CoreProtocol {
      * </pre>
      */
     int getCoin();
+
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    boolean hasNickNameCount();
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    int getNickNameCount();
   }
   /**
    * Protobuf type {@code SCLogin}
@@ -11201,6 +11252,7 @@ public final class CoreProtocol {
       nickname_ = "";
       score_ = 0;
       coin_ = 0;
+      nickNameCount_ = 0;
     }
 
     @java.lang.Override
@@ -11249,6 +11301,11 @@ public final class CoreProtocol {
             case 32: {
               bitField0_ |= 0x00000008;
               coin_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              nickNameCount_ = input.readInt32();
               break;
             }
           }
@@ -11400,6 +11457,29 @@ public final class CoreProtocol {
       return coin_;
     }
 
+    public static final int NICKNAMECOUNT_FIELD_NUMBER = 5;
+    private int nickNameCount_;
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    public boolean hasNickNameCount() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    public int getNickNameCount() {
+      return nickNameCount_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -11415,6 +11495,10 @@ public final class CoreProtocol {
         return false;
       }
       if (!hasScore()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNickNameCount()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -11435,6 +11519,9 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, coin_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, nickNameCount_);
       }
       unknownFields.writeTo(output);
     }
@@ -11460,6 +11547,10 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, coin_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, nickNameCount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -11581,6 +11672,8 @@ public final class CoreProtocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         coin_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        nickNameCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -11621,6 +11714,10 @@ public final class CoreProtocol {
           to_bitField0_ |= 0x00000008;
         }
         result.coin_ = coin_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.nickNameCount_ = nickNameCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11651,6 +11748,9 @@ public final class CoreProtocol {
         if (other.hasCoin()) {
           setCoin(other.getCoin());
         }
+        if (other.hasNickNameCount()) {
+          setNickNameCount(other.getNickNameCount());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -11664,6 +11764,9 @@ public final class CoreProtocol {
           return false;
         }
         if (!hasScore()) {
+          return false;
+        }
+        if (!hasNickNameCount()) {
           return false;
         }
         return true;
@@ -11928,6 +12031,54 @@ public final class CoreProtocol {
       public Builder clearCoin() {
         bitField0_ = (bitField0_ & ~0x00000008);
         coin_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int nickNameCount_ ;
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public boolean hasNickNameCount() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public int getNickNameCount() {
+        return nickNameCount_;
+      }
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public Builder setNickNameCount(int value) {
+        bitField0_ |= 0x00000010;
+        nickNameCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public Builder clearNickNameCount() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        nickNameCount_ = 0;
         onChanged();
         return this;
       }
@@ -12592,6 +12743,23 @@ public final class CoreProtocol {
      * </pre>
      */
     int getScore();
+
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    boolean hasNickNameCount();
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    int getNickNameCount();
   }
   /**
    * Protobuf type {@code SCGuestLogin}
@@ -12609,6 +12777,7 @@ public final class CoreProtocol {
       pic_ = 0;
       nickname_ = "";
       score_ = 0;
+      nickNameCount_ = 0;
     }
 
     @java.lang.Override
@@ -12658,6 +12827,11 @@ public final class CoreProtocol {
             case 32: {
               bitField0_ |= 0x00000008;
               score_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              nickNameCount_ = input.readInt32();
               break;
             }
           }
@@ -12840,6 +13014,29 @@ public final class CoreProtocol {
       return score_;
     }
 
+    public static final int NICKNAMECOUNT_FIELD_NUMBER = 5;
+    private int nickNameCount_;
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    public boolean hasNickNameCount() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 nickNameCount = 5;</code>
+     *
+     * <pre>
+     *修改昵称次数
+     * </pre>
+     */
+    public int getNickNameCount() {
+      return nickNameCount_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -12862,6 +13059,10 @@ public final class CoreProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasNickNameCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -12879,6 +13080,9 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, score_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, nickNameCount_);
       }
       unknownFields.writeTo(output);
     }
@@ -12904,6 +13108,10 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, score_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, nickNameCount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -13025,6 +13233,8 @@ public final class CoreProtocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         score_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        nickNameCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -13065,6 +13275,10 @@ public final class CoreProtocol {
           to_bitField0_ |= 0x00000008;
         }
         result.score_ = score_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.nickNameCount_ = nickNameCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13097,6 +13311,9 @@ public final class CoreProtocol {
         if (other.hasScore()) {
           setScore(other.getScore());
         }
+        if (other.hasNickNameCount()) {
+          setNickNameCount(other.getNickNameCount());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -13113,6 +13330,9 @@ public final class CoreProtocol {
           return false;
         }
         if (!hasScore()) {
+          return false;
+        }
+        if (!hasNickNameCount()) {
           return false;
         }
         return true;
@@ -13429,6 +13649,54 @@ public final class CoreProtocol {
       public Builder clearScore() {
         bitField0_ = (bitField0_ & ~0x00000008);
         score_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int nickNameCount_ ;
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public boolean hasNickNameCount() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public int getNickNameCount() {
+        return nickNameCount_;
+      }
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public Builder setNickNameCount(int value) {
+        bitField0_ |= 0x00000010;
+        nickNameCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 nickNameCount = 5;</code>
+       *
+       * <pre>
+       *修改昵称次数
+       * </pre>
+       */
+      public Builder clearNickNameCount() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        nickNameCount_ = 0;
         onChanged();
         return this;
       }
@@ -28745,83 +29013,86 @@ public final class CoreProtocol {
       "siter\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t" +
       "\022\r\n\005seoid\030\003 \001(\t\"\035\n\nSCRegister\022\017\n\007account" +
       "\030\001 \002(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010pa" +
-      "ssword\030\002 \002(\t\"E\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010" +
+      "ssword\030\002 \002(\t\"\\\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010" +
       "nickname\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 ",
-      "\001(\005\"\037\n\014CSGuestLogin\022\017\n\007account\030\001 \001(\t\"M\n\014" +
-      "SCGuestLogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002 \002" +
-      "(\005\022\020\n\010nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\"\034\n\014C" +
-      "SPlayerInfo\022\014\n\004guid\030\001 \002(\t\"B\n\007CSCards\022\022\n\n" +
-      "startIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\tho" +
-      "ldCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardRate\030\001 \002" +
-      "(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 \001(\t\"&\n\025" +
-      "CCCompareHistoryCards\022\r\n\005cards\030\001 \002(\t\"3\n\r" +
-      "CSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020\n\010betSc" +
-      "ore\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013compareCar",
-      "d\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\"\024\n\005CSWin\022\013\n\003wi" +
-      "n\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 \002(\005\022\014\n" +
-      "\004coin\030\002 \002(\005\"\036\n\nCCNickName\022\020\n\010nickName\030\001 " +
-      "\002(\t\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"6\n\rSCM" +
-      "achineList\022%\n\rscMachineInfo\030\001 \003(\0132\016.SCMa" +
-      "chineInfo\"V\n\rSCMachineInfo\022\021\n\tmachineId\030" +
-      "\001 \002(\005\022\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030\003 \001(\005\022" +
-      "\020\n\010nickName\030\004 \001(\t\"#\n\016CCEnterMachine\022\021\n\tm" +
-      "achineId\030\001 \002(\005\"#\n\016CCLeaveMachine\022\021\n\tmach" +
-      "ineId\030\001 \002(\005\"7\n\rCCMachineStay\022\021\n\tmachineI",
-      "d\030\001 \002(\005\022\023\n\013machineType\030\002 \001(\005\"=\n\tCCBindin" +
-      "g\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n\005" +
-      "seoid\030\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010nicknam" +
-      "e\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003 \001(\t\022\016" +
-      "\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSDeposit" +
-      "Store\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositStore\022\014\n" +
-      "\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCSDeposi" +
-      "tDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDepositDraw" +
-      "\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n\rCSDep" +
-      "ositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010drawGold\030\002",
-      " \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002 \001(\005\"V" +
-      "\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001(\t\022\021\n\t" +
-      "receiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007deposit" +
-      "\030\004 \001(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t*\240\007\n\003Cmd\022" +
-      "\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTER\020\202\200\004" +
-      "\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGIN\020\205\200\004" +
-      "\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\tCMD_" +
-      "CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022\037\n\031CM" +
-      "D_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_WIN\020\212" +
-      "\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\032\n\024CMD_PLAYER_N",
-      "ICK_NAME\020\201\200\010\022\024\n\016CMD_PLAYER_PIC\020\202\200\010\022\026\n\020CM" +
-      "D_MACHINE_LIST\020\203\200\010\022\026\n\020CMD_MACHINE_INFO\020\204" +
-      "\200\010\022\027\n\021CMD_MACHINE_ENTER\020\205\200\010\022\027\n\021CMD_MACHI" +
-      "NE_LEAVE\020\206\200\010\022\026\n\020CMD_MACHINE_STAY\020\207\200\010\022\030\n\022" +
-      "CMD_PLAYER_BINDING\020\210\200\010\022\027\n\021CMD_DEPOSIT_ST" +
-      "ORE\020\211\200\010\022\026\n\020CMD_DEPOSIT_DRAW\020\212\200\010\022\026\n\020CMD_D" +
-      "EPOSIT_GIVE\020\213\200\010\022\031\n\023CMD_DEPOSIT_RECEIVE\020\214" +
-      "\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUTROOM\020\202" +
-      "\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAIINFO\020\204\200" +
-      "\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014\022\024\n\016C",
-      "MD_ROB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022\016\n\010CM" +
-      "D_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014\022\021\n\013CM" +
-      "D_QZ_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222\200\014\022\022\n\014" +
-      "CMD_BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014\022\032\n" +
-      "\024CMD_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PL" +
-      "AYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021" +
-      "CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243" +
-      "\200\014*\221\005\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EXIT\020\351" +
-      "\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PWD_WR" +
-      "ONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007\022\021\n\014ER",
-      "ROR_NOBIND\020\355\007\022\031\n\024ERROT_SIT_HAVEPLAYER\020\356\007" +
-      "\022\024\n\017ERROR_CANT_SIGN\020\357\007\022\021\n\014ERROT_NO_SIT\020\360" +
-      "\007\022\032\n\025ERROR_GOLD_NOT_ZHUANG\020\361\007\022\023\n\016ERROR_C" +
-      "ANT_BET\020\362\007\022\030\n\023ERROR_ROOM_NOT_EXIT\020\363\007\022\025\n\020" +
-      "ERROR_BET_LARGER\020\364\007\022\027\n\022ERROR_SIT_HAVESEA" +
-      "T\020\365\007\022\026\n\021ERROR_DEPOSIT_MIN\020\366\007\022\025\n\020ERROR_SM" +
-      "S_EXPIRE\020\367\007\022\024\n\017ERROR_SMS_WRONG\020\370\007\022 \n\033ERR" +
-      "OR_SMS_INVALID_PARAMETER\020\371\007\022\034\n\027ERROR_ACC" +
-      "OUNT_RECONNECT\020\372\007\022\033\n\026ERROR_CARD_BET_SCOR" +
-      "E_0\020\320\017\022\037\n\032ERROR_CARD_GUEST_COINSCORE\020\321\017\022",
-      "$\n\037ERROR_CARD_BET_SCORE_NOT_ENOUGH\020\322\017\0221\n" +
-      ",ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_E" +
-      "NOUGH\020\323\017\022\026\n\021ERROR_NO_BUILDING\020\324\017\022\034\n\027ERRO" +
-      "R_NO_NULL_NICK_NAME\020\325\017B,\n\034com.mzm.fireph" +
-      "oenix.protobufB\014CoreProtocol"
+      "\001(\005\022\025\n\rnickNameCount\030\005 \002(\005\"\037\n\014CSGuestLog" +
+      "in\022\017\n\007account\030\001 \001(\t\"d\n\014SCGuestLogin\022\017\n\007a" +
+      "ccount\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020\n\010nickname\030\003 " +
+      "\002(\t\022\r\n\005score\030\004 \002(\005\022\025\n\rnickNameCount\030\005 \002(" +
+      "\005\"\034\n\014CSPlayerInfo\022\014\n\004guid\030\001 \002(\t\"B\n\007CSCar" +
+      "ds\022\022\n\nstartIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005" +
+      "\022\021\n\tholdCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardRa" +
+      "te\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 \001" +
+      "(\t\"&\n\025CCCompareHistoryCards\022\r\n\005cards\030\001 \002" +
+      "(\t\"3\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020\n",
+      "\010betScore\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013comp" +
+      "areCard\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\"\024\n\005CSWin" +
+      "\022\013\n\003win\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 " +
+      "\002(\005\022\014\n\004coin\030\002 \002(\005\"\036\n\nCCNickName\022\020\n\010nickN" +
+      "ame\030\001 \002(\t\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"" +
+      "6\n\rSCMachineList\022%\n\rscMachineInfo\030\001 \003(\0132" +
+      "\016.SCMachineInfo\"V\n\rSCMachineInfo\022\021\n\tmach" +
+      "ineId\030\001 \002(\005\022\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030" +
+      "\003 \001(\005\022\020\n\010nickName\030\004 \001(\t\"#\n\016CCEnterMachin" +
+      "e\022\021\n\tmachineId\030\001 \002(\005\"#\n\016CCLeaveMachine\022\021",
+      "\n\tmachineId\030\001 \002(\005\"7\n\rCCMachineStay\022\021\n\tma" +
+      "chineId\030\001 \002(\005\022\023\n\013machineType\030\002 \001(\005\"=\n\tCC" +
+      "Binding\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002" +
+      "(\t\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010n" +
+      "ickname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003" +
+      " \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSD" +
+      "epositStore\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositSt" +
+      "ore\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCS" +
+      "DepositDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDepos" +
+      "itDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n",
+      "\rCSDepositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010draw" +
+      "Gold\030\002 \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002" +
+      " \001(\005\"V\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001" +
+      "(\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007d" +
+      "eposit\030\004 \001(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t*\240\007" +
+      "\n\003Cmd\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGIST" +
+      "ER\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOG" +
+      "IN\020\205\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017" +
+      "\n\tCMD_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004" +
+      "\022\037\n\031CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD",
+      "_WIN\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\032\n\024CMD_PL" +
+      "AYER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLAYER_PIC\020\202\200\010" +
+      "\022\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020CMD_MACHINE_" +
+      "INFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER\020\205\200\010\022\027\n\021CMD" +
+      "_MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MACHINE_STAY\020\207" +
+      "\200\010\022\030\n\022CMD_PLAYER_BINDING\020\210\200\010\022\027\n\021CMD_DEPO" +
+      "SIT_STORE\020\211\200\010\022\026\n\020CMD_DEPOSIT_DRAW\020\212\200\010\022\026\n" +
+      "\020CMD_DEPOSIT_GIVE\020\213\200\010\022\031\n\023CMD_DEPOSIT_REC" +
+      "EIVE\020\214\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUT" +
+      "ROOM\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAII",
+      "NFO\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200" +
+      "\014\022\024\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014" +
+      "\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014" +
+      "\022\021\n\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222" +
+      "\200\014\022\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020" +
+      "\224\200\014\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_R" +
+      "OOM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241" +
+      "\200\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIIN" +
+      "FO_3\020\243\200\014*\310\005\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_" +
+      "EXIT\020\351\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_",
+      "PWD_WRONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007" +
+      "\022\021\n\014ERROR_NOBIND\020\355\007\022\031\n\024ERROT_SIT_HAVEPLA" +
+      "YER\020\356\007\022\024\n\017ERROR_CANT_SIGN\020\357\007\022\021\n\014ERROT_NO" +
+      "_SIT\020\360\007\022\032\n\025ERROR_GOLD_NOT_ZHUANG\020\361\007\022\023\n\016E" +
+      "RROR_CANT_BET\020\362\007\022\030\n\023ERROR_ROOM_NOT_EXIT\020" +
+      "\363\007\022\025\n\020ERROR_BET_LARGER\020\364\007\022\027\n\022ERROR_SIT_H" +
+      "AVESEAT\020\365\007\022\026\n\021ERROR_DEPOSIT_MIN\020\366\007\022\025\n\020ER" +
+      "ROR_SMS_EXPIRE\020\367\007\022\024\n\017ERROR_SMS_WRONG\020\370\007\022" +
+      " \n\033ERROR_SMS_INVALID_PARAMETER\020\371\007\022\034\n\027ERR" +
+      "OR_ACCOUNT_RECONNECT\020\372\007\022\033\n\026ERROR_CARD_BE",
+      "T_SCORE_0\020\320\017\022\037\n\032ERROR_CARD_GUEST_COINSCO" +
+      "RE\020\321\017\022$\n\037ERROR_CARD_BET_SCORE_NOT_ENOUGH" +
+      "\020\322\017\0221\n,ERROR_CARD_COMPARE_CARD_BET_SCORE" +
+      "_NOT_ENOUGH\020\323\017\022\026\n\021ERROR_NO_BUILDING\020\324\017\022\034" +
+      "\n\027ERROR_NO_NULL_NICK_NAME\020\325\017\022\031\n\024ERROR_NO" +
+      "_LOGIN_SEOID\020\326\017\022\032\n\025ERROR_NICK_NAME_COUNT" +
+      "\020\327\017B,\n\034com.mzm.firephoenix.protobufB\014Cor" +
+      "eProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -28876,7 +29147,7 @@ public final class CoreProtocol {
     internal_static_SCLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCLogin_descriptor,
-        new java.lang.String[] { "Pic", "Nickname", "Score", "Coin", });
+        new java.lang.String[] { "Pic", "Nickname", "Score", "Coin", "NickNameCount", });
     internal_static_CSGuestLogin_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_CSGuestLogin_fieldAccessorTable = new
@@ -28888,7 +29159,7 @@ public final class CoreProtocol {
     internal_static_SCGuestLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCGuestLogin_descriptor,
-        new java.lang.String[] { "Account", "Pic", "Nickname", "Score", });
+        new java.lang.String[] { "Account", "Pic", "Nickname", "Score", "NickNameCount", });
     internal_static_CSPlayerInfo_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_CSPlayerInfo_fieldAccessorTable = new
