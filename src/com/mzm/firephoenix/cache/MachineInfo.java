@@ -3,7 +3,7 @@ package com.mzm.firephoenix.cache;
 import java.util.Date;
 
 public class MachineInfo {
-	private int machineType = 1;
+	private int machineType = 0;
 	private long accountId = 0;
 	private Date stayTime;
 	public long getAccountId() {

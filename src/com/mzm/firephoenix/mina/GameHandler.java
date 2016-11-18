@@ -15,6 +15,7 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.mzm.firephoenix.logic.OfflineLogic;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
+import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
@@ -124,16 +125,18 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		logger.info("sessionClosed. session id=" + session.getId());
 		OfflineLogic executor = (OfflineLogic) applicationContext.getBean("offlineLogic");
 		executor.sessionClosed(session);
-		session.close(true);
+		session.closeOnFlush();
 	}
 
 	@Override
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		logger.info("sessionIdle. session id=" + session.getId());
-		// ByteMessage bm = new ByteMessage(ActConstant.GAME_ALERT);
-		// bm.writeString(GameAlert.GAME_8);
-		// session.write(bm);
-		// session.close(true);
+		MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+		returnMessagePack.setCmd(Cmd.CMD_LOGIN);
+		returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE));
+		logger.info("sent message pack : " + returnMessagePack.toString());
+		session.write(returnMessagePack);
+		session.closeOnFlush();
 	}
 
 	@Override

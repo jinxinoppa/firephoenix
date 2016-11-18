@@ -19732,790 +19732,6 @@ public final class GameProtocol {
 
   }
 
-  public interface SCNoticeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SCNotice)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice> 
-        getNoticeListList();
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    com.mzm.firephoenix.protobuf.GameProtocol.StructNotice getNoticeList(int index);
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    int getNoticeListCount();
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder> 
-        getNoticeListOrBuilderList();
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder getNoticeListOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code SCNotice}
-   */
-  public  static final class SCNotice extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:SCNotice)
-      SCNoticeOrBuilder {
-    // Use SCNotice.newBuilder() to construct.
-    private SCNotice(com.google.protobuf.GeneratedMessage.Builder builder) {
-      super(builder);
-    }
-    private SCNotice() {
-      noticeList_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private SCNotice(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
-      this();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                noticeList_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              noticeList_.add(input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw new RuntimeException(e.setUnfinishedMessage(this));
-      } catch (java.io.IOException e) {
-        throw new RuntimeException(
-            new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this));
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          noticeList_ = java.util.Collections.unmodifiableList(noticeList_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCNotice_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCNotice_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.class, com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.Builder.class);
-    }
-
-    public static final int NOTICELIST_FIELD_NUMBER = 1;
-    private java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice> noticeList_;
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice> getNoticeListList() {
-      return noticeList_;
-    }
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    public java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder> 
-        getNoticeListOrBuilderList() {
-      return noticeList_;
-    }
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    public int getNoticeListCount() {
-      return noticeList_.size();
-    }
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    public com.mzm.firephoenix.protobuf.GameProtocol.StructNotice getNoticeList(int index) {
-      return noticeList_.get(index);
-    }
-    /**
-     * <code>repeated .StructNotice noticeList = 1;</code>
-     *
-     * <pre>
-     *公告
-     * </pre>
-     */
-    public com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder getNoticeListOrBuilder(
-        int index) {
-      return noticeList_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      for (int i = 0; i < noticeList_.size(); i++) {
-        output.writeMessage(1, noticeList_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < noticeList_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, noticeList_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.mzm.firephoenix.protobuf.GameProtocol.SCNotice prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code SCNotice}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SCNotice)
-        com.mzm.firephoenix.protobuf.GameProtocol.SCNoticeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCNotice_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCNotice_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.class, com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.Builder.class);
-      }
-
-      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getNoticeListFieldBuilder();
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        if (noticeListBuilder_ == null) {
-          noticeList_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          noticeListBuilder_.clear();
-        }
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCNotice_descriptor;
-      }
-
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCNotice getDefaultInstanceForType() {
-        return com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.getDefaultInstance();
-      }
-
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCNotice build() {
-        com.mzm.firephoenix.protobuf.GameProtocol.SCNotice result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.mzm.firephoenix.protobuf.GameProtocol.SCNotice buildPartial() {
-        com.mzm.firephoenix.protobuf.GameProtocol.SCNotice result = new com.mzm.firephoenix.protobuf.GameProtocol.SCNotice(this);
-        int from_bitField0_ = bitField0_;
-        if (noticeListBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            noticeList_ = java.util.Collections.unmodifiableList(noticeList_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.noticeList_ = noticeList_;
-        } else {
-          result.noticeList_ = noticeListBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.mzm.firephoenix.protobuf.GameProtocol.SCNotice) {
-          return mergeFrom((com.mzm.firephoenix.protobuf.GameProtocol.SCNotice)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.mzm.firephoenix.protobuf.GameProtocol.SCNotice other) {
-        if (other == com.mzm.firephoenix.protobuf.GameProtocol.SCNotice.getDefaultInstance()) return this;
-        if (noticeListBuilder_ == null) {
-          if (!other.noticeList_.isEmpty()) {
-            if (noticeList_.isEmpty()) {
-              noticeList_ = other.noticeList_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureNoticeListIsMutable();
-              noticeList_.addAll(other.noticeList_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.noticeList_.isEmpty()) {
-            if (noticeListBuilder_.isEmpty()) {
-              noticeListBuilder_.dispose();
-              noticeListBuilder_ = null;
-              noticeList_ = other.noticeList_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              noticeListBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getNoticeListFieldBuilder() : null;
-            } else {
-              noticeListBuilder_.addAllMessages(other.noticeList_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.mzm.firephoenix.protobuf.GameProtocol.SCNotice parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.mzm.firephoenix.protobuf.GameProtocol.SCNotice) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice> noticeList_ =
-        java.util.Collections.emptyList();
-      private void ensureNoticeListIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          noticeList_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice>(noticeList_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.StructNotice, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder, com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder> noticeListBuilder_;
-
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice> getNoticeListList() {
-        if (noticeListBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(noticeList_);
-        } else {
-          return noticeListBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public int getNoticeListCount() {
-        if (noticeListBuilder_ == null) {
-          return noticeList_.size();
-        } else {
-          return noticeListBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public com.mzm.firephoenix.protobuf.GameProtocol.StructNotice getNoticeList(int index) {
-        if (noticeListBuilder_ == null) {
-          return noticeList_.get(index);
-        } else {
-          return noticeListBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder setNoticeList(
-          int index, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice value) {
-        if (noticeListBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNoticeListIsMutable();
-          noticeList_.set(index, value);
-          onChanged();
-        } else {
-          noticeListBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder setNoticeList(
-          int index, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder builderForValue) {
-        if (noticeListBuilder_ == null) {
-          ensureNoticeListIsMutable();
-          noticeList_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          noticeListBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder addNoticeList(com.mzm.firephoenix.protobuf.GameProtocol.StructNotice value) {
-        if (noticeListBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNoticeListIsMutable();
-          noticeList_.add(value);
-          onChanged();
-        } else {
-          noticeListBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder addNoticeList(
-          int index, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice value) {
-        if (noticeListBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureNoticeListIsMutable();
-          noticeList_.add(index, value);
-          onChanged();
-        } else {
-          noticeListBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder addNoticeList(
-          com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder builderForValue) {
-        if (noticeListBuilder_ == null) {
-          ensureNoticeListIsMutable();
-          noticeList_.add(builderForValue.build());
-          onChanged();
-        } else {
-          noticeListBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder addNoticeList(
-          int index, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder builderForValue) {
-        if (noticeListBuilder_ == null) {
-          ensureNoticeListIsMutable();
-          noticeList_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          noticeListBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder addAllNoticeList(
-          java.lang.Iterable<? extends com.mzm.firephoenix.protobuf.GameProtocol.StructNotice> values) {
-        if (noticeListBuilder_ == null) {
-          ensureNoticeListIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, noticeList_);
-          onChanged();
-        } else {
-          noticeListBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder clearNoticeList() {
-        if (noticeListBuilder_ == null) {
-          noticeList_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          noticeListBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public Builder removeNoticeList(int index) {
-        if (noticeListBuilder_ == null) {
-          ensureNoticeListIsMutable();
-          noticeList_.remove(index);
-          onChanged();
-        } else {
-          noticeListBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder getNoticeListBuilder(
-          int index) {
-        return getNoticeListFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder getNoticeListOrBuilder(
-          int index) {
-        if (noticeListBuilder_ == null) {
-          return noticeList_.get(index);  } else {
-          return noticeListBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder> 
-           getNoticeListOrBuilderList() {
-        if (noticeListBuilder_ != null) {
-          return noticeListBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(noticeList_);
-        }
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder addNoticeListBuilder() {
-        return getNoticeListFieldBuilder().addBuilder(
-            com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder addNoticeListBuilder(
-          int index) {
-        return getNoticeListFieldBuilder().addBuilder(
-            index, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .StructNotice noticeList = 1;</code>
-       *
-       * <pre>
-       *公告
-       * </pre>
-       */
-      public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder> 
-           getNoticeListBuilderList() {
-        return getNoticeListFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.mzm.firephoenix.protobuf.GameProtocol.StructNotice, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder, com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder> 
-          getNoticeListFieldBuilder() {
-        if (noticeListBuilder_ == null) {
-          noticeListBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.mzm.firephoenix.protobuf.GameProtocol.StructNotice, com.mzm.firephoenix.protobuf.GameProtocol.StructNotice.Builder, com.mzm.firephoenix.protobuf.GameProtocol.StructNoticeOrBuilder>(
-                  noticeList_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          noticeList_ = null;
-        }
-        return noticeListBuilder_;
-      }
-
-      // @@protoc_insertion_point(builder_scope:SCNotice)
-    }
-
-    // @@protoc_insertion_point(class_scope:SCNotice)
-    private static final com.mzm.firephoenix.protobuf.GameProtocol.SCNotice DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.GameProtocol.SCNotice();
-    }
-
-    public static com.mzm.firephoenix.protobuf.GameProtocol.SCNotice getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    public static final com.google.protobuf.Parser<SCNotice> PARSER =
-        new com.google.protobuf.AbstractParser<SCNotice>() {
-      public SCNotice parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        try {
-          return new SCNotice(input, extensionRegistry);
-        } catch (RuntimeException e) {
-          if (e.getCause() instanceof
-              com.google.protobuf.InvalidProtocolBufferException) {
-            throw (com.google.protobuf.InvalidProtocolBufferException)
-                e.getCause();
-          }
-          throw e;
-        }
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SCNotice> getParserForType() {
-      return PARSER;
-    }
-
-    public com.mzm.firephoenix.protobuf.GameProtocol.SCNotice getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface StructNoticeOrBuilder extends
       // @@protoc_insertion_point(interface_extends:StructNotice)
       com.google.protobuf.MessageOrBuilder {
@@ -26608,11 +25824,6 @@ public final class GameProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_PlayerResult_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_SCNotice_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_SCNotice_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_StructNotice_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -26708,20 +25919,19 @@ public final class GameProtocol {
       "(\005\022\014\n\004gold\030\002 \001(\005\";\n\tPlayerBet\022\n\n\002z2\030\001 \001(",
       "\005\022\n\n\002z3\030\002 \001(\005\022\n\n\002z4\030\003 \001(\005\022\n\n\002z5\030\004 \001(\005\"2\n" +
       "\014PlayerResult\022\016\n\006userid\030\001 \002(\t\022\022\n\nplayerG" +
-      "old\030\002 \001(\005\"-\n\010SCNotice\022!\n\nnoticeList\030\001 \003(" +
-      "\0132\r.StructNotice\"B\n\014StructNotice\022\r\n\005titl" +
-      "e\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\022\022\n\ncreateTime\030\003" +
-      " \001(\005\"\034\n\010SCQZList\022\020\n\010zhuangID\030\001 \003(\t\"\034\n\010SC" +
-      "Zhuang\022\020\n\010zhuangID\030\001 \003(\t\" \n\014SCDownZhuang" +
-      "\022\020\n\010zhuangID\030\001 \003(\t\"\036\n\007SCHeart\022\023\n\013current" +
-      "Time\030\001 \002(\t\"/\n\022SCPlayerResultList\022\031\n\002pr\030\002" +
-      " \003(\0132\r.PlayerResult\"(\n\nSCCardInfo\022\032\n\005car",
-      "ds\030\001 \003(\0132\013.PlayerCard\"C\n\rSCPaiBaseInfo\022\021" +
-      "\n\tpaiStatus\030\001 \002(\005\022\r\n\005count\030\002 \001(\t\022\020\n\010zhua" +
-      "ngid\030\003 \001(\t\"G\n\nSCPaiInfo3\022\030\n\004bets\030\004 \001(\0132\n" +
-      ".PlayerBet\022\037\n\ncardResult\030\005 \001(\0132\013.CardRes" +
-      "ultB,\n\034com.mzm.firephoenix.protobufB\014Gam" +
-      "eProtocol"
+      "old\030\002 \001(\005\"B\n\014StructNotice\022\r\n\005title\030\001 \001(\t" +
+      "\022\017\n\007content\030\002 \001(\t\022\022\n\ncreateTime\030\003 \001(\005\"\034\n" +
+      "\010SCQZList\022\020\n\010zhuangID\030\001 \003(\t\"\034\n\010SCZhuang\022" +
+      "\020\n\010zhuangID\030\001 \003(\t\" \n\014SCDownZhuang\022\020\n\010zhu" +
+      "angID\030\001 \003(\t\"\036\n\007SCHeart\022\023\n\013currentTime\030\001 " +
+      "\002(\t\"/\n\022SCPlayerResultList\022\031\n\002pr\030\002 \003(\0132\r." +
+      "PlayerResult\"(\n\nSCCardInfo\022\032\n\005cards\030\001 \003(" +
+      "\0132\013.PlayerCard\"C\n\rSCPaiBaseInfo\022\021\n\tpaiSt",
+      "atus\030\001 \002(\005\022\r\n\005count\030\002 \001(\t\022\020\n\010zhuangid\030\003 " +
+      "\001(\t\"G\n\nSCPaiInfo3\022\030\n\004bets\030\004 \001(\0132\n.Player" +
+      "Bet\022\037\n\ncardResult\030\005 \001(\0132\013.CardResultB,\n\034" +
+      "com.mzm.firephoenix.protobufB\014GameProtoc" +
+      "ol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -26885,62 +26095,56 @@ public final class GameProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_PlayerResult_descriptor,
         new java.lang.String[] { "Userid", "PlayerGold", });
-    internal_static_SCNotice_descriptor =
-      getDescriptor().getMessageTypes().get(25);
-    internal_static_SCNotice_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_SCNotice_descriptor,
-        new java.lang.String[] { "NoticeList", });
     internal_static_StructNotice_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_StructNotice_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_StructNotice_descriptor,
         new java.lang.String[] { "Title", "Content", "CreateTime", });
     internal_static_SCQZList_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_SCQZList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCQZList_descriptor,
         new java.lang.String[] { "ZhuangID", });
     internal_static_SCZhuang_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_SCZhuang_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCZhuang_descriptor,
         new java.lang.String[] { "ZhuangID", });
     internal_static_SCDownZhuang_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_SCDownZhuang_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDownZhuang_descriptor,
         new java.lang.String[] { "ZhuangID", });
     internal_static_SCHeart_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_SCHeart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCHeart_descriptor,
         new java.lang.String[] { "CurrentTime", });
     internal_static_SCPlayerResultList_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_SCPlayerResultList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCPlayerResultList_descriptor,
         new java.lang.String[] { "Pr", });
     internal_static_SCCardInfo_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_SCCardInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCCardInfo_descriptor,
         new java.lang.String[] { "Cards", });
     internal_static_SCPaiBaseInfo_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_SCPaiBaseInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCPaiBaseInfo_descriptor,
         new java.lang.String[] { "PaiStatus", "Count", "Zhuangid", });
     internal_static_SCPaiInfo3_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_SCPaiInfo3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCPaiInfo3_descriptor,

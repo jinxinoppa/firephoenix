@@ -49,3 +49,8 @@ CREATE TABLE `fivepk_seo` (
 
 //2016-11-11
 alter table `fivepk_player_info` add column nick_name_count int(5) DEFAULT 0;
+
+alter table `fivepk_player_info` change score score int(20) DEFAULT 20000;
+
+//2016-11-18
+alter table fivepk_seo modify seo_machine_id varchar(50) not null;

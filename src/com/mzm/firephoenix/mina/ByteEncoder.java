@@ -18,11 +18,11 @@ public class ByteEncoder implements ProtocolEncoder {
 	public final static Log logger = LogFactory.getLog(ByteEncoder.class);
 
 	@Override
-	public void encode(IoSession session, Object message,
-			ProtocolEncoderOutput out) throws Exception {
+	public void encode(IoSession session, Object message, ProtocolEncoderOutput out) throws Exception {
 		IoBuffer buffer;
-		byte[] msgBody = ((CoreProtocol.MessagePack.Builder)message).build().toByteArray();
+		byte[] msgBody = ((CoreProtocol.MessagePack.Builder) message).build().toByteArray();
 		int length = msgBody.length + 4;
+		logger.info("message pack length : [ " + length + " ]");
 		buffer = IoBuffer.allocate(length);
 		buffer.putInt(length);
 		buffer.put(msgBody);

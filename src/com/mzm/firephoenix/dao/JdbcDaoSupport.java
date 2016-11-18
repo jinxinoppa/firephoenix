@@ -202,23 +202,27 @@ public class JdbcDaoSupport {
 		Class<? extends AbstractEntity> c = (Class<? extends AbstractEntity>) requiredType;
 		Entity entityAnnotation = (Entity) c.getAnnotation(Entity.class);
 		StringBuffer sql = new StringBuffer();
-		sql.append("select * from ").append(entityAnnotation.tableName()).append(" where ");
+		sql.append("select * from ").append(entityAnnotation.tableName());
 		Field queryField = null;
 		Column column = null;
 		try {
-			if (whereArgs == null) {
-				queryField = c.getDeclaredField(entityAnnotation.primaryKey());
-				queryField.setAccessible(true);
-				column = queryField.getDeclaredAnnotation(Column.class);
-				sql.append(column.columnName()).append(" = ?");
-			} else {
-				for (int i = 0; i < whereArgs.length; i++) {
-					queryField = c.getDeclaredField(whereArgs[i]);
+			if (args != null){
+				if (whereArgs == null) {
+					sql.append(" where ");
+					queryField = c.getDeclaredField(entityAnnotation.primaryKey());
 					queryField.setAccessible(true);
 					column = queryField.getDeclaredAnnotation(Column.class);
-					sql.append(column.columnName()).append(" = ?").append(" and ");
+					sql.append(column.columnName()).append(" = ?");
+				} else {
+					sql.append(" where ");
+					for (int i = 0; i < whereArgs.length; i++) {
+						queryField = c.getDeclaredField(whereArgs[i]);
+						queryField.setAccessible(true);
+						column = queryField.getDeclaredAnnotation(Column.class);
+						sql.append(column.columnName()).append(" = ?").append(" and ");
+					}
+					sql.delete(sql.length() - 5, sql.length());
 				}
-				sql.delete(sql.length() - 5, sql.length());
 			}
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException e) {
 			logger.error(e, e);

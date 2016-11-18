@@ -25,6 +25,7 @@ import com.mzm.firephoenix.dao.entity.AbstractEntity;
 import com.mzm.firephoenix.dao.entity.Column;
 import com.mzm.firephoenix.dao.entity.Entity;
 import com.mzm.firephoenix.dao.entity.FivepkAccount;
+import com.mzm.firephoenix.dao.entity.FivepkSeoId;
 import com.mzm.firephoenix.dao.entity.FivepkSeoIdList;
 import com.mzm.firephoenix.junits.BaseTest;
 
@@ -133,7 +134,8 @@ System.out.println(sql);
 //	@Ignore
 	@Test
 	public void selectTest() {
-		List<String> list = jdbcDaoSupport.queryGroupBy(FivepkSeoIdList.class, new QueryMeta("seoid"));
+//		List<String> list = jdbcDaoSupport.queryGroupBy(FivepkSeoIdList.class, new QueryMeta("seoid"));
+		List<FivepkSeoId> list = jdbcDaoSupport.query(FivepkSeoId.class);
 	}
 
 	@Ignore
@@ -148,6 +150,7 @@ System.out.println(sql);
 	@Ignore
 	@Test
 	public void updateTest() {
+		
 	}
 
 	@Ignore

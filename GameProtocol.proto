@@ -172,10 +172,6 @@ message PlayerResult{
 	optional int32 playerGold=2;
 }
 
-message SCNotice{
-	repeated StructNotice noticeList = 1;//公告
-}
-
 message StructNotice{
 	optional string title=1;
 	optional string content=2;

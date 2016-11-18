@@ -31,6 +31,7 @@ public class FivepkAccount extends AbstractEntity {
 
 	public void setName(String name) {
 		this.name = name;
+		updateFieldsList.add("name");
 	}
 
 	public String getPassword() {
@@ -39,6 +40,7 @@ public class FivepkAccount extends AbstractEntity {
 
 	public void setPassword(String password) {
 		this.password = password;
+		updateFieldsList.add("password");
 	}
 
 	public String getSeoid() {
@@ -47,6 +49,7 @@ public class FivepkAccount extends AbstractEntity {
 
 	public void setSeoid(String seoid) {
 		this.seoid = seoid;
+		updateFieldsList.add("seoid");
 	}
 
 	public Date getCreateDate() {
@@ -71,5 +74,6 @@ public class FivepkAccount extends AbstractEntity {
 
 	public void setAccountType(byte accountType) {
 		this.accountType = accountType;
+		updateFieldsList.add("accountType");
 	}
 }

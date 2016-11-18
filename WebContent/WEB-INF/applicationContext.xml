@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:cache="http://www.springframework.org/schema/cache"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:oxm="http://www.springframework.org/schema/oxm"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
@@ -9,12 +9,14 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd  
    	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
-   	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+   	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd 
+   	 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
 
 	<context:annotation-config />
-	<context:component-scan
-		base-package="com.mzm.firephoenix" />
+	<context:component-scan base-package="com.mzm.firephoenix" />
 	<context:annotation-config />
+
+	<task:annotation-driven />
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
 		autowire="byName">
@@ -72,7 +74,7 @@
 	<bean id="sessionConfig" factory-bean="ioAcceptor16777"
 		factory-method="getSessionConfig">
 
-		<property name="bothIdleTime" value="900000" />
+		<property name="bothIdleTime" value="300000" />
 		<property name="receiveBufferSize" value="32768" />
 	</bean>
 

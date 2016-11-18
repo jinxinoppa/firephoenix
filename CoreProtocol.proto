@@ -66,6 +66,8 @@ enum Cmd {
   	CMD_PAI_BASE_INFO     =  0x030022;//牌局基础信息
   	CMD_PAIINFO_3       =  0x030023;//状态3的牌局信息下发
 
+	CMD_NOTICE = 0x030024; //公告
+	CMD_LOGIN_OUT = 0x030025;//退出
 }
 
 enum ErrorCode{
@@ -73,18 +75,7 @@ enum ErrorCode{
 	ERROR_MUTI_LOGIN   = 1002;//重复登陆
 	ERROR_PWD_WRONG    = 1003;//密码错误
 	ERROR_PLAYER_NOT_EXIT = 1004;//玩家不存在
-	ERROR_NOBIND = 1005;//玩家未登录
-	ERROT_SIT_HAVEPLAYER = 1006;//座位有人
-	ERROR_CANT_SIGN = 1007;//不可签到
-	ERROT_NO_SIT    = 1008;//你没有坐下
-	ERROR_GOLD_NOT_ZHUANG = 1009;//金钱不够，无法抢庄
-	ERROR_CANT_BET = 1010;//当前不能下注
-	ERROR_ROOM_NOT_EXIT = 1011;//房间不存在
-	ERROR_BET_LARGER = 1012;//下注已经超过上限
-	ERROR_SIT_HAVESEAT = 1013;//你必须站起来才能再次坐下 
-	ERROR_DEPOSIT_MIN = 1014;//保险箱金币数量太小，无法赠送
-	ERROR_SMS_EXPIRE = 1015;//验证码过期
-	ERROR_SMS_WRONG = 1016;//验证码错误
+
 	ERROR_SMS_INVALID_PARAMETER = 1017;//传递的参数不正确
 	ERROR_ACCOUNT_RECONNECT = 1018;//请重新登录
 	
@@ -96,6 +87,24 @@ enum ErrorCode{
 	ERROR_NO_NULL_NICK_NAME = 2005;//昵称不能为空
 	ERROR_NO_LOGIN_SEOID = 2006;//代理商没有注册
 	ERROR_NICK_NAME_COUNT = 2007;//昵称只能修改一次
+	ERROR_USER_NAME = 2008;//用户名必须为6~18位字母或数字
+	ERROR_USER_EXIST =2009;//被绑定的用户已存在
+	
+	ERROR_YOUR_ACCOUNT_IS_BEING_LANDED = 2010;//您的帐号正在被登陆,请从新登录
+	ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED = 2011;//您的帐号已经被登陆
+	
+	ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD = 2012;//既不是第一手牌也不是第二手牌
+	ERROR_CARD_BET_SCORE = 2013;//比倍分数不正确
+	
+	ERROR_UNAME_UPASS_USEOID = 2014;//用户名密码代理商不可以为空
+	ERROR_NOT_MACHINE = 2015;//该机器不存在
+	ERROR_MACHINE_STAY = 2016;//留机时异常
+	ERROR_NOT_CARD_RESULT = 2017;//请从新开始下注
+	ERROR_BETSCORE = 2018;//下注分数不正确
+	ERROR_COIN_SCORE = 2019;//存取分计算错误
+	ERROR_HEAD_PIC_NOT_EXIST = 2020;//没有这个头像
+	ERROR_MACHINE_TYPE_ONLINE = 2021;//该机台有玩家
+	
 }
 
 //协议内容，内部为每次通信的数据模型
@@ -131,6 +140,13 @@ message MessageContent {
 	optional CCLeaveMachine ccLeaveMachine           	 = 23;//离开机台
 	optional CCMachineStay ccMachineStay           	 = 24;//是否留机
 	optional CCBinding ccBinding     = 25;//绑定账号
+	
+	
+	optional SCNotice scNotice     = 26;//公告
+	optional CSMachineList csMachineList = 27;
+	
+	optional CSLoginOut csLoginOut =28;//退出
+	optional SCLoginOut scLoginOut =29;//退出
 }
 
 //请求游戏服务器信息
@@ -144,6 +160,14 @@ message CSRegsiter {
 	required string account = 1;//账号
 	required string password = 2;//密码
 	optional string seoid= 3;//推广码
+}
+
+message CSLoginOut {
+	required int32 loginOut = 1;//退出帐号
+}
+
+message SCLoginOut {
+	optional int32 loginOut = 1;//退出帐号
 }
 
 message SCRegister {
@@ -162,6 +186,7 @@ message SCLogin{
 	required int32 score = 3;//分数
 	optional int32 coin = 4;//金币
 	required int32 nickNameCount = 5;//修改昵称次数
+	required string seoid = 6;//代理商
 }
 
 //游客登录
@@ -179,6 +204,10 @@ message SCGuestLogin{
 
 message CSPlayerInfo{
 	required string guid =1 ;
+}
+
+message SCNotice{
+	required string notice =1 ;
 }
 
 message CSCards{
@@ -229,27 +258,32 @@ message CCHeadPic{
 	//required int32 machineList = 1;	
 //}
 
+
+message CSMachineList{
+	required int32 machineList = 1;
+}
+
 message SCMachineList{
 	repeated  SCMachineInfo scMachineInfo = 1;//机台信息
 }
 
 message SCMachineInfo{
-	required int32 machineId = 1;//机台id
+	required string machineId = 1;//机台id
 	required int32 machineType = 2;//0-待机1-在线2-留机
 	optional int32 pic = 3;//头像
 	optional string nickName = 4;//在线玩家昵称
 }
 
 message CCEnterMachine{
-	required int32 machineId = 1;//机台id
+	required string machineId = 1;//机台id
 }
 
 message CCLeaveMachine {
-	required int32 machineId = 1;//机台id
+	required string machineId = 1;//机台id
 }
 
 message CCMachineStay {
-	required int32 machineId = 1;//机台id
+	required string machineId = 1;//机台id
 	optional int32 machineType = 2;//0-取消留机1-留机
 }
 

@@ -31,15 +31,30 @@ public class GameCache {
 
 	private final static Map<Long, PlayerInfo> playerInfoMap = new HashMap<Long, PlayerInfo>();
 
-	public static PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, String seoId) {
+	public static PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, String seoId, IoSession playerInfoSession, byte accountType) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		if (playerInfo == null) {
-			playerInfo = new PlayerInfo(pic, nickName, seoId);
+			playerInfo = new PlayerInfo(pic, nickName, seoId, playerInfoSession);
 			playerInfoMap.put(accountId, playerInfo);
 		} else {
 			playerInfo.setPic(pic);
 			playerInfo.setNickName(nickName);
 			playerInfo.setSeoId(seoId);
+			playerInfo.setPlayerInfoSession(playerInfoSession);
+			playerInfo.setAccountType(accountType);
+		}
+		return playerInfo;
+	}
+
+	public static PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, byte accountType) {
+		PlayerInfo playerInfo = playerInfoMap.get(accountId);
+		if (playerInfo == null) {
+			playerInfo = new PlayerInfo(pic, nickName);
+			playerInfoMap.put(accountId, playerInfo);
+		} else {
+			playerInfo.setPic(pic);
+			playerInfo.setNickName(nickName);
+			playerInfo.setAccountType(accountType);
 		}
 		return playerInfo;
 	}
@@ -55,10 +70,11 @@ public class GameCache {
 		}
 		return playerInfo;
 	}
-
-	public static PlayerInfo putPlayerInfo(long accountId, String seoId) {
+	
+	public static PlayerInfo putPlayerInfo(long accountId, String seoId, byte accountType) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		playerInfo.setSeoId(seoId);
+		playerInfo.setAccountType(accountType);
 		return playerInfo;
 	}
 
@@ -70,12 +86,12 @@ public class GameCache {
 		playerInfoMap.remove(accountId);
 	}
 
-	private final static Map<String, Map<Integer, MachineInfo>> seoIdMachineInfoMap = new HashMap<String, Map<Integer, MachineInfo>>();
+	private final static Map<String, Map<String, MachineInfo>> seoIdMachineInfoMap = new HashMap<String, Map<String, MachineInfo>>();
 
-	public static MachineInfo getMachineInfo(String seoId, int machineId) {
-		Map<Integer, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
+	public static MachineInfo getMachineInfo(String seoId, String machineId) {
+		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
 		if (machineIdMap == null) {
-			machineIdMap = new HashMap<Integer, MachineInfo>();
+			machineIdMap = new HashMap<String, MachineInfo>();
 			seoIdMachineInfoMap.put(seoId, machineIdMap);
 		}
 		MachineInfo machineInfo = machineIdMap.get(machineId);
@@ -86,10 +102,10 @@ public class GameCache {
 		return machineInfo;
 	}
 
-	public static MachineInfo updateMachineInfo(String seoId, int machineId, int machineType, long accountId, Date stayTime) {
-		Map<Integer, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
+	public static MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId, Date stayTime) {
+		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
 		if (machineIdMap == null) {
-			machineIdMap = new HashMap<Integer, MachineInfo>();
+			machineIdMap = new HashMap<String, MachineInfo>();
 			seoIdMachineInfoMap.put(seoId, machineIdMap);
 		}
 		MachineInfo machineInfo = machineIdMap.get(machineId);
@@ -103,10 +119,10 @@ public class GameCache {
 		return machineInfo;
 	}
 
-	public static MachineInfo updateMachineInfo(String seoId, int machineId, int machineType, long accountId) {
-		Map<Integer, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
+	public static MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId) {
+		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
 		if (machineIdMap == null) {
-			machineIdMap = new HashMap<Integer, MachineInfo>();
+			machineIdMap = new HashMap<String, MachineInfo>();
 			seoIdMachineInfoMap.put(seoId, machineIdMap);
 		}
 		MachineInfo machineInfo = machineIdMap.get(machineId);

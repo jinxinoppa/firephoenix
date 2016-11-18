@@ -22,10 +22,14 @@ import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.QueryMeta;
 import com.mzm.firephoenix.dao.entity.FivepkAccount;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
+import com.mzm.firephoenix.dao.entity.FivepkSeoId;
 import com.mzm.firephoenix.dao.entity.FivepkSeoIdList;
+import com.mzm.firephoenix.protobuf.CoreProtocol.CCBinding;
 import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
+import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
+import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCGuestLogin;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCLogin;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCRegister;
@@ -40,6 +44,8 @@ public class AccountLogic {
 	public final static Log logger = LogFactory.getLog(AccountLogic.class);
 	@Autowired
 	JdbcDaoSupport jdbcDaoSupport;
+	@Autowired
+	OfflineLogic offlineLogic;
 
 	public Builder csRegister(IoSession session, MessageContent content) {
 		logger.debug("csRegister : " + content.toString());
@@ -47,13 +53,11 @@ public class AccountLogic {
 		String password = content.getCsRegister().getPassword();
 		String seoid = content.getCsRegister().getSeoid();
 		if (account.isEmpty() || password.isEmpty() || seoid.isEmpty()) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_UNAME_UPASS_USEOID_VALUE);
+		}	
+		if(!account.matches("^[A-Za-z0-9]{5,17}$")){ 
+		  return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_NAME_VALUE); 
 		}
-		/*
-		 * if(!account.matches("^[a-zA-Z]\\w{5,17}$")){ return
-		 * MessageContent.newBuilder
-		 * ().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE); }
-		 */
 		List<String> seoIdList = jdbcDaoSupport.queryGroupBy(FivepkSeoIdList.class, new QueryMeta("seoid"));
 		if (!seoIdList.contains(seoid)) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_LOGIN_SEOID_VALUE);
@@ -108,17 +112,31 @@ public class AccountLogic {
 				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PWD_WRONG_VALUE);
 			}
 			accountId = fivepkAccount.getAccountId();
+			PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+			if(playerInfo != null){
+				IoSession ioSession = playerInfo.getPlayerInfoSession();
+				
+				MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+				returnMessagePack.setCmd(Cmd.CMD_LOGIN);
+				returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_IS_BEING_LANDED_VALUE));
+				logger.info("sent message pack : " + returnMessagePack.toString());
+				ioSession.write(returnMessagePack);
+				ioSession.closeOnFlush();
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED_VALUE);
+			}			
+			seoid = fivepkAccount.getSeoid();
 		} else {
 			accountId = (Long) session.getAttribute("accountId");
 		}
+		
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		session.setAttributeIfAbsent("accountId", fivepkPlayerInfo.getAccountId());
 		session.removeAttribute(GameConstant.SESSION_IS_REGISTERED);
-		session.setAttributeIfAbsent(GameConstant.SESSION_ACCOUNT_TYPE, GameConstant.ACCOUNT_TYPE_PLAYER);
-
-		GameCache.putPlayerInfo(accountId, fivepkPlayerInfo.getPic(), fivepkPlayerInfo.getNickName(), seoid);
+		
+		
+		GameCache.putPlayerInfo(accountId, fivepkPlayerInfo.getPic(), fivepkPlayerInfo.getNickName(), seoid, session, GameConstant.ACCOUNT_TYPE_PLAYER);
 		GameCache.putIoSessionIfAbsent(seoid, session);
-		return MessageContent.newBuilder().setResult(0).setScLogin(SCLogin.newBuilder().setPic(fivepkPlayerInfo.getPic()).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()).setCoin(fivepkPlayerInfo.getCoin()).setNickNameCount(fivepkPlayerInfo.getNickNameCount()));
+		return MessageContent.newBuilder().setResult(0).setScLogin(SCLogin.newBuilder().setPic(fivepkPlayerInfo.getPic()).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()).setCoin(fivepkPlayerInfo.getCoin()).setNickNameCount(fivepkPlayerInfo.getNickNameCount()).setSeoid(seoid));
 	}
 
 	public Builder csGuestLogin(IoSession session, MessageContent content) {
@@ -132,7 +150,7 @@ public class AccountLogic {
 
 					@Override
 					public Integer doInConnection(Connection arg0) throws SQLException, DataAccessException {
-						String sql = "insert into `fivepk_account` values ()";
+						String sql = "insert into `fivepk_account` (seoid) values (\"guest\")";
 						PreparedStatement pstmt = (PreparedStatement) arg0.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 						pstmt.executeUpdate();
 						ResultSet rs = pstmt.getGeneratedKeys();
@@ -157,8 +175,8 @@ public class AccountLogic {
 			pic = fivepkPlayerInfo.getPic();
 		}
 		session.setAttribute("accountId", fivepkPlayerInfo.getAccountId());
-		session.setAttribute(GameConstant.SESSION_ACCOUNT_TYPE, GameConstant.ACCOUNT_TYPE_GUEST);
-		GameCache.putPlayerInfo(fivepkPlayerInfo.getAccountId(), fivepkPlayerInfo.getPic(), fivepkPlayerInfo.getNickName());
+		GameCache.putPlayerInfo(fivepkPlayerInfo.getAccountId(), fivepkPlayerInfo.getPic(), fivepkPlayerInfo.getNickName(), GameConstant.MACHINE_SEOID_GUEST, session, GameConstant.ACCOUNT_TYPE_GUEST);
+		GameCache.putIoSessionIfAbsent(GameConstant.MACHINE_SEOID_GUEST, session);
 		return MessageContent.newBuilder().setResult(0).setScGuestLogin(SCGuestLogin.newBuilder().setAccount(String.valueOf(fivepkPlayerInfo.getAccountId())).setPic(pic).setNickname(fivepkPlayerInfo.getNickName()).setScore(fivepkPlayerInfo.getScore()).setNickNameCount(fivepkPlayerInfo.getNickNameCount()));
 	}
 
@@ -168,7 +186,14 @@ public class AccountLogic {
 		String password = content.getCcBinding().getPassword();
 		String seoid = content.getCcBinding().getSeoid();
 		if (account.isEmpty() || password.isEmpty() || seoid.isEmpty()) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_UNAME_UPASS_USEOID_VALUE);
+		}
+		if(!account.matches("^[A-Za-z0-9]{5,17}$")){ 
+			  return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_NAME_VALUE); 
+		}
+		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
+		if(fivepkAccount!=null){
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_EXIST_VALUE);
 		}
 		List<String> seoIdList = jdbcDaoSupport.queryGroupBy(FivepkSeoIdList.class, new QueryMeta("seoid"));
 		if (!seoIdList.contains(seoid)) {
@@ -178,26 +203,35 @@ public class AccountLogic {
 		if (accountId == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
 		}
-		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{accountId});
+		fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{accountId});
 		if (fivepkAccount == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 		} else if (fivepkAccount.getAccountType() == 1) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_BUILDING_VALUE);
+		}
+		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
+		if(fivepkPlayerInfo == null){
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+		}
+		if(fivepkPlayerInfo.getNickName().startsWith("游客")){
+			fivepkPlayerInfo.setNickName(fivepkPlayerInfo.getNickName().replace("游客", "玩家"));
+			jdbcDaoSupport.update(fivepkPlayerInfo);
 		}
 		fivepkAccount.setName(account);
 		fivepkAccount.setPassword(password);
 		fivepkAccount.setSeoid(seoid);
 		fivepkAccount.setAccountType(GameConstant.ACCOUNT_TYPE_PLAYER);
 		jdbcDaoSupport.update(fivepkAccount);
-		GameCache.putPlayerInfo(accountId, seoid);
-		return MessageContent.newBuilder().setResult(0);
+		GameCache.putPlayerInfo(accountId, seoid, GameConstant.ACCOUNT_TYPE_PLAYER);
+		GameCache.removeIoSession(GameConstant.MACHINE_SEOID_GUEST, session);
+		GameCache.putIoSessionIfAbsent(seoid, session);
+		return MessageContent.newBuilder().setResult(0).setCcBinding(CCBinding.newBuilder().setAccount(account).setPassword(password).setSeoid(seoid));
 	}
 
 	public Builder ccHeadPic(IoSession session, MessageContent content) {
-		logger.debug("csRegister : " + content.toString());
 		byte headpic = (byte) content.getCcHeadPic().getHeadPic();
 		if (headpic < 0 && headpic > 6) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_HEAD_PIC_NOT_EXIST_VALUE);
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
@@ -214,9 +248,8 @@ public class AccountLogic {
 	}
 
 	public Builder ccNickName(IoSession session, MessageContent content) {
-		logger.debug("csRegister : " + content.toString());
 		String nickName = content.getCcNickName().getNickName();
-		if (nickName == null || nickName == "") {
+		if (nickName == null || nickName.isEmpty()) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_NULL_NICK_NAME_VALUE);
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
@@ -233,6 +266,15 @@ public class AccountLogic {
 		fivepkPlayerInfo.setNickNameCount(fivepkPlayerInfo.getNickNameCount() + 1);
 		jdbcDaoSupport.update(fivepkPlayerInfo);
 		GameCache.putPlayerInfo(fivepkPlayerInfo.getAccountId(), fivepkPlayerInfo.getPic(), fivepkPlayerInfo.getNickName());
+		return MessageContent.newBuilder().setResult(0);
+	}
+	
+	public Builder csLoginOut(IoSession session, MessageContent content){
+		Long accountId = (Long) session.getAttribute("accountId");
+		if (accountId == null) {
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+		}
+		offlineLogic.sessionClosed(session);
 		return MessageContent.newBuilder().setResult(0);
 	}
 }

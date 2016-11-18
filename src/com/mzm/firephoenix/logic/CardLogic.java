@@ -1,25 +1,32 @@
 package com.mzm.firephoenix.logic;
 
 import java.util.Arrays;
+import java.util.List;
 
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.mina.core.session.IoSession;
-import org.oppa.utils.cardutils.CardResult;
-import org.oppa.utils.cardutils.CardUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.mzm.firephoenix.cache.GameCache;
+import com.mzm.firephoenix.cache.PlayerInfo;
 import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCCoinScore;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCCompareHistoryCards;
+import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
 import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
+import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCards;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareCard;
+import com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice;
+import com.mzm.firephoenix.utils.CardResult;
+import com.mzm.firephoenix.utils.CardUtil;
 
 /**
  * 
@@ -32,21 +39,6 @@ public class CardLogic {
 	@Autowired
 	JdbcDaoSupport jdbcDaoSupport;
 
-	public static void main(String[] args) {
-		String holdCards = "";
-		if (holdCards != null && !holdCards.isEmpty()) {
-			holdCards.trim();
-			String[] holdCardsArr = holdCards.split(",");
-			byte[] keepCards = new byte[holdCardsArr.length];
-			for (int i = 0; i < holdCardsArr.length; i++) {
-				keepCards[i] = Byte.parseByte(holdCardsArr[i].trim());
-			}
-		}
-		byte[] b = new byte[]{1, 2, 3, 4, 5};
-		String s = Arrays.toString(b);
-		System.out.println(s.substring(1, s.length() - 1));
-	}
-
 	public Builder csCards(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
@@ -55,10 +47,10 @@ public class CardLogic {
 		int startIndex = content.getCsCards().getStartIndex();
 		int betScore = content.getCsCards().getBetScore();
 		if (startIndex != 0 && startIndex != 1) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD_VALUE);
 		}
 		if (betScore != GameConstant.BETSCORE_100 && betScore != GameConstant.BETSCORE_500 && betScore != GameConstant.BETSCORE_1000 && betScore != GameConstant.BETSCORE_2000) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_BET_SCORE_0_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_BET_SCORE_VALUE);
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
@@ -83,10 +75,7 @@ public class CardLogic {
 		} else {
 			cr = (CardResult) session.getAttribute("cardResult");
 			if (cr == null) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
-			}
-			if (cr.getKeepCards() != null && cr.getKeepCards().length == 5) {
-				return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(cr.getWinType()).setCards(""));
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
 			}
 			String holdCards = content.getCsCards().getHoldCards();
 			if (holdCards != null && !holdCards.isEmpty()) {
@@ -99,18 +88,35 @@ public class CardLogic {
 			} else {
 				cr.setKeepCards(null);
 			}
+			// if (cr.getKeepCards() != null && cr.getKeepCards().length == 5) {
+			// return
+			// MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(cr.getWinType()).setCards(""));
+			// }
 			cr = CardUtil.secondRandomCards(cr);
 			int winType = cr.getWinType();
 			int score = 0;
 			if (winType != 0) {
 				score = winType * betScore;
 			} else {
-				score = 0;
-				fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet());
+				fivepkPlayerInfo.setScore(fivepkPlayerInfo.getScore() - cr.getBet());
 				jdbcDaoSupport.update(fivepkPlayerInfo);
 				cr.setBet(0);
 			}
 			cr.setWin(score);
+			logger.info("------------------------------------------------------------------------------set win : " + score);
+			if (cr.getWinType() == 50 || cr.getWinType() == 80 || cr.getWinType() == 120 || cr.getWinType() == 500 || cr.getWinType() == 1000) {
+				PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+				List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
+				for (IoSession ioSession : sessionList) {
+					if (!ioSession.isClosing() && ioSession.isConnected()) {
+						MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+						returnMessagePack.setCmd(Cmd.CMD_NOTICE);
+						returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScNotice(SCNotice.newBuilder().setNotice(fivepkPlayerInfo.getNickName() + "," + cr.getWinType())));
+						logger.info("sent message pack : " + returnMessagePack.toString());
+						ioSession.write(returnMessagePack);
+					}
+				}
+			}
 			session.setAttribute("cardResult", cr);
 			String cardsStr = Arrays.toString(cr.getCards());
 			cardsStr = cardsStr.substring(1, cardsStr.length() - 1);
@@ -119,7 +125,10 @@ public class CardLogic {
 	}
 
 	public Builder ccCompareHistoryCards(IoSession session, MessageContent content) {
-		long accountId = (long) session.getAttribute("accountId");
+		Long accountId = (Long) session.getAttribute("accountId");
+		if (accountId == null) {
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
@@ -147,10 +156,10 @@ public class CardLogic {
 		int betScore = content.getCsCompareCard().getBetScore();
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
 		}
 		if (betScore != 0 && betScore != cr.getWin() && betScore != cr.getWin() / 2 && betScore != cr.getWin() * 2) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_BETSCORE_VALUE);
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
@@ -160,7 +169,7 @@ public class CardLogic {
 		if (fivepkPlayerInfo == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
 		}
-		if (betScore > fivepkPlayerInfo.getScore()) {
+		if (betScore > fivepkPlayerInfo.getScore() + cr.getWin() - cr.getBet()) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH_VALUE);
 		}
 		int compareCard = 0;
@@ -169,19 +178,27 @@ public class CardLogic {
 		if (betScore == 0) {
 			compareCard = CardUtil.compareCard();
 			session.setAttribute("compareCard", compareCard);
-			return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(cr.getWin()));
+			return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(0));
 		} else {
 			compareCard = CardUtil.compareCard();
 			int cardValue = CardUtil.getCardValue(compareCard);
-			boolean isWin = true;
-			if (bigSmall == 0 && cardValue > 7 || bigSmall == 0 && cardValue == 1) {
+			boolean isWin = false;
+			// boolean isWin = true;
+			if (compareCard == 53) {
 				isWin = true;
-			} else if (bigSmall == 1 && cardValue < 7 && cardValue > 1) {
+			} else if (bigSmall == 0 && cardValue > 7
+			// || bigSmall == 0 && cardValue == 1
+			) {
+				isWin = true;
+			} else if (bigSmall == 1 && cardValue < 7 && cardValue >= 1) {
+				isWin = true;
+			} else if (cardValue == 7) {
 				isWin = true;
 			}
 			if (betScore == cr.getWin() / 2) {
 				score = betScore;
 				cr.setWin(betScore);
+				logger.info("------------------------------------------------------------------------------set win : " + betScore);
 				isUpdate = true;
 			} else if (betScore == cr.getWin() * 2) {
 				score = -cr.getWin();
@@ -190,23 +207,53 @@ public class CardLogic {
 			if (isWin) {
 				if (betScore == cr.getWin() * 2) {
 					cr.setWin(betScore * 2);
+					logger.info("------------------------------------------------------------------------------set win : " + betScore * 2);
 				} else {
 					cr.setWin(cr.getWin() + betScore);
+					logger.info("------------------------------------------------------------------------------set win : " + cr.getWin() + betScore);
 				}
+				if (compareCard == 53) {
+					int randomTimes = RandomUtils.nextInt(3, 6);
+					cr.setWin(cr.getWin() * randomTimes);
+				}
+				cr.setWinCount(cr.getWinCount() + 1);
+
+				if (cr.getWin() >= 75000) {
+					// cr.setWin(cr.getWin() + cr.getWinCount() * 4000);
+					// score += cr.getWin() + cr.getWinCount() * 4000;
+					cr.setGiftWin(cr.getWinCount() * 4000);
+				}
+				if (cr.getWin() >= 200000) {
+					// cr.setWin(cr.getWin() + 50000);
+					// score += cr.getWin() + 50000;
+					cr.setGiftWin(cr.getGiftWin() + 50000);
+				}
+
 			} else {
+				int giftWin = 0;
+				if (cr.getWin() >= 75000) {
+					giftWin = cr.getWinCount() * 4000;
+				}
+				if (cr.getWin() >= 200000) {
+					giftWin += 50000;
+				}
 				cr.setWin(0);
-				score += cr.getWin() - cr.getBet();
+				logger.info("------------------------------------------------------------------------------set win : " + 0);
+				score = score - cr.getBet() + giftWin;
 				isUpdate = true;
 				cr.setBet(0);
+				cr.setWinCount(0);
 			}
 		}
 		session.setAttribute("cardResult", cr);
+		session.removeAttribute("compareCard");
 		fivepkPlayerInfo.firstInLastOut(compareCard);
 		if (isUpdate) {
 			fivepkPlayerInfo.setScore(fivepkPlayerInfo.getScore() + score);
+			logger.info("------------------------------------------------------------------------得分: " + fivepkPlayerInfo.getScore());
 		}
 		jdbcDaoSupport.update(fivepkPlayerInfo);
-		return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(2).setWinScore(cr.getWin()));
+		return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(cr.getWin()));
 	}
 
 	public Builder csWin(IoSession session, MessageContent content) {
@@ -220,33 +267,30 @@ public class CardLogic {
 		}
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
 		}
-		fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet());
-		cr.setBet(0);
-		cr.setWin(0);
+		fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
+		cr.reset();
 		session.setAttribute("cardResult", cr);
 		if (session.getAttribute("compareCard") != null) {
 			fivepkPlayerInfo.firstInLastOut((Integer) session.getAttribute("compareCard"));
 			session.removeAttribute("compareCard");
 		}
+		logger.info("------------------------------------------------------------------------得分: " + fivepkPlayerInfo.getScore());
 		jdbcDaoSupport.update(fivepkPlayerInfo);
 		return MessageContent.newBuilder().setResult(0);
 	}
 
 	public Builder ccCoinScore(IoSession session, MessageContent content) {
-		Byte accountType = (Byte) session.getAttribute(GameConstant.SESSION_ACCOUNT_TYPE);
-		if (accountType == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
-		}
-		if (accountType == GameConstant.ACCOUNT_TYPE_GUEST) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_GUEST_COINSCORE_VALUE);
-		}
 		int coin = content.getCcCoinScore().getCoin();
 		int score = content.getCcCoinScore().getScore();
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+		}
+		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+		if (playerInfo.getAccountType() == GameConstant.ACCOUNT_TYPE_GUEST) {
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_GUEST_COINSCORE_VALUE);
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
@@ -255,11 +299,11 @@ public class CardLogic {
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
 			if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore())) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_COIN_SCORE_VALUE);
 			}
 		} else {
 			if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore() - cr.getBet())) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_COIN_SCORE_VALUE);
 			}
 			cr.setBet(0);
 			session.setAttribute("cardResult", cr);

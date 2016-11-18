@@ -345,6 +345,22 @@ public final class CoreProtocol {
      * </pre>
      */
     CMD_PAIINFO_3(41, 196643),
+    /**
+     * <code>CMD_NOTICE = 196644;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    CMD_NOTICE(42, 196644),
+    /**
+     * <code>CMD_LOGIN_OUT = 196645;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    CMD_LOGIN_OUT(43, 196645),
     ;
 
     /**
@@ -679,6 +695,22 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int CMD_PAIINFO_3_VALUE = 196643;
+    /**
+     * <code>CMD_NOTICE = 196644;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    public static final int CMD_NOTICE_VALUE = 196644;
+    /**
+     * <code>CMD_LOGIN_OUT = 196645;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    public static final int CMD_LOGIN_OUT_VALUE = 196645;
 
 
     public final int getNumber() {
@@ -729,6 +761,8 @@ public final class CoreProtocol {
         case 196641: return CMD_CARD_INFO;
         case 196642: return CMD_PAI_BASE_INFO;
         case 196643: return CMD_PAIINFO_3;
+        case 196644: return CMD_NOTICE;
+        case 196645: return CMD_LOGIN_OUT;
         default: return null;
       }
     }
@@ -818,109 +852,13 @@ public final class CoreProtocol {
      */
     ERROR_PLAYER_NOT_EXIT(3, 1004),
     /**
-     * <code>ERROR_NOBIND = 1005;</code>
-     *
-     * <pre>
-     *玩家未登录
-     * </pre>
-     */
-    ERROR_NOBIND(4, 1005),
-    /**
-     * <code>ERROT_SIT_HAVEPLAYER = 1006;</code>
-     *
-     * <pre>
-     *座位有人
-     * </pre>
-     */
-    ERROT_SIT_HAVEPLAYER(5, 1006),
-    /**
-     * <code>ERROR_CANT_SIGN = 1007;</code>
-     *
-     * <pre>
-     *不可签到
-     * </pre>
-     */
-    ERROR_CANT_SIGN(6, 1007),
-    /**
-     * <code>ERROT_NO_SIT = 1008;</code>
-     *
-     * <pre>
-     *你没有坐下
-     * </pre>
-     */
-    ERROT_NO_SIT(7, 1008),
-    /**
-     * <code>ERROR_GOLD_NOT_ZHUANG = 1009;</code>
-     *
-     * <pre>
-     *金钱不够，无法抢庄
-     * </pre>
-     */
-    ERROR_GOLD_NOT_ZHUANG(8, 1009),
-    /**
-     * <code>ERROR_CANT_BET = 1010;</code>
-     *
-     * <pre>
-     *当前不能下注
-     * </pre>
-     */
-    ERROR_CANT_BET(9, 1010),
-    /**
-     * <code>ERROR_ROOM_NOT_EXIT = 1011;</code>
-     *
-     * <pre>
-     *房间不存在
-     * </pre>
-     */
-    ERROR_ROOM_NOT_EXIT(10, 1011),
-    /**
-     * <code>ERROR_BET_LARGER = 1012;</code>
-     *
-     * <pre>
-     *下注已经超过上限
-     * </pre>
-     */
-    ERROR_BET_LARGER(11, 1012),
-    /**
-     * <code>ERROR_SIT_HAVESEAT = 1013;</code>
-     *
-     * <pre>
-     *你必须站起来才能再次坐下 
-     * </pre>
-     */
-    ERROR_SIT_HAVESEAT(12, 1013),
-    /**
-     * <code>ERROR_DEPOSIT_MIN = 1014;</code>
-     *
-     * <pre>
-     *保险箱金币数量太小，无法赠送
-     * </pre>
-     */
-    ERROR_DEPOSIT_MIN(13, 1014),
-    /**
-     * <code>ERROR_SMS_EXPIRE = 1015;</code>
-     *
-     * <pre>
-     *验证码过期
-     * </pre>
-     */
-    ERROR_SMS_EXPIRE(14, 1015),
-    /**
-     * <code>ERROR_SMS_WRONG = 1016;</code>
-     *
-     * <pre>
-     *验证码错误
-     * </pre>
-     */
-    ERROR_SMS_WRONG(15, 1016),
-    /**
      * <code>ERROR_SMS_INVALID_PARAMETER = 1017;</code>
      *
      * <pre>
      *传递的参数不正确
      * </pre>
      */
-    ERROR_SMS_INVALID_PARAMETER(16, 1017),
+    ERROR_SMS_INVALID_PARAMETER(4, 1017),
     /**
      * <code>ERROR_ACCOUNT_RECONNECT = 1018;</code>
      *
@@ -928,7 +866,7 @@ public final class CoreProtocol {
      *请重新登录
      * </pre>
      */
-    ERROR_ACCOUNT_RECONNECT(17, 1018),
+    ERROR_ACCOUNT_RECONNECT(5, 1018),
     /**
      * <code>ERROR_CARD_BET_SCORE_0 = 2000;</code>
      *
@@ -936,7 +874,7 @@ public final class CoreProtocol {
      *比倍分数不能为0
      * </pre>
      */
-    ERROR_CARD_BET_SCORE_0(18, 2000),
+    ERROR_CARD_BET_SCORE_0(6, 2000),
     /**
      * <code>ERROR_CARD_GUEST_COINSCORE = 2001;</code>
      *
@@ -944,7 +882,7 @@ public final class CoreProtocol {
      *游客不能存取分
      * </pre>
      */
-    ERROR_CARD_GUEST_COINSCORE(19, 2001),
+    ERROR_CARD_GUEST_COINSCORE(7, 2001),
     /**
      * <code>ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;</code>
      *
@@ -952,7 +890,7 @@ public final class CoreProtocol {
      *发牌下分分数不足
      * </pre>
      */
-    ERROR_CARD_BET_SCORE_NOT_ENOUGH(20, 2002),
+    ERROR_CARD_BET_SCORE_NOT_ENOUGH(8, 2002),
     /**
      * <code>ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;</code>
      *
@@ -960,7 +898,7 @@ public final class CoreProtocol {
      *比倍下分分数不足
      * </pre>
      */
-    ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH(21, 2003),
+    ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH(9, 2003),
     /**
      * <code>ERROR_NO_BUILDING = 2004;</code>
      *
@@ -968,7 +906,7 @@ public final class CoreProtocol {
      *已经绑定的玩家不能再次绑定
      * </pre>
      */
-    ERROR_NO_BUILDING(22, 2004),
+    ERROR_NO_BUILDING(10, 2004),
     /**
      * <code>ERROR_NO_NULL_NICK_NAME = 2005;</code>
      *
@@ -976,7 +914,7 @@ public final class CoreProtocol {
      *昵称不能为空
      * </pre>
      */
-    ERROR_NO_NULL_NICK_NAME(23, 2005),
+    ERROR_NO_NULL_NICK_NAME(11, 2005),
     /**
      * <code>ERROR_NO_LOGIN_SEOID = 2006;</code>
      *
@@ -984,7 +922,7 @@ public final class CoreProtocol {
      *代理商没有注册
      * </pre>
      */
-    ERROR_NO_LOGIN_SEOID(24, 2006),
+    ERROR_NO_LOGIN_SEOID(12, 2006),
     /**
      * <code>ERROR_NICK_NAME_COUNT = 2007;</code>
      *
@@ -992,7 +930,119 @@ public final class CoreProtocol {
      *昵称只能修改一次
      * </pre>
      */
-    ERROR_NICK_NAME_COUNT(25, 2007),
+    ERROR_NICK_NAME_COUNT(13, 2007),
+    /**
+     * <code>ERROR_USER_NAME = 2008;</code>
+     *
+     * <pre>
+     *用户名必须为6~18位字母或数字
+     * </pre>
+     */
+    ERROR_USER_NAME(14, 2008),
+    /**
+     * <code>ERROR_USER_EXIST = 2009;</code>
+     *
+     * <pre>
+     *被绑定的用户已存在
+     * </pre>
+     */
+    ERROR_USER_EXIST(15, 2009),
+    /**
+     * <code>ERROR_YOUR_ACCOUNT_IS_BEING_LANDED = 2010;</code>
+     *
+     * <pre>
+     *您的帐号正在被登陆,请从新登录
+     * </pre>
+     */
+    ERROR_YOUR_ACCOUNT_IS_BEING_LANDED(16, 2010),
+    /**
+     * <code>ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED = 2011;</code>
+     *
+     * <pre>
+     *您的帐号已经被登陆
+     * </pre>
+     */
+    ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED(17, 2011),
+    /**
+     * <code>ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD = 2012;</code>
+     *
+     * <pre>
+     *既不是第一手牌也不是第二手牌
+     * </pre>
+     */
+    ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD(18, 2012),
+    /**
+     * <code>ERROR_CARD_BET_SCORE = 2013;</code>
+     *
+     * <pre>
+     *比倍分数不正确
+     * </pre>
+     */
+    ERROR_CARD_BET_SCORE(19, 2013),
+    /**
+     * <code>ERROR_UNAME_UPASS_USEOID = 2014;</code>
+     *
+     * <pre>
+     *用户名密码代理商不可以为空
+     * </pre>
+     */
+    ERROR_UNAME_UPASS_USEOID(20, 2014),
+    /**
+     * <code>ERROR_NOT_MACHINE = 2015;</code>
+     *
+     * <pre>
+     *该机器不存在
+     * </pre>
+     */
+    ERROR_NOT_MACHINE(21, 2015),
+    /**
+     * <code>ERROR_MACHINE_STAY = 2016;</code>
+     *
+     * <pre>
+     *留机时异常
+     * </pre>
+     */
+    ERROR_MACHINE_STAY(22, 2016),
+    /**
+     * <code>ERROR_NOT_CARD_RESULT = 2017;</code>
+     *
+     * <pre>
+     *请从新开始下注
+     * </pre>
+     */
+    ERROR_NOT_CARD_RESULT(23, 2017),
+    /**
+     * <code>ERROR_BETSCORE = 2018;</code>
+     *
+     * <pre>
+     *下注分数不正确
+     * </pre>
+     */
+    ERROR_BETSCORE(24, 2018),
+    /**
+     * <code>ERROR_COIN_SCORE = 2019;</code>
+     *
+     * <pre>
+     *存取分计算错误
+     * </pre>
+     */
+    ERROR_COIN_SCORE(25, 2019),
+    /**
+     * <code>ERROR_HEAD_PIC_NOT_EXIST = 2020;</code>
+     *
+     * <pre>
+     *没有这个头像
+     * </pre>
+     */
+    ERROR_HEAD_PIC_NOT_EXIST(26, 2020),
+    /**
+     * <code>ERROR_MACHINE_TYPE_ONLINE = 2021;</code>
+     *
+     * <pre>
+     *该机台有玩家
+     * </pre>
+     */
+    ERROR_MACHINE_TYPE_ONLINE(27, 2021),
     ;
 
     /**
@@ -1027,102 +1077,6 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int ERROR_PLAYER_NOT_EXIT_VALUE = 1004;
-    /**
-     * <code>ERROR_NOBIND = 1005;</code>
-     *
-     * <pre>
-     *玩家未登录
-     * </pre>
-     */
-    public static final int ERROR_NOBIND_VALUE = 1005;
-    /**
-     * <code>ERROT_SIT_HAVEPLAYER = 1006;</code>
-     *
-     * <pre>
-     *座位有人
-     * </pre>
-     */
-    public static final int ERROT_SIT_HAVEPLAYER_VALUE = 1006;
-    /**
-     * <code>ERROR_CANT_SIGN = 1007;</code>
-     *
-     * <pre>
-     *不可签到
-     * </pre>
-     */
-    public static final int ERROR_CANT_SIGN_VALUE = 1007;
-    /**
-     * <code>ERROT_NO_SIT = 1008;</code>
-     *
-     * <pre>
-     *你没有坐下
-     * </pre>
-     */
-    public static final int ERROT_NO_SIT_VALUE = 1008;
-    /**
-     * <code>ERROR_GOLD_NOT_ZHUANG = 1009;</code>
-     *
-     * <pre>
-     *金钱不够，无法抢庄
-     * </pre>
-     */
-    public static final int ERROR_GOLD_NOT_ZHUANG_VALUE = 1009;
-    /**
-     * <code>ERROR_CANT_BET = 1010;</code>
-     *
-     * <pre>
-     *当前不能下注
-     * </pre>
-     */
-    public static final int ERROR_CANT_BET_VALUE = 1010;
-    /**
-     * <code>ERROR_ROOM_NOT_EXIT = 1011;</code>
-     *
-     * <pre>
-     *房间不存在
-     * </pre>
-     */
-    public static final int ERROR_ROOM_NOT_EXIT_VALUE = 1011;
-    /**
-     * <code>ERROR_BET_LARGER = 1012;</code>
-     *
-     * <pre>
-     *下注已经超过上限
-     * </pre>
-     */
-    public static final int ERROR_BET_LARGER_VALUE = 1012;
-    /**
-     * <code>ERROR_SIT_HAVESEAT = 1013;</code>
-     *
-     * <pre>
-     *你必须站起来才能再次坐下 
-     * </pre>
-     */
-    public static final int ERROR_SIT_HAVESEAT_VALUE = 1013;
-    /**
-     * <code>ERROR_DEPOSIT_MIN = 1014;</code>
-     *
-     * <pre>
-     *保险箱金币数量太小，无法赠送
-     * </pre>
-     */
-    public static final int ERROR_DEPOSIT_MIN_VALUE = 1014;
-    /**
-     * <code>ERROR_SMS_EXPIRE = 1015;</code>
-     *
-     * <pre>
-     *验证码过期
-     * </pre>
-     */
-    public static final int ERROR_SMS_EXPIRE_VALUE = 1015;
-    /**
-     * <code>ERROR_SMS_WRONG = 1016;</code>
-     *
-     * <pre>
-     *验证码错误
-     * </pre>
-     */
-    public static final int ERROR_SMS_WRONG_VALUE = 1016;
     /**
      * <code>ERROR_SMS_INVALID_PARAMETER = 1017;</code>
      *
@@ -1203,6 +1157,118 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int ERROR_NICK_NAME_COUNT_VALUE = 2007;
+    /**
+     * <code>ERROR_USER_NAME = 2008;</code>
+     *
+     * <pre>
+     *用户名必须为6~18位字母或数字
+     * </pre>
+     */
+    public static final int ERROR_USER_NAME_VALUE = 2008;
+    /**
+     * <code>ERROR_USER_EXIST = 2009;</code>
+     *
+     * <pre>
+     *被绑定的用户已存在
+     * </pre>
+     */
+    public static final int ERROR_USER_EXIST_VALUE = 2009;
+    /**
+     * <code>ERROR_YOUR_ACCOUNT_IS_BEING_LANDED = 2010;</code>
+     *
+     * <pre>
+     *您的帐号正在被登陆,请从新登录
+     * </pre>
+     */
+    public static final int ERROR_YOUR_ACCOUNT_IS_BEING_LANDED_VALUE = 2010;
+    /**
+     * <code>ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED = 2011;</code>
+     *
+     * <pre>
+     *您的帐号已经被登陆
+     * </pre>
+     */
+    public static final int ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED_VALUE = 2011;
+    /**
+     * <code>ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD = 2012;</code>
+     *
+     * <pre>
+     *既不是第一手牌也不是第二手牌
+     * </pre>
+     */
+    public static final int ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD_VALUE = 2012;
+    /**
+     * <code>ERROR_CARD_BET_SCORE = 2013;</code>
+     *
+     * <pre>
+     *比倍分数不正确
+     * </pre>
+     */
+    public static final int ERROR_CARD_BET_SCORE_VALUE = 2013;
+    /**
+     * <code>ERROR_UNAME_UPASS_USEOID = 2014;</code>
+     *
+     * <pre>
+     *用户名密码代理商不可以为空
+     * </pre>
+     */
+    public static final int ERROR_UNAME_UPASS_USEOID_VALUE = 2014;
+    /**
+     * <code>ERROR_NOT_MACHINE = 2015;</code>
+     *
+     * <pre>
+     *该机器不存在
+     * </pre>
+     */
+    public static final int ERROR_NOT_MACHINE_VALUE = 2015;
+    /**
+     * <code>ERROR_MACHINE_STAY = 2016;</code>
+     *
+     * <pre>
+     *留机时异常
+     * </pre>
+     */
+    public static final int ERROR_MACHINE_STAY_VALUE = 2016;
+    /**
+     * <code>ERROR_NOT_CARD_RESULT = 2017;</code>
+     *
+     * <pre>
+     *请从新开始下注
+     * </pre>
+     */
+    public static final int ERROR_NOT_CARD_RESULT_VALUE = 2017;
+    /**
+     * <code>ERROR_BETSCORE = 2018;</code>
+     *
+     * <pre>
+     *下注分数不正确
+     * </pre>
+     */
+    public static final int ERROR_BETSCORE_VALUE = 2018;
+    /**
+     * <code>ERROR_COIN_SCORE = 2019;</code>
+     *
+     * <pre>
+     *存取分计算错误
+     * </pre>
+     */
+    public static final int ERROR_COIN_SCORE_VALUE = 2019;
+    /**
+     * <code>ERROR_HEAD_PIC_NOT_EXIST = 2020;</code>
+     *
+     * <pre>
+     *没有这个头像
+     * </pre>
+     */
+    public static final int ERROR_HEAD_PIC_NOT_EXIST_VALUE = 2020;
+    /**
+     * <code>ERROR_MACHINE_TYPE_ONLINE = 2021;</code>
+     *
+     * <pre>
+     *该机台有玩家
+     * </pre>
+     */
+    public static final int ERROR_MACHINE_TYPE_ONLINE_VALUE = 2021;
 
 
     public final int getNumber() {
@@ -1215,18 +1281,6 @@ public final class CoreProtocol {
         case 1002: return ERROR_MUTI_LOGIN;
         case 1003: return ERROR_PWD_WRONG;
         case 1004: return ERROR_PLAYER_NOT_EXIT;
-        case 1005: return ERROR_NOBIND;
-        case 1006: return ERROT_SIT_HAVEPLAYER;
-        case 1007: return ERROR_CANT_SIGN;
-        case 1008: return ERROT_NO_SIT;
-        case 1009: return ERROR_GOLD_NOT_ZHUANG;
-        case 1010: return ERROR_CANT_BET;
-        case 1011: return ERROR_ROOM_NOT_EXIT;
-        case 1012: return ERROR_BET_LARGER;
-        case 1013: return ERROR_SIT_HAVESEAT;
-        case 1014: return ERROR_DEPOSIT_MIN;
-        case 1015: return ERROR_SMS_EXPIRE;
-        case 1016: return ERROR_SMS_WRONG;
         case 1017: return ERROR_SMS_INVALID_PARAMETER;
         case 1018: return ERROR_ACCOUNT_RECONNECT;
         case 2000: return ERROR_CARD_BET_SCORE_0;
@@ -1237,6 +1291,20 @@ public final class CoreProtocol {
         case 2005: return ERROR_NO_NULL_NICK_NAME;
         case 2006: return ERROR_NO_LOGIN_SEOID;
         case 2007: return ERROR_NICK_NAME_COUNT;
+        case 2008: return ERROR_USER_NAME;
+        case 2009: return ERROR_USER_EXIST;
+        case 2010: return ERROR_YOUR_ACCOUNT_IS_BEING_LANDED;
+        case 2011: return ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED;
+        case 2012: return ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD;
+        case 2013: return ERROR_CARD_BET_SCORE;
+        case 2014: return ERROR_UNAME_UPASS_USEOID;
+        case 2015: return ERROR_NOT_MACHINE;
+        case 2016: return ERROR_MACHINE_STAY;
+        case 2017: return ERROR_NOT_CARD_RESULT;
+        case 2018: return ERROR_BETSCORE;
+        case 2019: return ERROR_COIN_SCORE;
+        case 2020: return ERROR_HEAD_PIC_NOT_EXIST;
+        case 2021: return ERROR_MACHINE_TYPE_ONLINE;
         default: return null;
       }
     }
@@ -2756,6 +2824,94 @@ public final class CoreProtocol {
      * </pre>
      */
     com.mzm.firephoenix.protobuf.CoreProtocol.CCBindingOrBuilder getCcBindingOrBuilder();
+
+    /**
+     * <code>optional .SCNotice scNotice = 26;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    boolean hasScNotice();
+    /**
+     * <code>optional .SCNotice scNotice = 26;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice getScNotice();
+    /**
+     * <code>optional .SCNotice scNotice = 26;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCNoticeOrBuilder getScNoticeOrBuilder();
+
+    /**
+     * <code>optional .CSMachineList csMachineList = 27;</code>
+     */
+    boolean hasCsMachineList();
+    /**
+     * <code>optional .CSMachineList csMachineList = 27;</code>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList getCsMachineList();
+    /**
+     * <code>optional .CSMachineList csMachineList = 27;</code>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineListOrBuilder getCsMachineListOrBuilder();
+
+    /**
+     * <code>optional .CSLoginOut csLoginOut = 28;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    boolean hasCsLoginOut();
+    /**
+     * <code>optional .CSLoginOut csLoginOut = 28;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut getCsLoginOut();
+    /**
+     * <code>optional .CSLoginOut csLoginOut = 28;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOutOrBuilder getCsLoginOutOrBuilder();
+
+    /**
+     * <code>optional .SCLoginOut scLoginOut = 29;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    boolean hasScLoginOut();
+    /**
+     * <code>optional .SCLoginOut scLoginOut = 29;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut getScLoginOut();
+    /**
+     * <code>optional .SCLoginOut scLoginOut = 29;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOutOrBuilder getScLoginOutOrBuilder();
   }
   /**
    * Protobuf type {@code MessageContent}
@@ -3099,6 +3255,58 @@ public final class CoreProtocol {
                 ccBinding_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00800000;
+              break;
+            }
+            case 210: {
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder subBuilder = null;
+              if (((bitField0_ & 0x01000000) == 0x01000000)) {
+                subBuilder = scNotice_.toBuilder();
+              }
+              scNotice_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(scNotice_);
+                scNotice_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x01000000;
+              break;
+            }
+            case 218: {
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder subBuilder = null;
+              if (((bitField0_ & 0x02000000) == 0x02000000)) {
+                subBuilder = csMachineList_.toBuilder();
+              }
+              csMachineList_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(csMachineList_);
+                csMachineList_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x02000000;
+              break;
+            }
+            case 226: {
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder subBuilder = null;
+              if (((bitField0_ & 0x04000000) == 0x04000000)) {
+                subBuilder = csLoginOut_.toBuilder();
+              }
+              csLoginOut_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(csLoginOut_);
+                csLoginOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x04000000;
+              break;
+            }
+            case 234: {
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder subBuilder = null;
+              if (((bitField0_ & 0x08000000) == 0x08000000)) {
+                subBuilder = scLoginOut_.toBuilder();
+              }
+              scLoginOut_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(scLoginOut_);
+                scLoginOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x08000000;
               break;
             }
           }
@@ -3870,6 +4078,126 @@ public final class CoreProtocol {
       return ccBinding_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CCBinding.getDefaultInstance() : ccBinding_;
     }
 
+    public static final int SCNOTICE_FIELD_NUMBER = 26;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice scNotice_;
+    /**
+     * <code>optional .SCNotice scNotice = 26;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    public boolean hasScNotice() {
+      return ((bitField0_ & 0x01000000) == 0x01000000);
+    }
+    /**
+     * <code>optional .SCNotice scNotice = 26;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice getScNotice() {
+      return scNotice_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.getDefaultInstance() : scNotice_;
+    }
+    /**
+     * <code>optional .SCNotice scNotice = 26;</code>
+     *
+     * <pre>
+     *公告
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCNoticeOrBuilder getScNoticeOrBuilder() {
+      return scNotice_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.getDefaultInstance() : scNotice_;
+    }
+
+    public static final int CSMACHINELIST_FIELD_NUMBER = 27;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList csMachineList_;
+    /**
+     * <code>optional .CSMachineList csMachineList = 27;</code>
+     */
+    public boolean hasCsMachineList() {
+      return ((bitField0_ & 0x02000000) == 0x02000000);
+    }
+    /**
+     * <code>optional .CSMachineList csMachineList = 27;</code>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList getCsMachineList() {
+      return csMachineList_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.getDefaultInstance() : csMachineList_;
+    }
+    /**
+     * <code>optional .CSMachineList csMachineList = 27;</code>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineListOrBuilder getCsMachineListOrBuilder() {
+      return csMachineList_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.getDefaultInstance() : csMachineList_;
+    }
+
+    public static final int CSLOGINOUT_FIELD_NUMBER = 28;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut csLoginOut_;
+    /**
+     * <code>optional .CSLoginOut csLoginOut = 28;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    public boolean hasCsLoginOut() {
+      return ((bitField0_ & 0x04000000) == 0x04000000);
+    }
+    /**
+     * <code>optional .CSLoginOut csLoginOut = 28;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut getCsLoginOut() {
+      return csLoginOut_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance() : csLoginOut_;
+    }
+    /**
+     * <code>optional .CSLoginOut csLoginOut = 28;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOutOrBuilder getCsLoginOutOrBuilder() {
+      return csLoginOut_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance() : csLoginOut_;
+    }
+
+    public static final int SCLOGINOUT_FIELD_NUMBER = 29;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut scLoginOut_;
+    /**
+     * <code>optional .SCLoginOut scLoginOut = 29;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    public boolean hasScLoginOut() {
+      return ((bitField0_ & 0x08000000) == 0x08000000);
+    }
+    /**
+     * <code>optional .SCLoginOut scLoginOut = 29;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut getScLoginOut() {
+      return scLoginOut_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.getDefaultInstance() : scLoginOut_;
+    }
+    /**
+     * <code>optional .SCLoginOut scLoginOut = 29;</code>
+     *
+     * <pre>
+     *退出
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOutOrBuilder getScLoginOutOrBuilder() {
+      return scLoginOut_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.getDefaultInstance() : scLoginOut_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3994,6 +4322,24 @@ public final class CoreProtocol {
           return false;
         }
       }
+      if (hasScNotice()) {
+        if (!getScNotice().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasCsMachineList()) {
+        if (!getCsMachineList().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasCsLoginOut()) {
+        if (!getCsLoginOut().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4071,6 +4417,18 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
         output.writeMessage(25, getCcBinding());
+      }
+      if (((bitField0_ & 0x01000000) == 0x01000000)) {
+        output.writeMessage(26, getScNotice());
+      }
+      if (((bitField0_ & 0x02000000) == 0x02000000)) {
+        output.writeMessage(27, getCsMachineList());
+      }
+      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+        output.writeMessage(28, getCsLoginOut());
+      }
+      if (((bitField0_ & 0x08000000) == 0x08000000)) {
+        output.writeMessage(29, getScLoginOut());
       }
       unknownFields.writeTo(output);
     }
@@ -4176,6 +4534,22 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(25, getCcBinding());
+      }
+      if (((bitField0_ & 0x01000000) == 0x01000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(26, getScNotice());
+      }
+      if (((bitField0_ & 0x02000000) == 0x02000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(27, getCsMachineList());
+      }
+      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(28, getCsLoginOut());
+      }
+      if (((bitField0_ & 0x08000000) == 0x08000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(29, getScLoginOut());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4311,6 +4685,10 @@ public final class CoreProtocol {
           getCcLeaveMachineFieldBuilder();
           getCcMachineStayFieldBuilder();
           getCcBindingFieldBuilder();
+          getScNoticeFieldBuilder();
+          getCsMachineListFieldBuilder();
+          getCsLoginOutFieldBuilder();
+          getScLoginOutFieldBuilder();
         }
       }
       public Builder clear() {
@@ -4451,6 +4829,30 @@ public final class CoreProtocol {
           ccBindingBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00800000);
+        if (scNoticeBuilder_ == null) {
+          scNotice_ = null;
+        } else {
+          scNoticeBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x01000000);
+        if (csMachineListBuilder_ == null) {
+          csMachineList_ = null;
+        } else {
+          csMachineListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x02000000);
+        if (csLoginOutBuilder_ == null) {
+          csLoginOut_ = null;
+        } else {
+          csLoginOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x04000000);
+        if (scLoginOutBuilder_ == null) {
+          scLoginOut_ = null;
+        } else {
+          scLoginOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x08000000);
         return this;
       }
 
@@ -4659,6 +5061,38 @@ public final class CoreProtocol {
         } else {
           result.ccBinding_ = ccBindingBuilder_.build();
         }
+        if (((from_bitField0_ & 0x01000000) == 0x01000000)) {
+          to_bitField0_ |= 0x01000000;
+        }
+        if (scNoticeBuilder_ == null) {
+          result.scNotice_ = scNotice_;
+        } else {
+          result.scNotice_ = scNoticeBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x02000000) == 0x02000000)) {
+          to_bitField0_ |= 0x02000000;
+        }
+        if (csMachineListBuilder_ == null) {
+          result.csMachineList_ = csMachineList_;
+        } else {
+          result.csMachineList_ = csMachineListBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x04000000) == 0x04000000)) {
+          to_bitField0_ |= 0x04000000;
+        }
+        if (csLoginOutBuilder_ == null) {
+          result.csLoginOut_ = csLoginOut_;
+        } else {
+          result.csLoginOut_ = csLoginOutBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x08000000) == 0x08000000)) {
+          to_bitField0_ |= 0x08000000;
+        }
+        if (scLoginOutBuilder_ == null) {
+          result.scLoginOut_ = scLoginOut_;
+        } else {
+          result.scLoginOut_ = scLoginOutBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4748,6 +5182,18 @@ public final class CoreProtocol {
         }
         if (other.hasCcBinding()) {
           mergeCcBinding(other.getCcBinding());
+        }
+        if (other.hasScNotice()) {
+          mergeScNotice(other.getScNotice());
+        }
+        if (other.hasCsMachineList()) {
+          mergeCsMachineList(other.getCsMachineList());
+        }
+        if (other.hasCsLoginOut()) {
+          mergeCsLoginOut(other.getCsLoginOut());
+        }
+        if (other.hasScLoginOut()) {
+          mergeScLoginOut(other.getScLoginOut());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4850,6 +5296,21 @@ public final class CoreProtocol {
         }
         if (hasCcBinding()) {
           if (!getCcBinding().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasScNotice()) {
+          if (!getScNotice().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasCsMachineList()) {
+          if (!getCsMachineList().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasCsLoginOut()) {
+          if (!getCsLoginOut().isInitialized()) {
             return false;
           }
         }
@@ -8231,6 +8692,586 @@ public final class CoreProtocol {
         return ccBindingBuilder_;
       }
 
+      private com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice scNotice_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice, com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCNoticeOrBuilder> scNoticeBuilder_;
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public boolean hasScNotice() {
+        return ((bitField0_ & 0x01000000) == 0x01000000);
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice getScNotice() {
+        if (scNoticeBuilder_ == null) {
+          return scNotice_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.getDefaultInstance() : scNotice_;
+        } else {
+          return scNoticeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public Builder setScNotice(com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice value) {
+        if (scNoticeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          scNotice_ = value;
+          onChanged();
+        } else {
+          scNoticeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public Builder setScNotice(
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder builderForValue) {
+        if (scNoticeBuilder_ == null) {
+          scNotice_ = builderForValue.build();
+          onChanged();
+        } else {
+          scNoticeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public Builder mergeScNotice(com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice value) {
+        if (scNoticeBuilder_ == null) {
+          if (((bitField0_ & 0x01000000) == 0x01000000) &&
+              scNotice_ != null &&
+              scNotice_ != com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.getDefaultInstance()) {
+            scNotice_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.newBuilder(scNotice_).mergeFrom(value).buildPartial();
+          } else {
+            scNotice_ = value;
+          }
+          onChanged();
+        } else {
+          scNoticeBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public Builder clearScNotice() {
+        if (scNoticeBuilder_ == null) {
+          scNotice_ = null;
+          onChanged();
+        } else {
+          scNoticeBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x01000000);
+        return this;
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder getScNoticeBuilder() {
+        bitField0_ |= 0x01000000;
+        onChanged();
+        return getScNoticeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCNoticeOrBuilder getScNoticeOrBuilder() {
+        if (scNoticeBuilder_ != null) {
+          return scNoticeBuilder_.getMessageOrBuilder();
+        } else {
+          return scNotice_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.getDefaultInstance() : scNotice_;
+        }
+      }
+      /**
+       * <code>optional .SCNotice scNotice = 26;</code>
+       *
+       * <pre>
+       *公告
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice, com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCNoticeOrBuilder> 
+          getScNoticeFieldBuilder() {
+        if (scNoticeBuilder_ == null) {
+          scNoticeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice, com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCNoticeOrBuilder>(
+                  getScNotice(),
+                  getParentForChildren(),
+                  isClean());
+          scNotice_ = null;
+        }
+        return scNoticeBuilder_;
+      }
+
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList csMachineList_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineListOrBuilder> csMachineListBuilder_;
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public boolean hasCsMachineList() {
+        return ((bitField0_ & 0x02000000) == 0x02000000);
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList getCsMachineList() {
+        if (csMachineListBuilder_ == null) {
+          return csMachineList_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.getDefaultInstance() : csMachineList_;
+        } else {
+          return csMachineListBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public Builder setCsMachineList(com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList value) {
+        if (csMachineListBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          csMachineList_ = value;
+          onChanged();
+        } else {
+          csMachineListBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public Builder setCsMachineList(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder builderForValue) {
+        if (csMachineListBuilder_ == null) {
+          csMachineList_ = builderForValue.build();
+          onChanged();
+        } else {
+          csMachineListBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public Builder mergeCsMachineList(com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList value) {
+        if (csMachineListBuilder_ == null) {
+          if (((bitField0_ & 0x02000000) == 0x02000000) &&
+              csMachineList_ != null &&
+              csMachineList_ != com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.getDefaultInstance()) {
+            csMachineList_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.newBuilder(csMachineList_).mergeFrom(value).buildPartial();
+          } else {
+            csMachineList_ = value;
+          }
+          onChanged();
+        } else {
+          csMachineListBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public Builder clearCsMachineList() {
+        if (csMachineListBuilder_ == null) {
+          csMachineList_ = null;
+          onChanged();
+        } else {
+          csMachineListBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x02000000);
+        return this;
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder getCsMachineListBuilder() {
+        bitField0_ |= 0x02000000;
+        onChanged();
+        return getCsMachineListFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineListOrBuilder getCsMachineListOrBuilder() {
+        if (csMachineListBuilder_ != null) {
+          return csMachineListBuilder_.getMessageOrBuilder();
+        } else {
+          return csMachineList_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.getDefaultInstance() : csMachineList_;
+        }
+      }
+      /**
+       * <code>optional .CSMachineList csMachineList = 27;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineListOrBuilder> 
+          getCsMachineListFieldBuilder() {
+        if (csMachineListBuilder_ == null) {
+          csMachineListBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineListOrBuilder>(
+                  getCsMachineList(),
+                  getParentForChildren(),
+                  isClean());
+          csMachineList_ = null;
+        }
+        return csMachineListBuilder_;
+      }
+
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut csLoginOut_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOutOrBuilder> csLoginOutBuilder_;
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public boolean hasCsLoginOut() {
+        return ((bitField0_ & 0x04000000) == 0x04000000);
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut getCsLoginOut() {
+        if (csLoginOutBuilder_ == null) {
+          return csLoginOut_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance() : csLoginOut_;
+        } else {
+          return csLoginOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder setCsLoginOut(com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut value) {
+        if (csLoginOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          csLoginOut_ = value;
+          onChanged();
+        } else {
+          csLoginOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder setCsLoginOut(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder builderForValue) {
+        if (csLoginOutBuilder_ == null) {
+          csLoginOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          csLoginOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder mergeCsLoginOut(com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut value) {
+        if (csLoginOutBuilder_ == null) {
+          if (((bitField0_ & 0x04000000) == 0x04000000) &&
+              csLoginOut_ != null &&
+              csLoginOut_ != com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance()) {
+            csLoginOut_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.newBuilder(csLoginOut_).mergeFrom(value).buildPartial();
+          } else {
+            csLoginOut_ = value;
+          }
+          onChanged();
+        } else {
+          csLoginOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder clearCsLoginOut() {
+        if (csLoginOutBuilder_ == null) {
+          csLoginOut_ = null;
+          onChanged();
+        } else {
+          csLoginOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x04000000);
+        return this;
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder getCsLoginOutBuilder() {
+        bitField0_ |= 0x04000000;
+        onChanged();
+        return getCsLoginOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOutOrBuilder getCsLoginOutOrBuilder() {
+        if (csLoginOutBuilder_ != null) {
+          return csLoginOutBuilder_.getMessageOrBuilder();
+        } else {
+          return csLoginOut_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance() : csLoginOut_;
+        }
+      }
+      /**
+       * <code>optional .CSLoginOut csLoginOut = 28;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOutOrBuilder> 
+          getCsLoginOutFieldBuilder() {
+        if (csLoginOutBuilder_ == null) {
+          csLoginOutBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOutOrBuilder>(
+                  getCsLoginOut(),
+                  getParentForChildren(),
+                  isClean());
+          csLoginOut_ = null;
+        }
+        return csLoginOutBuilder_;
+      }
+
+      private com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut scLoginOut_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOutOrBuilder> scLoginOutBuilder_;
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public boolean hasScLoginOut() {
+        return ((bitField0_ & 0x08000000) == 0x08000000);
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut getScLoginOut() {
+        if (scLoginOutBuilder_ == null) {
+          return scLoginOut_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.getDefaultInstance() : scLoginOut_;
+        } else {
+          return scLoginOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder setScLoginOut(com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut value) {
+        if (scLoginOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          scLoginOut_ = value;
+          onChanged();
+        } else {
+          scLoginOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x08000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder setScLoginOut(
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder builderForValue) {
+        if (scLoginOutBuilder_ == null) {
+          scLoginOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          scLoginOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x08000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder mergeScLoginOut(com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut value) {
+        if (scLoginOutBuilder_ == null) {
+          if (((bitField0_ & 0x08000000) == 0x08000000) &&
+              scLoginOut_ != null &&
+              scLoginOut_ != com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.getDefaultInstance()) {
+            scLoginOut_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.newBuilder(scLoginOut_).mergeFrom(value).buildPartial();
+          } else {
+            scLoginOut_ = value;
+          }
+          onChanged();
+        } else {
+          scLoginOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x08000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public Builder clearScLoginOut() {
+        if (scLoginOutBuilder_ == null) {
+          scLoginOut_ = null;
+          onChanged();
+        } else {
+          scLoginOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x08000000);
+        return this;
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder getScLoginOutBuilder() {
+        bitField0_ |= 0x08000000;
+        onChanged();
+        return getScLoginOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOutOrBuilder getScLoginOutOrBuilder() {
+        if (scLoginOutBuilder_ != null) {
+          return scLoginOutBuilder_.getMessageOrBuilder();
+        } else {
+          return scLoginOut_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.getDefaultInstance() : scLoginOut_;
+        }
+      }
+      /**
+       * <code>optional .SCLoginOut scLoginOut = 29;</code>
+       *
+       * <pre>
+       *退出
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOutOrBuilder> 
+          getScLoginOutFieldBuilder() {
+        if (scLoginOutBuilder_ == null) {
+          scLoginOutBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOutOrBuilder>(
+                  getScLoginOut(),
+                  getParentForChildren(),
+                  isClean());
+          scLoginOut_ = null;
+        }
+        return scLoginOutBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:MessageContent)
     }
 
@@ -9864,6 +10905,863 @@ public final class CoreProtocol {
 
   }
 
+  public interface CSLoginOutOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CSLoginOut)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    boolean hasLoginOut();
+    /**
+     * <code>required int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    int getLoginOut();
+  }
+  /**
+   * Protobuf type {@code CSLoginOut}
+   */
+  public  static final class CSLoginOut extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CSLoginOut)
+      CSLoginOutOrBuilder {
+    // Use CSLoginOut.newBuilder() to construct.
+    private CSLoginOut(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CSLoginOut() {
+      loginOut_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CSLoginOut(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              loginOut_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSLoginOut_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSLoginOut_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.class, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int LOGINOUT_FIELD_NUMBER = 1;
+    private int loginOut_;
+    /**
+     * <code>required int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    public boolean hasLoginOut() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    public int getLoginOut() {
+      return loginOut_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasLoginOut()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, loginOut_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, loginOut_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CSLoginOut}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CSLoginOut)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOutOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSLoginOut_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSLoginOut_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.class, com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        loginOut_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSLoginOut_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut result = new com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.loginOut_ = loginOut_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance()) return this;
+        if (other.hasLoginOut()) {
+          setLoginOut(other.getLoginOut());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasLoginOut()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int loginOut_ ;
+      /**
+       * <code>required int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public boolean hasLoginOut() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public int getLoginOut() {
+        return loginOut_;
+      }
+      /**
+       * <code>required int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public Builder setLoginOut(int value) {
+        bitField0_ |= 0x00000001;
+        loginOut_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public Builder clearLoginOut() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        loginOut_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CSLoginOut)
+    }
+
+    // @@protoc_insertion_point(class_scope:CSLoginOut)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CSLoginOut> PARSER =
+        new com.google.protobuf.AbstractParser<CSLoginOut>() {
+      public CSLoginOut parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CSLoginOut(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CSLoginOut> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SCLoginOutOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCLoginOut)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    boolean hasLoginOut();
+    /**
+     * <code>optional int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    int getLoginOut();
+  }
+  /**
+   * Protobuf type {@code SCLoginOut}
+   */
+  public  static final class SCLoginOut extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCLoginOut)
+      SCLoginOutOrBuilder {
+    // Use SCLoginOut.newBuilder() to construct.
+    private SCLoginOut(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCLoginOut() {
+      loginOut_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCLoginOut(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              loginOut_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCLoginOut_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCLoginOut_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int LOGINOUT_FIELD_NUMBER = 1;
+    private int loginOut_;
+    /**
+     * <code>optional int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    public boolean hasLoginOut() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    public int getLoginOut() {
+      return loginOut_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, loginOut_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, loginOut_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCLoginOut}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCLoginOut)
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOutOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCLoginOut_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCLoginOut_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        loginOut_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCLoginOut_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut result = new com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.loginOut_ = loginOut_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut.getDefaultInstance()) return this;
+        if (other.hasLoginOut()) {
+          setLoginOut(other.getLoginOut());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int loginOut_ ;
+      /**
+       * <code>optional int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public boolean hasLoginOut() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public int getLoginOut() {
+        return loginOut_;
+      }
+      /**
+       * <code>optional int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public Builder setLoginOut(int value) {
+        bitField0_ |= 0x00000001;
+        loginOut_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public Builder clearLoginOut() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        loginOut_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCLoginOut)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCLoginOut)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCLoginOut> PARSER =
+        new com.google.protobuf.AbstractParser<SCLoginOut>() {
+      public SCLoginOut parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCLoginOut(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCLoginOut> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCLoginOut getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface SCRegisterOrBuilder extends
       // @@protoc_insertion_point(interface_extends:SCRegister)
       com.google.protobuf.MessageOrBuilder {
@@ -11235,6 +13133,32 @@ public final class CoreProtocol {
      * </pre>
      */
     int getNickNameCount();
+
+    /**
+     * <code>required string seoid = 6;</code>
+     *
+     * <pre>
+     *代理商
+     * </pre>
+     */
+    boolean hasSeoid();
+    /**
+     * <code>required string seoid = 6;</code>
+     *
+     * <pre>
+     *代理商
+     * </pre>
+     */
+    java.lang.String getSeoid();
+    /**
+     * <code>required string seoid = 6;</code>
+     *
+     * <pre>
+     *代理商
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSeoidBytes();
   }
   /**
    * Protobuf type {@code SCLogin}
@@ -11253,6 +13177,7 @@ public final class CoreProtocol {
       score_ = 0;
       coin_ = 0;
       nickNameCount_ = 0;
+      seoid_ = "";
     }
 
     @java.lang.Override
@@ -11306,6 +13231,12 @@ public final class CoreProtocol {
             case 40: {
               bitField0_ |= 0x00000010;
               nickNameCount_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              seoid_ = bs;
               break;
             }
           }
@@ -11480,6 +13411,60 @@ public final class CoreProtocol {
       return nickNameCount_;
     }
 
+    public static final int SEOID_FIELD_NUMBER = 6;
+    private volatile java.lang.Object seoid_;
+    /**
+     * <code>required string seoid = 6;</code>
+     *
+     * <pre>
+     *代理商
+     * </pre>
+     */
+    public boolean hasSeoid() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string seoid = 6;</code>
+     *
+     * <pre>
+     *代理商
+     * </pre>
+     */
+    public java.lang.String getSeoid() {
+      java.lang.Object ref = seoid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          seoid_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string seoid = 6;</code>
+     *
+     * <pre>
+     *代理商
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSeoidBytes() {
+      java.lang.Object ref = seoid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        seoid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -11499,6 +13484,10 @@ public final class CoreProtocol {
         return false;
       }
       if (!hasNickNameCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSeoid()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -11522,6 +13511,9 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, nickNameCount_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getSeoidBytes());
       }
       unknownFields.writeTo(output);
     }
@@ -11551,6 +13543,10 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, nickNameCount_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getSeoidBytes());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -11674,6 +13670,8 @@ public final class CoreProtocol {
         bitField0_ = (bitField0_ & ~0x00000008);
         nickNameCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        seoid_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -11718,6 +13716,10 @@ public final class CoreProtocol {
           to_bitField0_ |= 0x00000010;
         }
         result.nickNameCount_ = nickNameCount_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.seoid_ = seoid_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11751,6 +13753,11 @@ public final class CoreProtocol {
         if (other.hasNickNameCount()) {
           setNickNameCount(other.getNickNameCount());
         }
+        if (other.hasSeoid()) {
+          bitField0_ |= 0x00000020;
+          seoid_ = other.seoid_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -11767,6 +13774,9 @@ public final class CoreProtocol {
           return false;
         }
         if (!hasNickNameCount()) {
+          return false;
+        }
+        if (!hasSeoid()) {
           return false;
         }
         return true;
@@ -12079,6 +14089,106 @@ public final class CoreProtocol {
       public Builder clearNickNameCount() {
         bitField0_ = (bitField0_ & ~0x00000010);
         nickNameCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object seoid_ = "";
+      /**
+       * <code>required string seoid = 6;</code>
+       *
+       * <pre>
+       *代理商
+       * </pre>
+       */
+      public boolean hasSeoid() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string seoid = 6;</code>
+       *
+       * <pre>
+       *代理商
+       * </pre>
+       */
+      public java.lang.String getSeoid() {
+        java.lang.Object ref = seoid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            seoid_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string seoid = 6;</code>
+       *
+       * <pre>
+       *代理商
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSeoidBytes() {
+        java.lang.Object ref = seoid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          seoid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string seoid = 6;</code>
+       *
+       * <pre>
+       *代理商
+       * </pre>
+       */
+      public Builder setSeoid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        seoid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string seoid = 6;</code>
+       *
+       * <pre>
+       *代理商
+       * </pre>
+       */
+      public Builder clearSeoid() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        seoid_ = getDefaultInstance().getSeoid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string seoid = 6;</code>
+       *
+       * <pre>
+       *代理商
+       * </pre>
+       */
+      public Builder setSeoidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        seoid_ = value;
         onChanged();
         return this;
       }
@@ -14218,6 +16328,485 @@ public final class CoreProtocol {
     }
 
     public com.mzm.firephoenix.protobuf.CoreProtocol.CSPlayerInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SCNoticeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCNotice)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string notice = 1;</code>
+     */
+    boolean hasNotice();
+    /**
+     * <code>required string notice = 1;</code>
+     */
+    java.lang.String getNotice();
+    /**
+     * <code>required string notice = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNoticeBytes();
+  }
+  /**
+   * Protobuf type {@code SCNotice}
+   */
+  public  static final class SCNotice extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCNotice)
+      SCNoticeOrBuilder {
+    // Use SCNotice.newBuilder() to construct.
+    private SCNotice(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCNotice() {
+      notice_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCNotice(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              notice_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCNotice_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCNotice_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int NOTICE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object notice_;
+    /**
+     * <code>required string notice = 1;</code>
+     */
+    public boolean hasNotice() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string notice = 1;</code>
+     */
+    public java.lang.String getNotice() {
+      java.lang.Object ref = notice_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          notice_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string notice = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNoticeBytes() {
+      java.lang.Object ref = notice_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        notice_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasNotice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getNoticeBytes());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getNoticeBytes());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCNotice}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCNotice)
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCNoticeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCNotice_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCNotice_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        notice_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCNotice_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice result = new com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.notice_ = notice_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice.getDefaultInstance()) return this;
+        if (other.hasNotice()) {
+          bitField0_ |= 0x00000001;
+          notice_ = other.notice_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasNotice()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object notice_ = "";
+      /**
+       * <code>required string notice = 1;</code>
+       */
+      public boolean hasNotice() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string notice = 1;</code>
+       */
+      public java.lang.String getNotice() {
+        java.lang.Object ref = notice_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            notice_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string notice = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNoticeBytes() {
+        java.lang.Object ref = notice_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          notice_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string notice = 1;</code>
+       */
+      public Builder setNotice(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        notice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string notice = 1;</code>
+       */
+      public Builder clearNotice() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        notice_ = getDefaultInstance().getNotice();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string notice = 1;</code>
+       */
+      public Builder setNoticeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        notice_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCNotice)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCNotice)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCNotice> PARSER =
+        new com.google.protobuf.AbstractParser<SCNotice>() {
+      public SCNotice parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCNotice(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCNotice> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -19377,6 +21966,406 @@ public final class CoreProtocol {
 
   }
 
+  public interface CSMachineListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CSMachineList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 machineList = 1;</code>
+     */
+    boolean hasMachineList();
+    /**
+     * <code>required int32 machineList = 1;</code>
+     */
+    int getMachineList();
+  }
+  /**
+   * Protobuf type {@code CSMachineList}
+   */
+  public  static final class CSMachineList extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CSMachineList)
+      CSMachineListOrBuilder {
+    // Use CSMachineList.newBuilder() to construct.
+    private CSMachineList(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CSMachineList() {
+      machineList_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CSMachineList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              machineList_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSMachineList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSMachineList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.class, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MACHINELIST_FIELD_NUMBER = 1;
+    private int machineList_;
+    /**
+     * <code>required int32 machineList = 1;</code>
+     */
+    public boolean hasMachineList() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 machineList = 1;</code>
+     */
+    public int getMachineList() {
+      return machineList_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMachineList()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, machineList_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, machineList_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CSMachineList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CSMachineList)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSMachineList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSMachineList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.class, com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        machineList_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSMachineList_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList result = new com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.machineList_ = machineList_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList.getDefaultInstance()) return this;
+        if (other.hasMachineList()) {
+          setMachineList(other.getMachineList());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMachineList()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int machineList_ ;
+      /**
+       * <code>required int32 machineList = 1;</code>
+       */
+      public boolean hasMachineList() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 machineList = 1;</code>
+       */
+      public int getMachineList() {
+        return machineList_;
+      }
+      /**
+       * <code>required int32 machineList = 1;</code>
+       */
+      public Builder setMachineList(int value) {
+        bitField0_ |= 0x00000001;
+        machineList_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 machineList = 1;</code>
+       */
+      public Builder clearMachineList() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        machineList_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CSMachineList)
+    }
+
+    // @@protoc_insertion_point(class_scope:CSMachineList)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CSMachineList> PARSER =
+        new com.google.protobuf.AbstractParser<CSMachineList>() {
+      public CSMachineList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CSMachineList(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CSMachineList> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface SCMachineListOrBuilder extends
       // @@protoc_insertion_point(interface_extends:SCMachineList)
       com.google.protobuf.MessageOrBuilder {
@@ -20177,7 +23166,7 @@ public final class CoreProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -20185,13 +23174,22 @@ public final class CoreProtocol {
      */
     boolean hasMachineId();
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    int getMachineId();
+    java.lang.String getMachineId();
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMachineIdBytes();
 
     /**
      * <code>required int32 machineType = 2;</code>
@@ -20265,7 +23263,7 @@ public final class CoreProtocol {
       super(builder);
     }
     private SCMachineInfo() {
-      machineId_ = 0;
+      machineId_ = "";
       machineType_ = 0;
       pic_ = 0;
       nickName_ = "";
@@ -20298,9 +23296,10 @@ public final class CoreProtocol {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              machineId_ = input.readInt32();
+              machineId_ = bs;
               break;
             }
             case 16: {
@@ -20346,9 +23345,9 @@ public final class CoreProtocol {
 
     private int bitField0_;
     public static final int MACHINEID_FIELD_NUMBER = 1;
-    private int machineId_;
+    private volatile java.lang.Object machineId_;
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -20358,14 +23357,45 @@ public final class CoreProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    public int getMachineId() {
-      return machineId_;
+    public java.lang.String getMachineId() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          machineId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMachineIdBytes() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        machineId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int MACHINETYPE_FIELD_NUMBER = 2;
@@ -20489,7 +23519,7 @@ public final class CoreProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, machineId_);
+        output.writeBytes(1, getMachineIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, machineType_);
@@ -20511,7 +23541,7 @@ public final class CoreProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, machineId_);
+          .computeBytesSize(1, getMachineIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -20637,7 +23667,7 @@ public final class CoreProtocol {
       }
       public Builder clear() {
         super.clear();
-        machineId_ = 0;
+        machineId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         machineType_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -20702,7 +23732,9 @@ public final class CoreProtocol {
       public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo other) {
         if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo.getDefaultInstance()) return this;
         if (other.hasMachineId()) {
-          setMachineId(other.getMachineId());
+          bitField0_ |= 0x00000001;
+          machineId_ = other.machineId_;
+          onChanged();
         }
         if (other.hasMachineType()) {
           setMachineType(other.getMachineType());
@@ -20749,9 +23781,9 @@ public final class CoreProtocol {
       }
       private int bitField0_;
 
-      private int machineId_ ;
+      private java.lang.Object machineId_ = "";
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -20761,30 +23793,65 @@ public final class CoreProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public int getMachineId() {
-        return machineId_;
+      public java.lang.String getMachineId() {
+        java.lang.Object ref = machineId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            machineId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public Builder setMachineId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getMachineIdBytes() {
+        java.lang.Object ref = machineId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          machineId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         machineId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -20792,7 +23859,24 @@ public final class CoreProtocol {
        */
       public Builder clearMachineId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        machineId_ = 0;
+        machineId_ = getDefaultInstance().getMachineId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        machineId_ = value;
         onChanged();
         return this;
       }
@@ -21041,7 +24125,7 @@ public final class CoreProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -21049,13 +24133,22 @@ public final class CoreProtocol {
      */
     boolean hasMachineId();
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    int getMachineId();
+    java.lang.String getMachineId();
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMachineIdBytes();
   }
   /**
    * Protobuf type {@code CCEnterMachine}
@@ -21069,7 +24162,7 @@ public final class CoreProtocol {
       super(builder);
     }
     private CCEnterMachine() {
-      machineId_ = 0;
+      machineId_ = "";
     }
 
     @java.lang.Override
@@ -21099,9 +24192,10 @@ public final class CoreProtocol {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              machineId_ = input.readInt32();
+              machineId_ = bs;
               break;
             }
           }
@@ -21131,9 +24225,9 @@ public final class CoreProtocol {
 
     private int bitField0_;
     public static final int MACHINEID_FIELD_NUMBER = 1;
-    private int machineId_;
+    private volatile java.lang.Object machineId_;
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -21143,14 +24237,45 @@ public final class CoreProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    public int getMachineId() {
-      return machineId_;
+    public java.lang.String getMachineId() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          machineId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMachineIdBytes() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        machineId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -21170,7 +24295,7 @@ public final class CoreProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, machineId_);
+        output.writeBytes(1, getMachineIdBytes());
       }
       unknownFields.writeTo(output);
     }
@@ -21183,7 +24308,7 @@ public final class CoreProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, machineId_);
+          .computeBytesSize(1, getMachineIdBytes());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -21297,7 +24422,7 @@ public final class CoreProtocol {
       }
       public Builder clear() {
         super.clear();
-        machineId_ = 0;
+        machineId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -21344,7 +24469,9 @@ public final class CoreProtocol {
       public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine other) {
         if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCEnterMachine.getDefaultInstance()) return this;
         if (other.hasMachineId()) {
-          setMachineId(other.getMachineId());
+          bitField0_ |= 0x00000001;
+          machineId_ = other.machineId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -21377,9 +24504,9 @@ public final class CoreProtocol {
       }
       private int bitField0_;
 
-      private int machineId_ ;
+      private java.lang.Object machineId_ = "";
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -21389,30 +24516,65 @@ public final class CoreProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public int getMachineId() {
-        return machineId_;
+      public java.lang.String getMachineId() {
+        java.lang.Object ref = machineId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            machineId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public Builder setMachineId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getMachineIdBytes() {
+        java.lang.Object ref = machineId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          machineId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         machineId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -21420,7 +24582,24 @@ public final class CoreProtocol {
        */
       public Builder clearMachineId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        machineId_ = 0;
+        machineId_ = getDefaultInstance().getMachineId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        machineId_ = value;
         onChanged();
         return this;
       }
@@ -21473,7 +24652,7 @@ public final class CoreProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -21481,13 +24660,22 @@ public final class CoreProtocol {
      */
     boolean hasMachineId();
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    int getMachineId();
+    java.lang.String getMachineId();
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMachineIdBytes();
   }
   /**
    * Protobuf type {@code CCLeaveMachine}
@@ -21501,7 +24689,7 @@ public final class CoreProtocol {
       super(builder);
     }
     private CCLeaveMachine() {
-      machineId_ = 0;
+      machineId_ = "";
     }
 
     @java.lang.Override
@@ -21531,9 +24719,10 @@ public final class CoreProtocol {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              machineId_ = input.readInt32();
+              machineId_ = bs;
               break;
             }
           }
@@ -21563,9 +24752,9 @@ public final class CoreProtocol {
 
     private int bitField0_;
     public static final int MACHINEID_FIELD_NUMBER = 1;
-    private int machineId_;
+    private volatile java.lang.Object machineId_;
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -21575,14 +24764,45 @@ public final class CoreProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    public int getMachineId() {
-      return machineId_;
+    public java.lang.String getMachineId() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          machineId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMachineIdBytes() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        machineId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -21602,7 +24822,7 @@ public final class CoreProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, machineId_);
+        output.writeBytes(1, getMachineIdBytes());
       }
       unknownFields.writeTo(output);
     }
@@ -21615,7 +24835,7 @@ public final class CoreProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, machineId_);
+          .computeBytesSize(1, getMachineIdBytes());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -21729,7 +24949,7 @@ public final class CoreProtocol {
       }
       public Builder clear() {
         super.clear();
-        machineId_ = 0;
+        machineId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -21776,7 +24996,9 @@ public final class CoreProtocol {
       public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine other) {
         if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCLeaveMachine.getDefaultInstance()) return this;
         if (other.hasMachineId()) {
-          setMachineId(other.getMachineId());
+          bitField0_ |= 0x00000001;
+          machineId_ = other.machineId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -21809,9 +25031,9 @@ public final class CoreProtocol {
       }
       private int bitField0_;
 
-      private int machineId_ ;
+      private java.lang.Object machineId_ = "";
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -21821,30 +25043,65 @@ public final class CoreProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public int getMachineId() {
-        return machineId_;
+      public java.lang.String getMachineId() {
+        java.lang.Object ref = machineId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            machineId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public Builder setMachineId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getMachineIdBytes() {
+        java.lang.Object ref = machineId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          machineId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         machineId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -21852,7 +25109,24 @@ public final class CoreProtocol {
        */
       public Builder clearMachineId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        machineId_ = 0;
+        machineId_ = getDefaultInstance().getMachineId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        machineId_ = value;
         onChanged();
         return this;
       }
@@ -21905,7 +25179,7 @@ public final class CoreProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -21913,13 +25187,22 @@ public final class CoreProtocol {
      */
     boolean hasMachineId();
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    int getMachineId();
+    java.lang.String getMachineId();
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMachineIdBytes();
 
     /**
      * <code>optional int32 machineType = 2;</code>
@@ -21950,7 +25233,7 @@ public final class CoreProtocol {
       super(builder);
     }
     private CCMachineStay() {
-      machineId_ = 0;
+      machineId_ = "";
       machineType_ = 0;
     }
 
@@ -21981,9 +25264,10 @@ public final class CoreProtocol {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              machineId_ = input.readInt32();
+              machineId_ = bs;
               break;
             }
             case 16: {
@@ -22018,9 +25302,9 @@ public final class CoreProtocol {
 
     private int bitField0_;
     public static final int MACHINEID_FIELD_NUMBER = 1;
-    private int machineId_;
+    private volatile java.lang.Object machineId_;
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
@@ -22030,14 +25314,45 @@ public final class CoreProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 machineId = 1;</code>
+     * <code>required string machineId = 1;</code>
      *
      * <pre>
      *机台id
      * </pre>
      */
-    public int getMachineId() {
-      return machineId_;
+    public java.lang.String getMachineId() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          machineId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string machineId = 1;</code>
+     *
+     * <pre>
+     *机台id
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMachineIdBytes() {
+      java.lang.Object ref = machineId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        machineId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int MACHINETYPE_FIELD_NUMBER = 2;
@@ -22080,7 +25395,7 @@ public final class CoreProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, machineId_);
+        output.writeBytes(1, getMachineIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, machineType_);
@@ -22096,7 +25411,7 @@ public final class CoreProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, machineId_);
+          .computeBytesSize(1, getMachineIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -22214,7 +25529,7 @@ public final class CoreProtocol {
       }
       public Builder clear() {
         super.clear();
-        machineId_ = 0;
+        machineId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         machineType_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -22267,7 +25582,9 @@ public final class CoreProtocol {
       public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay other) {
         if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CCMachineStay.getDefaultInstance()) return this;
         if (other.hasMachineId()) {
-          setMachineId(other.getMachineId());
+          bitField0_ |= 0x00000001;
+          machineId_ = other.machineId_;
+          onChanged();
         }
         if (other.hasMachineType()) {
           setMachineType(other.getMachineType());
@@ -22303,9 +25620,9 @@ public final class CoreProtocol {
       }
       private int bitField0_;
 
-      private int machineId_ ;
+      private java.lang.Object machineId_ = "";
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -22315,30 +25632,65 @@ public final class CoreProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public int getMachineId() {
-        return machineId_;
+      public java.lang.String getMachineId() {
+        java.lang.Object ref = machineId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            machineId_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
        * </pre>
        */
-      public Builder setMachineId(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getMachineIdBytes() {
+        java.lang.Object ref = machineId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          machineId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         machineId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 machineId = 1;</code>
+       * <code>required string machineId = 1;</code>
        *
        * <pre>
        *机台id
@@ -22346,7 +25698,24 @@ public final class CoreProtocol {
        */
       public Builder clearMachineId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        machineId_ = 0;
+        machineId_ = getDefaultInstance().getMachineId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string machineId = 1;</code>
+       *
+       * <pre>
+       *机台id
+       * </pre>
+       */
+      public Builder setMachineIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        machineId_ = value;
         onChanged();
         return this;
       }
@@ -28827,6 +32196,16 @@ public final class CoreProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CSRegsiter_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CSLoginOut_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CSLoginOut_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCLoginOut_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCLoginOut_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_SCRegister_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -28856,6 +32235,11 @@ public final class CoreProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CSPlayerInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCNotice_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCNotice_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CSCards_descriptor;
   private static
@@ -28901,6 +32285,11 @@ public final class CoreProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CCHeadPic_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CSMachineList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CSMachineList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_SCMachineList_descriptor;
   private static
@@ -28988,7 +32377,7 @@ public final class CoreProtocol {
       "\n\022CoreProtocol.proto\"f\n\013MessagePack\022\021\n\003c" +
       "md\030\001 \002(\0162\004.Cmd\022\017\n\007version\030\002 \001(\005\022\021\n\tsessi" +
       "onId\030\003 \001(\005\022 \n\007content\030\004 \001(\0132\017.MessageCon" +
-      "tent\"\261\006\n\016MessageContent\022\016\n\006result\030\001 \002(\005\022" +
+      "tent\"\267\007\n\016MessageContent\022\016\n\006result\030\001 \002(\005\022" +
       "\017\n\007message\030\002 \001(\t\022!\n\013lcRetServer\030\003 \001(\0132\014." +
       "LCRetServer\022\037\n\ncsRegister\030\004 \001(\0132\013.CSRegs" +
       "iter\022\037\n\nscRegister\030\005 \001(\0132\013.SCRegister\022\031\n" +
@@ -29008,91 +32397,102 @@ public final class CoreProtocol {
       "terMachine\030\026 \001(\0132\017.CCEnterMachine\022\'\n\016ccL" +
       "eaveMachine\030\027 \001(\0132\017.CCLeaveMachine\022%\n\rcc" +
       "MachineStay\030\030 \001(\0132\016.CCMachineStay\022\035\n\tccB" +
-      "inding\030\031 \001(\0132\n.CCBinding\"-\n\013LCRetServer\022" +
-      "\020\n\010serverip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\">\n\nCSReg" +
-      "siter\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t" +
-      "\022\r\n\005seoid\030\003 \001(\t\"\035\n\nSCRegister\022\017\n\007account" +
-      "\030\001 \002(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010pa" +
-      "ssword\030\002 \002(\t\"\\\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010" +
-      "nickname\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 ",
-      "\001(\005\022\025\n\rnickNameCount\030\005 \002(\005\"\037\n\014CSGuestLog" +
-      "in\022\017\n\007account\030\001 \001(\t\"d\n\014SCGuestLogin\022\017\n\007a" +
-      "ccount\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020\n\010nickname\030\003 " +
-      "\002(\t\022\r\n\005score\030\004 \002(\005\022\025\n\rnickNameCount\030\005 \002(" +
-      "\005\"\034\n\014CSPlayerInfo\022\014\n\004guid\030\001 \002(\t\"B\n\007CSCar" +
-      "ds\022\022\n\nstartIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005" +
-      "\022\021\n\tholdCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardRa" +
-      "te\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 \001" +
-      "(\t\"&\n\025CCCompareHistoryCards\022\r\n\005cards\030\001 \002" +
-      "(\t\"3\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020\n",
-      "\010betScore\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013comp" +
-      "areCard\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\"\024\n\005CSWin" +
-      "\022\013\n\003win\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 " +
-      "\002(\005\022\014\n\004coin\030\002 \002(\005\"\036\n\nCCNickName\022\020\n\010nickN" +
-      "ame\030\001 \002(\t\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"" +
-      "6\n\rSCMachineList\022%\n\rscMachineInfo\030\001 \003(\0132" +
-      "\016.SCMachineInfo\"V\n\rSCMachineInfo\022\021\n\tmach" +
-      "ineId\030\001 \002(\005\022\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030" +
-      "\003 \001(\005\022\020\n\010nickName\030\004 \001(\t\"#\n\016CCEnterMachin" +
-      "e\022\021\n\tmachineId\030\001 \002(\005\"#\n\016CCLeaveMachine\022\021",
-      "\n\tmachineId\030\001 \002(\005\"7\n\rCCMachineStay\022\021\n\tma" +
-      "chineId\030\001 \002(\005\022\023\n\013machineType\030\002 \001(\005\"=\n\tCC" +
-      "Binding\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002" +
-      "(\t\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010n" +
-      "ickname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003" +
-      " \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSD" +
-      "epositStore\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositSt" +
-      "ore\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCS" +
-      "DepositDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDepos" +
-      "itDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n",
-      "\rCSDepositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010draw" +
-      "Gold\030\002 \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002" +
-      " \001(\005\"V\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001" +
-      "(\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007d" +
-      "eposit\030\004 \001(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t*\240\007" +
-      "\n\003Cmd\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGIST" +
-      "ER\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOG" +
-      "IN\020\205\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017" +
-      "\n\tCMD_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004" +
-      "\022\037\n\031CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD",
-      "_WIN\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\032\n\024CMD_PL" +
-      "AYER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLAYER_PIC\020\202\200\010" +
-      "\022\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020CMD_MACHINE_" +
-      "INFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER\020\205\200\010\022\027\n\021CMD" +
-      "_MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MACHINE_STAY\020\207" +
-      "\200\010\022\030\n\022CMD_PLAYER_BINDING\020\210\200\010\022\027\n\021CMD_DEPO" +
-      "SIT_STORE\020\211\200\010\022\026\n\020CMD_DEPOSIT_DRAW\020\212\200\010\022\026\n" +
-      "\020CMD_DEPOSIT_GIVE\020\213\200\010\022\031\n\023CMD_DEPOSIT_REC" +
-      "EIVE\020\214\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUT" +
-      "ROOM\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAII",
-      "NFO\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200" +
-      "\014\022\024\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014" +
-      "\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014" +
-      "\022\021\n\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222" +
-      "\200\014\022\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020" +
-      "\224\200\014\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_R" +
-      "OOM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241" +
-      "\200\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIIN" +
-      "FO_3\020\243\200\014*\310\005\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_" +
-      "EXIT\020\351\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_",
-      "PWD_WRONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007" +
-      "\022\021\n\014ERROR_NOBIND\020\355\007\022\031\n\024ERROT_SIT_HAVEPLA" +
-      "YER\020\356\007\022\024\n\017ERROR_CANT_SIGN\020\357\007\022\021\n\014ERROT_NO" +
-      "_SIT\020\360\007\022\032\n\025ERROR_GOLD_NOT_ZHUANG\020\361\007\022\023\n\016E" +
-      "RROR_CANT_BET\020\362\007\022\030\n\023ERROR_ROOM_NOT_EXIT\020" +
-      "\363\007\022\025\n\020ERROR_BET_LARGER\020\364\007\022\027\n\022ERROR_SIT_H" +
-      "AVESEAT\020\365\007\022\026\n\021ERROR_DEPOSIT_MIN\020\366\007\022\025\n\020ER" +
-      "ROR_SMS_EXPIRE\020\367\007\022\024\n\017ERROR_SMS_WRONG\020\370\007\022" +
-      " \n\033ERROR_SMS_INVALID_PARAMETER\020\371\007\022\034\n\027ERR" +
-      "OR_ACCOUNT_RECONNECT\020\372\007\022\033\n\026ERROR_CARD_BE",
-      "T_SCORE_0\020\320\017\022\037\n\032ERROR_CARD_GUEST_COINSCO" +
-      "RE\020\321\017\022$\n\037ERROR_CARD_BET_SCORE_NOT_ENOUGH" +
-      "\020\322\017\0221\n,ERROR_CARD_COMPARE_CARD_BET_SCORE" +
-      "_NOT_ENOUGH\020\323\017\022\026\n\021ERROR_NO_BUILDING\020\324\017\022\034" +
-      "\n\027ERROR_NO_NULL_NICK_NAME\020\325\017\022\031\n\024ERROR_NO" +
-      "_LOGIN_SEOID\020\326\017\022\032\n\025ERROR_NICK_NAME_COUNT" +
-      "\020\327\017B,\n\034com.mzm.firephoenix.protobufB\014Cor" +
-      "eProtocol"
+      "inding\030\031 \001(\0132\n.CCBinding\022\033\n\010scNotice\030\032 \001" +
+      "(\0132\t.SCNotice\022%\n\rcsMachineList\030\033 \001(\0132\016.C" +
+      "SMachineList\022\037\n\ncsLoginOut\030\034 \001(\0132\013.CSLog" +
+      "inOut\022\037\n\nscLoginOut\030\035 \001(\0132\013.SCLoginOut\"-" +
+      "\n\013LCRetServer\022\020\n\010serverip\030\001 \001(\t\022\014\n\004port\030" +
+      "\002 \001(\005\">\n\nCSRegsiter\022\017\n\007account\030\001 \002(\t\022\020\n\010" +
+      "password\030\002 \002(\t\022\r\n\005seoid\030\003 \001(\t\"\036\n\nCSLogin",
+      "Out\022\020\n\010loginOut\030\001 \002(\005\"\036\n\nSCLoginOut\022\020\n\010l" +
+      "oginOut\030\001 \001(\005\"\035\n\nSCRegister\022\017\n\007account\030\001" +
+      " \002(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010pass" +
+      "word\030\002 \002(\t\"k\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010ni" +
+      "ckname\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 \001(" +
+      "\005\022\025\n\rnickNameCount\030\005 \002(\005\022\r\n\005seoid\030\006 \002(\t\"" +
+      "\037\n\014CSGuestLogin\022\017\n\007account\030\001 \001(\t\"d\n\014SCGu" +
+      "estLogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020" +
+      "\n\010nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\022\025\n\rnickN" +
+      "ameCount\030\005 \002(\005\"\034\n\014CSPlayerInfo\022\014\n\004guid\030\001",
+      " \002(\t\"\032\n\010SCNotice\022\016\n\006notice\030\001 \002(\t\"B\n\007CSCa" +
+      "rds\022\022\n\nstartIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(" +
+      "\005\022\021\n\tholdCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardR" +
+      "ate\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 " +
+      "\001(\t\"&\n\025CCCompareHistoryCards\022\r\n\005cards\030\001 " +
+      "\002(\t\"3\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020" +
+      "\n\010betScore\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013com" +
+      "pareCard\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\"\024\n\005CSWi" +
+      "n\022\013\n\003win\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001" +
+      " \002(\005\022\014\n\004coin\030\002 \002(\005\"\036\n\nCCNickName\022\020\n\010nick",
+      "Name\030\001 \002(\t\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005" +
+      "\"$\n\rCSMachineList\022\023\n\013machineList\030\001 \002(\005\"6" +
+      "\n\rSCMachineList\022%\n\rscMachineInfo\030\001 \003(\0132\016" +
+      ".SCMachineInfo\"V\n\rSCMachineInfo\022\021\n\tmachi" +
+      "neId\030\001 \002(\t\022\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030\003" +
+      " \001(\005\022\020\n\010nickName\030\004 \001(\t\"#\n\016CCEnterMachine" +
+      "\022\021\n\tmachineId\030\001 \002(\t\"#\n\016CCLeaveMachine\022\021\n" +
+      "\tmachineId\030\001 \002(\t\"7\n\rCCMachineStay\022\021\n\tmac" +
+      "hineId\030\001 \002(\t\022\023\n\013machineType\030\002 \001(\005\"=\n\tCCB" +
+      "inding\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(",
+      "\t\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010ni" +
+      "ckname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003 " +
+      "\001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSDe" +
+      "positStore\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositSto" +
+      "re\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCSD" +
+      "epositDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDeposi" +
+      "tDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n\r" +
+      "CSDepositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010drawG" +
+      "old\030\002 \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002 " +
+      "\001(\005\"V\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001(",
+      "\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007de" +
+      "posit\030\004 \001(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t*\307\007\n" +
+      "\003Cmd\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTE" +
+      "R\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGI" +
+      "N\020\205\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n" +
+      "\tCMD_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022" +
+      "\037\n\031CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_" +
+      "WIN\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\032\n\024CMD_PLA" +
+      "YER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLAYER_PIC\020\202\200\010\022" +
+      "\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020CMD_MACHINE_I",
+      "NFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER\020\205\200\010\022\027\n\021CMD_" +
+      "MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MACHINE_STAY\020\207\200" +
+      "\010\022\030\n\022CMD_PLAYER_BINDING\020\210\200\010\022\027\n\021CMD_DEPOS" +
+      "IT_STORE\020\211\200\010\022\026\n\020CMD_DEPOSIT_DRAW\020\212\200\010\022\026\n\020" +
+      "CMD_DEPOSIT_GIVE\020\213\200\010\022\031\n\023CMD_DEPOSIT_RECE" +
+      "IVE\020\214\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUTR" +
+      "OOM\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAIIN" +
+      "FO\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014" +
+      "\022\024\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022" +
+      "\016\n\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014\022",
+      "\021\n\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222\200" +
+      "\014\022\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224" +
+      "\200\014\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_RO" +
+      "OM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200" +
+      "\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINF" +
+      "O_3\020\243\200\014\022\020\n\nCMD_NOTICE\020\244\200\014\022\023\n\rCMD_LOGIN_O" +
+      "UT\020\245\200\014*\314\006\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EX" +
+      "IT\020\351\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PW" +
+      "D_WRONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007\022 " +
+      "\n\033ERROR_SMS_INVALID_PARAMETER\020\371\007\022\034\n\027ERRO",
+      "R_ACCOUNT_RECONNECT\020\372\007\022\033\n\026ERROR_CARD_BET" +
+      "_SCORE_0\020\320\017\022\037\n\032ERROR_CARD_GUEST_COINSCOR" +
+      "E\020\321\017\022$\n\037ERROR_CARD_BET_SCORE_NOT_ENOUGH\020" +
+      "\322\017\0221\n,ERROR_CARD_COMPARE_CARD_BET_SCORE_" +
+      "NOT_ENOUGH\020\323\017\022\026\n\021ERROR_NO_BUILDING\020\324\017\022\034\n" +
+      "\027ERROR_NO_NULL_NICK_NAME\020\325\017\022\031\n\024ERROR_NO_" +
+      "LOGIN_SEOID\020\326\017\022\032\n\025ERROR_NICK_NAME_COUNT\020" +
+      "\327\017\022\024\n\017ERROR_USER_NAME\020\330\017\022\025\n\020ERROR_USER_E" +
+      "XIST\020\331\017\022\'\n\"ERROR_YOUR_ACCOUNT_IS_BEING_L" +
+      "ANDED\020\332\017\022\'\n\"ERROR_YOUR_ACCOUNT_HAS_BEEN_",
+      "LANDED\020\333\017\022(\n#ERROR_NOT_ONE_CARD_AND_NOT_" +
+      "TWO_CARD\020\334\017\022\031\n\024ERROR_CARD_BET_SCORE\020\335\017\022\035" +
+      "\n\030ERROR_UNAME_UPASS_USEOID\020\336\017\022\026\n\021ERROR_N" +
+      "OT_MACHINE\020\337\017\022\027\n\022ERROR_MACHINE_STAY\020\340\017\022\032" +
+      "\n\025ERROR_NOT_CARD_RESULT\020\341\017\022\023\n\016ERROR_BETS" +
+      "CORE\020\342\017\022\025\n\020ERROR_COIN_SCORE\020\343\017\022\035\n\030ERROR_" +
+      "HEAD_PIC_NOT_EXIST\020\344\017\022\036\n\031ERROR_MACHINE_T" +
+      "YPE_ONLINE\020\345\017B,\n\034com.mzm.firephoenix.pro" +
+      "tobufB\014CoreProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -29117,7 +32517,7 @@ public final class CoreProtocol {
     internal_static_MessageContent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MessageContent_descriptor,
-        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CcNickName", "CcHeadPic", "ScMachineList", "ScMachineInfo", "CcEnterMachine", "CcLeaveMachine", "CcMachineStay", "CcBinding", });
+        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CcNickName", "CcHeadPic", "ScMachineList", "ScMachineInfo", "CcEnterMachine", "CcLeaveMachine", "CcMachineStay", "CcBinding", "ScNotice", "CsMachineList", "CsLoginOut", "ScLoginOut", });
     internal_static_LCRetServer_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_LCRetServer_fieldAccessorTable = new
@@ -29130,182 +32530,206 @@ public final class CoreProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSRegsiter_descriptor,
         new java.lang.String[] { "Account", "Password", "Seoid", });
-    internal_static_SCRegister_descriptor =
+    internal_static_CSLoginOut_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_CSLoginOut_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CSLoginOut_descriptor,
+        new java.lang.String[] { "LoginOut", });
+    internal_static_SCLoginOut_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_SCLoginOut_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCLoginOut_descriptor,
+        new java.lang.String[] { "LoginOut", });
+    internal_static_SCRegister_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_SCRegister_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCRegister_descriptor,
         new java.lang.String[] { "Account", });
     internal_static_CSLogin_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_CSLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSLogin_descriptor,
         new java.lang.String[] { "Account", "Password", });
     internal_static_SCLogin_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_SCLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCLogin_descriptor,
-        new java.lang.String[] { "Pic", "Nickname", "Score", "Coin", "NickNameCount", });
+        new java.lang.String[] { "Pic", "Nickname", "Score", "Coin", "NickNameCount", "Seoid", });
     internal_static_CSGuestLogin_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_CSGuestLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSGuestLogin_descriptor,
         new java.lang.String[] { "Account", });
     internal_static_SCGuestLogin_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_SCGuestLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCGuestLogin_descriptor,
         new java.lang.String[] { "Account", "Pic", "Nickname", "Score", "NickNameCount", });
     internal_static_CSPlayerInfo_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_CSPlayerInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSPlayerInfo_descriptor,
         new java.lang.String[] { "Guid", });
+    internal_static_SCNotice_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_SCNotice_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCNotice_descriptor,
+        new java.lang.String[] { "Notice", });
     internal_static_CSCards_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_CSCards_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSCards_descriptor,
         new java.lang.String[] { "StartIndex", "BetScore", "HoldCards", });
     internal_static_SCCards_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_SCCards_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCCards_descriptor,
         new java.lang.String[] { "CardRate", "Cards", "HoldCards", });
     internal_static_CCCompareHistoryCards_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_CCCompareHistoryCards_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCCompareHistoryCards_descriptor,
         new java.lang.String[] { "Cards", });
     internal_static_CSCompareCard_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_CSCompareCard_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSCompareCard_descriptor,
         new java.lang.String[] { "BigSmall", "BetScore", });
     internal_static_SCCompareCard_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_SCCompareCard_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCCompareCard_descriptor,
         new java.lang.String[] { "CompareCard", "WinScore", });
     internal_static_CSWin_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_CSWin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSWin_descriptor,
         new java.lang.String[] { "Win", });
     internal_static_CCCoinScore_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_CCCoinScore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCCoinScore_descriptor,
         new java.lang.String[] { "Score", "Coin", });
     internal_static_CCNickName_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_CCNickName_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCNickName_descriptor,
         new java.lang.String[] { "NickName", });
     internal_static_CCHeadPic_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_CCHeadPic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCHeadPic_descriptor,
         new java.lang.String[] { "HeadPic", });
+    internal_static_CSMachineList_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_CSMachineList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CSMachineList_descriptor,
+        new java.lang.String[] { "MachineList", });
     internal_static_SCMachineList_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_SCMachineList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCMachineList_descriptor,
         new java.lang.String[] { "ScMachineInfo", });
     internal_static_SCMachineInfo_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_SCMachineInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCMachineInfo_descriptor,
         new java.lang.String[] { "MachineId", "MachineType", "Pic", "NickName", });
     internal_static_CCEnterMachine_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_CCEnterMachine_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCEnterMachine_descriptor,
         new java.lang.String[] { "MachineId", });
     internal_static_CCLeaveMachine_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_CCLeaveMachine_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCLeaveMachine_descriptor,
         new java.lang.String[] { "MachineId", });
     internal_static_CCMachineStay_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_CCMachineStay_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCMachineStay_descriptor,
         new java.lang.String[] { "MachineId", "MachineType", });
     internal_static_CCBinding_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_CCBinding_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CCBinding_descriptor,
         new java.lang.String[] { "Account", "Password", "Seoid", });
     internal_static_CSPlayerUpdate_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_CSPlayerUpdate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSPlayerUpdate_descriptor,
         new java.lang.String[] { "Nickname", "Password", "Pic", "Mobile", "Sex", });
     internal_static_CSDepositStore_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_CSDepositStore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSDepositStore_descriptor,
         new java.lang.String[] { "Gold", });
     internal_static_SCDepositStore_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_SCDepositStore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositStore_descriptor,
         new java.lang.String[] { "Gold", "Deposit", });
     internal_static_CSDepositDraw_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_CSDepositDraw_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSDepositDraw_descriptor,
         new java.lang.String[] { "DrawGold", });
     internal_static_SCDepositDraw_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_SCDepositDraw_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositDraw_descriptor,
         new java.lang.String[] { "Gold", "Deposit", });
     internal_static_CSDepositGive_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_CSDepositGive_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSDepositGive_descriptor,
         new java.lang.String[] { "Targetid", "DrawGold", });
     internal_static_SCDepositGive_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_SCDepositGive_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositGive_descriptor,
         new java.lang.String[] { "Deposit", });
     internal_static_SCDepositReceive_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_SCDepositReceive_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositReceive_descriptor,
         new java.lang.String[] { "Senderid", "Receiveid", "Gold", "Deposit", });
     internal_static_CSSMS_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_CSSMS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSSMS_descriptor,

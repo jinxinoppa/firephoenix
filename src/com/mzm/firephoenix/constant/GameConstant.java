@@ -13,10 +13,10 @@ public class GameConstant {
 	
 	public final static String SESSION_IS_REGISTERED = "IS_REGISTERED";
 	public final static int SESSION_IS_REGISTERED_VALUE = 1;
-	public final static String SESSION_ACCOUNT_TYPE = "ACCOUNT_TYPE";
+//	public final static String SESSION_ACCOUNT_TYPE = "ACCOUNT_TYPE";
 	
 	public final static int MACHINE_TYPE_FREE = 0;
 	public final static int MACHINE_TYPE_ONLINE = 1;
 	public final static int MACHINE_TYPE_STAY = 2;
-	
+	public final static String MACHINE_SEOID_GUEST = "guest";
 }
