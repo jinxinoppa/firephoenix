@@ -85,7 +85,7 @@ public class AccountLogic {
 						return generatedKey;
 					}
 				});
-				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "玩家@" + generatedKey, GameConstant.ACCOUNT_DEFAULT_PIC);
+				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "玩家@" + generatedKey, GameConstant.ACCOUNT_DEFAULT_PIC, 20000);
 
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 				session.setAttributeIfAbsent(GameConstant.SESSION_IS_REGISTERED, seoid);
@@ -161,7 +161,7 @@ public class AccountLogic {
 						return generatedKey;
 					}
 				});
-				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic);
+				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic, 20000);
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 			} catch (Exception e) {
 				throw e;

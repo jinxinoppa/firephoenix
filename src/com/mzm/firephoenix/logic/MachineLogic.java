@@ -119,6 +119,9 @@ public class MachineLogic {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
 		}
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+		if (playerInfo == null){
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+		}
 		List<FivepkSeoId> fivepkSeoIdList = jdbcDaoSupport.query(FivepkSeoId.class, new Object[]{playerInfo.getSeoId()}, null, new String[]{"seoId"});
 		MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
 		returnMessagePack.setCmd(Cmd.CMD_MACHINE_LIST);

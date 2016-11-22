@@ -10,8 +10,16 @@ public class CardResult {
 	private int win = 0;
 	private int winCount;
 	private int giftWin = 0;
-
+	private int startIndex;
 	
+	public int getStartIndex() {
+		return startIndex;
+	}
+
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+
 	public void reset(){
 		setBet(0);
 		setWin(0);

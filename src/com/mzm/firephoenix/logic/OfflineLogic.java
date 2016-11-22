@@ -28,6 +28,9 @@ public class OfflineLogic {
 	public void sessionClosed(IoSession session) {
 		long accountId = (long) session.getAttribute("accountId");
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+		if (playerInfo == null){
+			return;
+		}
 		GameCache.removeIoSession(playerInfo.getSeoId(), session);
 		GameCache.removePlayerInfo(accountId);
 		CardResult cr = (CardResult) session.getAttribute("cardResult");

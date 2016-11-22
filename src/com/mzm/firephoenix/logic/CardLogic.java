@@ -61,8 +61,10 @@ public class CardLogic {
 		}
 		CardResult cr = null;
 		if (startIndex == 0) {
+			
 			cr = CardUtil.firstRandomCards();
 			cr.setBet(betScore);
+			cr.setStartIndex(1);
 			session.setAttribute("cardResult", cr);
 			String cardsStr = Arrays.toString(cr.getCards());
 			cardsStr = cardsStr.substring(1, cardsStr.length() - 1);
@@ -76,6 +78,9 @@ public class CardLogic {
 			cr = (CardResult) session.getAttribute("cardResult");
 			if (cr == null) {
 				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
+			}
+			if(cr.getStartIndex() != 1){
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX_VALUE);
 			}
 			String holdCards = content.getCsCards().getHoldCards();
 			if (holdCards != null && !holdCards.isEmpty()) {
@@ -234,9 +239,9 @@ public class CardLogic {
 				if (cr.getWin() >= 75000) {
 					giftWin = cr.getWinCount() * 4000;
 				}
-				if (cr.getWin() >= 200000) {
-					giftWin += 50000;
-				}
+//				if (cr.getWin() >= 200000) {
+//					giftWin += 50000;
+//				}
 				cr.setWin(0);
 				logger.info("------------------------------------------------------------------------------set win : " + 0);
 				score = score - cr.getBet() + giftWin;
@@ -268,6 +273,9 @@ public class CardLogic {
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
+		}
+		if(cr.getStartIndex() != 1){
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX_VALUE);
 		}
 		fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
 		cr.reset();

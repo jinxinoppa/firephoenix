@@ -20,10 +20,11 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	public FivepkPlayerInfo() {
 	}
 
-	public FivepkPlayerInfo(long accountId, String nickName, byte pic) {
+	public FivepkPlayerInfo(long accountId, String nickName, byte pic, int score) {
 		this.accountId = accountId;
 		this.nickName = nickName;
 		this.pic = pic;
+		this.score = score;
 		insertFieldsList.add("accountId");
 		insertFieldsList.add("nickName");
 		insertFieldsList.add("pic");

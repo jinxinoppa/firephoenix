@@ -104,7 +104,7 @@ enum ErrorCode{
 	ERROR_COIN_SCORE = 2019;//存取分计算错误
 	ERROR_HEAD_PIC_NOT_EXIST = 2020;//没有这个头像
 	ERROR_MACHINE_TYPE_ONLINE = 2021;//该机台有玩家
-	
+	ERROR_START_INDEX = 2022;//发牌顺序不对不是第二手牌得分
 }
 
 //协议内容，内部为每次通信的数据模型

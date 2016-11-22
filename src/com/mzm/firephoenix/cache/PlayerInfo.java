@@ -12,11 +12,12 @@ public class PlayerInfo {
 	public PlayerInfo() {
 	}
 
-	public PlayerInfo(int pic, String nickName, String seoId, IoSession playerInfoSession) {
+	public PlayerInfo(int pic, String nickName, String seoId, IoSession playerInfoSession, byte accountType) {
 		this.pic = pic;
 		this.nickName = nickName;
 		this.seoId = seoId;
 		this.playerInfoSession = playerInfoSession;
+		this.accountType = accountType;
 	}
 
 	public PlayerInfo(int pic, String nickName) {

@@ -1043,6 +1043,14 @@ public final class CoreProtocol {
      * </pre>
      */
     ERROR_MACHINE_TYPE_ONLINE(27, 2021),
+    /**
+     * <code>ERROR_START_INDEX = 2022;</code>
+     *
+     * <pre>
+     *不是第二手牌得分
+     * </pre>
+     */
+    ERROR_START_INDEX(28, 2022),
     ;
 
     /**
@@ -1269,6 +1277,14 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int ERROR_MACHINE_TYPE_ONLINE_VALUE = 2021;
+    /**
+     * <code>ERROR_START_INDEX = 2022;</code>
+     *
+     * <pre>
+     *不是第二手牌得分
+     * </pre>
+     */
+    public static final int ERROR_START_INDEX_VALUE = 2022;
 
 
     public final int getNumber() {
@@ -1305,6 +1321,7 @@ public final class CoreProtocol {
         case 2019: return ERROR_COIN_SCORE;
         case 2020: return ERROR_HEAD_PIC_NOT_EXIST;
         case 2021: return ERROR_MACHINE_TYPE_ONLINE;
+        case 2022: return ERROR_START_INDEX;
         default: return null;
       }
     }
@@ -32470,7 +32487,7 @@ public final class CoreProtocol {
       "OM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200" +
       "\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINF" +
       "O_3\020\243\200\014\022\020\n\nCMD_NOTICE\020\244\200\014\022\023\n\rCMD_LOGIN_O" +
-      "UT\020\245\200\014*\314\006\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EX" +
+      "UT\020\245\200\014*\344\006\n\tErrorCode\022\027\n\022ERROR_ACCOUNT_EX" +
       "IT\020\351\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PW" +
       "D_WRONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020\354\007\022 " +
       "\n\033ERROR_SMS_INVALID_PARAMETER\020\371\007\022\034\n\027ERRO",
@@ -32491,8 +32508,9 @@ public final class CoreProtocol {
       "\n\025ERROR_NOT_CARD_RESULT\020\341\017\022\023\n\016ERROR_BETS" +
       "CORE\020\342\017\022\025\n\020ERROR_COIN_SCORE\020\343\017\022\035\n\030ERROR_" +
       "HEAD_PIC_NOT_EXIST\020\344\017\022\036\n\031ERROR_MACHINE_T" +
-      "YPE_ONLINE\020\345\017B,\n\034com.mzm.firephoenix.pro" +
-      "tobufB\014CoreProtocol"
+      "YPE_ONLINE\020\345\017\022\026\n\021ERROR_START_INDEX\020\346\017B,\n" +
+      "\034com.mzm.firephoenix.protobufB\014CoreProto" +
+      "col"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

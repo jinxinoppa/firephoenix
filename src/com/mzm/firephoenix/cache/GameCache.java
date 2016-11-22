@@ -34,7 +34,7 @@ public class GameCache {
 	public static PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, String seoId, IoSession playerInfoSession, byte accountType) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		if (playerInfo == null) {
-			playerInfo = new PlayerInfo(pic, nickName, seoId, playerInfoSession);
+			playerInfo = new PlayerInfo(pic, nickName, seoId, playerInfoSession, accountType);
 			playerInfoMap.put(accountId, playerInfo);
 		} else {
 			playerInfo.setPic(pic);
