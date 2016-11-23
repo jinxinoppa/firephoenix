@@ -131,12 +131,12 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 	@Override
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		logger.info("sessionIdle. session id=" + session.getId());
-		MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
-		returnMessagePack.setCmd(Cmd.CMD_LOGIN);
-		returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE));
-		logger.info("sent message pack : " + returnMessagePack.toString());
-		session.write(returnMessagePack);
-		session.closeOnFlush();
+//		MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+//		returnMessagePack.setCmd(Cmd.CMD_LOGIN);
+//		returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE));
+//		logger.info("sent message pack : " + returnMessagePack.toString());
+//		session.write(returnMessagePack);
+//		session.closeOnFlush();
 	}
 
 	@Override
