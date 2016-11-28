@@ -24,7 +24,7 @@ enum Cmd {
 	CMD_COMPARE_HISTORY_CARDS            =  0x010009;   //比倍历史牌型
 	CMD_WIN            =  0x01000A;   //二手牌比大小得分
 	CMD_COIN_SCORE     =  0x01000B;   //取分存分
-	
+	CMD_COMPARE_ONE_CARDS = 0x01000C;   //比倍历史单张牌型
 	
 
 	//玩家模块
@@ -147,6 +147,8 @@ message MessageContent {
 	
 	optional CSLoginOut csLoginOut =28;//退出
 	optional SCLoginOut scLoginOut =29;//退出
+	optional CSCompareHistoryOneCard csCompareHistoryOneCard =30;//比倍历史单张牌型
+	optional SCCompareHistoryOneCard SCCompareHistoryOneCard =31;//比倍历史单张牌型
 }
 
 //请求游戏服务器信息
@@ -237,6 +239,14 @@ message SCCompareCard{
 	required int32 winScore =2 ;//当前赢分
 }
 
+message CSCompareHistoryOneCard{
+	required int32 compareCard =1 ;//默认0
+}
+
+message SCCompareHistoryOneCard{
+	required int32 compareCard =1 ;//大小牌型2-A && 历史牌型
+}
+
 message CSWin{
 	optional int32 win =1 ;//二手牌比大小得分
 }
@@ -248,6 +258,7 @@ message CCCoinScore{
 
 message CCNickName{
 	required string nickName = 1;//昵称 result=0 成功
+	optional int32 nickNameCount = 2;//修改昵称次数
 }
 
 message CCHeadPic{

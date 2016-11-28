@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -22,9 +23,9 @@ import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.QueryMeta;
 import com.mzm.firephoenix.dao.entity.FivepkAccount;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
-import com.mzm.firephoenix.dao.entity.FivepkSeoId;
 import com.mzm.firephoenix.dao.entity.FivepkSeoIdList;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCBinding;
+import com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName;
 import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
@@ -266,7 +267,7 @@ public class AccountLogic {
 		fivepkPlayerInfo.setNickNameCount(fivepkPlayerInfo.getNickNameCount() + 1);
 		jdbcDaoSupport.update(fivepkPlayerInfo);
 		GameCache.putPlayerInfo(fivepkPlayerInfo.getAccountId(), fivepkPlayerInfo.getPic(), fivepkPlayerInfo.getNickName());
-		return MessageContent.newBuilder().setResult(0);
+		return MessageContent.newBuilder().setResult(0).setCcNickName(CCNickName.newBuilder().setNickName(nickName).setNickNameCount(fivepkPlayerInfo.getNickNameCount()));
 	}
 	
 	public Builder csLoginOut(IoSession session, MessageContent content){

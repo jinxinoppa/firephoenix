@@ -7,6 +7,8 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.mina.core.session.IoSession;
+import org.oppa.utils.cardutils.CardResult;
+import org.oppa.utils.cardutils.CardUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,9 +26,8 @@ import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCards;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareCard;
+import com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareHistoryOneCard;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice;
-import com.mzm.firephoenix.utils.CardResult;
-import com.mzm.firephoenix.utils.CardUtil;
 
 /**
  * 
@@ -61,7 +62,7 @@ public class CardLogic {
 		}
 		CardResult cr = null;
 		if (startIndex == 0) {
-			
+
 			cr = CardUtil.firstRandomCards();
 			cr.setBet(betScore);
 			cr.setStartIndex(1);
@@ -79,7 +80,7 @@ public class CardLogic {
 			if (cr == null) {
 				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
 			}
-			if(cr.getStartIndex() != 1){
+			if (cr.getStartIndex() != 1) {
 				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX_VALUE);
 			}
 			String holdCards = content.getCsCards().getHoldCards();
@@ -163,7 +164,7 @@ public class CardLogic {
 		if (cr == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
 		}
-		if (betScore != 0 && betScore != cr.getWin() && betScore != cr.getWin() / 2 && betScore != cr.getWin() * 2) {
+		if (betScore != cr.getWin() && betScore != cr.getWin() / 2 && betScore != cr.getWin() * 2) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_BETSCORE_VALUE);
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
@@ -239,9 +240,9 @@ public class CardLogic {
 				if (cr.getWin() >= 75000) {
 					giftWin = cr.getWinCount() * 4000;
 				}
-//				if (cr.getWin() >= 200000) {
-//					giftWin += 50000;
-//				}
+				// if (cr.getWin() >= 200000) {
+				// giftWin += 50000;
+				// }
 				cr.setWin(0);
 				logger.info("------------------------------------------------------------------------------set win : " + 0);
 				score = score - cr.getBet() + giftWin;
@@ -274,7 +275,7 @@ public class CardLogic {
 		if (cr == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
 		}
-		if(cr.getStartIndex() != 1){
+		if (cr.getStartIndex() != 1) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX_VALUE);
 		}
 		fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
@@ -320,5 +321,15 @@ public class CardLogic {
 		fivepkPlayerInfo.setScore(score);
 		jdbcDaoSupport.update(fivepkPlayerInfo);
 		return MessageContent.newBuilder().setResult(0).setCcCoinScore(CCCoinScore.newBuilder().setCoin(coin).setScore(score));
+	}
+
+	public Builder csCompareHistoryOneCard(IoSession session, MessageContent content) {
+		Long accountId = (Long) session.getAttribute("accountId");
+		if (accountId == null) {
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+		}
+		int compareCard = CardUtil.compareCard();
+		session.setAttribute("compareCard", compareCard);
+		return MessageContent.newBuilder().setResult(0).setSCCompareHistoryOneCard(SCCompareHistoryOneCard.newBuilder().setCompareCard(compareCard));
 	}
 }

@@ -28,12 +28,12 @@ alter table fivepk_player_info modify score int(20) default 200000;
 
 alter table fivepk_player_info add COLUMN coin int(20) default 0 AFTER pic;
 
-//2016-11-07
-alter table `fivepk_account` add column account_type smallint(1) default 0 COMMENT '0-游客1-普通玩家' after seoid;
-
 update fivepk_account set account_type = 1 where name is not null;
 
 alter table fivepk_player_info drop column name;
+
+//2016-11-07
+alter table `fivepk_account` add column account_type smallint(1) default 0 COMMENT '0-游客1-普通玩家' after seoid;
 
 //2016-11-10
 CREATE TABLE `fivepk_seo` (
@@ -54,3 +54,10 @@ alter table `fivepk_player_info` change score score int(20) DEFAULT 20000;
 
 //2016-11-18
 alter table fivepk_seo modify seo_machine_id varchar(50) not null;
+
+//2016-11-19
+alter table fivepk_account add account_info int(2) default 0;
+
+alter table fivepk_player_info add total_online_time int(50) default 0;
+
+alter table fivepk_player_info add end_login_time timestamp default current_timestamp on update current_timestamp ;

@@ -136,6 +136,7 @@ public class SocketUtil {
 			case 65545 :
 			case 65546 :
 			case 65547 :
+			case 65548 :
 				return "card";
 			case 131075 :
 			case 131076 :
