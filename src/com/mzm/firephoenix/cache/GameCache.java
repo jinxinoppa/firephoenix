@@ -5,13 +5,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.mina.core.session.IoSession;
 
 public class GameCache {
-	private final static Map<String, List<IoSession>> seoIdSessionMap = new HashMap<String, List<IoSession>>();
+	private static volatile Map<String, List<IoSession>> seoIdSessionMap = new ConcurrentHashMap<String, List<IoSession>>();
 
-	public static IoSession putIoSessionIfAbsent(String seoId, IoSession session) {
+	public static synchronized IoSession putIoSessionIfAbsent(String seoId, IoSession session) {
 		List<IoSession> sessionList = seoIdSessionMap.get(seoId);
 		if (sessionList == null) {
 			sessionList = new ArrayList<IoSession>();
@@ -21,17 +22,17 @@ public class GameCache {
 		return session;
 	}
 
-	public static List<IoSession> getSeoIdIoSessionList(String seoId) {
+	public static synchronized List<IoSession> getSeoIdIoSessionList(String seoId) {
 		return seoIdSessionMap.get(seoId);
 	}
 
-	public static void removeIoSession(String seoId, IoSession session) {
+	public static synchronized void removeIoSession(String seoId, IoSession session) {
 		seoIdSessionMap.get(seoId).remove(session);
 	}
 
-	private final static Map<Long, PlayerInfo> playerInfoMap = new HashMap<Long, PlayerInfo>();
+	private static volatile Map<Long, PlayerInfo> playerInfoMap = new ConcurrentHashMap<Long, PlayerInfo>();
 
-	public static PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, String seoId, IoSession playerInfoSession, byte accountType) {
+	public static synchronized PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, String seoId, IoSession playerInfoSession, byte accountType) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		if (playerInfo == null) {
 			playerInfo = new PlayerInfo(pic, nickName, seoId, playerInfoSession, accountType);
@@ -46,7 +47,7 @@ public class GameCache {
 		return playerInfo;
 	}
 
-	public static PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, byte accountType) {
+	public static synchronized PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, byte accountType) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		if (playerInfo == null) {
 			playerInfo = new PlayerInfo(pic, nickName);
@@ -59,7 +60,7 @@ public class GameCache {
 		return playerInfo;
 	}
 
-	public static PlayerInfo putPlayerInfo(long accountId, int pic, String nickName) {
+	public static synchronized PlayerInfo putPlayerInfo(long accountId, int pic, String nickName) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		if (playerInfo == null) {
 			playerInfo = new PlayerInfo(pic, nickName);
@@ -70,25 +71,25 @@ public class GameCache {
 		}
 		return playerInfo;
 	}
-	
-	public static PlayerInfo putPlayerInfo(long accountId, String seoId, byte accountType) {
+
+	public static synchronized PlayerInfo putPlayerInfo(long accountId, String seoId, byte accountType) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		playerInfo.setSeoId(seoId);
 		playerInfo.setAccountType(accountType);
 		return playerInfo;
 	}
 
-	public static PlayerInfo getPlayerInfo(long accountId) {
+	public static synchronized PlayerInfo getPlayerInfo(long accountId) {
 		return playerInfoMap.get(accountId);
 	}
 
-	public static void removePlayerInfo(long accountId) {
+	public static synchronized void removePlayerInfo(long accountId) {
 		playerInfoMap.remove(accountId);
 	}
 
-	private final static Map<String, Map<String, MachineInfo>> seoIdMachineInfoMap = new HashMap<String, Map<String, MachineInfo>>();
+	private static volatile Map<String, Map<String, MachineInfo>> seoIdMachineInfoMap = new ConcurrentHashMap<String, Map<String, MachineInfo>>();
 
-	public static MachineInfo getMachineInfo(String seoId, String machineId) {
+	public static synchronized MachineInfo getMachineInfo(String seoId, String machineId) {
 		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
 		if (machineIdMap == null) {
 			machineIdMap = new HashMap<String, MachineInfo>();
@@ -102,7 +103,7 @@ public class GameCache {
 		return machineInfo;
 	}
 
-	public static MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId, Date stayTime) {
+	public static synchronized MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId, Date stayTime) {
 		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
 		if (machineIdMap == null) {
 			machineIdMap = new HashMap<String, MachineInfo>();
@@ -119,7 +120,7 @@ public class GameCache {
 		return machineInfo;
 	}
 
-	public static MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId) {
+	public static synchronized MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId) {
 		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
 		if (machineIdMap == null) {
 			machineIdMap = new HashMap<String, MachineInfo>();

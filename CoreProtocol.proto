@@ -84,7 +84,7 @@ enum ErrorCode{
 	ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;//发牌下分分数不足
 	ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;//比倍下分分数不足
 	ERROR_NO_BUILDING = 2004;//已经绑定的玩家不能再次绑定
-	ERROR_NO_NULL_NICK_NAME = 2005;//昵称不能为空
+	ERROR_NICK_NAME_ILLEGAL = 2005;//昵称不能为空
 	ERROR_NO_LOGIN_SEOID = 2006;//代理商没有注册
 	ERROR_NICK_NAME_COUNT = 2007;//昵称只能修改一次
 	ERROR_USER_NAME = 2008;//用户名必须为6~18位字母或数字
@@ -105,6 +105,7 @@ enum ErrorCode{
 	ERROR_HEAD_PIC_NOT_EXIST = 2020;//没有这个头像
 	ERROR_MACHINE_TYPE_ONLINE = 2021;//该机台有玩家
 	ERROR_START_INDEX = 2022;//发牌顺序不对不是第二手牌得分
+	ERROR_NICK_NAME_REPEATED = 2023;//该昵称已被注册,请更换其他昵称
 }
 
 //协议内容，内部为每次通信的数据模型

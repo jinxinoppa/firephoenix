@@ -61,3 +61,127 @@ alter table fivepk_account add account_info int(2) default 0;
 alter table fivepk_player_info add total_online_time int(50) default 0;
 
 alter table fivepk_player_info add end_login_time timestamp default current_timestamp on update current_timestamp ;
+
+//2016-11-28
+CREATE TABLE `fivepk_point` (
+  `id` int(200) NOT NULL AUTO_INCREMENT,
+  `accound_id` int(20) DEFAULT NULL,
+  `seoid` varchar(50) DEFAULT NULL,
+  `operate_math` int(20) DEFAULT NULL,
+  `operate_up` int(20) DEFAULT NULL,
+  `operate_down` int(20) DEFAULT NULL,
+  `operate_type` varchar(10) DEFAULT NULL,
+  `operate_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `fivepk_service` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `in_ip` varchar(20) DEFAULT NULL,
+  `out_ip` varchar(20) DEFAULT NULL,
+  `ports` varchar(8) DEFAULT NULL,
+  `enabled` varchar(2) DEFAULT NULL,
+  `service_name` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+//2016-11-29
+CREATE TABLE `access_points` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `nick_name` varchar(20) DEFAULT NULL,
+  `seoid` varchar(20) DEFAULT NULL,
+  `on_score` int(20) DEFAULT '0',
+  `on_coin` int(20) DEFAULT '0',
+  `up_score` int(20) DEFAULT '0',
+  `up_coin` int(20) DEFAULT '0',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+//2016-11-30
+CREATE TABLE `machine_default` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `seo_machine_id` varchar(50) NOT NULL,
+  `seoid` varchar(50) DEFAULT NULL,
+  `seven_better` int(20) DEFAULT '0',
+  `two_pairs` int(20) DEFAULT '0',
+  `three_kind` int(20) DEFAULT '0',
+  `straight` int(20) DEFAULT '0',
+  `flush` int(20) DEFAULT '0',
+  `full_house` int(20) DEFAULT '0',
+  `little_four_kind` int(20) DEFAULT '0',
+  `big_four_kind` int(20) DEFAULT '0',
+  `str_flush` int(20) DEFAULT '0',
+  `five_kind` int(20) DEFAULT '0',
+  `royal_flush` int(20) DEFAULT '0',
+  `five_bars` int(20) DEFAULT '0',
+  `win_number` int(50) DEFAULT '0',
+  `play_number` int(50) DEFAULT '0',
+  `play_sum_point` int(50) DEFAULT '0',
+  `win_sum_point` int(50) DEFAULT '0',
+  `oneday` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `machine_match` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
+  `seo_machine_id` varchar(50) DEFAULT NULL,
+  `seoid` varchar(50) DEFAULT NULL,
+  `win_number` int(50) DEFAULT '0',
+  `play_number` int(50) DEFAULT '0',
+  `win_point` int(50) DEFAULT '0',
+  `play_point` int(50) DEFAULT '0',
+  `three` int(50) DEFAULT '0',
+  `four` int(50) DEFAULT '0',
+  `five` int(50) DEFAULT '0',
+  `pass_number` int(50) DEFAULT '0',
+  `pass_money` int(50) DEFAULT '0',
+  `orider_machine_money` int(50) DEFAULT '0',
+  `oneday` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `machine_gain` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `seo_machine_id` varchar(50) DEFAULT NULL,
+  `seoid` varchar(50) DEFAULT NULL,
+  `add_win_number` int(50) DEFAULT '0',
+  `add_play_number` int(50) DEFAULT '0',
+  `add_win_point` int(50) DEFAULT '0',
+  `add_play_point` int(50) DEFAULT '0',
+  `gain` int(50) DEFAULT '0',
+  `oneday` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+//2016-11-29
+alter table `fivepk_seo` add COLUMN prefab_five_bars TINYINT(1) DEFAULT 7;
+alter table `fivepk_seo` add COLUMN prefab_royal_flush TINYINT(1) DEFAULT 6;
+alter table `fivepk_seo` add COLUMN prefab_five_of_a_kind TINYINT(1) DEFAULT 6;
+alter table `fivepk_seo` add COLUMN prefab_straight_flush TINYINT(1) DEFAULT 4;
+alter table `fivepk_seo` add COLUMN prefab_four_of_a_kind_JOKER TINYINT(1) DEFAULT 5;
+
+CREATE TABLE `fivepk_prefab` (
+	`prefab_cards` INT (10) NOT NULL,
+	`prefab_0` INT (10) default 0,
+	`prefab_1` INT (10) default 0,
+	`prefab_2` INT (10) default 0,
+	`prefab_3` INT (10) default 0,
+	`prefab_4` INT (10) default 0,
+	`prefab_5` INT (10) default 0,
+	`prefab_6` INT (10) default 0,
+	`prefab_7` INT (10) default 0,
+	PRIMARY KEY (`prefab_cards`)
+) ENGINE = INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+alter table `fivepk_seo` add COLUMN seo_machine_play_count BIGINT DEFAULT 1;
+
+alter table fivepk_prefab add column win_pool VARCHAR(255) NOT NULL
+
+//2016-12-1
+alter table fivepk_seo add COLUMN prefab_five_bars_count int(20) DEFAULT 0 after prefab_five_bars;
+alter table fivepk_seo add COLUMN prefab_royal_flush_count int(20) DEFAULT 0 after prefab_royal_flush;
+alter table fivepk_seo add COLUMN prefab_five_of_a_kind_count int(20) DEFAULT 0 after prefab_five_of_a_kind;
+alter table fivepk_seo add COLUMN prefab_straight_flush_count int(20) DEFAULT 0 after prefab_straight_flush;
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_JOKER_count int(20) DEFAULT 0 after prefab_four_of_a_kind_JOKER;

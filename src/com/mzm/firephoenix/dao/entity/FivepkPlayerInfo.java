@@ -28,6 +28,7 @@ public class FivepkPlayerInfo extends AbstractEntity {
 		insertFieldsList.add("accountId");
 		insertFieldsList.add("nickName");
 		insertFieldsList.add("pic");
+		insertFieldsList.add("score");
 	}
 
 	public long getAccountId() {

@@ -15,14 +15,12 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.mzm.firephoenix.logic.OfflineLogic;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
-import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.utils.SocketUtil;
 
 /**
- * 接受socket请求，转发至executor。端口 19360
  * 
  * @author oppa
  * 
@@ -31,20 +29,6 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 	private ApplicationContext applicationContext;
 
 	public final static Log logger = LogFactory.getLog(GameHandler.class);
-
-	public static ByteMessage staticBm = new ByteMessage();
-
-	public void sendError(IoSession session) {
-		ByteMessage bm = new ByteMessage((short) 0);
-		bm.writeString("error");
-		session.write(bm);
-	}
-
-	public void sendUpdate(IoSession session) {
-		ByteMessage bm = new ByteMessage((short) 1);
-		bm.writeString("");
-		session.write(bm);
-	}
 
 	@Override
 	public void messageReceived(IoSession session, Object message) throws Exception {
@@ -103,7 +87,7 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		try {
 			returnBuilder = (Builder) m.invoke(executor, session, messagePack.getContent());
 		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
+			logger.error(e, e);
 		}
 		long diff = System.currentTimeMillis() - start;
 		if (diff > 1000) {
@@ -131,12 +115,12 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 	@Override
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		logger.info("sessionIdle. session id=" + session.getId());
-//		MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
-//		returnMessagePack.setCmd(Cmd.CMD_LOGIN);
-//		returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE));
-//		logger.info("sent message pack : " + returnMessagePack.toString());
-//		session.write(returnMessagePack);
-//		session.closeOnFlush();
+		// MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+		// returnMessagePack.setCmd(Cmd.CMD_LOGIN);
+		// returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE));
+		// logger.info("sent message pack : " + returnMessagePack.toString());
+		// session.write(returnMessagePack);
+		// session.closeOnFlush();
 	}
 
 	@Override
@@ -165,33 +149,46 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 	@Override
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
 		try {
-			// CommonCache.removeCurTime(String.valueOf(session.getAttribute(
-			// SessionConstantPK.ROLE_ID, "0")));
-			// String message = cause.getMessage();
-			// String className = cause.getClass().getName();
-			// if (!"远程主机强迫关闭了一个现有的连接。".equals(message)
-			// && !"Connection reset by peer".equals(message)
-			// && !"Broken pipe".equals(message)
-			// && !"java.lang.String cannot be cast to org.json.JSONObject"
-			// .equals(message)
-			// && !className
-			// .equals("org.apache.mina.core.write.WriteToClosedSessionException"))
-			// {
-			//
-			// String roleId =
-			// String.valueOf(session.getAttribute(SessionConstantPK.ROLE_ID,
-			// "0"));
-			// Request request = SessionCache.removeRoleRequest(roleId);
-			// logger.error(request + " message:" + message
-			// + " uncaught exception:", cause);
-			// ByteMessage bm = new ByteMessage(ActConstant.GAME_ALERT);
-			// bm.writeString("");
-			// bm.writeString("");
-			// session.write(bm);
-			//
-			// }
+			String message = cause.getMessage();
+			String className = cause.getClass().getName();
+//			if (!"远程主机强迫关闭了一个现有的连接。".equals(message) && !"Connection reset by peer".equals(message) && !"Broken pipe".equals(message) && !"java.lang.String cannot be cast to org.json.JSONObject".equals(message) && !className.equals("org.apache.mina.core.write.WriteToClosedSessionException")) {
+//				long accountId = (long) session.removeAttribute("accountId");
+//				CardResult cr = (CardResult) session.getAttribute("cardResult");
+//				String machineId = (String) session.getAttribute("machineId");
+//				PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+//				if (playerInfo == null){
+//					return;
+//				}
+//				GameCache.removeIoSession(playerInfo.getSeoId(), session);
+//				GameCache.removePlayerInfo(accountId);
+//				
+//				if (cr != null && cr.getWin() > 0) {
+//					JdbcDaoSupport jdbcDaoSupport = applicationContext.getBean(JdbcDaoSupport.class);
+//					if (jdbcDaoSupport != null){
+//						FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
+//						if (fivepkPlayerInfo == null) {
+//							return;
+//						}
+//						fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
+//						jdbcDaoSupport.update(fivepkPlayerInfo);
+//					}
+//				}
+//				if (machineId != null) {
+//					GameCache.updateMachineInfo(playerInfo.getSeoId(),machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
+//					List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
+//					for (IoSession ioSession : sessionList) {
+//						if (!ioSession.isClosing() && ioSession.isConnected() && (Long) ioSession.getAttribute("accountId") != accountId) {
+//							MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+//							returnMessagePack.setCmd(Cmd.CMD_MACHINE_INFO);
+//							returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScMachineInfo(SCMachineInfo.newBuilder().setMachineId(machineId).setMachineType(GameConstant.MACHINE_TYPE_FREE)));
+//							logger.info("sent message pack : " + returnMessagePack.toString());
+//							ioSession.write(returnMessagePack);
+//						}
+//					}
+//				}
+//			}
 		} catch (Exception e) {
-			throw e;
+			logger.error(cause, cause);
 		}
 	}
 

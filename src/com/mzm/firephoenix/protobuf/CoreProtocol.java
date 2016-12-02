@@ -925,13 +925,13 @@ public final class CoreProtocol {
      */
     ERROR_NO_BUILDING(10, 2004),
     /**
-     * <code>ERROR_NO_NULL_NICK_NAME = 2005;</code>
+     * <code>ERROR_NICK_NAME_ILLEGAL = 2005;</code>
      *
      * <pre>
      *昵称不能为空
      * </pre>
      */
-    ERROR_NO_NULL_NICK_NAME(11, 2005),
+    ERROR_NICK_NAME_ILLEGAL(11, 2005),
     /**
      * <code>ERROR_NO_LOGIN_SEOID = 2006;</code>
      *
@@ -1068,6 +1068,14 @@ public final class CoreProtocol {
      * </pre>
      */
     ERROR_START_INDEX(28, 2022),
+    /**
+     * <code>ERROR_NICK_NAME_REPEATED = 2023;</code>
+     *
+     * <pre>
+     *该昵称已被注册,请更换其他昵称
+     * </pre>
+     */
+    ERROR_NICK_NAME_REPEATED(29, 2023),
     ;
 
     /**
@@ -1159,13 +1167,13 @@ public final class CoreProtocol {
      */
     public static final int ERROR_NO_BUILDING_VALUE = 2004;
     /**
-     * <code>ERROR_NO_NULL_NICK_NAME = 2005;</code>
+     * <code>ERROR_NICK_NAME_ILLEGAL = 2005;</code>
      *
      * <pre>
      *昵称不能为空
      * </pre>
      */
-    public static final int ERROR_NO_NULL_NICK_NAME_VALUE = 2005;
+    public static final int ERROR_NICK_NAME_ILLEGAL_VALUE = 2005;
     /**
      * <code>ERROR_NO_LOGIN_SEOID = 2006;</code>
      *
@@ -1302,6 +1310,14 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int ERROR_START_INDEX_VALUE = 2022;
+    /**
+     * <code>ERROR_NICK_NAME_REPEATED = 2023;</code>
+     *
+     * <pre>
+     *该昵称已被注册,请更换其他昵称
+     * </pre>
+     */
+    public static final int ERROR_NICK_NAME_REPEATED_VALUE = 2023;
 
 
     public final int getNumber() {
@@ -1321,7 +1337,7 @@ public final class CoreProtocol {
         case 2002: return ERROR_CARD_BET_SCORE_NOT_ENOUGH;
         case 2003: return ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH;
         case 2004: return ERROR_NO_BUILDING;
-        case 2005: return ERROR_NO_NULL_NICK_NAME;
+        case 2005: return ERROR_NICK_NAME_ILLEGAL;
         case 2006: return ERROR_NO_LOGIN_SEOID;
         case 2007: return ERROR_NICK_NAME_COUNT;
         case 2008: return ERROR_USER_NAME;
@@ -1339,6 +1355,7 @@ public final class CoreProtocol {
         case 2020: return ERROR_HEAD_PIC_NOT_EXIST;
         case 2021: return ERROR_MACHINE_TYPE_ONLINE;
         case 2022: return ERROR_START_INDEX;
+        case 2023: return ERROR_NICK_NAME_REPEATED;
         default: return null;
       }
     }
@@ -34016,7 +34033,7 @@ public final class CoreProtocol {
       "_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PLAYER_CHAN",
       "GE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021CMD_PAI_B" +
       "ASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014\022\020\n\nCMD" +
-      "_NOTICE\020\244\200\014\022\023\n\rCMD_LOGIN_OUT\020\245\200\014*\344\006\n\tErr" +
+      "_NOTICE\020\244\200\014\022\023\n\rCMD_LOGIN_OUT\020\245\200\014*\203\007\n\tErr" +
       "orCode\022\027\n\022ERROR_ACCOUNT_EXIT\020\351\007\022\025\n\020ERROR" +
       "_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PWD_WRONG\020\353\007\022\032\n\025" +
       "ERROR_PLAYER_NOT_EXIT\020\354\007\022 \n\033ERROR_SMS_IN" +
@@ -34025,8 +34042,8 @@ public final class CoreProtocol {
       "\032ERROR_CARD_GUEST_COINSCORE\020\321\017\022$\n\037ERROR_" +
       "CARD_BET_SCORE_NOT_ENOUGH\020\322\017\0221\n,ERROR_CA",
       "RD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH\020\323\017\022" +
-      "\026\n\021ERROR_NO_BUILDING\020\324\017\022\034\n\027ERROR_NO_NULL" +
-      "_NICK_NAME\020\325\017\022\031\n\024ERROR_NO_LOGIN_SEOID\020\326\017" +
+      "\026\n\021ERROR_NO_BUILDING\020\324\017\022\034\n\027ERROR_NICK_NA" +
+      "ME_ILLEGAL\020\325\017\022\031\n\024ERROR_NO_LOGIN_SEOID\020\326\017" +
       "\022\032\n\025ERROR_NICK_NAME_COUNT\020\327\017\022\024\n\017ERROR_US" +
       "ER_NAME\020\330\017\022\025\n\020ERROR_USER_EXIST\020\331\017\022\'\n\"ERR" +
       "OR_YOUR_ACCOUNT_IS_BEING_LANDED\020\332\017\022\'\n\"ER" +
@@ -34038,8 +34055,9 @@ public final class CoreProtocol {
       "RD_RESULT\020\341\017\022\023\n\016ERROR_BETSCORE\020\342\017\022\025\n\020ERR" +
       "OR_COIN_SCORE\020\343\017\022\035\n\030ERROR_HEAD_PIC_NOT_E" +
       "XIST\020\344\017\022\036\n\031ERROR_MACHINE_TYPE_ONLINE\020\345\017\022" +
-      "\026\n\021ERROR_START_INDEX\020\346\017B,\n\034com.mzm.firep" +
-      "hoenix.protobufB\014CoreProtocol"
+      "\026\n\021ERROR_START_INDEX\020\346\017\022\035\n\030ERROR_NICK_NA" +
+      "ME_REPEATED\020\347\017B,\n\034com.mzm.firephoenix.pr" +
+      "otobufB\014CoreProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

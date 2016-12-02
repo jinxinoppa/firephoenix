@@ -35,35 +35,43 @@ public class JdbcDaoSupport {
 		sql.append("update ").append(entityAnnotation.tableName()).append(" set ");
 		String updateFieldName = null;
 		Field updateField = null;
+		String whereCause = null;
 		try {
 			Field updateFieldsListField = c.getField("updateFieldsList");
 			updateFieldsListField.setAccessible(true);
 			@SuppressWarnings("unchecked")
 			List<String> updateFieldsList = (List<String>) updateFieldsListField.get(entity);
-			for (int i = 0; i < updateFieldsList.size(); i++) {
-				updateFieldName = updateFieldsList.get(i);
-				updateField = c.getDeclaredField(updateFieldName);
-				sql.append(updateField.getDeclaredAnnotation(Column.class).columnName());
-				updateField.setAccessible(true);
-				sql.append(" = ");
-				if (updateField.getType().getSimpleName().endsWith("String") || updateField.getType().getSimpleName().endsWith("Date")) {
-					if (null == updateField.get(entity)) {
-						continue;
+			if (!updateFieldsList.isEmpty()) {
+				for (int i = 0; i < updateFieldsList.size(); i++) {
+					updateFieldName = updateFieldsList.get(i);
+					updateField = c.getDeclaredField(updateFieldName);
+					sql.append(updateField.getDeclaredAnnotation(Column.class).columnName());
+					updateField.setAccessible(true);
+					sql.append(" = ");
+					if (updateField.getType().getSimpleName().endsWith("String") || updateField.getType().getSimpleName().endsWith("Date")) {
+						if (null == updateField.get(entity)) {
+							continue;
+						} else {
+							sql.append("\"").append(updateField.get(entity)).append("\", ");
+						}
 					} else {
-						sql.append("\"").append(updateField.get(entity)).append("\", ");
+						sql.append(updateField.get(entity)).append(", ");
 					}
-				} else {
-					sql.append(updateField.get(entity)).append(", ");
 				}
+				sql.deleteCharAt(sql.lastIndexOf(","));
+				updateField = c.getDeclaredField(entityAnnotation.primaryKey());
+				Column column = updateField.getDeclaredAnnotation(Column.class);
+				updateField.setAccessible(true);
+				if (updateField.getType().getSimpleName().endsWith("String")) {
+					whereCause = "\"" + updateField.get(entity) + "\"";
+				} else {
+					whereCause = String.valueOf(updateField.get(entity));
+				}
+				sql.append(" where ").append(column.columnName()).append(" = ").append(whereCause);
+				String sqlStr = sql.toString();
+				logger.info(sqlStr);
+				jdbcTemplate.update(sqlStr);
 			}
-			sql.deleteCharAt(sql.lastIndexOf(","));
-			updateField = c.getDeclaredField(entityAnnotation.primaryKey());
-			Column column = updateField.getDeclaredAnnotation(Column.class);
-			updateField.setAccessible(true);
-			sql.append(" where ").append(column.columnName()).append(" = ").append(updateField.get(entity));
-			String sqlStr = sql.toString();
-			logger.info(sqlStr);
-			jdbcTemplate.update(sqlStr);
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 			logger.error(e, e);
 		}
@@ -206,7 +214,7 @@ public class JdbcDaoSupport {
 		Field queryField = null;
 		Column column = null;
 		try {
-			if (args != null){
+			if (args != null) {
 				if (whereArgs == null) {
 					sql.append(" where ");
 					queryField = c.getDeclaredField(entityAnnotation.primaryKey());
