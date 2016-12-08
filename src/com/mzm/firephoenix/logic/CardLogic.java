@@ -20,10 +20,10 @@ import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.entity.AccessPoints;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
-import com.mzm.firephoenix.dao.entity.MachineDefault;
-import com.mzm.firephoenix.dao.entity.MachineGain;
 import com.mzm.firephoenix.dao.entity.FivepkPrefab;
 import com.mzm.firephoenix.dao.entity.FivepkSeoId;
+import com.mzm.firephoenix.dao.entity.MachineDefault;
+import com.mzm.firephoenix.dao.entity.MachineGain;
 import com.mzm.firephoenix.dao.entity.MachineMatch;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCCoinScore;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCCompareHistoryCards;
@@ -35,6 +35,7 @@ import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCards;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareCard;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareHistoryOneCard;
+import com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCNotice;
 import com.mzm.firephoenix.utils.CardResult;
 import com.mzm.firephoenix.utils.CardUtil;
@@ -70,7 +71,7 @@ public class CardLogic {
 		if (betScore > fivepkPlayerInfo.getScore()) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_BET_SCORE_NOT_ENOUGH_VALUE);
 		}
-		String machineId = (String)session.getAttribute("machineId");
+		String machineId = (String) session.getAttribute("machineId");
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{machineId}, new String[]{"seoMachineId"});
 		CardResult cr = new CardResult();
 		int winCount = 0;
@@ -80,6 +81,7 @@ public class CardLogic {
 		int sameColor = 0;
 		int sameColor2 = 0;
 		int totalWinCount = 0;
+		int plusWinCount = 0;
 		if (startIndex == 0) {
 			List<FivepkPrefab> fivepkPrefabList = jdbcDaoSupport.query(FivepkPrefab.class);
 			for (int i = 0; i < fivepkPrefabList.size(); i++) {
@@ -89,55 +91,136 @@ public class CardLogic {
 				if (prefab == 0) {
 					continue;
 				}
-				if (prefab == 5) {
-					Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
-					if (prefabBuffMap == null){
-						prefabBuffMap = new HashMap<Integer, Double>();
-						GameConstant.RANDOMBUFF.put(machineId, prefabBuffMap);
-					}
-					Double randomBuff = prefabBuffMap.get(fivepkPrefab.getPrefabCards());
-					if (randomBuff == null){
-						randomBuff = GameConstant.FIVEPREFAB[RandomUtils.nextInt(0, 6)];
-						prefabBuffMap.put(fivepkPrefab.getPrefabCards(), randomBuff);
-					}
-					totalWinCount = (int) ((1000 * fivepkPrefab.getPrefabCards() * (1 - randomBuff)) / prefab);
-				} else {
-					totalWinCount = (int) (1000 * fivepkPrefab.getPrefabCards() / prefab);
-				}
 
-				
+				totalWinCount = (int) (1000 * fivepkPrefab.getPrefabCards());
+
 				if (betScore == GameConstant.BETSCORE_500) {
-					prefab = prefab / 2;
-				} else if (betScore != GameConstant.BETSCORE_2000) {
-					prefab += prefab;
+					winCount = prefab / 2;
+				} else if (betScore == GameConstant.BETSCORE_2000) {
+					winCount = prefab * 2;
+				} else {
+					winCount = prefab;
 				}
-				winCount = prefab;
-				if (fivepkPrefab.getPrefabCards() == 80){
-					//FIXME
-					fivepkSeoId.setPrefabFourOfAKindJOKERCount(fivepkSeoId.getPrefabFourOfAKindJOKERCount() + winCount);
-					if (fivepkSeoId.getPrefabFourOfAKindJOKERCount() >= totalWinCount) {
+				if (fivepkPrefab.getPrefabCards() == 80) {
+					if (prefab == 5) {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap == null) {
+							prefabBuffMap = new HashMap<Integer, Double>();
+							GameConstant.RANDOMBUFF.put(machineId, prefabBuffMap);
+						}
+						Double randomBuff = prefabBuffMap.get(fivepkPrefab.getPrefabCards());
+						if (randomBuff == null) {
+							randomBuff = GameConstant.FIVEPREFAB[RandomUtils.nextInt(0, 6)];
+							prefabBuffMap.put(fivepkPrefab.getPrefabCards(), randomBuff);
+							plusWinCount = (int) ((1000 * fivepkPrefab.getPrefabCards() * randomBuff));
+							fivepkSeoId.setPrefabFourOfAKindJokerCount(plusWinCount);
+						}
+					} else {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap != null) {
+							prefabBuffMap.remove(fivepkPrefab.getPrefabCards());
+						}
+					}
+					fivepkSeoId.setPrefabFourOfAKindJokerCount(fivepkSeoId.getPrefabFourOfAKindJokerCount() + winCount);
+					if (fivepkSeoId.getPrefabFourOfAKindJokerCount() >= totalWinCount) {
 						cr.setWinType(fivepkPrefab.getPrefabCards());
 						break;
 					}
-				} else if (fivepkPrefab.getPrefabCards() == 120){
+				} else if (fivepkPrefab.getPrefabCards() == 120) {
+					if (prefab == 5) {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap == null) {
+							prefabBuffMap = new HashMap<Integer, Double>();
+							GameConstant.RANDOMBUFF.put(machineId, prefabBuffMap);
+						}
+						Double randomBuff = prefabBuffMap.get(fivepkPrefab.getPrefabCards());
+						if (randomBuff == null) {
+							randomBuff = GameConstant.FIVEPREFAB[RandomUtils.nextInt(0, 6)];
+							prefabBuffMap.put(fivepkPrefab.getPrefabCards(), randomBuff);
+							plusWinCount = (int) ((1000 * fivepkPrefab.getPrefabCards() * randomBuff));
+							fivepkSeoId.setPrefabStraightFlushCount(plusWinCount);
+						}
+					} else {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap != null) {
+							prefabBuffMap.remove(fivepkPrefab.getPrefabCards());
+						}
+					}
 					fivepkSeoId.setPrefabStraightFlushCount(fivepkSeoId.getPrefabStraightFlushCount() + winCount);
 					if (fivepkSeoId.getPrefabStraightFlushCount() >= totalWinCount) {
 						cr.setWinType(fivepkPrefab.getPrefabCards());
 						break;
 					}
-				} else if (fivepkPrefab.getPrefabCards() == 250){
+				} else if (fivepkPrefab.getPrefabCards() == 250) {
+					if (prefab == 5) {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap == null) {
+							prefabBuffMap = new HashMap<Integer, Double>();
+							GameConstant.RANDOMBUFF.put(machineId, prefabBuffMap);
+						}
+						Double randomBuff = prefabBuffMap.get(fivepkPrefab.getPrefabCards());
+						if (randomBuff == null) {
+							randomBuff = GameConstant.FIVEPREFAB[RandomUtils.nextInt(0, 6)];
+							prefabBuffMap.put(fivepkPrefab.getPrefabCards(), randomBuff);
+							plusWinCount = (int) ((1000 * fivepkPrefab.getPrefabCards() * randomBuff));
+							fivepkSeoId.setPrefabFiveOfAKindCount(plusWinCount);
+						}
+					} else {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap != null) {
+							prefabBuffMap.remove(fivepkPrefab.getPrefabCards());
+						}
+					}
 					fivepkSeoId.setPrefabFiveOfAKindCount(fivepkSeoId.getPrefabFiveOfAKindCount() + winCount);
 					if (fivepkSeoId.getPrefabFiveOfAKindCount() >= totalWinCount) {
 						cr.setWinType(fivepkPrefab.getPrefabCards());
 						break;
 					}
-				} else if (fivepkPrefab.getPrefabCards() == 500){
+				} else if (fivepkPrefab.getPrefabCards() == 500) {
+					if (prefab == 5) {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap == null) {
+							prefabBuffMap = new HashMap<Integer, Double>();
+							GameConstant.RANDOMBUFF.put(machineId, prefabBuffMap);
+						}
+						Double randomBuff = prefabBuffMap.get(fivepkPrefab.getPrefabCards());
+						if (randomBuff == null) {
+							randomBuff = GameConstant.FIVEPREFAB[RandomUtils.nextInt(0, 6)];
+							prefabBuffMap.put(fivepkPrefab.getPrefabCards(), randomBuff);
+							plusWinCount = (int) ((1000 * fivepkPrefab.getPrefabCards() * randomBuff));
+							fivepkSeoId.setPrefabRoyalFlushCount(plusWinCount);
+						}
+					} else {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap != null) {
+							prefabBuffMap.remove(fivepkPrefab.getPrefabCards());
+						}
+					}
 					fivepkSeoId.setPrefabRoyalFlushCount(fivepkSeoId.getPrefabRoyalFlushCount() + winCount);
 					if (fivepkSeoId.getPrefabRoyalFlushCount() >= totalWinCount) {
 						cr.setWinType(fivepkPrefab.getPrefabCards());
 						break;
 					}
-				} else if (fivepkPrefab.getPrefabCards() == 1000){
+				} else if (fivepkPrefab.getPrefabCards() == 1000) {
+					if (prefab == 5) {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap == null) {
+							prefabBuffMap = new HashMap<Integer, Double>();
+							GameConstant.RANDOMBUFF.put(machineId, prefabBuffMap);
+						}
+						Double randomBuff = prefabBuffMap.get(fivepkPrefab.getPrefabCards());
+						if (randomBuff == null) {
+							randomBuff = GameConstant.FIVEPREFAB[RandomUtils.nextInt(0, 6)];
+							prefabBuffMap.put(fivepkPrefab.getPrefabCards(), randomBuff);
+							plusWinCount = (int) ((1000 * fivepkPrefab.getPrefabCards() * randomBuff));
+							fivepkSeoId.setPrefabFiveBarsCount(plusWinCount);
+						}
+					} else {
+						Map<Integer, Double> prefabBuffMap = GameConstant.RANDOMBUFF.get(machineId);
+						if (prefabBuffMap != null) {
+							prefabBuffMap.remove(fivepkPrefab.getPrefabCards());
+						}
+					}
 					fivepkSeoId.setPrefabFiveBarsCount(fivepkSeoId.getPrefabFiveBarsCount() + winCount);
 					if (fivepkSeoId.getPrefabFiveBarsCount() >= totalWinCount) {
 						cr.setWinType(fivepkPrefab.getPrefabCards());
@@ -145,6 +228,7 @@ public class CardLogic {
 					}
 				}
 			}
+			jdbcDaoSupport.update(fivepkSeoId);
 			cr.setBet(betScore);
 			cr.setStartIndex(1);
 			session.setAttribute("cardResult", cr);
@@ -213,12 +297,18 @@ public class CardLogic {
 					}
 					subList.add(j);
 				}
-				cr.setCards(cardArray);
 				for (Byte key : indexMap.keySet()) {
 					if (indexMap.get(key).size() >= 3) {
 						cr.setKeepCards(ArrayUtils.toPrimitive(indexMap.get(key).toArray(new Byte[indexMap.get(key).size()])));
 					}
 				}
+				cr.setCards(cardArray);
+				randomRemove = 4;
+				keepCard = cardArray[randomRemove];
+				cardArray[randomRemove] = (byte) 1;
+				cr.setReplaceCard(cardArray[randomRemove]);
+				cr.setKeepCard(keepCard);
+				cr.setWinType(50);
 			} else if (cr.getWinType() == 500) {
 				cardArray = Arrays.copyOf(GameConstant.WINPOOLROYALFLUSH[RandomUtils.nextInt(0, GameConstant.WINPOOLROYALFLUSH.length)], cardArray.length);
 				sameColor = 13 * RandomUtils.nextInt(0, 4);
@@ -245,7 +335,7 @@ public class CardLogic {
 				cardArray = Arrays.copyOf(GameConstant.WINPOOLFIVEBARS, cardArray.length);
 				randomRemove = RandomUtils.nextInt(0, 5);
 				keepCard = cardArray[randomRemove];
-				cardArray[randomRemove] = (byte) (RandomUtils.nextInt(1, 53));
+				cardArray[randomRemove] = (byte) 53;//(RandomUtils.nextInt(1, 53));
 				cr.setReplaceCard(cardArray[randomRemove]);
 				List<Byte> keepList = new ArrayList<Byte>();
 				for (byte j = 0; j < 5; j++) {
@@ -259,6 +349,10 @@ public class CardLogic {
 			} else {
 				CardUtil.firstRandomCards(cr);
 			}
+			//TODO
+//			cr.setCards(new byte[]{1, 14, 27, 40, 2});
+//			cr.setKeepCards(new byte[]{0,1,2,3});
+//			cr.setWinType(80);
 			String cardsStr = Arrays.toString(cr.getCards());
 			cardsStr = cardsStr.substring(1, cardsStr.length() - 1);
 			if (cr.getKeepCards() == null || cr.getKeepCards().length == 0) {
@@ -304,6 +398,7 @@ public class CardLogic {
 						}
 					}
 					cardArray2[randomRemove] = cr.getKeepCard();
+					fivepkSeoId.setPrefabFourOfAKindJokerCount(0);
 				} else if (cr.getWinType() == 120 && prefabKeepCard) {
 					byte[] cardArray2 = cr.getCards();
 					for (int j = 0; j < cardArray2.length; j++) {
@@ -313,8 +408,17 @@ public class CardLogic {
 						}
 					}
 					cardArray2[randomRemove] = cr.getKeepCard();
+					fivepkSeoId.setPrefabStraightFlushCount(0);
 				} else if (cr.getWinType() == 250 && prefabKeepCard) {
-					cr.getCards()[4] = 53;
+					byte[] cardArray2 = cr.getCards();
+					for (int j = 0; j < cardArray2.length; j++) {
+						if (cardArray2[j] == cr.getReplaceCard()) {
+							randomRemove = j;
+							break;
+						}
+					}
+					cardArray2[randomRemove] = cr.getKeepCard();
+					fivepkSeoId.setPrefabFiveOfAKindCount(0);
 				} else if (cr.getWinType() == 500 && prefabKeepCard) {
 					byte[] cardArray2 = cr.getCards();
 					for (int j = 0; j < cardArray2.length; j++) {
@@ -324,6 +428,7 @@ public class CardLogic {
 						}
 					}
 					cardArray2[randomRemove] = cr.getKeepCard();
+					fivepkSeoId.setPrefabRoyalFlushCount(0);
 				} else if (cr.getWinType() == 1000 && prefabKeepCard) {
 					byte[] cardArray2 = cr.getCards();
 					for (int j = 0; j < cardArray2.length; j++) {
@@ -333,6 +438,7 @@ public class CardLogic {
 						}
 					}
 					cardArray2[randomRemove] = cr.getKeepCard();
+					fivepkSeoId.setPrefabFiveBarsCount(0);
 				}
 			} else {
 				cr = CardUtil.secondRandomCards(cr);
@@ -355,8 +461,12 @@ public class CardLogic {
 						MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
 						returnMessagePack.setCmd(Cmd.CMD_NOTICE);
 						returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScNotice(SCNotice.newBuilder().setNotice(fivepkPlayerInfo.getNickName() + "," + cr.getWinType())));
-						logger.info("sent message pack : " + returnMessagePack.toString());
+						//FIXME
+						PlayerInfo playerInfo1 = GameCache.getPlayerInfo((Long)ioSession.getAttribute("accountId"));
+						logger.info("nickName : " + playerInfo1.getNickName() +"accountId:"+ accountId+"  |　sent message pack : " + returnMessagePack.toString());
 						ioSession.write(returnMessagePack);
+					} else {
+						logger.info("ioSession accountId not send:　" + ioSession.getAttribute("accountId"));
 					}
 				}
 			}
@@ -438,14 +548,23 @@ public class CardLogic {
 				machineGain.setAddPlayPoint((int) machineMatch.getPlayPoint() + (int) machineDefault.getPlaySumPoint());
 				jdbcDaoSupport.update(machineGain);
 				jdbcDaoSupport.update(machineDefault);
-				jdbcDaoSupport.update(machineGain);
+				// jdbcDaoSupport.update(machineGain);
 				session.setAttribute("machineGain", machineGain);
 				session.setAttribute("machineDefault", machineDefault);
-				session.setAttribute("machineMatch", machineMatch);
+				// session.setAttribute("machineMatch", machineMatch);
 			}
 
 			String cardsStr = Arrays.toString(cr.getCards());
 			cardsStr = cardsStr.substring(1, cardsStr.length() - 1);
+			/*if(cr.getWinType() == 80){
+				int math=0;
+				while(math>24||math<2){
+					math=(int) (Math.random()*100);
+				}
+				return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(winType).setCards(cardsStr).setMultiple(math));
+			}else{
+				return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(winType).setCards(cardsStr).setMultiple(0));
+			}*/
 			return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(winType).setCards(cardsStr));
 		}
 	}
@@ -501,12 +620,12 @@ public class CardLogic {
 		int score = 0;
 		boolean isUpdate = false;
 
-		MachineMatch machineMatch = null;
-		if (!session.containsAttribute("machineMatch")) {
-			machineMatch = new MachineMatch();
-			session.setAttribute("machineMatch", machineMatch);
+		java.sql.Date oneday = new java.sql.Date(new java.util.Date().getTime());
+		MachineMatch machineMatch = jdbcDaoSupport.queryOne(MachineMatch.class, new Object[]{session.getAttribute("machineId"), oneday}, null, new String[]{"seoMachineId", "oneday"});
+		if (machineMatch == null) {
+			jdbcDaoSupport.save(new MachineMatch((String) session.getAttribute("machineId"), GameCache.getPlayerInfo(accountId).getSeoId(), oneday));
+			machineMatch = jdbcDaoSupport.queryOne(MachineMatch.class, new Object[]{session.getAttribute("machineId"), oneday}, null, new String[]{"seoMachineId", "oneday"});
 		}
-		machineMatch = (MachineMatch) session.getAttribute("machineMatch");
 		machineMatch.setPlayNumber(machineMatch.getPlayNumber() + 1);
 		if (betScore == 0) {
 			compareCard = CardUtil.compareCard();
@@ -543,17 +662,21 @@ public class CardLogic {
 			} else if (cardValue == 7) {
 				isWin = true;
 			}
+			int a = 0;
 			if (betScore == cr.getWin() / 2) {
+				a=1;
 				score = betScore;
 				cr.setWin(betScore);
 				isUpdate = true;
 				cr.getHalfWin().add(betScore);
 			} else if (betScore == cr.getWin() * 2) {
+				a=2;
 				score = -cr.getWin();
 				isUpdate = true;
 			}
 
 			if (isWin) {
+				cr.setPassScore(cr.getPassScore()+4000);;
 				machineMatch.setWinNumber(machineMatch.getWinNumber() + 1);
 				if (compareCard == 53) {
 					int randomTimes = RandomUtils.nextInt(3, 6);
@@ -574,12 +697,21 @@ public class CardLogic {
 						cr.setWin(cr.getWin() * randomTimes);
 					}
 				} else {
-					if (betScore == cr.getWin() * 2) {
+					if (a==2) {
+						if(cr.getWinCount() == 0){
+							machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
+						}else{
+							machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore/2);
+						}
 						cr.setWin(betScore * 2);
 					} else {
 						cr.setWin(cr.getWin() + betScore);
+						if (cr.getWinCount() == 0) {
+							machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
+						}
 					}
 				}
+
 				cr.setWinCount(cr.getWinCount() + 1);
 
 				if (cr.getWin() >= 75000) {
@@ -587,13 +719,22 @@ public class CardLogic {
 					// score += cr.getWin() + cr.getWinCount() * 4000;
 					cr.setGiftWin(cr.getWinCount() * 4000);
 					machineMatch.setPassNumber(machineMatch.getPassNumber() + 1);// 过关次数
-					machineMatch.setPassMoney(machineMatch.getPassMoney() + cr.getWinCount() * 4000);// 过关彩金
+					if(cr.getPassMath()==0){
+						machineMatch.setPassMoney(machineMatch.getPassMoney() + cr.getPassScore());// 过关彩金
+						machineMatch.setWinPoint(machineMatch.getWinPoint()+cr.getPassScore());
+						cr.setPassMath(1);
+					}else{
+						machineMatch.setPassMoney(machineMatch.getPassMoney() + 4000);// 过关彩金
+						machineMatch.setWinPoint(machineMatch.getWinPoint() + 4000);
+					}
 				}
 				if (cr.getWin() >= 200000) {
 					// cr.setWin(cr.getWin() + 50000);
 					// score += cr.getWin() + 50000;
 					cr.setGiftWin(cr.getGiftWin() + 50000);
-					machineMatch.setOriderMachineMoney(machineMatch.getOriderMachineMoney() + cr.getGiftWin() + 50000);// 爆机彩金
+					machineMatch.setOriderMachineNumber(machineMatch.getOriderMachineNumber() + 1);
+					machineMatch.setOriderMachineMoney(machineMatch.getOriderMachineMoney() + 50000);// 爆机彩金
+					machineMatch.setWinPoint(machineMatch.getWinPoint() + 50000);
 				}
 
 			} else {
@@ -606,8 +747,22 @@ public class CardLogic {
 				// }
 				cr.setWin(0);
 
-				// machineMatch.setPlayPoint(machineMatch.getPlayPoint()+java.lang.Math.abs(score));
-
+				if (a==2) {
+					if(cr.getWinCount() == 0){
+						machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
+					}else{
+						machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore/2);
+					}
+				} else {
+					if (cr.getWinCount() == 0) {
+						machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
+					}
+				}
+				
+//				machineMatch.setPlayPoint(machineMatch.getPlayPoint() + java.lang.Math.abs(score));
+//				if (betScore == cr.getWin()) {
+//					score = 0;
+//				}
 				score = score - cr.getBet() + giftWin;
 				isUpdate = true;
 				cr.setBet(0);
@@ -635,7 +790,7 @@ public class CardLogic {
 
 		jdbcDaoSupport.update(fivepkPlayerInfo);
 
-		machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
+		// machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
 		jdbcDaoSupport.update(machineMatch);
 		MachineGain machineGain = (MachineGain) session.getAttribute("machineGain");
 		MachineDefault machineDefault = (MachineDefault) session.getAttribute("machineDefault");
@@ -740,5 +895,18 @@ public class CardLogic {
 		int compareCard = CardUtil.compareCard();
 		session.setAttribute("compareCard", compareCard);
 		return MessageContent.newBuilder().setResult(0).setSCCompareHistoryOneCard(SCCompareHistoryOneCard.newBuilder().setCompareCard(compareCard));
+	}
+	
+	public Builder csFourKindTime(IoSession session, MessageContent content){
+		int multiple=content.getCsFourKindTime().getMultiple();
+		if(multiple>0){
+			int math=0;
+			while(math>24||math<2){
+				math=(int) (Math.random()*100);
+			}
+			return MessageContent.newBuilder().setResult(0).setScFourKindTime(SCFourKindTime.newBuilder().setMultiple(math));//setCcCoinScore(CCCoinScore.newBuilder().setCoin(coin).setScore(score));
+		}
+		return null;
+		
 	}
 }

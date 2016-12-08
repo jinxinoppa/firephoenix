@@ -30,6 +30,8 @@ public class MachineMatch extends AbstractEntity{
 	private int passNumber;
 	@Column(columnName = "pass_money")
 	private int passMoney;
+	@Column(columnName = "orider_machine_number")
+	private int oriderMachineNumber;	
 	@Column(columnName = "orider_machine_money")
 	private int oriderMachineMoney;
 	@Column(columnName = "oneday")
@@ -49,6 +51,12 @@ public class MachineMatch extends AbstractEntity{
 	}
 	
 	
+	public int getOriderMachineNumber() {
+		return oriderMachineNumber;
+	}
+	public void setOriderMachineNumber(int oriderMachineNumber) {
+		this.oriderMachineNumber = oriderMachineNumber;
+	}
 	public int getId() {
 		return id;
 	}

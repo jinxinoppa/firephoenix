@@ -44,7 +44,7 @@ public class OfflineLogic {
 		}
 		GameCache.removeIoSession(playerInfo.getSeoId(), session);
 		GameCache.removePlayerInfo(accountId);
-		if (cr != null && cr.getWin() > 0) {
+		if (cr != null && (cr.getWin() > 0 || cr.getBet() > 0)) {
 			FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 			if (fivepkPlayerInfo == null) {
 				return;

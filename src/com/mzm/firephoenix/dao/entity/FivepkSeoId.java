@@ -33,17 +33,17 @@ public class FivepkSeoId extends AbstractEntity {
 	private byte prefabStraightFlush;
 	@Column(columnName = "prefab_straight_flush_count")
 	private int prefabStraightFlushCount;
-	@Column(columnName = "prefab_four_of_a_kind_JOKER")
-	private byte prefabFourOfAKindJOKER;
-	@Column(columnName = "prefab_four_of_a_kind_JOKER_count")
-	private int prefabFourOfAKindJOKERCount;
+	@Column(columnName = "prefab_four_of_a_kind_joker")
+	private byte prefabFourOfAKindJoker;
+	@Column(columnName = "prefab_four_of_a_kind_joker_count")
+	private int prefabFourOfAKindJokerCount;
 	@Column(columnName = "seo_machine_play_count")
 	private long seoMachinePlayCount;
-	
+
 	public byte getPrefab(int prefabCards) {
 		switch (prefabCards) {
 			case 80 :
-				return prefabFourOfAKindJOKER;
+				return prefabFourOfAKindJoker;
 			case 120 :
 				return prefabStraightFlush;
 			case 250 :
@@ -126,13 +126,6 @@ public class FivepkSeoId extends AbstractEntity {
 		this.prefabStraightFlush = prefabStraightFlush;
 		updateFieldsList.add("prefabStraightFlush");
 	}
-	public byte getPrefabFourOfAKindJOKER() {
-		return prefabFourOfAKindJOKER;
-	}
-	public void setPrefabFourOfAKindJOKER(byte prefabFourOfAKindJOKER) {
-		this.prefabFourOfAKindJOKER = prefabFourOfAKindJOKER;
-		updateFieldsList.add("prefabFourOfAKindJOKER");
-	}
 	public long getSeoMachinePlayCount() {
 		return seoMachinePlayCount;
 	}
@@ -177,12 +170,21 @@ public class FivepkSeoId extends AbstractEntity {
 		updateFieldsList.add("prefabStraightFlushCount");
 	}
 
-	public int getPrefabFourOfAKindJOKERCount() {
-		return prefabFourOfAKindJOKERCount;
+	public byte getPrefabFourOfAKindJoker() {
+		return prefabFourOfAKindJoker;
 	}
 
-	public void setPrefabFourOfAKindJOKERCount(int prefabFourOfAKindJOKERCount) {
-		this.prefabFourOfAKindJOKERCount = prefabFourOfAKindJOKERCount;
-		updateFieldsList.add("prefabFourOfAKindJOKERCount");
+	public void setPrefabFourOfAKindJoker(byte prefabFourOfAKindJoker) {
+		this.prefabFourOfAKindJoker = prefabFourOfAKindJoker;
+		updateFieldsList.add("prefabFourOfAKindJoker");
+	}
+
+	public int getPrefabFourOfAKindJokerCount() {
+		return prefabFourOfAKindJokerCount;
+	}
+
+	public void setPrefabFourOfAKindJokerCount(int prefabFourOfAKindJokerCount) {
+		this.prefabFourOfAKindJokerCount = prefabFourOfAKindJokerCount;
+		updateFieldsList.add("prefabFourOfAKindJokerCount");
 	}
 }

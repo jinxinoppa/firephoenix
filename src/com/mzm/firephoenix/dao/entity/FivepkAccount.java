@@ -17,6 +17,8 @@ public class FivepkAccount extends AbstractEntity {
 	private byte accountType;
 	@Column(columnName = "create_date")
 	private Date createDate;
+	@Column(columnName = "account_ip")
+	private String accountIp;
 	public long getAccountId() {
 		return accountId;
 	}
@@ -76,4 +78,13 @@ public class FivepkAccount extends AbstractEntity {
 		this.accountType = accountType;
 		updateFieldsList.add("accountType");
 	}
+
+	public String getAccountIp() {
+		return accountIp;
+	}
+
+	public void setAccountIp(String accountIp) {
+		this.accountIp = accountIp;
+	}
+	
 }

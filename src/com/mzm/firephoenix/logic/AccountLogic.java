@@ -175,7 +175,7 @@ public class AccountLogic {
 
 					@Override
 					public Integer doInConnection(Connection arg0) throws SQLException, DataAccessException {
-						String sql = "insert into `fivepk_account` (seoid) values (\"guest\")";
+						String sql = "insert into `fivepk_account` (seoid) values (\"CE\")";
 						PreparedStatement pstmt = (PreparedStatement) arg0.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 						pstmt.executeUpdate();
 						ResultSet rs = pstmt.getGeneratedKeys();
@@ -186,7 +186,7 @@ public class AccountLogic {
 						return generatedKey;
 					}
 				});
-				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic, 20000);
+				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic, 0);
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 			} catch (Exception e) {
 				throw e;
@@ -280,7 +280,7 @@ public class AccountLogic {
 		}
 		for (int i = 0; i < GameConstant.NICKNAMECHECK.length; i++) {
 			if (nickName.equals(GameConstant.NICKNAMECHECK[i])){
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_ILLEGAL_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_LAW_VALUE);
 			}
 		}
 		Long accountId = (Long) session.getAttribute("accountId");

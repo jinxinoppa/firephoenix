@@ -30,7 +30,7 @@ public class GameConstant {
 	public final static byte[][] WINPOOLROYALFLUSH = {{10, 11, 12, 13, 1}};
 
 	public final static byte[][] WINPOOLFOUROFAKINDJOKER = {{11, 24, 37, 50, 1}, {12, 25, 38, 51, 2}, {13, 26, 39, 52, 3}, {1, 14, 27, 40, 4}};
-	public final static byte[][] WINPOOLFIVEOFAKIND = {{2, 15, 28, 41, 1}, {3, 16, 29, 42, 1}, {4, 17, 30, 43, 1}, {5, 18, 31, 44, 1}, {6, 19, 32, 45, 1}, {7, 20, 33, 46, 1}, {8, 21, 34, 47, 1}, {9, 22, 35, 48, 1}
+	public final static byte[][] WINPOOLFIVEOFAKIND = {{2, 15, 28, 41, 53}, {3, 16, 29, 42, 53}, {4, 17, 30, 43, 53}, {5, 18, 31, 44, 53}, {6, 19, 32, 45, 53}, {7, 20, 33, 46, 53}, {8, 21, 34, 47, 53}, {9, 22, 35, 48, 53}
 	// {11, 24, 37, 50, 1}, {12, 25, 38, 51, 1}, {13, 26, 39, 52, 1}
 	};
 	

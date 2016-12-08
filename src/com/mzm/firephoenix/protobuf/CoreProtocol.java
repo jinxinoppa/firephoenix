@@ -110,13 +110,21 @@ public final class CoreProtocol {
      */
     CMD_COMPARE_ONE_CARDS(11, 65548),
     /**
+     * <code>CMD_FOUR_KIND_TIME = 65549;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    CMD_FOUR_KIND_TIME(12, 65549),
+    /**
      * <code>CMD_PLAYER_NICK_NAME = 131073;</code>
      *
      * <pre>
      *玩家模块
      * </pre>
      */
-    CMD_PLAYER_NICK_NAME(12, 131073),
+    CMD_PLAYER_NICK_NAME(13, 131073),
     /**
      * <code>CMD_PLAYER_PIC = 131074;</code>
      *
@@ -124,7 +132,7 @@ public final class CoreProtocol {
      *修改头像
      * </pre>
      */
-    CMD_PLAYER_PIC(13, 131074),
+    CMD_PLAYER_PIC(14, 131074),
     /**
      * <code>CMD_MACHINE_LIST = 131075;</code>
      *
@@ -132,7 +140,7 @@ public final class CoreProtocol {
      *机台列表
      * </pre>
      */
-    CMD_MACHINE_LIST(14, 131075),
+    CMD_MACHINE_LIST(15, 131075),
     /**
      * <code>CMD_MACHINE_INFO = 131076;</code>
      *
@@ -140,7 +148,7 @@ public final class CoreProtocol {
      *单台机台信息
      * </pre>
      */
-    CMD_MACHINE_INFO(15, 131076),
+    CMD_MACHINE_INFO(16, 131076),
     /**
      * <code>CMD_MACHINE_ENTER = 131077;</code>
      *
@@ -148,7 +156,7 @@ public final class CoreProtocol {
      *选择机台
      * </pre>
      */
-    CMD_MACHINE_ENTER(16, 131077),
+    CMD_MACHINE_ENTER(17, 131077),
     /**
      * <code>CMD_MACHINE_LEAVE = 131078;</code>
      *
@@ -156,7 +164,7 @@ public final class CoreProtocol {
      *离开机台
      * </pre>
      */
-    CMD_MACHINE_LEAVE(17, 131078),
+    CMD_MACHINE_LEAVE(18, 131078),
     /**
      * <code>CMD_MACHINE_STAY = 131079;</code>
      *
@@ -164,7 +172,7 @@ public final class CoreProtocol {
      *是否留机
      * </pre>
      */
-    CMD_MACHINE_STAY(18, 131079),
+    CMD_MACHINE_STAY(19, 131079),
     /**
      * <code>CMD_PLAYER_BINDING = 131080;</code>
      *
@@ -172,7 +180,7 @@ public final class CoreProtocol {
      *绑定账号
      * </pre>
      */
-    CMD_PLAYER_BINDING(19, 131080),
+    CMD_PLAYER_BINDING(20, 131080),
     /**
      * <code>CMD_DEPOSIT_STORE = 131081;</code>
      *
@@ -180,7 +188,7 @@ public final class CoreProtocol {
      *存钱
      * </pre>
      */
-    CMD_DEPOSIT_STORE(20, 131081),
+    CMD_DEPOSIT_STORE(21, 131081),
     /**
      * <code>CMD_DEPOSIT_DRAW = 131082;</code>
      *
@@ -188,7 +196,7 @@ public final class CoreProtocol {
      *取钱
      * </pre>
      */
-    CMD_DEPOSIT_DRAW(21, 131082),
+    CMD_DEPOSIT_DRAW(22, 131082),
     /**
      * <code>CMD_DEPOSIT_GIVE = 131083;</code>
      *
@@ -196,7 +204,7 @@ public final class CoreProtocol {
      *送钱 
      * </pre>
      */
-    CMD_DEPOSIT_GIVE(22, 131083),
+    CMD_DEPOSIT_GIVE(23, 131083),
     /**
      * <code>CMD_DEPOSIT_RECEIVE = 131084;</code>
      *
@@ -204,7 +212,7 @@ public final class CoreProtocol {
      *接收 
      * </pre>
      */
-    CMD_DEPOSIT_RECEIVE(23, 131084),
+    CMD_DEPOSIT_RECEIVE(24, 131084),
     /**
      * <code>CMD_ENTERROOM = 196609;</code>
      *
@@ -212,7 +220,7 @@ public final class CoreProtocol {
      *竞技部分
      * </pre>
      */
-    CMD_ENTERROOM(24, 196609),
+    CMD_ENTERROOM(25, 196609),
     /**
      * <code>CMD_OUTROOM = 196610;</code>
      *
@@ -220,11 +228,11 @@ public final class CoreProtocol {
      *退出房间
      * </pre>
      */
-    CMD_OUTROOM(25, 196610),
+    CMD_OUTROOM(26, 196610),
     /**
      * <code>CMD_ROOMINFO = 196611;</code>
      */
-    CMD_ROOMINFO(26, 196611),
+    CMD_ROOMINFO(27, 196611),
     /**
      * <code>CMD_PAIINFO = 196612;</code>
      *
@@ -232,7 +240,7 @@ public final class CoreProtocol {
      *下发牌局信息
      * </pre>
      */
-    CMD_PAIINFO(27, 196612),
+    CMD_PAIINFO(28, 196612),
     /**
      * <code>CMD_SIT = 196613;</code>
      *
@@ -240,7 +248,7 @@ public final class CoreProtocol {
      *坐下
      * </pre>
      */
-    CMD_SIT(28, 196613),
+    CMD_SIT(29, 196613),
     /**
      * <code>CMD_STANDUP = 196614;</code>
      *
@@ -248,7 +256,7 @@ public final class CoreProtocol {
      *起立
      * </pre>
      */
-    CMD_STANDUP(29, 196614),
+    CMD_STANDUP(30, 196614),
     /**
      * <code>CMD_ROB_ZHUANG = 196616;</code>
      *
@@ -256,7 +264,7 @@ public final class CoreProtocol {
      *抢庄 
      * </pre>
      */
-    CMD_ROB_ZHUANG(30, 196616),
+    CMD_ROB_ZHUANG(31, 196616),
     /**
      * <code>CMD_YAZHU = 196619;</code>
      *
@@ -264,7 +272,7 @@ public final class CoreProtocol {
      *押注
      * </pre>
      */
-    CMD_YAZHU(31, 196619),
+    CMD_YAZHU(32, 196619),
     /**
      * <code>CMD_CHAT = 196622;</code>
      *
@@ -272,7 +280,7 @@ public final class CoreProtocol {
      *发送聊天信息
      * </pre>
      */
-    CMD_CHAT(32, 196622),
+    CMD_CHAT(33, 196622),
     /**
      * <code>CMD_ROOM_STATICS = 196624;</code>
      *
@@ -280,7 +288,7 @@ public final class CoreProtocol {
      *房间统计信息
      * </pre>
      */
-    CMD_ROOM_STATICS(33, 196624),
+    CMD_ROOM_STATICS(34, 196624),
     /**
      * <code>CMD_QZ_LIST = 196625;</code>
      *
@@ -288,7 +296,7 @@ public final class CoreProtocol {
      *抢庄列表
      * </pre>
      */
-    CMD_QZ_LIST(34, 196625),
+    CMD_QZ_LIST(35, 196625),
     /**
      * <code>CMD_DOWN_ZHUANG = 196626;</code>
      *
@@ -296,7 +304,7 @@ public final class CoreProtocol {
      *下庄
      * </pre>
      */
-    CMD_DOWN_ZHUANG(35, 196626),
+    CMD_DOWN_ZHUANG(36, 196626),
     /**
      * <code>CMD_BET_LIST = 196627;</code>
      *
@@ -304,7 +312,7 @@ public final class CoreProtocol {
      *下注列表
      * </pre>
      */
-    CMD_BET_LIST(36, 196627),
+    CMD_BET_LIST(37, 196627),
     /**
      * <code>CMD_ROOM_UIDS = 196628;</code>
      *
@@ -312,7 +320,7 @@ public final class CoreProtocol {
      *房间UID列表
      * </pre>
      */
-    CMD_ROOM_UIDS(37, 196628),
+    CMD_ROOM_UIDS(38, 196628),
     /**
      * <code>CMD_ROOM_PLAYER_LIST = 196629;</code>
      *
@@ -320,7 +328,7 @@ public final class CoreProtocol {
      *房间玩家详细信息列表
      * </pre>
      */
-    CMD_ROOM_PLAYER_LIST(38, 196629),
+    CMD_ROOM_PLAYER_LIST(39, 196629),
     /**
      * <code>CMD_ROOM_PLAYER_CHANGE = 196640;</code>
      *
@@ -328,7 +336,7 @@ public final class CoreProtocol {
      *牌局状态4信息,玩家金钱变化
      * </pre>
      */
-    CMD_ROOM_PLAYER_CHANGE(39, 196640),
+    CMD_ROOM_PLAYER_CHANGE(40, 196640),
     /**
      * <code>CMD_CARD_INFO = 196641;</code>
      *
@@ -336,7 +344,7 @@ public final class CoreProtocol {
      *牌型信息
      * </pre>
      */
-    CMD_CARD_INFO(40, 196641),
+    CMD_CARD_INFO(41, 196641),
     /**
      * <code>CMD_PAI_BASE_INFO = 196642;</code>
      *
@@ -344,7 +352,7 @@ public final class CoreProtocol {
      *牌局基础信息
      * </pre>
      */
-    CMD_PAI_BASE_INFO(41, 196642),
+    CMD_PAI_BASE_INFO(42, 196642),
     /**
      * <code>CMD_PAIINFO_3 = 196643;</code>
      *
@@ -352,7 +360,7 @@ public final class CoreProtocol {
      *状态3的牌局信息下发
      * </pre>
      */
-    CMD_PAIINFO_3(42, 196643),
+    CMD_PAIINFO_3(43, 196643),
     /**
      * <code>CMD_NOTICE = 196644;</code>
      *
@@ -360,7 +368,7 @@ public final class CoreProtocol {
      *公告
      * </pre>
      */
-    CMD_NOTICE(43, 196644),
+    CMD_NOTICE(44, 196644),
     /**
      * <code>CMD_LOGIN_OUT = 196645;</code>
      *
@@ -368,7 +376,7 @@ public final class CoreProtocol {
      *退出
      * </pre>
      */
-    CMD_LOGIN_OUT(44, 196645),
+    CMD_LOGIN_OUT(45, 196645),
     ;
 
     /**
@@ -467,6 +475,14 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int CMD_COMPARE_ONE_CARDS_VALUE = 65548;
+    /**
+     * <code>CMD_FOUR_KIND_TIME = 65549;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    public static final int CMD_FOUR_KIND_TIME_VALUE = 65549;
     /**
      * <code>CMD_PLAYER_NICK_NAME = 131073;</code>
      *
@@ -747,6 +763,7 @@ public final class CoreProtocol {
         case 65546: return CMD_WIN;
         case 65547: return CMD_COIN_SCORE;
         case 65548: return CMD_COMPARE_ONE_CARDS;
+        case 65549: return CMD_FOUR_KIND_TIME;
         case 131073: return CMD_PLAYER_NICK_NAME;
         case 131074: return CMD_PLAYER_PIC;
         case 131075: return CMD_MACHINE_LIST;
@@ -1076,6 +1093,14 @@ public final class CoreProtocol {
      * </pre>
      */
     ERROR_NICK_NAME_REPEATED(29, 2023),
+    /**
+     * <code>ERROR_NICK_NAME_LAW = 2024;</code>
+     *
+     * <pre>
+     *非法昵称！！
+     * </pre>
+     */
+    ERROR_NICK_NAME_LAW(30, 2024),
     ;
 
     /**
@@ -1318,6 +1343,14 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int ERROR_NICK_NAME_REPEATED_VALUE = 2023;
+    /**
+     * <code>ERROR_NICK_NAME_LAW = 2024;</code>
+     *
+     * <pre>
+     *非法昵称！！
+     * </pre>
+     */
+    public static final int ERROR_NICK_NAME_LAW_VALUE = 2024;
 
 
     public final int getNumber() {
@@ -1356,6 +1389,7 @@ public final class CoreProtocol {
         case 2021: return ERROR_MACHINE_TYPE_ONLINE;
         case 2022: return ERROR_START_INDEX;
         case 2023: return ERROR_NICK_NAME_REPEATED;
+        case 2024: return ERROR_NICK_NAME_LAW;
         default: return null;
       }
     }
@@ -3013,6 +3047,44 @@ public final class CoreProtocol {
      * </pre>
      */
     com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareHistoryOneCardOrBuilder getSCCompareHistoryOneCardOrBuilder();
+
+    /**
+     * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    boolean hasCsFourKindTime();
+    /**
+     * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime getCsFourKindTime();
+    /**
+     * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTimeOrBuilder getCsFourKindTimeOrBuilder();
+
+    /**
+     * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+     */
+    boolean hasScFourKindTime();
+    /**
+     * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime getScFourKindTime();
+    /**
+     * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTimeOrBuilder getScFourKindTimeOrBuilder();
   }
   /**
    * Protobuf type {@code MessageContent}
@@ -3434,6 +3506,32 @@ public final class CoreProtocol {
                 sCCompareHistoryOneCard_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x20000000;
+              break;
+            }
+            case 258: {
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder subBuilder = null;
+              if (((bitField0_ & 0x40000000) == 0x40000000)) {
+                subBuilder = csFourKindTime_.toBuilder();
+              }
+              csFourKindTime_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(csFourKindTime_);
+                csFourKindTime_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x40000000;
+              break;
+            }
+            case 266: {
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder subBuilder = null;
+              if (((bitField0_ & 0x80000000) == 0x80000000)) {
+                subBuilder = scFourKindTime_.toBuilder();
+              }
+              scFourKindTime_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(scFourKindTime_);
+                scFourKindTime_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x80000000;
               break;
             }
           }
@@ -4391,6 +4489,60 @@ public final class CoreProtocol {
       return sCCompareHistoryOneCard_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCCompareHistoryOneCard.getDefaultInstance() : sCCompareHistoryOneCard_;
     }
 
+    public static final int CSFOURKINDTIME_FIELD_NUMBER = 32;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime csFourKindTime_;
+    /**
+     * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    public boolean hasCsFourKindTime() {
+      return ((bitField0_ & 0x40000000) == 0x40000000);
+    }
+    /**
+     * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime getCsFourKindTime() {
+      return csFourKindTime_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.getDefaultInstance() : csFourKindTime_;
+    }
+    /**
+     * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+     *
+     * <pre>
+     *获取大四梅随机倍数
+     * </pre>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTimeOrBuilder getCsFourKindTimeOrBuilder() {
+      return csFourKindTime_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.getDefaultInstance() : csFourKindTime_;
+    }
+
+    public static final int SCFOURKINDTIME_FIELD_NUMBER = 33;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime scFourKindTime_;
+    /**
+     * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+     */
+    public boolean hasScFourKindTime() {
+      return ((bitField0_ & 0x80000000) == 0x80000000);
+    }
+    /**
+     * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime getScFourKindTime() {
+      return scFourKindTime_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.getDefaultInstance() : scFourKindTime_;
+    }
+    /**
+     * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTimeOrBuilder getScFourKindTimeOrBuilder() {
+      return scFourKindTime_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.getDefaultInstance() : scFourKindTime_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4545,6 +4697,18 @@ public final class CoreProtocol {
           return false;
         }
       }
+      if (hasCsFourKindTime()) {
+        if (!getCsFourKindTime().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasScFourKindTime()) {
+        if (!getScFourKindTime().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4640,6 +4804,12 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x20000000) == 0x20000000)) {
         output.writeMessage(31, getSCCompareHistoryOneCard());
+      }
+      if (((bitField0_ & 0x40000000) == 0x40000000)) {
+        output.writeMessage(32, getCsFourKindTime());
+      }
+      if (((bitField0_ & 0x80000000) == 0x80000000)) {
+        output.writeMessage(33, getScFourKindTime());
       }
       unknownFields.writeTo(output);
     }
@@ -4769,6 +4939,14 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(31, getSCCompareHistoryOneCard());
+      }
+      if (((bitField0_ & 0x40000000) == 0x40000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(32, getCsFourKindTime());
+      }
+      if (((bitField0_ & 0x80000000) == 0x80000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(33, getScFourKindTime());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4910,6 +5088,8 @@ public final class CoreProtocol {
           getScLoginOutFieldBuilder();
           getCsCompareHistoryOneCardFieldBuilder();
           getSCCompareHistoryOneCardFieldBuilder();
+          getCsFourKindTimeFieldBuilder();
+          getScFourKindTimeFieldBuilder();
         }
       }
       public Builder clear() {
@@ -5086,6 +5266,18 @@ public final class CoreProtocol {
           sCCompareHistoryOneCardBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x20000000);
+        if (csFourKindTimeBuilder_ == null) {
+          csFourKindTime_ = null;
+        } else {
+          csFourKindTimeBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x40000000);
+        if (scFourKindTimeBuilder_ == null) {
+          scFourKindTime_ = null;
+        } else {
+          scFourKindTimeBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x80000000);
         return this;
       }
 
@@ -5342,6 +5534,22 @@ public final class CoreProtocol {
         } else {
           result.sCCompareHistoryOneCard_ = sCCompareHistoryOneCardBuilder_.build();
         }
+        if (((from_bitField0_ & 0x40000000) == 0x40000000)) {
+          to_bitField0_ |= 0x40000000;
+        }
+        if (csFourKindTimeBuilder_ == null) {
+          result.csFourKindTime_ = csFourKindTime_;
+        } else {
+          result.csFourKindTime_ = csFourKindTimeBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x80000000) == 0x80000000)) {
+          to_bitField0_ |= 0x80000000;
+        }
+        if (scFourKindTimeBuilder_ == null) {
+          result.scFourKindTime_ = scFourKindTime_;
+        } else {
+          result.scFourKindTime_ = scFourKindTimeBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5449,6 +5657,12 @@ public final class CoreProtocol {
         }
         if (other.hasSCCompareHistoryOneCard()) {
           mergeSCCompareHistoryOneCard(other.getSCCompareHistoryOneCard());
+        }
+        if (other.hasCsFourKindTime()) {
+          mergeCsFourKindTime(other.getCsFourKindTime());
+        }
+        if (other.hasScFourKindTime()) {
+          mergeScFourKindTime(other.getScFourKindTime());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5576,6 +5790,16 @@ public final class CoreProtocol {
         }
         if (hasSCCompareHistoryOneCard()) {
           if (!getSCCompareHistoryOneCard().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasCsFourKindTime()) {
+          if (!getCsFourKindTime().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasScFourKindTime()) {
+          if (!getScFourKindTime().isInitialized()) {
             return false;
           }
         }
@@ -9843,6 +10067,278 @@ public final class CoreProtocol {
           sCCompareHistoryOneCard_ = null;
         }
         return sCCompareHistoryOneCardBuilder_;
+      }
+
+      private com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime csFourKindTime_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTimeOrBuilder> csFourKindTimeBuilder_;
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public boolean hasCsFourKindTime() {
+        return ((bitField0_ & 0x40000000) == 0x40000000);
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime getCsFourKindTime() {
+        if (csFourKindTimeBuilder_ == null) {
+          return csFourKindTime_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.getDefaultInstance() : csFourKindTime_;
+        } else {
+          return csFourKindTimeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public Builder setCsFourKindTime(com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime value) {
+        if (csFourKindTimeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          csFourKindTime_ = value;
+          onChanged();
+        } else {
+          csFourKindTimeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x40000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public Builder setCsFourKindTime(
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder builderForValue) {
+        if (csFourKindTimeBuilder_ == null) {
+          csFourKindTime_ = builderForValue.build();
+          onChanged();
+        } else {
+          csFourKindTimeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x40000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public Builder mergeCsFourKindTime(com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime value) {
+        if (csFourKindTimeBuilder_ == null) {
+          if (((bitField0_ & 0x40000000) == 0x40000000) &&
+              csFourKindTime_ != null &&
+              csFourKindTime_ != com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.getDefaultInstance()) {
+            csFourKindTime_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.newBuilder(csFourKindTime_).mergeFrom(value).buildPartial();
+          } else {
+            csFourKindTime_ = value;
+          }
+          onChanged();
+        } else {
+          csFourKindTimeBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x40000000;
+        return this;
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public Builder clearCsFourKindTime() {
+        if (csFourKindTimeBuilder_ == null) {
+          csFourKindTime_ = null;
+          onChanged();
+        } else {
+          csFourKindTimeBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x40000000);
+        return this;
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder getCsFourKindTimeBuilder() {
+        bitField0_ |= 0x40000000;
+        onChanged();
+        return getCsFourKindTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTimeOrBuilder getCsFourKindTimeOrBuilder() {
+        if (csFourKindTimeBuilder_ != null) {
+          return csFourKindTimeBuilder_.getMessageOrBuilder();
+        } else {
+          return csFourKindTime_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.getDefaultInstance() : csFourKindTime_;
+        }
+      }
+      /**
+       * <code>optional .CSFourKindTime csFourKindTime = 32;</code>
+       *
+       * <pre>
+       *获取大四梅随机倍数
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTimeOrBuilder> 
+          getCsFourKindTimeFieldBuilder() {
+        if (csFourKindTimeBuilder_ == null) {
+          csFourKindTimeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTimeOrBuilder>(
+                  getCsFourKindTime(),
+                  getParentForChildren(),
+                  isClean());
+          csFourKindTime_ = null;
+        }
+        return csFourKindTimeBuilder_;
+      }
+
+      private com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime scFourKindTime_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTimeOrBuilder> scFourKindTimeBuilder_;
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public boolean hasScFourKindTime() {
+        return ((bitField0_ & 0x80000000) == 0x80000000);
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime getScFourKindTime() {
+        if (scFourKindTimeBuilder_ == null) {
+          return scFourKindTime_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.getDefaultInstance() : scFourKindTime_;
+        } else {
+          return scFourKindTimeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public Builder setScFourKindTime(com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime value) {
+        if (scFourKindTimeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          scFourKindTime_ = value;
+          onChanged();
+        } else {
+          scFourKindTimeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x80000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public Builder setScFourKindTime(
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder builderForValue) {
+        if (scFourKindTimeBuilder_ == null) {
+          scFourKindTime_ = builderForValue.build();
+          onChanged();
+        } else {
+          scFourKindTimeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x80000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public Builder mergeScFourKindTime(com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime value) {
+        if (scFourKindTimeBuilder_ == null) {
+          if (((bitField0_ & 0x80000000) == 0x80000000) &&
+              scFourKindTime_ != null &&
+              scFourKindTime_ != com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.getDefaultInstance()) {
+            scFourKindTime_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.newBuilder(scFourKindTime_).mergeFrom(value).buildPartial();
+          } else {
+            scFourKindTime_ = value;
+          }
+          onChanged();
+        } else {
+          scFourKindTimeBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x80000000;
+        return this;
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public Builder clearScFourKindTime() {
+        if (scFourKindTimeBuilder_ == null) {
+          scFourKindTime_ = null;
+          onChanged();
+        } else {
+          scFourKindTimeBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x80000000);
+        return this;
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder getScFourKindTimeBuilder() {
+        bitField0_ |= 0x80000000;
+        onChanged();
+        return getScFourKindTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTimeOrBuilder getScFourKindTimeOrBuilder() {
+        if (scFourKindTimeBuilder_ != null) {
+          return scFourKindTimeBuilder_.getMessageOrBuilder();
+        } else {
+          return scFourKindTime_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.getDefaultInstance() : scFourKindTime_;
+        }
+      }
+      /**
+       * <code>optional .SCFourKindTime scFourKindTime = 33;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTimeOrBuilder> 
+          getScFourKindTimeFieldBuilder() {
+        if (scFourKindTimeBuilder_ == null) {
+          scFourKindTimeBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTimeOrBuilder>(
+                  getScFourKindTime(),
+                  getParentForChildren(),
+                  isClean());
+          scFourKindTime_ = null;
+        }
+        return scFourKindTimeBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:MessageContent)
@@ -33250,6 +33746,838 @@ public final class CoreProtocol {
 
   }
 
+  public interface CSFourKindTimeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CSFourKindTime)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 multiple = 1;</code>
+     */
+    boolean hasMultiple();
+    /**
+     * <code>required int32 multiple = 1;</code>
+     */
+    int getMultiple();
+  }
+  /**
+   * Protobuf type {@code CSFourKindTime}
+   */
+  public  static final class CSFourKindTime extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CSFourKindTime)
+      CSFourKindTimeOrBuilder {
+    // Use CSFourKindTime.newBuilder() to construct.
+    private CSFourKindTime(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CSFourKindTime() {
+      multiple_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CSFourKindTime(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              multiple_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSFourKindTime_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSFourKindTime_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.class, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MULTIPLE_FIELD_NUMBER = 1;
+    private int multiple_;
+    /**
+     * <code>required int32 multiple = 1;</code>
+     */
+    public boolean hasMultiple() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 multiple = 1;</code>
+     */
+    public int getMultiple() {
+      return multiple_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMultiple()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, multiple_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, multiple_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CSFourKindTime}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CSFourKindTime)
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTimeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSFourKindTime_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSFourKindTime_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.class, com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        multiple_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_CSFourKindTime_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime result = new com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.multiple_ = multiple_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime.getDefaultInstance()) return this;
+        if (other.hasMultiple()) {
+          setMultiple(other.getMultiple());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMultiple()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int multiple_ ;
+      /**
+       * <code>required int32 multiple = 1;</code>
+       */
+      public boolean hasMultiple() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 multiple = 1;</code>
+       */
+      public int getMultiple() {
+        return multiple_;
+      }
+      /**
+       * <code>required int32 multiple = 1;</code>
+       */
+      public Builder setMultiple(int value) {
+        bitField0_ |= 0x00000001;
+        multiple_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 multiple = 1;</code>
+       */
+      public Builder clearMultiple() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        multiple_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CSFourKindTime)
+    }
+
+    // @@protoc_insertion_point(class_scope:CSFourKindTime)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CSFourKindTime> PARSER =
+        new com.google.protobuf.AbstractParser<CSFourKindTime>() {
+      public CSFourKindTime parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CSFourKindTime(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CSFourKindTime> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.CSFourKindTime getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SCFourKindTimeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCFourKindTime)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 multiple = 1;</code>
+     *
+     * <pre>
+     *返回倍数
+     * </pre>
+     */
+    boolean hasMultiple();
+    /**
+     * <code>required int32 multiple = 1;</code>
+     *
+     * <pre>
+     *返回倍数
+     * </pre>
+     */
+    int getMultiple();
+  }
+  /**
+   * Protobuf type {@code SCFourKindTime}
+   */
+  public  static final class SCFourKindTime extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCFourKindTime)
+      SCFourKindTimeOrBuilder {
+    // Use SCFourKindTime.newBuilder() to construct.
+    private SCFourKindTime(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCFourKindTime() {
+      multiple_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCFourKindTime(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              multiple_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCFourKindTime_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCFourKindTime_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int MULTIPLE_FIELD_NUMBER = 1;
+    private int multiple_;
+    /**
+     * <code>required int32 multiple = 1;</code>
+     *
+     * <pre>
+     *返回倍数
+     * </pre>
+     */
+    public boolean hasMultiple() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 multiple = 1;</code>
+     *
+     * <pre>
+     *返回倍数
+     * </pre>
+     */
+    public int getMultiple() {
+      return multiple_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMultiple()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, multiple_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, multiple_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCFourKindTime}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCFourKindTime)
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTimeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCFourKindTime_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCFourKindTime_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        multiple_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCFourKindTime_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime result = new com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.multiple_ = multiple_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime.getDefaultInstance()) return this;
+        if (other.hasMultiple()) {
+          setMultiple(other.getMultiple());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMultiple()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int multiple_ ;
+      /**
+       * <code>required int32 multiple = 1;</code>
+       *
+       * <pre>
+       *返回倍数
+       * </pre>
+       */
+      public boolean hasMultiple() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 multiple = 1;</code>
+       *
+       * <pre>
+       *返回倍数
+       * </pre>
+       */
+      public int getMultiple() {
+        return multiple_;
+      }
+      /**
+       * <code>required int32 multiple = 1;</code>
+       *
+       * <pre>
+       *返回倍数
+       * </pre>
+       */
+      public Builder setMultiple(int value) {
+        bitField0_ |= 0x00000001;
+        multiple_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 multiple = 1;</code>
+       *
+       * <pre>
+       *返回倍数
+       * </pre>
+       */
+      public Builder clearMultiple() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        multiple_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCFourKindTime)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCFourKindTime)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCFourKindTime> PARSER =
+        new com.google.protobuf.AbstractParser<SCFourKindTime>() {
+      public SCFourKindTime parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCFourKindTime(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCFourKindTime> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCFourKindTime getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface CSSMSOrBuilder extends
       // @@protoc_insertion_point(interface_extends:CSSMS)
       com.google.protobuf.MessageOrBuilder {
@@ -33918,6 +35246,16 @@ public final class CoreProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_SCDepositReceive_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CSFourKindTime_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CSFourKindTime_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCFourKindTime_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCFourKindTime_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CSSMS_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -33934,7 +35272,7 @@ public final class CoreProtocol {
       "\n\022CoreProtocol.proto\"f\n\013MessagePack\022\021\n\003c" +
       "md\030\001 \002(\0162\004.Cmd\022\017\n\007version\030\002 \001(\005\022\021\n\tsessi" +
       "onId\030\003 \001(\005\022 \n\007content\030\004 \001(\0132\017.MessageCon" +
-      "tent\"\255\010\n\016MessageContent\022\016\n\006result\030\001 \002(\005\022" +
+      "tent\"\377\010\n\016MessageContent\022\016\n\006result\030\001 \002(\005\022" +
       "\017\n\007message\030\002 \001(\t\022!\n\013lcRetServer\030\003 \001(\0132\014." +
       "LCRetServer\022\037\n\ncsRegister\030\004 \001(\0132\013.CSRegs" +
       "iter\022\037\n\nscRegister\030\005 \001(\0132\013.SCRegister\022\031\n" +
@@ -33960,104 +35298,109 @@ public final class CoreProtocol {
       "inOut\022\037\n\nscLoginOut\030\035 \001(\0132\013.SCLoginOut\0229" +
       "\n\027csCompareHistoryOneCard\030\036 \001(\0132\030.CSComp" +
       "areHistoryOneCard\0229\n\027SCCompareHistoryOne" +
-      "Card\030\037 \001(\0132\030.SCCompareHistoryOneCard\"-\n\013",
-      "LCRetServer\022\020\n\010serverip\030\001 \001(\t\022\014\n\004port\030\002 " +
-      "\001(\005\">\n\nCSRegsiter\022\017\n\007account\030\001 \002(\t\022\020\n\010pa" +
-      "ssword\030\002 \002(\t\022\r\n\005seoid\030\003 \001(\t\"\036\n\nCSLoginOu" +
-      "t\022\020\n\010loginOut\030\001 \002(\005\"\036\n\nSCLoginOut\022\020\n\010log" +
-      "inOut\030\001 \001(\005\"\035\n\nSCRegister\022\017\n\007account\030\001 \002" +
-      "(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010passwo" +
-      "rd\030\002 \002(\t\"k\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010nick" +
-      "name\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 \001(\005\022" +
-      "\025\n\rnickNameCount\030\005 \002(\005\022\r\n\005seoid\030\006 \002(\t\"\037\n" +
-      "\014CSGuestLogin\022\017\n\007account\030\001 \001(\t\"d\n\014SCGues",
-      "tLogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020\n\010" +
-      "nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\022\025\n\rnickNam" +
-      "eCount\030\005 \002(\005\"\034\n\014CSPlayerInfo\022\014\n\004guid\030\001 \002" +
-      "(\t\"\032\n\010SCNotice\022\016\n\006notice\030\001 \002(\t\"B\n\007CSCard" +
-      "s\022\022\n\nstartIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022" +
-      "\021\n\tholdCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardRat" +
-      "e\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 \001(" +
-      "\t\"&\n\025CCCompareHistoryCards\022\r\n\005cards\030\001 \002(" +
-      "\t\"3\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020\n\010" +
-      "betScore\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013compa",
-      "reCard\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\".\n\027CSComp" +
-      "areHistoryOneCard\022\023\n\013compareCard\030\001 \002(\005\"." +
-      "\n\027SCCompareHistoryOneCard\022\023\n\013compareCard" +
-      "\030\001 \002(\005\"\024\n\005CSWin\022\013\n\003win\030\001 \001(\005\"*\n\013CCCoinSc" +
-      "ore\022\r\n\005score\030\001 \002(\005\022\014\n\004coin\030\002 \002(\005\"5\n\nCCNi" +
-      "ckName\022\020\n\010nickName\030\001 \002(\t\022\025\n\rnickNameCoun" +
-      "t\030\002 \001(\005\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"$\n" +
-      "\rCSMachineList\022\023\n\013machineList\030\001 \002(\005\"6\n\rS" +
-      "CMachineList\022%\n\rscMachineInfo\030\001 \003(\0132\016.SC" +
-      "MachineInfo\"V\n\rSCMachineInfo\022\021\n\tmachineI",
-      "d\030\001 \002(\t\022\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030\003 \001(" +
-      "\005\022\020\n\010nickName\030\004 \001(\t\"#\n\016CCEnterMachine\022\021\n" +
-      "\tmachineId\030\001 \002(\t\"#\n\016CCLeaveMachine\022\021\n\tma" +
-      "chineId\030\001 \002(\t\"7\n\rCCMachineStay\022\021\n\tmachin" +
-      "eId\030\001 \002(\t\022\023\n\013machineType\030\002 \001(\005\"=\n\tCCBind" +
-      "ing\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\r" +
-      "\n\005seoid\030\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010nickn" +
-      "ame\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003 \001(\t" +
-      "\022\016\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSDepos" +
-      "itStore\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositStore\022",
-      "\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCSDepo" +
-      "sitDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDepositDr" +
-      "aw\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n\rCSD" +
-      "epositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010drawGold" +
-      "\030\002 \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002 \001(\005" +
-      "\"V\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001(\t\022\021" +
-      "\n\treceiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007depos" +
-      "it\030\004 \001(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t*\344\007\n\003Cm" +
-      "d\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTER\020\202" +
-      "\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGIN\020\205",
-      "\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\tCM" +
-      "D_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022\037\n\031" +
-      "CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_WIN" +
-      "\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\033\n\025CMD_COMPAR" +
-      "E_ONE_CARDS\020\214\200\004\022\032\n\024CMD_PLAYER_NICK_NAME\020" +
-      "\201\200\010\022\024\n\016CMD_PLAYER_PIC\020\202\200\010\022\026\n\020CMD_MACHINE" +
-      "_LIST\020\203\200\010\022\026\n\020CMD_MACHINE_INFO\020\204\200\010\022\027\n\021CMD" +
-      "_MACHINE_ENTER\020\205\200\010\022\027\n\021CMD_MACHINE_LEAVE\020" +
-      "\206\200\010\022\026\n\020CMD_MACHINE_STAY\020\207\200\010\022\030\n\022CMD_PLAYE" +
-      "R_BINDING\020\210\200\010\022\027\n\021CMD_DEPOSIT_STORE\020\211\200\010\022\026",
-      "\n\020CMD_DEPOSIT_DRAW\020\212\200\010\022\026\n\020CMD_DEPOSIT_GI" +
-      "VE\020\213\200\010\022\031\n\023CMD_DEPOSIT_RECEIVE\020\214\200\010\022\023\n\rCMD" +
-      "_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUTROOM\020\202\200\014\022\022\n\014CMD" +
-      "_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAIINFO\020\204\200\014\022\r\n\007CMD_" +
-      "SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014\022\024\n\016CMD_ROB_ZH" +
-      "UANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022\016\n\010CMD_CHAT\020\216\200" +
-      "\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014\022\021\n\013CMD_QZ_LIST" +
-      "\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222\200\014\022\022\n\014CMD_BET_L" +
-      "IST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014\022\032\n\024CMD_ROOM" +
-      "_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PLAYER_CHAN",
-      "GE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021CMD_PAI_B" +
-      "ASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014\022\020\n\nCMD" +
-      "_NOTICE\020\244\200\014\022\023\n\rCMD_LOGIN_OUT\020\245\200\014*\203\007\n\tErr" +
-      "orCode\022\027\n\022ERROR_ACCOUNT_EXIT\020\351\007\022\025\n\020ERROR" +
-      "_MUTI_LOGIN\020\352\007\022\024\n\017ERROR_PWD_WRONG\020\353\007\022\032\n\025" +
-      "ERROR_PLAYER_NOT_EXIT\020\354\007\022 \n\033ERROR_SMS_IN" +
-      "VALID_PARAMETER\020\371\007\022\034\n\027ERROR_ACCOUNT_RECO" +
-      "NNECT\020\372\007\022\033\n\026ERROR_CARD_BET_SCORE_0\020\320\017\022\037\n" +
-      "\032ERROR_CARD_GUEST_COINSCORE\020\321\017\022$\n\037ERROR_" +
-      "CARD_BET_SCORE_NOT_ENOUGH\020\322\017\0221\n,ERROR_CA",
-      "RD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH\020\323\017\022" +
-      "\026\n\021ERROR_NO_BUILDING\020\324\017\022\034\n\027ERROR_NICK_NA" +
-      "ME_ILLEGAL\020\325\017\022\031\n\024ERROR_NO_LOGIN_SEOID\020\326\017" +
-      "\022\032\n\025ERROR_NICK_NAME_COUNT\020\327\017\022\024\n\017ERROR_US" +
-      "ER_NAME\020\330\017\022\025\n\020ERROR_USER_EXIST\020\331\017\022\'\n\"ERR" +
-      "OR_YOUR_ACCOUNT_IS_BEING_LANDED\020\332\017\022\'\n\"ER" +
-      "ROR_YOUR_ACCOUNT_HAS_BEEN_LANDED\020\333\017\022(\n#E" +
-      "RROR_NOT_ONE_CARD_AND_NOT_TWO_CARD\020\334\017\022\031\n" +
-      "\024ERROR_CARD_BET_SCORE\020\335\017\022\035\n\030ERROR_UNAME_" +
-      "UPASS_USEOID\020\336\017\022\026\n\021ERROR_NOT_MACHINE\020\337\017\022",
-      "\027\n\022ERROR_MACHINE_STAY\020\340\017\022\032\n\025ERROR_NOT_CA" +
-      "RD_RESULT\020\341\017\022\023\n\016ERROR_BETSCORE\020\342\017\022\025\n\020ERR" +
-      "OR_COIN_SCORE\020\343\017\022\035\n\030ERROR_HEAD_PIC_NOT_E" +
-      "XIST\020\344\017\022\036\n\031ERROR_MACHINE_TYPE_ONLINE\020\345\017\022" +
-      "\026\n\021ERROR_START_INDEX\020\346\017\022\035\n\030ERROR_NICK_NA" +
-      "ME_REPEATED\020\347\017B,\n\034com.mzm.firephoenix.pr" +
-      "otobufB\014CoreProtocol"
+      "Card\030\037 \001(\0132\030.SCCompareHistoryOneCard\022\'\n\016",
+      "csFourKindTime\030  \001(\0132\017.CSFourKindTime\022\'\n" +
+      "\016scFourKindTime\030! \001(\0132\017.SCFourKindTime\"-" +
+      "\n\013LCRetServer\022\020\n\010serverip\030\001 \001(\t\022\014\n\004port\030" +
+      "\002 \001(\005\">\n\nCSRegsiter\022\017\n\007account\030\001 \002(\t\022\020\n\010" +
+      "password\030\002 \002(\t\022\r\n\005seoid\030\003 \001(\t\"\036\n\nCSLogin" +
+      "Out\022\020\n\010loginOut\030\001 \002(\005\"\036\n\nSCLoginOut\022\020\n\010l" +
+      "oginOut\030\001 \001(\005\"\035\n\nSCRegister\022\017\n\007account\030\001" +
+      " \002(\t\",\n\007CSLogin\022\017\n\007account\030\001 \002(\t\022\020\n\010pass" +
+      "word\030\002 \002(\t\"k\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010ni" +
+      "ckname\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 \001(",
+      "\005\022\025\n\rnickNameCount\030\005 \002(\005\022\r\n\005seoid\030\006 \002(\t\"" +
+      "\037\n\014CSGuestLogin\022\017\n\007account\030\001 \001(\t\"d\n\014SCGu" +
+      "estLogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020" +
+      "\n\010nickname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\022\025\n\rnickN" +
+      "ameCount\030\005 \002(\005\"\034\n\014CSPlayerInfo\022\014\n\004guid\030\001" +
+      " \002(\t\"\032\n\010SCNotice\022\016\n\006notice\030\001 \002(\t\"B\n\007CSCa" +
+      "rds\022\022\n\nstartIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(" +
+      "\005\022\021\n\tholdCards\030\003 \001(\t\"=\n\007SCCards\022\020\n\010cardR" +
+      "ate\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCards\030\003 " +
+      "\001(\t\"&\n\025CCCompareHistoryCards\022\r\n\005cards\030\001 ",
+      "\002(\t\"3\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005\022\020" +
+      "\n\010betScore\030\002 \002(\005\"6\n\rSCCompareCard\022\023\n\013com" +
+      "pareCard\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\".\n\027CSCo" +
+      "mpareHistoryOneCard\022\023\n\013compareCard\030\001 \002(\005" +
+      "\".\n\027SCCompareHistoryOneCard\022\023\n\013compareCa" +
+      "rd\030\001 \002(\005\"\024\n\005CSWin\022\013\n\003win\030\001 \001(\005\"*\n\013CCCoin" +
+      "Score\022\r\n\005score\030\001 \002(\005\022\014\n\004coin\030\002 \002(\005\"5\n\nCC" +
+      "NickName\022\020\n\010nickName\030\001 \002(\t\022\025\n\rnickNameCo" +
+      "unt\030\002 \001(\005\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"" +
+      "$\n\rCSMachineList\022\023\n\013machineList\030\001 \002(\005\"6\n",
+      "\rSCMachineList\022%\n\rscMachineInfo\030\001 \003(\0132\016." +
+      "SCMachineInfo\"V\n\rSCMachineInfo\022\021\n\tmachin" +
+      "eId\030\001 \002(\t\022\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030\003 " +
+      "\001(\005\022\020\n\010nickName\030\004 \001(\t\"#\n\016CCEnterMachine\022" +
+      "\021\n\tmachineId\030\001 \002(\t\"#\n\016CCLeaveMachine\022\021\n\t" +
+      "machineId\030\001 \002(\t\"7\n\rCCMachineStay\022\021\n\tmach" +
+      "ineId\030\001 \002(\t\022\023\n\013machineType\030\002 \001(\005\"=\n\tCCBi" +
+      "nding\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t" +
+      "\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010nic" +
+      "kname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003 \001",
+      "(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSDep" +
+      "ositStore\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositStor" +
+      "e\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCSDe" +
+      "positDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDeposit" +
+      "Draw\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n\rC" +
+      "SDepositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010drawGo" +
+      "ld\030\002 \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002 \001" +
+      "(\005\"V\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001(\t" +
+      "\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007dep" +
+      "osit\030\004 \001(\005\"\"\n\016CSFourKindTime\022\020\n\010multiple",
+      "\030\001 \002(\005\"\"\n\016SCFourKindTime\022\020\n\010multiple\030\001 \002" +
+      "(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t*\376\007\n\003Cmd\022\023\n\rC" +
+      "MD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTER\020\202\200\004\022\017\n\t" +
+      "CMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGIN\020\205\200\004\022\017\n\t" +
+      "CMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\tCMD_CARD" +
+      "S\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022\037\n\031CMD_CO" +
+      "MPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_WIN\020\212\200\004\022\024" +
+      "\n\016CMD_COIN_SCORE\020\213\200\004\022\033\n\025CMD_COMPARE_ONE_" +
+      "CARDS\020\214\200\004\022\030\n\022CMD_FOUR_KIND_TIME\020\215\200\004\022\032\n\024C" +
+      "MD_PLAYER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLAYER_PI",
+      "C\020\202\200\010\022\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020CMD_MAC" +
+      "HINE_INFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER\020\205\200\010\022\027" +
+      "\n\021CMD_MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MACHINE_S" +
+      "TAY\020\207\200\010\022\030\n\022CMD_PLAYER_BINDING\020\210\200\010\022\027\n\021CMD" +
+      "_DEPOSIT_STORE\020\211\200\010\022\026\n\020CMD_DEPOSIT_DRAW\020\212" +
+      "\200\010\022\026\n\020CMD_DEPOSIT_GIVE\020\213\200\010\022\031\n\023CMD_DEPOSI" +
+      "T_RECEIVE\020\214\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CM" +
+      "D_OUTROOM\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD" +
+      "_PAIINFO\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STAND" +
+      "UP\020\206\200\014\022\024\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZH",
+      "U\020\213\200\014\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_STATIC" +
+      "S\020\220\200\014\022\021\n\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHU" +
+      "ANG\020\222\200\014\022\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_" +
+      "UIDS\020\224\200\014\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026" +
+      "CMD_ROOM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_I" +
+      "NFO\020\241\200\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_" +
+      "PAIINFO_3\020\243\200\014\022\020\n\nCMD_NOTICE\020\244\200\014\022\023\n\rCMD_L" +
+      "OGIN_OUT\020\245\200\014*\235\007\n\tErrorCode\022\027\n\022ERROR_ACCO" +
+      "UNT_EXIT\020\351\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ER" +
+      "ROR_PWD_WRONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXI",
+      "T\020\354\007\022 \n\033ERROR_SMS_INVALID_PARAMETER\020\371\007\022\034" +
+      "\n\027ERROR_ACCOUNT_RECONNECT\020\372\007\022\033\n\026ERROR_CA" +
+      "RD_BET_SCORE_0\020\320\017\022\037\n\032ERROR_CARD_GUEST_CO" +
+      "INSCORE\020\321\017\022$\n\037ERROR_CARD_BET_SCORE_NOT_E" +
+      "NOUGH\020\322\017\0221\n,ERROR_CARD_COMPARE_CARD_BET_" +
+      "SCORE_NOT_ENOUGH\020\323\017\022\026\n\021ERROR_NO_BUILDING" +
+      "\020\324\017\022\034\n\027ERROR_NICK_NAME_ILLEGAL\020\325\017\022\031\n\024ERR" +
+      "OR_NO_LOGIN_SEOID\020\326\017\022\032\n\025ERROR_NICK_NAME_" +
+      "COUNT\020\327\017\022\024\n\017ERROR_USER_NAME\020\330\017\022\025\n\020ERROR_" +
+      "USER_EXIST\020\331\017\022\'\n\"ERROR_YOUR_ACCOUNT_IS_B",
+      "EING_LANDED\020\332\017\022\'\n\"ERROR_YOUR_ACCOUNT_HAS" +
+      "_BEEN_LANDED\020\333\017\022(\n#ERROR_NOT_ONE_CARD_AN" +
+      "D_NOT_TWO_CARD\020\334\017\022\031\n\024ERROR_CARD_BET_SCOR" +
+      "E\020\335\017\022\035\n\030ERROR_UNAME_UPASS_USEOID\020\336\017\022\026\n\021E" +
+      "RROR_NOT_MACHINE\020\337\017\022\027\n\022ERROR_MACHINE_STA" +
+      "Y\020\340\017\022\032\n\025ERROR_NOT_CARD_RESULT\020\341\017\022\023\n\016ERRO" +
+      "R_BETSCORE\020\342\017\022\025\n\020ERROR_COIN_SCORE\020\343\017\022\035\n\030" +
+      "ERROR_HEAD_PIC_NOT_EXIST\020\344\017\022\036\n\031ERROR_MAC" +
+      "HINE_TYPE_ONLINE\020\345\017\022\026\n\021ERROR_START_INDEX" +
+      "\020\346\017\022\035\n\030ERROR_NICK_NAME_REPEATED\020\347\017\022\030\n\023ER",
+      "ROR_NICK_NAME_LAW\020\350\017B,\n\034com.mzm.firephoe" +
+      "nix.protobufB\014CoreProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -34082,7 +35425,7 @@ public final class CoreProtocol {
     internal_static_MessageContent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MessageContent_descriptor,
-        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CcNickName", "CcHeadPic", "ScMachineList", "ScMachineInfo", "CcEnterMachine", "CcLeaveMachine", "CcMachineStay", "CcBinding", "ScNotice", "CsMachineList", "CsLoginOut", "ScLoginOut", "CsCompareHistoryOneCard", "SCCompareHistoryOneCard", });
+        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CcNickName", "CcHeadPic", "ScMachineList", "ScMachineInfo", "CcEnterMachine", "CcLeaveMachine", "CcMachineStay", "CcBinding", "ScNotice", "CsMachineList", "CsLoginOut", "ScLoginOut", "CsCompareHistoryOneCard", "SCCompareHistoryOneCard", "CsFourKindTime", "ScFourKindTime", });
     internal_static_LCRetServer_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_LCRetServer_fieldAccessorTable = new
@@ -34305,8 +35648,20 @@ public final class CoreProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCDepositReceive_descriptor,
         new java.lang.String[] { "Senderid", "Receiveid", "Gold", "Deposit", });
-    internal_static_CSSMS_descriptor =
+    internal_static_CSFourKindTime_descriptor =
       getDescriptor().getMessageTypes().get(39);
+    internal_static_CSFourKindTime_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CSFourKindTime_descriptor,
+        new java.lang.String[] { "Multiple", });
+    internal_static_SCFourKindTime_descriptor =
+      getDescriptor().getMessageTypes().get(40);
+    internal_static_SCFourKindTime_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCFourKindTime_descriptor,
+        new java.lang.String[] { "Multiple", });
+    internal_static_CSSMS_descriptor =
+      getDescriptor().getMessageTypes().get(41);
     internal_static_CSSMS_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSSMS_descriptor,

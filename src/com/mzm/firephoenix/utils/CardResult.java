@@ -19,6 +19,9 @@ public class CardResult {
 	private byte keepCard = 0;
 	private byte replaceCard = 0;
 	private List<Integer> halfWin = new ArrayList<Integer>();
+	
+	private int passScore=0;// 缓存过关彩金
+	private int passMath=0;//过关次数
 
 	public int getStartIndex() {
 		return startIndex;
@@ -143,5 +146,21 @@ public class CardResult {
 
 	public void setHalfWin(List<Integer> halfWin) {
 		this.halfWin = halfWin;
+	}
+
+	public int getPassScore() {
+		return passScore;
+	}
+
+	public void setPassScore(int passScore) {
+		this.passScore = passScore;
+	}
+
+	public int getPassMath() {
+		return passMath;
+	}
+
+	public void setPassMath(int passMath) {
+		this.passMath = passMath;
 	}
 }

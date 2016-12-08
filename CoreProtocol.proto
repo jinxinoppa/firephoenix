@@ -26,6 +26,8 @@ enum Cmd {
 	CMD_COIN_SCORE     =  0x01000B;   //取分存分
 	CMD_COMPARE_ONE_CARDS = 0x01000C;   //比倍历史单张牌型
 	
+	CMD_FOUR_KIND_TIME = 0X01000D;//获取大四梅随机倍数
+	
 
 	//玩家模块
 	CMD_PLAYER_NICK_NAME = 0x020001;  //修改玩家昵称
@@ -106,6 +108,8 @@ enum ErrorCode{
 	ERROR_MACHINE_TYPE_ONLINE = 2021;//该机台有玩家
 	ERROR_START_INDEX = 2022;//发牌顺序不对不是第二手牌得分
 	ERROR_NICK_NAME_REPEATED = 2023;//该昵称已被注册,请更换其他昵称
+	
+	ERROR_NICK_NAME_LAW = 2024;//非法昵称！！
 }
 
 //协议内容，内部为每次通信的数据模型
@@ -150,6 +154,10 @@ message MessageContent {
 	optional SCLoginOut scLoginOut =29;//退出
 	optional CSCompareHistoryOneCard csCompareHistoryOneCard =30;//比倍历史单张牌型
 	optional SCCompareHistoryOneCard SCCompareHistoryOneCard =31;//比倍历史单张牌型
+	
+	
+	optional CSFourKindTime csFourKindTime =32;//获取大四梅随机倍数
+	optional SCFourKindTime scFourKindTime =33;
 }
 
 //请求游戏服务器信息
@@ -223,7 +231,6 @@ message SCCards{
 	required int32 cardRate =1 ;//中奖倍率
 	required string cards =2 ;//牌型
 	optional string holdCards =3 ;//保牌牌型
-	
 }
 
 message CCCompareHistoryCards{
@@ -345,6 +352,14 @@ message SCDepositReceive{
 	optional string receiveid = 2;//接收者guid
 	optional int32 gold = 3;//被送了金币数
 	optional int32 deposit = 4;//当前存款数
+}
+
+message CSFourKindTime{
+	required int32 multiple = 1;
+}
+
+message SCFourKindTime{
+	required int32 multiple=1;//返回倍数
 }
 
 message CSSMS{

@@ -1,6 +1,7 @@
 package com.mzm.firephoenix.mina;
 
 import java.lang.reflect.Method;
+import java.net.InetSocketAddress;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -113,6 +114,12 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 	}
 
 	@Override
+	public void sessionCreated(IoSession session) throws Exception {
+		String address = ((InetSocketAddress)session.getRemoteAddress()).getAddress().getHostAddress();  
+	    session.setAttribute("ipAddress", address);  
+	    logger.info("sessionCreated, client ip address: " + address); 
+	}
+	@Override
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		logger.info("sessionIdle. session id=" + session.getId());
 		// MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
@@ -126,6 +133,9 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 	@Override
 	public void sessionOpened(IoSession session) throws Exception {
 		logger.info("sessionOpened. session id=" + session.getId());
+		String address = ((InetSocketAddress)session.getRemoteAddress()).getAddress().getHostAddress();  
+	    session.setAttribute("ipAddress", address);  
+	    logger.info("sessionCreated, client ip address: " + address); 
 		// 5分钟没有通讯则断开连接
 		// Thread.sleep(5000);
 		// session.getConfig().setIdleTime(IdleStatus.READER_IDLE, 900000);
