@@ -1,5 +1,7 @@
 package com.mzm.firephoenix.dao.entity;
 
+import com.mzm.firephoenix.utils.CardUtil;
+
 @Entity(tableName = "fivepk_player_info", primaryKey = "accountId")
 public class FivepkPlayerInfo extends AbstractEntity {
 	@Column(columnName = "account_id")
@@ -13,7 +15,7 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	@Column(columnName = "score")
 	private int score;
 	@Column(columnName = "compare_history_cards")
-	private String compareHistoryCards;
+	private String compareHistoryCards = "";
 	@Column(columnName = "nick_name_count")
 	private int nickNameCount;
 
@@ -69,12 +71,15 @@ public class FivepkPlayerInfo extends AbstractEntity {
 	public void firstInLastOut(int compareCard) {
 		if (compareHistoryCards != null) {
 			StringBuffer sb = new StringBuffer();
-			sb.append(compareCard).append(",").append(compareHistoryCards.substring(0, compareHistoryCards.lastIndexOf(",")));
+			sb.append(compareCard).append(",").append(compareHistoryCards.substring(0, compareHistoryCards.lastIndexOf(",") == -1 ? 0 : compareHistoryCards.lastIndexOf(",")));
 			setCompareHistoryCards(sb.toString());
 		}
 	}
 
 	public String getCompareHistoryCards() {
+		if (compareHistoryCards == null){
+			compareHistoryCards = "";
+		}
 		return compareHistoryCards;
 	}
 

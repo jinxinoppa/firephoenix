@@ -232,3 +232,115 @@ alter table fivepk_account add account_ip varchar(20) default '0.0.0.0';
 alter table machine_match add orider_machine_number int(20) default '0';
 
 alter table fivepk_seo modify create_date timestamp default current_timestamp on update current_timestamp ;
+
+#2016-12-10
+
+alter table fivepk_seo add machine_auto int(2) default '0';
+
+#2016-12-12
+CREATE TABLE `fivepk_prefab_random` (
+	`prefab_cards` INT (10) NOT NULL,
+	`prefab_0` VARCHAR(10) default '0,0',
+	`prefab_1` VARCHAR(10) default '0,0',
+	`prefab_2` VARCHAR(10) default '0,0',
+	`prefab_3` VARCHAR(10) default '0,0',
+	`prefab_4` VARCHAR(10) default '0,0',
+	`prefab_5` VARCHAR(10) default '0,0',
+	`prefab_6` VARCHAR(10) default '0,0',
+	`prefab_7` VARCHAR(10) default '0,0',
+	PRIMARY KEY (`prefab_cards`)
+) ENGINE = INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_ja int(20) DEFAULT 4 after prefab_four_of_a_kind_joker_count;
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_two_ten int(20) DEFAULT 4 after prefab_four_of_a_kind_ja;
+alter table fivepk_seo add COLUMN prefab_full_house int(20) DEFAULT 4 after prefab_four_of_a_kind_two_ten;
+alter table fivepk_seo add COLUMN prefab_flush int(20) DEFAULT 4 after prefab_full_house;
+alter table fivepk_seo add COLUMN prefab_straight int(20) DEFAULT 4 after prefab_flush;
+alter table fivepk_seo add COLUMN prefab_three_of_a_kind int(20) DEFAULT 4 after prefab_straight;
+alter table fivepk_seo add COLUMN prefab_two_pairs int(20) DEFAULT 4 after prefab_three_of_a_kind;
+alter table fivepk_seo add COLUMN prefab_seven_better int(20) DEFAULT 4 after prefab_two_pairs;
+alter table fivepk_seo add COLUMN prefab_four_flush int(20) DEFAULT 4 after prefab_seven_better;
+alter table fivepk_seo add COLUMN prefab_four_straight int(20) DEFAULT 4 after prefab_four_flush;
+alter table fivepk_seo add COLUMN prefab_seven_better_keep int(20) DEFAULT 4 after prefab_four_straight;
+
+
+#2016-12-14
+
+create table fivepk_default(
+id int(20) auto_increment primary key,
+name varchar(20) default null,
+machine_id varchar(20) default null,
+credit int(10) default 0,
+bet int(10) default 0,
+win int(10) default 0,
+one_card varchar(20) default null,
+guard_card varchar(10) default null,
+two_card varchar(20) default null,
+card_type varchar(10) default null,
+guess_point int(10) default 0,
+guess_type varchar(200) default null
+);
+
+alter table fivepk_seo add COLUMN prefab_five_of_a_kind_compare int(20) DEFAULT 1 after prefab_five_of_a_kind_count;
+alter table fivepk_prefab modify prefab_0 VARCHAR(255) DEFAULT '0' NOT NULL;
+alter table fivepk_prefab modify prefab_1 VARCHAR(255) DEFAULT '0' NOT NULL;
+alter table fivepk_prefab modify prefab_2 VARCHAR(255) DEFAULT '0' NOT NULL;
+alter table fivepk_prefab modify prefab_3 VARCHAR(255) DEFAULT '0' NOT NULL;
+alter table fivepk_prefab modify prefab_4 VARCHAR(255) DEFAULT '0' NOT NULL;
+alter table fivepk_prefab modify prefab_5 VARCHAR(255) DEFAULT '0' NOT NULL;
+alter table fivepk_prefab modify prefab_6 VARCHAR(255) DEFAULT '0' NOT NULL;
+alter table fivepk_prefab modify prefab_7 VARCHAR(255) DEFAULT '0' NOT NULL;
+
+alter table fivepk_seo modify prefab_five_bars_count double DEFAULT 0;
+alter table fivepk_seo modify prefab_royal_flush_count double DEFAULT 0;
+alter table fivepk_seo modify prefab_five_of_a_kind_count double DEFAULT 0;
+alter table fivepk_seo modify prefab_straight_flush_count double DEFAULT 0;
+alter table fivepk_seo modify prefab_four_of_a_kind_Joker_count double DEFAULT 0;
+
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_Joker_two_fourteen int(20) DEFAULT 0 after prefab_four_of_a_kind_Joker_count;
+#2016-12-15
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_J_A int(20) DEFAULT 6 after prefab_four_of_a_kind_Joker_two_fourteen;
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_T_T int(20) DEFAULT 6 after prefab_four_of_a_kind_JA;
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_J_A_count int(20) DEFAULT 0 after prefab_four_of_a_kind_J_A;
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_T_T_count int(20) DEFAULT 0 after prefab_four_of_a_kind_T_T;
+
+alter table fivepk_default add fivepk_time timestamp default current_timestamp on update current_timestamp ;
+
+CREATE TABLE `fivepk_default` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) DEFAULT NULL,
+  `machine_id` varchar(20) DEFAULT NULL,
+  `credit` int(10) DEFAULT '0',
+  `bet` int(10) DEFAULT '0',
+  `win` int(10) DEFAULT '0',
+  `one_card` varchar(50) DEFAULT NULL,
+  `guard_card` varchar(30) DEFAULT "",
+  `two_card` varchar(50) DEFAULT NULL,
+  `card_type` int(5) DEFAULT NULL,
+  `guess_point` int(10) DEFAULT '0',
+  `guess_type` varchar(200) DEFAULT "",
+  `fivepk_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+
+#2016-12-16
+alter table fivepk_seo add COLUMN prefab_joker int(20) DEFAULT 4 after prefab_seven_better_keep;
+
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_two_ten_continue varchar(255) DEFAULT null after prefab_four_of_a_kind_two_ten;
+alter table fivepk_seo add COLUMN prefab_four_of_a_kind_two_ten_two int(5) DEFAULT 7 after prefab_four_of_a_kind_two_ten;
+
+alter table machine_default add four2 int(10) default '0';
+alter table machine_default add four3 int(10) default '0';
+alter table machine_default add four4 int(10) default '0';
+alter table machine_default add four5 int(10) default '0';
+alter table machine_default add four6 int(10) default '0';
+alter table machine_default add four7 int(10) default '0';
+alter table machine_default add four8 int(10) default '0';
+alter table machine_default add four9 int(10) default '0';
+alter table machine_default add four10 int(10) default '0';
+alter table machine_default add four11 int(10) default '0';
+alter table machine_default add four12 int(10) default '0';
+alter table machine_default add four13 int(10) default '0';
+alter table machine_default add four14 int(10) default '0';
+alter table machine_default add five1 int(10) default '0';
+alter table machine_default add five2 int(10) default '0';

@@ -67,28 +67,30 @@ public class AccountLogic {
 		}
 		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
 		if (fivepkAccount == null) {
-			fivepkAccount = new FivepkAccount();
-			fivepkAccount.setName(account);
-			fivepkAccount.setPassword(password);
-			fivepkAccount.setSeoid(seoid);
-			fivepkAccount.setAccountType(GameConstant.ACCOUNT_TYPE_PLAYER);
+			fivepkAccount = new FivepkAccount(account, password, seoid, GameConstant.ACCOUNT_TYPE_PLAYER, (String)session.getAttribute("ipAddress"));
+			jdbcDaoSupport.save(fivepkAccount);
+			fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
+//			fivepkAccount.setName(account);
+//			fivepkAccount.setPassword(password);
+//			fivepkAccount.setSeoid(seoid);
+//			fivepkAccount.setAccountType(GameConstant.ACCOUNT_TYPE_PLAYER);
 			try {
-				int generatedKey = jdbcDaoSupport.getJdbcTemplate().execute(new ConnectionCallback<Integer>() {
-
-					@Override
-					public Integer doInConnection(Connection arg0) throws SQLException, DataAccessException {
-						String sql = "insert into `fivepk_account` (name, password, seoid, account_type) values (\"" + account + "\", \"" + password + "\", \"" + seoid + "\", \"" + GameConstant.ACCOUNT_TYPE_PLAYER + "\")";
-						PreparedStatement pstmt = (PreparedStatement) arg0.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-						pstmt.executeUpdate();
-						ResultSet rs = pstmt.getGeneratedKeys();
-						int generatedKey = 0;
-						while (rs.next()) {
-							generatedKey = rs.getInt(1);
-						}
-						return generatedKey;
-					}
-				});
-				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "玩家@" + generatedKey, GameConstant.ACCOUNT_DEFAULT_PIC, 20000);
+//				int generatedKey = jdbcDaoSupport.getJdbcTemplate().execute(new ConnectionCallback<Integer>() {
+//
+//					@Override
+//					public Integer doInConnection(Connection arg0) throws SQLException, DataAccessException {
+//						String sql = "insert into `fivepk_account` (name, password, seoid, account_type) values (\"" + account + "\", \"" + password + "\", \"" + seoid + "\", \"" + GameConstant.ACCOUNT_TYPE_PLAYER + "\")";
+//						PreparedStatement pstmt = (PreparedStatement) arg0.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//						pstmt.executeUpdate();
+//						ResultSet rs = pstmt.getGeneratedKeys();
+//						int generatedKey = 0;
+//						while (rs.next()) {
+//							generatedKey = rs.getInt(1);
+//						}
+//						return generatedKey;
+//					}
+//				});
+				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(fivepkAccount.getAccountId(), "玩家@" + fivepkAccount.getAccountId(), GameConstant.ACCOUNT_DEFAULT_PIC, 20000);
 
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 				session.setAttributeIfAbsent(GameConstant.SESSION_IS_REGISTERED, seoid);
@@ -144,13 +146,15 @@ public class AccountLogic {
 				
 				MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
 				returnMessagePack.setCmd(Cmd.CMD_LOGIN);
-				returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_IS_BEING_LANDED_VALUE));
+				returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED_VALUE));
 				logger.info("sent message pack : " + returnMessagePack.toString());
 				ioSession.write(returnMessagePack);
 				ioSession.closeOnFlush();
 				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED_VALUE);
 			}
 			seoid = fivepkAccount.getSeoid();
+			fivepkAccount.setAccountIp((String)session.getAttribute("ipAddress"));
+			jdbcDaoSupport.update(fivepkAccount);
 		} else {
 			accountId = (Long) session.getAttribute("accountId");
 		}
@@ -186,7 +190,7 @@ public class AccountLogic {
 						return generatedKey;
 					}
 				});
-				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic, 0);
+				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic, 20000);
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 			} catch (Exception e) {
 				throw e;

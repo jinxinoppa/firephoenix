@@ -72,7 +72,7 @@ public class JdbcDaoSupport {
 				logger.info(sqlStr);
 				jdbcTemplate.update(sqlStr);
 			}
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+		} catch (Exception e) {
 			logger.error(e, e);
 		}
 	}

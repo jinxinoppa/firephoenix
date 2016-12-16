@@ -213,6 +213,28 @@ message SCPaiInfo3{
 	optional CardResult   cardResult    = 5;//牌局结果
 }
 
+message SCPlayerHistoryData{
+	repeated SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;
+}
 
+message SCPlayerHistoryCardsData{
+	required int32 credit = 1;//总玩分数
+	required int32 win = 2;//总赢分数
+	required int32 bet = 3;//下注分数
+	required string oneCard = 4;//第一手牌
+	optional string guardCard = 5;//保牌
+	required string twoCard = 6;//第二手牌
+	repeated SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;
+}
 
+message SCPlayerHistoryCompareData{
+	required int32 contrast = 1;//比倍模式0-半比1-平比2-双比
+	required int32 point = 2;//比倍押注
+	required int32 guess = 3;//猜大小1-大0-小
+	required int32 openCard = 4;//开牌
+}
+
+message CSPlayerCardsData{
+	optional int32 text =1;
+}
 

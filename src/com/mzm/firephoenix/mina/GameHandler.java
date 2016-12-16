@@ -55,6 +55,10 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		// System.out.println("toString : " +
 		// messagePack.getContent().toString());
 		int cmdNumber = messagePack.getCmd().getNumber();
+		if (cmdNumber == 65541) {
+			logger.info("session : [" + session.getId() + " ] ip address : [" + session.getAttribute("ipAddress") + "] heart beat");
+			return;
+		}
 		String logicName = SocketUtil.getLogicName(cmdNumber);
 		if (logicName == null) {
 			// FIXME return errorcode
@@ -65,6 +69,9 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 			if (string.getName().startsWith("cs") || string.getName().startsWith("cc")) {
 				methodName = string.getName();
 			}
+		}
+		if (methodName == null) {
+			methodName = SocketUtil.getLogicMethodName(cmdNumber);
 		}
 		if (methodName == null) {
 			logger.error("methodName doesn't exist. cmdNumber: " + cmdNumber);
@@ -94,11 +101,13 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		if (diff > 1000) {
 			logger.info("spending too much time on logicName : [" + logicName + "] methodName : [" + methodName + "]");
 		}
-		MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
-		returnMessagePack.setCmd(Cmd.valueOf(cmdNumber));
-		returnMessagePack.setContent(returnBuilder);
-		logger.info("sent message pack : " + returnBuilder.toString());
-		session.write(returnMessagePack);
+		if (cmdNumber != Cmd.CMD_FOUR_KIND_TIME_VALUE) {
+			MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+			returnMessagePack.setCmd(Cmd.valueOf(cmdNumber));
+			returnMessagePack.setContent(returnBuilder);
+			logger.info("sent message pack : " + returnBuilder.toString());
+			session.write(returnMessagePack);
+		}
 	}
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
@@ -115,45 +124,21 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 
 	@Override
 	public void sessionCreated(IoSession session) throws Exception {
-		String address = ((InetSocketAddress)session.getRemoteAddress()).getAddress().getHostAddress();  
-	    session.setAttribute("ipAddress", address);  
-	    logger.info("sessionCreated, client ip address: " + address); 
+		String address = ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress();
+		session.setAttribute("ipAddress", address);
+		logger.info("sessionCreated, client ip address: " + address);
 	}
 	@Override
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
 		logger.info("sessionIdle. session id=" + session.getId());
-		// MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
-		// returnMessagePack.setCmd(Cmd.CMD_LOGIN);
-		// returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE));
-		// logger.info("sent message pack : " + returnMessagePack.toString());
-		// session.write(returnMessagePack);
-		// session.closeOnFlush();
+		OfflineLogic executor = (OfflineLogic) applicationContext.getBean("offlineLogic");
+		executor.sessionClosed(session);
+		session.closeOnFlush();
 	}
 
 	@Override
 	public void sessionOpened(IoSession session) throws Exception {
 		logger.info("sessionOpened. session id=" + session.getId());
-		String address = ((InetSocketAddress)session.getRemoteAddress()).getAddress().getHostAddress();  
-	    session.setAttribute("ipAddress", address);  
-	    logger.info("sessionCreated, client ip address: " + address); 
-		// 5分钟没有通讯则断开连接
-		// Thread.sleep(5000);
-		// session.getConfig().setIdleTime(IdleStatus.READER_IDLE, 900000);
-		// MsgOuterClass.Msg.Builder msgBuilder =
-		// MsgOuterClass.Msg.newBuilder();
-		// msgBuilder.setA(true);
-		// msgBuilder.setB(Integer.MAX_VALUE);
-		// msgBuilder.setC(Long.MAX_VALUE);
-		// msgBuilder.setD(Float.MIN_NORMAL);
-		// msgBuilder.setE(Double.MAX_VALUE);
-		// msgBuilder.setF("abc");
-		// byte[] msgBody = msgBuilder.build().toByteArray();
-		// short length = (short) (msgBody.length + 2);
-		// IoBuffer buffer = IoBuffer.allocate(length);
-		// buffer.putShort(length);
-		// buffer.put(msgBody);
-		// System.out.println(buffer.array().length);
-		// session.write(buffer.array());
 	}
 
 	@Override
@@ -161,42 +146,56 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		try {
 			String message = cause.getMessage();
 			String className = cause.getClass().getName();
-//			if (!"远程主机强迫关闭了一个现有的连接。".equals(message) && !"Connection reset by peer".equals(message) && !"Broken pipe".equals(message) && !"java.lang.String cannot be cast to org.json.JSONObject".equals(message) && !className.equals("org.apache.mina.core.write.WriteToClosedSessionException")) {
-//				long accountId = (long) session.removeAttribute("accountId");
-//				CardResult cr = (CardResult) session.getAttribute("cardResult");
-//				String machineId = (String) session.getAttribute("machineId");
-//				PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
-//				if (playerInfo == null){
-//					return;
-//				}
-//				GameCache.removeIoSession(playerInfo.getSeoId(), session);
-//				GameCache.removePlayerInfo(accountId);
-//				
-//				if (cr != null && cr.getWin() > 0) {
-//					JdbcDaoSupport jdbcDaoSupport = applicationContext.getBean(JdbcDaoSupport.class);
-//					if (jdbcDaoSupport != null){
-//						FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
-//						if (fivepkPlayerInfo == null) {
-//							return;
-//						}
-//						fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
-//						jdbcDaoSupport.update(fivepkPlayerInfo);
-//					}
-//				}
-//				if (machineId != null) {
-//					GameCache.updateMachineInfo(playerInfo.getSeoId(),machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
-//					List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
-//					for (IoSession ioSession : sessionList) {
-//						if (!ioSession.isClosing() && ioSession.isConnected() && (Long) ioSession.getAttribute("accountId") != accountId) {
-//							MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
-//							returnMessagePack.setCmd(Cmd.CMD_MACHINE_INFO);
-//							returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScMachineInfo(SCMachineInfo.newBuilder().setMachineId(machineId).setMachineType(GameConstant.MACHINE_TYPE_FREE)));
-//							logger.info("sent message pack : " + returnMessagePack.toString());
-//							ioSession.write(returnMessagePack);
-//						}
-//					}
-//				}
-//			}
+			// if (!"远程主机强迫关闭了一个现有的连接。".equals(message) &&
+			// !"Connection reset by peer".equals(message) &&
+			// !"Broken pipe".equals(message) &&
+			// !"java.lang.String cannot be cast to org.json.JSONObject".equals(message)
+			// &&
+			// !className.equals("org.apache.mina.core.write.WriteToClosedSessionException"))
+			// {
+			// long accountId = (long) session.removeAttribute("accountId");
+			// CardResult cr = (CardResult) session.getAttribute("cardResult");
+			// String machineId = (String) session.getAttribute("machineId");
+			// PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
+			// if (playerInfo == null){
+			// return;
+			// }
+			// GameCache.removeIoSession(playerInfo.getSeoId(), session);
+			// GameCache.removePlayerInfo(accountId);
+			//
+			// if (cr != null && cr.getWin() > 0) {
+			// JdbcDaoSupport jdbcDaoSupport =
+			// applicationContext.getBean(JdbcDaoSupport.class);
+			// if (jdbcDaoSupport != null){
+			// FivepkPlayerInfo fivepkPlayerInfo =
+			// jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new
+			// Object[]{accountId});
+			// if (fivepkPlayerInfo == null) {
+			// return;
+			// }
+			// fivepkPlayerInfo.setScore(cr.getWin() +
+			// fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
+			// jdbcDaoSupport.update(fivepkPlayerInfo);
+			// }
+			// }
+			// if (machineId != null) {
+			// GameCache.updateMachineInfo(playerInfo.getSeoId(),machineId,
+			// GameConstant.MACHINE_TYPE_FREE, 0, null);
+			// List<IoSession> sessionList =
+			// GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
+			// for (IoSession ioSession : sessionList) {
+			// if (!ioSession.isClosing() && ioSession.isConnected() && (Long)
+			// ioSession.getAttribute("accountId") != accountId) {
+			// MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+			// returnMessagePack.setCmd(Cmd.CMD_MACHINE_INFO);
+			// returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScMachineInfo(SCMachineInfo.newBuilder().setMachineId(machineId).setMachineType(GameConstant.MACHINE_TYPE_FREE)));
+			// logger.info("sent message pack : " +
+			// returnMessagePack.toString());
+			// ioSession.write(returnMessagePack);
+			// }
+			// }
+			// }
+			// }
 		} catch (Exception e) {
 			logger.error(cause, cause);
 		}

@@ -24,12 +24,15 @@ public class GameConstant {
 	public final static String MACHINE_SEOID_GUEST = "CE";
 
 	public final static double[] FIVEPREFAB = new double[]{0.9, 0.91, 0.92, 0.93, 0.94, 0.95};
-
+	public final static double[] FIVEPREFAB2 = new double[]{0.95, 0.96, 0.97, 0.98};
+	
 	public final static byte[][] WINPOOLSTRAIGHTFLUSH = {{1, 2, 3, 4, 5}, {2, 3, 4, 5, 6}, {3, 4, 5, 6, 7}, {4, 5, 6, 7, 8}, {5, 6, 7, 8, 9}, {6, 7, 8, 9, 10}, {7, 8, 9, 10, 11}, {8, 9, 10, 11, 12}, {9, 10, 11, 12, 13}};
 	public final static byte[] WINPOOLFIVEBARS = {53, 53, 53, 53, 53};
 	public final static byte[][] WINPOOLROYALFLUSH = {{10, 11, 12, 13, 1}};
 
 	public final static byte[][] WINPOOLFOUROFAKINDJOKER = {{11, 24, 37, 50, 1}, {12, 25, 38, 51, 2}, {13, 26, 39, 52, 3}, {1, 14, 27, 40, 4}};
+	public final static byte[][] WINPOOLFOUROFAKINDJA = {{11, 24, 37, 53, 1}};
+	public final static byte[][] WINPOOLFOUROFAKINDTWOTEN = {{2, 15, 28, 41, 1}};
 	public final static byte[][] WINPOOLFIVEOFAKIND = {{2, 15, 28, 41, 53}, {3, 16, 29, 42, 53}, {4, 17, 30, 43, 53}, {5, 18, 31, 44, 53}, {6, 19, 32, 45, 53}, {7, 20, 33, 46, 53}, {8, 21, 34, 47, 53}, {9, 22, 35, 48, 53}
 	// {11, 24, 37, 50, 1}, {12, 25, 38, 51, 1}, {13, 26, 39, 52, 1}
 	};

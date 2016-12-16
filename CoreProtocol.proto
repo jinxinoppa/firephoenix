@@ -2,7 +2,7 @@ syntax = "proto2";
 option java_package = "com.mzm.firephoenix.protobuf";
 option java_outer_classname = "CoreProtocol";
 
-//import "GameProtocol.proto";
+import "GameProtocol.proto";
 
 //协议包，内部可包含多条协议内容
 message MessagePack {
@@ -28,7 +28,10 @@ enum Cmd {
 	
 	CMD_FOUR_KIND_TIME = 0X01000D;//获取大四梅随机倍数
 	
+	CMD_MACHINE_AUTO = 0X01000E;//获取当前状态是自动还是手动
 
+	CMD_DATA_DISPLAY = 0X01000F;
+	
 	//玩家模块
 	CMD_PLAYER_NICK_NAME = 0x020001;  //修改玩家昵称
 	CMD_PLAYER_PIC    =  0x020002;  //修改头像
@@ -38,14 +41,8 @@ enum Cmd {
     CMD_MACHINE_LEAVE      =  0x020006;  //离开机台
     CMD_MACHINE_STAY    =  0x020007;  //是否留机
     CMD_PLAYER_BINDING    =  0x020008;  //绑定账号
-    
-    
+	CMD_CARD_BET    =  0x020009;  //押注
 	
-	CMD_DEPOSIT_STORE  =  0x020009;  //存钱
-	CMD_DEPOSIT_DRAW   =  0x02000A;  //取钱
-	CMD_DEPOSIT_GIVE   =  0x02000B;  //送钱 
-	CMD_DEPOSIT_RECEIVE = 0x02000C;  //接收 
-
     //竞技部分
 	CMD_ENTERROOM      =  0x030001;  //进入房间
 	CMD_OUTROOM        =  0x030002;  //退出房间
@@ -92,7 +89,6 @@ enum ErrorCode{
 	ERROR_USER_NAME = 2008;//用户名必须为6~18位字母或数字
 	ERROR_USER_EXIST =2009;//被绑定的用户已存在
 	
-	ERROR_YOUR_ACCOUNT_IS_BEING_LANDED = 2010;//您的帐号正在被登陆,请从新登录
 	ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED = 2011;//您的帐号已经被登陆
 	
 	ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD = 2012;//既不是第一手牌也不是第二手牌
@@ -158,6 +154,13 @@ message MessageContent {
 	
 	optional CSFourKindTime csFourKindTime =32;//获取大四梅随机倍数
 	optional SCFourKindTime scFourKindTime =33;
+	
+	optional CSMachineAuto csMachineAuto =34;//获取当前状态是自动还是手动
+	
+	optional SCPlayerHistoryData scPlayerHistoryData =35;
+	optional CSPlayerCardsData csPlayerCardsData =36;
+	optional CSCardsBet csCardsBet =37;
+	optional SCCardsBet scCardsBet =38;
 }
 
 //请求游戏服务器信息
@@ -227,10 +230,19 @@ message CSCards{
 	optional string holdCards =3 ;//保牌牌型
 }
 
+message CSCardsBet{
+	required int32 betScore =1 ;//下注分数 100,500,1000,2000
+}
+
+message SCCardsBet{
+	optional int32 betScore =1 ;//下注分数 100,500,1000,2000
+}
+
 message SCCards{
 	required int32 cardRate =1 ;//中奖倍率
 	required string cards =2 ;//牌型
 	optional string holdCards =3 ;//保牌牌型
+	optional int32 realKind =4;//100-正宗大四梅
 }
 
 message CCCompareHistoryCards{
@@ -239,7 +251,8 @@ message CCCompareHistoryCards{
 
 message CSCompareCard{
 	required int32 bigSmall =1 ;//0-大 1-小
-	required int32 betScore =2 ;//下注分数
+	required int32 betScore =2 ;//winScore赢的分数
+	required int32 five = 3;//五梅免费比倍一次
 }
 
 message SCCompareCard{
@@ -366,7 +379,9 @@ message CSSMS{
 	optional string mobile =1;
 }
 
-
+message CSMachineAuto{
+	required int32 auto =1;//1-自动;0-手动
+}
 
 
 

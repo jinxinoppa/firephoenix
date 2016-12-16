@@ -25698,6 +25698,3531 @@ public final class GameProtocol {
 
   }
 
+  public interface SCPlayerHistoryDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCPlayerHistoryData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData> 
+        getScPlayerHistoryCardsDataList();
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData getScPlayerHistoryCardsData(int index);
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    int getScPlayerHistoryCardsDataCount();
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder> 
+        getScPlayerHistoryCardsDataOrBuilderList();
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder getScPlayerHistoryCardsDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code SCPlayerHistoryData}
+   */
+  public  static final class SCPlayerHistoryData extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCPlayerHistoryData)
+      SCPlayerHistoryDataOrBuilder {
+    // Use SCPlayerHistoryData.newBuilder() to construct.
+    private SCPlayerHistoryData(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCPlayerHistoryData() {
+      scPlayerHistoryCardsData_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCPlayerHistoryData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                scPlayerHistoryCardsData_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              scPlayerHistoryCardsData_.add(input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          scPlayerHistoryCardsData_ = java.util.Collections.unmodifiableList(scPlayerHistoryCardsData_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.Builder.class);
+    }
+
+    public static final int SCPLAYERHISTORYCARDSDATA_FIELD_NUMBER = 1;
+    private java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData> scPlayerHistoryCardsData_;
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData> getScPlayerHistoryCardsDataList() {
+      return scPlayerHistoryCardsData_;
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    public java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder> 
+        getScPlayerHistoryCardsDataOrBuilderList() {
+      return scPlayerHistoryCardsData_;
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    public int getScPlayerHistoryCardsDataCount() {
+      return scPlayerHistoryCardsData_.size();
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData getScPlayerHistoryCardsData(int index) {
+      return scPlayerHistoryCardsData_.get(index);
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+     */
+    public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder getScPlayerHistoryCardsDataOrBuilder(
+        int index) {
+      return scPlayerHistoryCardsData_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getScPlayerHistoryCardsDataCount(); i++) {
+        if (!getScPlayerHistoryCardsData(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < scPlayerHistoryCardsData_.size(); i++) {
+        output.writeMessage(1, scPlayerHistoryCardsData_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < scPlayerHistoryCardsData_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, scPlayerHistoryCardsData_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCPlayerHistoryData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCPlayerHistoryData)
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getScPlayerHistoryCardsDataFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          scPlayerHistoryCardsData_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          scPlayerHistoryCardsDataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryData_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData build() {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData buildPartial() {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData result = new com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData(this);
+        int from_bitField0_ = bitField0_;
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            scPlayerHistoryCardsData_ = java.util.Collections.unmodifiableList(scPlayerHistoryCardsData_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.scPlayerHistoryCardsData_ = scPlayerHistoryCardsData_;
+        } else {
+          result.scPlayerHistoryCardsData_ = scPlayerHistoryCardsDataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData other) {
+        if (other == com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.getDefaultInstance()) return this;
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          if (!other.scPlayerHistoryCardsData_.isEmpty()) {
+            if (scPlayerHistoryCardsData_.isEmpty()) {
+              scPlayerHistoryCardsData_ = other.scPlayerHistoryCardsData_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureScPlayerHistoryCardsDataIsMutable();
+              scPlayerHistoryCardsData_.addAll(other.scPlayerHistoryCardsData_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.scPlayerHistoryCardsData_.isEmpty()) {
+            if (scPlayerHistoryCardsDataBuilder_.isEmpty()) {
+              scPlayerHistoryCardsDataBuilder_.dispose();
+              scPlayerHistoryCardsDataBuilder_ = null;
+              scPlayerHistoryCardsData_ = other.scPlayerHistoryCardsData_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              scPlayerHistoryCardsDataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getScPlayerHistoryCardsDataFieldBuilder() : null;
+            } else {
+              scPlayerHistoryCardsDataBuilder_.addAllMessages(other.scPlayerHistoryCardsData_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getScPlayerHistoryCardsDataCount(); i++) {
+          if (!getScPlayerHistoryCardsData(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData> scPlayerHistoryCardsData_ =
+        java.util.Collections.emptyList();
+      private void ensureScPlayerHistoryCardsDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          scPlayerHistoryCardsData_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData>(scPlayerHistoryCardsData_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder> scPlayerHistoryCardsDataBuilder_;
+
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData> getScPlayerHistoryCardsDataList() {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(scPlayerHistoryCardsData_);
+        } else {
+          return scPlayerHistoryCardsDataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public int getScPlayerHistoryCardsDataCount() {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          return scPlayerHistoryCardsData_.size();
+        } else {
+          return scPlayerHistoryCardsDataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData getScPlayerHistoryCardsData(int index) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          return scPlayerHistoryCardsData_.get(index);
+        } else {
+          return scPlayerHistoryCardsDataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder setScPlayerHistoryCardsData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData value) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScPlayerHistoryCardsDataIsMutable();
+          scPlayerHistoryCardsData_.set(index, value);
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder setScPlayerHistoryCardsData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder builderForValue) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          ensureScPlayerHistoryCardsDataIsMutable();
+          scPlayerHistoryCardsData_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder addScPlayerHistoryCardsData(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData value) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScPlayerHistoryCardsDataIsMutable();
+          scPlayerHistoryCardsData_.add(value);
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder addScPlayerHistoryCardsData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData value) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScPlayerHistoryCardsDataIsMutable();
+          scPlayerHistoryCardsData_.add(index, value);
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder addScPlayerHistoryCardsData(
+          com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder builderForValue) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          ensureScPlayerHistoryCardsDataIsMutable();
+          scPlayerHistoryCardsData_.add(builderForValue.build());
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder addScPlayerHistoryCardsData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder builderForValue) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          ensureScPlayerHistoryCardsDataIsMutable();
+          scPlayerHistoryCardsData_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder addAllScPlayerHistoryCardsData(
+          java.lang.Iterable<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData> values) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          ensureScPlayerHistoryCardsDataIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, scPlayerHistoryCardsData_);
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder clearScPlayerHistoryCardsData() {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          scPlayerHistoryCardsData_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public Builder removeScPlayerHistoryCardsData(int index) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          ensureScPlayerHistoryCardsDataIsMutable();
+          scPlayerHistoryCardsData_.remove(index);
+          onChanged();
+        } else {
+          scPlayerHistoryCardsDataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder getScPlayerHistoryCardsDataBuilder(
+          int index) {
+        return getScPlayerHistoryCardsDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder getScPlayerHistoryCardsDataOrBuilder(
+          int index) {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          return scPlayerHistoryCardsData_.get(index);  } else {
+          return scPlayerHistoryCardsDataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder> 
+           getScPlayerHistoryCardsDataOrBuilderList() {
+        if (scPlayerHistoryCardsDataBuilder_ != null) {
+          return scPlayerHistoryCardsDataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(scPlayerHistoryCardsData_);
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder addScPlayerHistoryCardsDataBuilder() {
+        return getScPlayerHistoryCardsDataFieldBuilder().addBuilder(
+            com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder addScPlayerHistoryCardsDataBuilder(
+          int index) {
+        return getScPlayerHistoryCardsDataFieldBuilder().addBuilder(
+            index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCardsData scPlayerHistoryCardsData = 1;</code>
+       */
+      public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder> 
+           getScPlayerHistoryCardsDataBuilderList() {
+        return getScPlayerHistoryCardsDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder> 
+          getScPlayerHistoryCardsDataFieldBuilder() {
+        if (scPlayerHistoryCardsDataBuilder_ == null) {
+          scPlayerHistoryCardsDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder>(
+                  scPlayerHistoryCardsData_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          scPlayerHistoryCardsData_ = null;
+        }
+        return scPlayerHistoryCardsDataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCPlayerHistoryData)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCPlayerHistoryData)
+    private static final com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData();
+    }
+
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCPlayerHistoryData> PARSER =
+        new com.google.protobuf.AbstractParser<SCPlayerHistoryData>() {
+      public SCPlayerHistoryData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCPlayerHistoryData(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCPlayerHistoryData> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SCPlayerHistoryCardsDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCPlayerHistoryCardsData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 credit = 1;</code>
+     *
+     * <pre>
+     *总玩分数
+     * </pre>
+     */
+    boolean hasCredit();
+    /**
+     * <code>required int32 credit = 1;</code>
+     *
+     * <pre>
+     *总玩分数
+     * </pre>
+     */
+    int getCredit();
+
+    /**
+     * <code>required int32 win = 2;</code>
+     *
+     * <pre>
+     *总赢分数
+     * </pre>
+     */
+    boolean hasWin();
+    /**
+     * <code>required int32 win = 2;</code>
+     *
+     * <pre>
+     *总赢分数
+     * </pre>
+     */
+    int getWin();
+
+    /**
+     * <code>required int32 bet = 3;</code>
+     *
+     * <pre>
+     *下注分数
+     * </pre>
+     */
+    boolean hasBet();
+    /**
+     * <code>required int32 bet = 3;</code>
+     *
+     * <pre>
+     *下注分数
+     * </pre>
+     */
+    int getBet();
+
+    /**
+     * <code>required string oneCard = 4;</code>
+     *
+     * <pre>
+     *第一手牌
+     * </pre>
+     */
+    boolean hasOneCard();
+    /**
+     * <code>required string oneCard = 4;</code>
+     *
+     * <pre>
+     *第一手牌
+     * </pre>
+     */
+    java.lang.String getOneCard();
+    /**
+     * <code>required string oneCard = 4;</code>
+     *
+     * <pre>
+     *第一手牌
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getOneCardBytes();
+
+    /**
+     * <code>optional string guardCard = 5;</code>
+     *
+     * <pre>
+     *保牌
+     * </pre>
+     */
+    boolean hasGuardCard();
+    /**
+     * <code>optional string guardCard = 5;</code>
+     *
+     * <pre>
+     *保牌
+     * </pre>
+     */
+    java.lang.String getGuardCard();
+    /**
+     * <code>optional string guardCard = 5;</code>
+     *
+     * <pre>
+     *保牌
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getGuardCardBytes();
+
+    /**
+     * <code>required string twoCard = 6;</code>
+     *
+     * <pre>
+     *第二手牌
+     * </pre>
+     */
+    boolean hasTwoCard();
+    /**
+     * <code>required string twoCard = 6;</code>
+     *
+     * <pre>
+     *第二手牌
+     * </pre>
+     */
+    java.lang.String getTwoCard();
+    /**
+     * <code>required string twoCard = 6;</code>
+     *
+     * <pre>
+     *第二手牌
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getTwoCardBytes();
+
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData> 
+        getScPlayerHistoryCompareDataList();
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData getScPlayerHistoryCompareData(int index);
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    int getScPlayerHistoryCompareDataCount();
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder> 
+        getScPlayerHistoryCompareDataOrBuilderList();
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder getScPlayerHistoryCompareDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code SCPlayerHistoryCardsData}
+   */
+  public  static final class SCPlayerHistoryCardsData extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCPlayerHistoryCardsData)
+      SCPlayerHistoryCardsDataOrBuilder {
+    // Use SCPlayerHistoryCardsData.newBuilder() to construct.
+    private SCPlayerHistoryCardsData(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCPlayerHistoryCardsData() {
+      credit_ = 0;
+      win_ = 0;
+      bet_ = 0;
+      oneCard_ = "";
+      guardCard_ = "";
+      twoCard_ = "";
+      scPlayerHistoryCompareData_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCPlayerHistoryCardsData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              credit_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              win_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              bet_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              oneCard_ = bs;
+              break;
+            }
+            case 42: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              guardCard_ = bs;
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              twoCard_ = bs;
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                scPlayerHistoryCompareData_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              scPlayerHistoryCompareData_.add(input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          scPlayerHistoryCompareData_ = java.util.Collections.unmodifiableList(scPlayerHistoryCompareData_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCardsData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCardsData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CREDIT_FIELD_NUMBER = 1;
+    private int credit_;
+    /**
+     * <code>required int32 credit = 1;</code>
+     *
+     * <pre>
+     *总玩分数
+     * </pre>
+     */
+    public boolean hasCredit() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 credit = 1;</code>
+     *
+     * <pre>
+     *总玩分数
+     * </pre>
+     */
+    public int getCredit() {
+      return credit_;
+    }
+
+    public static final int WIN_FIELD_NUMBER = 2;
+    private int win_;
+    /**
+     * <code>required int32 win = 2;</code>
+     *
+     * <pre>
+     *总赢分数
+     * </pre>
+     */
+    public boolean hasWin() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 win = 2;</code>
+     *
+     * <pre>
+     *总赢分数
+     * </pre>
+     */
+    public int getWin() {
+      return win_;
+    }
+
+    public static final int BET_FIELD_NUMBER = 3;
+    private int bet_;
+    /**
+     * <code>required int32 bet = 3;</code>
+     *
+     * <pre>
+     *下注分数
+     * </pre>
+     */
+    public boolean hasBet() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 bet = 3;</code>
+     *
+     * <pre>
+     *下注分数
+     * </pre>
+     */
+    public int getBet() {
+      return bet_;
+    }
+
+    public static final int ONECARD_FIELD_NUMBER = 4;
+    private volatile java.lang.Object oneCard_;
+    /**
+     * <code>required string oneCard = 4;</code>
+     *
+     * <pre>
+     *第一手牌
+     * </pre>
+     */
+    public boolean hasOneCard() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string oneCard = 4;</code>
+     *
+     * <pre>
+     *第一手牌
+     * </pre>
+     */
+    public java.lang.String getOneCard() {
+      java.lang.Object ref = oneCard_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          oneCard_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string oneCard = 4;</code>
+     *
+     * <pre>
+     *第一手牌
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getOneCardBytes() {
+      java.lang.Object ref = oneCard_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        oneCard_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int GUARDCARD_FIELD_NUMBER = 5;
+    private volatile java.lang.Object guardCard_;
+    /**
+     * <code>optional string guardCard = 5;</code>
+     *
+     * <pre>
+     *保牌
+     * </pre>
+     */
+    public boolean hasGuardCard() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string guardCard = 5;</code>
+     *
+     * <pre>
+     *保牌
+     * </pre>
+     */
+    public java.lang.String getGuardCard() {
+      java.lang.Object ref = guardCard_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          guardCard_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string guardCard = 5;</code>
+     *
+     * <pre>
+     *保牌
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getGuardCardBytes() {
+      java.lang.Object ref = guardCard_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        guardCard_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TWOCARD_FIELD_NUMBER = 6;
+    private volatile java.lang.Object twoCard_;
+    /**
+     * <code>required string twoCard = 6;</code>
+     *
+     * <pre>
+     *第二手牌
+     * </pre>
+     */
+    public boolean hasTwoCard() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string twoCard = 6;</code>
+     *
+     * <pre>
+     *第二手牌
+     * </pre>
+     */
+    public java.lang.String getTwoCard() {
+      java.lang.Object ref = twoCard_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          twoCard_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string twoCard = 6;</code>
+     *
+     * <pre>
+     *第二手牌
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getTwoCardBytes() {
+      java.lang.Object ref = twoCard_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        twoCard_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SCPLAYERHISTORYCOMPAREDATA_FIELD_NUMBER = 7;
+    private java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData> scPlayerHistoryCompareData_;
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData> getScPlayerHistoryCompareDataList() {
+      return scPlayerHistoryCompareData_;
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    public java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder> 
+        getScPlayerHistoryCompareDataOrBuilderList() {
+      return scPlayerHistoryCompareData_;
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    public int getScPlayerHistoryCompareDataCount() {
+      return scPlayerHistoryCompareData_.size();
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData getScPlayerHistoryCompareData(int index) {
+      return scPlayerHistoryCompareData_.get(index);
+    }
+    /**
+     * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+     */
+    public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder getScPlayerHistoryCompareDataOrBuilder(
+        int index) {
+      return scPlayerHistoryCompareData_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasCredit()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasWin()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOneCard()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTwoCard()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getScPlayerHistoryCompareDataCount(); i++) {
+        if (!getScPlayerHistoryCompareData(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, credit_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, win_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, bet_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getOneCardBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getGuardCardBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getTwoCardBytes());
+      }
+      for (int i = 0; i < scPlayerHistoryCompareData_.size(); i++) {
+        output.writeMessage(7, scPlayerHistoryCompareData_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, credit_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, win_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, bet_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getOneCardBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getGuardCardBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getTwoCardBytes());
+      }
+      for (int i = 0; i < scPlayerHistoryCompareData_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, scPlayerHistoryCompareData_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCPlayerHistoryCardsData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCPlayerHistoryCardsData)
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCardsData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCardsData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getScPlayerHistoryCompareDataFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        credit_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        win_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        bet_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        oneCard_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        guardCard_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        twoCard_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          scPlayerHistoryCompareData_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          scPlayerHistoryCompareDataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCardsData_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData build() {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData buildPartial() {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData result = new com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.credit_ = credit_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.win_ = win_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bet_ = bet_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.oneCard_ = oneCard_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.guardCard_ = guardCard_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.twoCard_ = twoCard_;
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            scPlayerHistoryCompareData_ = java.util.Collections.unmodifiableList(scPlayerHistoryCompareData_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.scPlayerHistoryCompareData_ = scPlayerHistoryCompareData_;
+        } else {
+          result.scPlayerHistoryCompareData_ = scPlayerHistoryCompareDataBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData other) {
+        if (other == com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData.getDefaultInstance()) return this;
+        if (other.hasCredit()) {
+          setCredit(other.getCredit());
+        }
+        if (other.hasWin()) {
+          setWin(other.getWin());
+        }
+        if (other.hasBet()) {
+          setBet(other.getBet());
+        }
+        if (other.hasOneCard()) {
+          bitField0_ |= 0x00000008;
+          oneCard_ = other.oneCard_;
+          onChanged();
+        }
+        if (other.hasGuardCard()) {
+          bitField0_ |= 0x00000010;
+          guardCard_ = other.guardCard_;
+          onChanged();
+        }
+        if (other.hasTwoCard()) {
+          bitField0_ |= 0x00000020;
+          twoCard_ = other.twoCard_;
+          onChanged();
+        }
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          if (!other.scPlayerHistoryCompareData_.isEmpty()) {
+            if (scPlayerHistoryCompareData_.isEmpty()) {
+              scPlayerHistoryCompareData_ = other.scPlayerHistoryCompareData_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureScPlayerHistoryCompareDataIsMutable();
+              scPlayerHistoryCompareData_.addAll(other.scPlayerHistoryCompareData_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.scPlayerHistoryCompareData_.isEmpty()) {
+            if (scPlayerHistoryCompareDataBuilder_.isEmpty()) {
+              scPlayerHistoryCompareDataBuilder_.dispose();
+              scPlayerHistoryCompareDataBuilder_ = null;
+              scPlayerHistoryCompareData_ = other.scPlayerHistoryCompareData_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              scPlayerHistoryCompareDataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getScPlayerHistoryCompareDataFieldBuilder() : null;
+            } else {
+              scPlayerHistoryCompareDataBuilder_.addAllMessages(other.scPlayerHistoryCompareData_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCredit()) {
+          return false;
+        }
+        if (!hasWin()) {
+          return false;
+        }
+        if (!hasBet()) {
+          return false;
+        }
+        if (!hasOneCard()) {
+          return false;
+        }
+        if (!hasTwoCard()) {
+          return false;
+        }
+        for (int i = 0; i < getScPlayerHistoryCompareDataCount(); i++) {
+          if (!getScPlayerHistoryCompareData(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int credit_ ;
+      /**
+       * <code>required int32 credit = 1;</code>
+       *
+       * <pre>
+       *总玩分数
+       * </pre>
+       */
+      public boolean hasCredit() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 credit = 1;</code>
+       *
+       * <pre>
+       *总玩分数
+       * </pre>
+       */
+      public int getCredit() {
+        return credit_;
+      }
+      /**
+       * <code>required int32 credit = 1;</code>
+       *
+       * <pre>
+       *总玩分数
+       * </pre>
+       */
+      public Builder setCredit(int value) {
+        bitField0_ |= 0x00000001;
+        credit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 credit = 1;</code>
+       *
+       * <pre>
+       *总玩分数
+       * </pre>
+       */
+      public Builder clearCredit() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        credit_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int win_ ;
+      /**
+       * <code>required int32 win = 2;</code>
+       *
+       * <pre>
+       *总赢分数
+       * </pre>
+       */
+      public boolean hasWin() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 win = 2;</code>
+       *
+       * <pre>
+       *总赢分数
+       * </pre>
+       */
+      public int getWin() {
+        return win_;
+      }
+      /**
+       * <code>required int32 win = 2;</code>
+       *
+       * <pre>
+       *总赢分数
+       * </pre>
+       */
+      public Builder setWin(int value) {
+        bitField0_ |= 0x00000002;
+        win_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 win = 2;</code>
+       *
+       * <pre>
+       *总赢分数
+       * </pre>
+       */
+      public Builder clearWin() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        win_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int bet_ ;
+      /**
+       * <code>required int32 bet = 3;</code>
+       *
+       * <pre>
+       *下注分数
+       * </pre>
+       */
+      public boolean hasBet() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 bet = 3;</code>
+       *
+       * <pre>
+       *下注分数
+       * </pre>
+       */
+      public int getBet() {
+        return bet_;
+      }
+      /**
+       * <code>required int32 bet = 3;</code>
+       *
+       * <pre>
+       *下注分数
+       * </pre>
+       */
+      public Builder setBet(int value) {
+        bitField0_ |= 0x00000004;
+        bet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 bet = 3;</code>
+       *
+       * <pre>
+       *下注分数
+       * </pre>
+       */
+      public Builder clearBet() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        bet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object oneCard_ = "";
+      /**
+       * <code>required string oneCard = 4;</code>
+       *
+       * <pre>
+       *第一手牌
+       * </pre>
+       */
+      public boolean hasOneCard() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string oneCard = 4;</code>
+       *
+       * <pre>
+       *第一手牌
+       * </pre>
+       */
+      public java.lang.String getOneCard() {
+        java.lang.Object ref = oneCard_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            oneCard_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string oneCard = 4;</code>
+       *
+       * <pre>
+       *第一手牌
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getOneCardBytes() {
+        java.lang.Object ref = oneCard_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          oneCard_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string oneCard = 4;</code>
+       *
+       * <pre>
+       *第一手牌
+       * </pre>
+       */
+      public Builder setOneCard(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        oneCard_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string oneCard = 4;</code>
+       *
+       * <pre>
+       *第一手牌
+       * </pre>
+       */
+      public Builder clearOneCard() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        oneCard_ = getDefaultInstance().getOneCard();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string oneCard = 4;</code>
+       *
+       * <pre>
+       *第一手牌
+       * </pre>
+       */
+      public Builder setOneCardBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        oneCard_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object guardCard_ = "";
+      /**
+       * <code>optional string guardCard = 5;</code>
+       *
+       * <pre>
+       *保牌
+       * </pre>
+       */
+      public boolean hasGuardCard() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string guardCard = 5;</code>
+       *
+       * <pre>
+       *保牌
+       * </pre>
+       */
+      public java.lang.String getGuardCard() {
+        java.lang.Object ref = guardCard_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            guardCard_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string guardCard = 5;</code>
+       *
+       * <pre>
+       *保牌
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getGuardCardBytes() {
+        java.lang.Object ref = guardCard_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          guardCard_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string guardCard = 5;</code>
+       *
+       * <pre>
+       *保牌
+       * </pre>
+       */
+      public Builder setGuardCard(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        guardCard_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string guardCard = 5;</code>
+       *
+       * <pre>
+       *保牌
+       * </pre>
+       */
+      public Builder clearGuardCard() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        guardCard_ = getDefaultInstance().getGuardCard();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string guardCard = 5;</code>
+       *
+       * <pre>
+       *保牌
+       * </pre>
+       */
+      public Builder setGuardCardBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        guardCard_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object twoCard_ = "";
+      /**
+       * <code>required string twoCard = 6;</code>
+       *
+       * <pre>
+       *第二手牌
+       * </pre>
+       */
+      public boolean hasTwoCard() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string twoCard = 6;</code>
+       *
+       * <pre>
+       *第二手牌
+       * </pre>
+       */
+      public java.lang.String getTwoCard() {
+        java.lang.Object ref = twoCard_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            twoCard_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string twoCard = 6;</code>
+       *
+       * <pre>
+       *第二手牌
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getTwoCardBytes() {
+        java.lang.Object ref = twoCard_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          twoCard_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string twoCard = 6;</code>
+       *
+       * <pre>
+       *第二手牌
+       * </pre>
+       */
+      public Builder setTwoCard(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        twoCard_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string twoCard = 6;</code>
+       *
+       * <pre>
+       *第二手牌
+       * </pre>
+       */
+      public Builder clearTwoCard() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        twoCard_ = getDefaultInstance().getTwoCard();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string twoCard = 6;</code>
+       *
+       * <pre>
+       *第二手牌
+       * </pre>
+       */
+      public Builder setTwoCardBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        twoCard_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData> scPlayerHistoryCompareData_ =
+        java.util.Collections.emptyList();
+      private void ensureScPlayerHistoryCompareDataIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          scPlayerHistoryCompareData_ = new java.util.ArrayList<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData>(scPlayerHistoryCompareData_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder> scPlayerHistoryCompareDataBuilder_;
+
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData> getScPlayerHistoryCompareDataList() {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(scPlayerHistoryCompareData_);
+        } else {
+          return scPlayerHistoryCompareDataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public int getScPlayerHistoryCompareDataCount() {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          return scPlayerHistoryCompareData_.size();
+        } else {
+          return scPlayerHistoryCompareDataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData getScPlayerHistoryCompareData(int index) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          return scPlayerHistoryCompareData_.get(index);
+        } else {
+          return scPlayerHistoryCompareDataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder setScPlayerHistoryCompareData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData value) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScPlayerHistoryCompareDataIsMutable();
+          scPlayerHistoryCompareData_.set(index, value);
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder setScPlayerHistoryCompareData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder builderForValue) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          ensureScPlayerHistoryCompareDataIsMutable();
+          scPlayerHistoryCompareData_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder addScPlayerHistoryCompareData(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData value) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScPlayerHistoryCompareDataIsMutable();
+          scPlayerHistoryCompareData_.add(value);
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder addScPlayerHistoryCompareData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData value) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScPlayerHistoryCompareDataIsMutable();
+          scPlayerHistoryCompareData_.add(index, value);
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder addScPlayerHistoryCompareData(
+          com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder builderForValue) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          ensureScPlayerHistoryCompareDataIsMutable();
+          scPlayerHistoryCompareData_.add(builderForValue.build());
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder addScPlayerHistoryCompareData(
+          int index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder builderForValue) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          ensureScPlayerHistoryCompareDataIsMutable();
+          scPlayerHistoryCompareData_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder addAllScPlayerHistoryCompareData(
+          java.lang.Iterable<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData> values) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          ensureScPlayerHistoryCompareDataIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, scPlayerHistoryCompareData_);
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder clearScPlayerHistoryCompareData() {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          scPlayerHistoryCompareData_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public Builder removeScPlayerHistoryCompareData(int index) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          ensureScPlayerHistoryCompareDataIsMutable();
+          scPlayerHistoryCompareData_.remove(index);
+          onChanged();
+        } else {
+          scPlayerHistoryCompareDataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder getScPlayerHistoryCompareDataBuilder(
+          int index) {
+        return getScPlayerHistoryCompareDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder getScPlayerHistoryCompareDataOrBuilder(
+          int index) {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          return scPlayerHistoryCompareData_.get(index);  } else {
+          return scPlayerHistoryCompareDataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public java.util.List<? extends com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder> 
+           getScPlayerHistoryCompareDataOrBuilderList() {
+        if (scPlayerHistoryCompareDataBuilder_ != null) {
+          return scPlayerHistoryCompareDataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(scPlayerHistoryCompareData_);
+        }
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder addScPlayerHistoryCompareDataBuilder() {
+        return getScPlayerHistoryCompareDataFieldBuilder().addBuilder(
+            com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder addScPlayerHistoryCompareDataBuilder(
+          int index) {
+        return getScPlayerHistoryCompareDataFieldBuilder().addBuilder(
+            index, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .SCPlayerHistoryCompareData scPlayerHistoryCompareData = 7;</code>
+       */
+      public java.util.List<com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder> 
+           getScPlayerHistoryCompareDataBuilderList() {
+        return getScPlayerHistoryCompareDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder> 
+          getScPlayerHistoryCompareDataFieldBuilder() {
+        if (scPlayerHistoryCompareDataBuilder_ == null) {
+          scPlayerHistoryCompareDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder>(
+                  scPlayerHistoryCompareData_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          scPlayerHistoryCompareData_ = null;
+        }
+        return scPlayerHistoryCompareDataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCPlayerHistoryCardsData)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCPlayerHistoryCardsData)
+    private static final com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData();
+    }
+
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCPlayerHistoryCardsData> PARSER =
+        new com.google.protobuf.AbstractParser<SCPlayerHistoryCardsData>() {
+      public SCPlayerHistoryCardsData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCPlayerHistoryCardsData(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCPlayerHistoryCardsData> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCardsData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SCPlayerHistoryCompareDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCPlayerHistoryCompareData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 contrast = 1;</code>
+     *
+     * <pre>
+     *比倍模式0-半比1-平比2-双比
+     * </pre>
+     */
+    boolean hasContrast();
+    /**
+     * <code>required int32 contrast = 1;</code>
+     *
+     * <pre>
+     *比倍模式0-半比1-平比2-双比
+     * </pre>
+     */
+    int getContrast();
+
+    /**
+     * <code>required int32 point = 2;</code>
+     *
+     * <pre>
+     *比倍押注
+     * </pre>
+     */
+    boolean hasPoint();
+    /**
+     * <code>required int32 point = 2;</code>
+     *
+     * <pre>
+     *比倍押注
+     * </pre>
+     */
+    int getPoint();
+
+    /**
+     * <code>required int32 guess = 3;</code>
+     *
+     * <pre>
+     *猜大小1-大0-小
+     * </pre>
+     */
+    boolean hasGuess();
+    /**
+     * <code>required int32 guess = 3;</code>
+     *
+     * <pre>
+     *猜大小1-大0-小
+     * </pre>
+     */
+    int getGuess();
+
+    /**
+     * <code>required int32 openCard = 4;</code>
+     *
+     * <pre>
+     *开牌
+     * </pre>
+     */
+    boolean hasOpenCard();
+    /**
+     * <code>required int32 openCard = 4;</code>
+     *
+     * <pre>
+     *开牌
+     * </pre>
+     */
+    int getOpenCard();
+  }
+  /**
+   * Protobuf type {@code SCPlayerHistoryCompareData}
+   */
+  public  static final class SCPlayerHistoryCompareData extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCPlayerHistoryCompareData)
+      SCPlayerHistoryCompareDataOrBuilder {
+    // Use SCPlayerHistoryCompareData.newBuilder() to construct.
+    private SCPlayerHistoryCompareData(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCPlayerHistoryCompareData() {
+      contrast_ = 0;
+      point_ = 0;
+      guess_ = 0;
+      openCard_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCPlayerHistoryCompareData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              contrast_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              point_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              guess_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              openCard_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCompareData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCompareData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CONTRAST_FIELD_NUMBER = 1;
+    private int contrast_;
+    /**
+     * <code>required int32 contrast = 1;</code>
+     *
+     * <pre>
+     *比倍模式0-半比1-平比2-双比
+     * </pre>
+     */
+    public boolean hasContrast() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 contrast = 1;</code>
+     *
+     * <pre>
+     *比倍模式0-半比1-平比2-双比
+     * </pre>
+     */
+    public int getContrast() {
+      return contrast_;
+    }
+
+    public static final int POINT_FIELD_NUMBER = 2;
+    private int point_;
+    /**
+     * <code>required int32 point = 2;</code>
+     *
+     * <pre>
+     *比倍押注
+     * </pre>
+     */
+    public boolean hasPoint() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 point = 2;</code>
+     *
+     * <pre>
+     *比倍押注
+     * </pre>
+     */
+    public int getPoint() {
+      return point_;
+    }
+
+    public static final int GUESS_FIELD_NUMBER = 3;
+    private int guess_;
+    /**
+     * <code>required int32 guess = 3;</code>
+     *
+     * <pre>
+     *猜大小1-大0-小
+     * </pre>
+     */
+    public boolean hasGuess() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 guess = 3;</code>
+     *
+     * <pre>
+     *猜大小1-大0-小
+     * </pre>
+     */
+    public int getGuess() {
+      return guess_;
+    }
+
+    public static final int OPENCARD_FIELD_NUMBER = 4;
+    private int openCard_;
+    /**
+     * <code>required int32 openCard = 4;</code>
+     *
+     * <pre>
+     *开牌
+     * </pre>
+     */
+    public boolean hasOpenCard() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 openCard = 4;</code>
+     *
+     * <pre>
+     *开牌
+     * </pre>
+     */
+    public int getOpenCard() {
+      return openCard_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasContrast()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPoint()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGuess()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOpenCard()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, contrast_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, point_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, guess_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, openCard_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, contrast_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, point_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, guess_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, openCard_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCPlayerHistoryCompareData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCPlayerHistoryCompareData)
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCompareData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCompareData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.class, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        contrast_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        point_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        guess_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        openCard_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_SCPlayerHistoryCompareData_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData build() {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData buildPartial() {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData result = new com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.contrast_ = contrast_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.point_ = point_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.guess_ = guess_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.openCard_ = openCard_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData other) {
+        if (other == com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData.getDefaultInstance()) return this;
+        if (other.hasContrast()) {
+          setContrast(other.getContrast());
+        }
+        if (other.hasPoint()) {
+          setPoint(other.getPoint());
+        }
+        if (other.hasGuess()) {
+          setGuess(other.getGuess());
+        }
+        if (other.hasOpenCard()) {
+          setOpenCard(other.getOpenCard());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasContrast()) {
+          return false;
+        }
+        if (!hasPoint()) {
+          return false;
+        }
+        if (!hasGuess()) {
+          return false;
+        }
+        if (!hasOpenCard()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int contrast_ ;
+      /**
+       * <code>required int32 contrast = 1;</code>
+       *
+       * <pre>
+       *比倍模式0-半比1-平比2-双比
+       * </pre>
+       */
+      public boolean hasContrast() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 contrast = 1;</code>
+       *
+       * <pre>
+       *比倍模式0-半比1-平比2-双比
+       * </pre>
+       */
+      public int getContrast() {
+        return contrast_;
+      }
+      /**
+       * <code>required int32 contrast = 1;</code>
+       *
+       * <pre>
+       *比倍模式0-半比1-平比2-双比
+       * </pre>
+       */
+      public Builder setContrast(int value) {
+        bitField0_ |= 0x00000001;
+        contrast_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 contrast = 1;</code>
+       *
+       * <pre>
+       *比倍模式0-半比1-平比2-双比
+       * </pre>
+       */
+      public Builder clearContrast() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        contrast_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int point_ ;
+      /**
+       * <code>required int32 point = 2;</code>
+       *
+       * <pre>
+       *比倍押注
+       * </pre>
+       */
+      public boolean hasPoint() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 point = 2;</code>
+       *
+       * <pre>
+       *比倍押注
+       * </pre>
+       */
+      public int getPoint() {
+        return point_;
+      }
+      /**
+       * <code>required int32 point = 2;</code>
+       *
+       * <pre>
+       *比倍押注
+       * </pre>
+       */
+      public Builder setPoint(int value) {
+        bitField0_ |= 0x00000002;
+        point_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 point = 2;</code>
+       *
+       * <pre>
+       *比倍押注
+       * </pre>
+       */
+      public Builder clearPoint() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        point_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int guess_ ;
+      /**
+       * <code>required int32 guess = 3;</code>
+       *
+       * <pre>
+       *猜大小1-大0-小
+       * </pre>
+       */
+      public boolean hasGuess() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 guess = 3;</code>
+       *
+       * <pre>
+       *猜大小1-大0-小
+       * </pre>
+       */
+      public int getGuess() {
+        return guess_;
+      }
+      /**
+       * <code>required int32 guess = 3;</code>
+       *
+       * <pre>
+       *猜大小1-大0-小
+       * </pre>
+       */
+      public Builder setGuess(int value) {
+        bitField0_ |= 0x00000004;
+        guess_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 guess = 3;</code>
+       *
+       * <pre>
+       *猜大小1-大0-小
+       * </pre>
+       */
+      public Builder clearGuess() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        guess_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int openCard_ ;
+      /**
+       * <code>required int32 openCard = 4;</code>
+       *
+       * <pre>
+       *开牌
+       * </pre>
+       */
+      public boolean hasOpenCard() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 openCard = 4;</code>
+       *
+       * <pre>
+       *开牌
+       * </pre>
+       */
+      public int getOpenCard() {
+        return openCard_;
+      }
+      /**
+       * <code>required int32 openCard = 4;</code>
+       *
+       * <pre>
+       *开牌
+       * </pre>
+       */
+      public Builder setOpenCard(int value) {
+        bitField0_ |= 0x00000008;
+        openCard_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 openCard = 4;</code>
+       *
+       * <pre>
+       *开牌
+       * </pre>
+       */
+      public Builder clearOpenCard() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        openCard_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCPlayerHistoryCompareData)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCPlayerHistoryCompareData)
+    private static final com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData();
+    }
+
+    public static com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCPlayerHistoryCompareData> PARSER =
+        new com.google.protobuf.AbstractParser<SCPlayerHistoryCompareData>() {
+      public SCPlayerHistoryCompareData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCPlayerHistoryCompareData(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCPlayerHistoryCompareData> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryCompareData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CSPlayerCardsDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CSPlayerCardsData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 text = 1;</code>
+     */
+    boolean hasText();
+    /**
+     * <code>optional int32 text = 1;</code>
+     */
+    int getText();
+  }
+  /**
+   * Protobuf type {@code CSPlayerCardsData}
+   */
+  public  static final class CSPlayerCardsData extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CSPlayerCardsData)
+      CSPlayerCardsDataOrBuilder {
+    // Use CSPlayerCardsData.newBuilder() to construct.
+    private CSPlayerCardsData(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private CSPlayerCardsData() {
+      text_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CSPlayerCardsData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              text_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_CSPlayerCardsData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_CSPlayerCardsData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.class, com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TEXT_FIELD_NUMBER = 1;
+    private int text_;
+    /**
+     * <code>optional int32 text = 1;</code>
+     */
+    public boolean hasText() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 text = 1;</code>
+     */
+    public int getText() {
+      return text_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, text_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, text_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CSPlayerCardsData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CSPlayerCardsData)
+        com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_CSPlayerCardsData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_CSPlayerCardsData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.class, com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        text_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.internal_static_CSPlayerCardsData_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData build() {
+        com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData buildPartial() {
+        com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData result = new com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.text_ = text_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData other) {
+        if (other == com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.getDefaultInstance()) return this;
+        if (other.hasText()) {
+          setText(other.getText());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int text_ ;
+      /**
+       * <code>optional int32 text = 1;</code>
+       */
+      public boolean hasText() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 text = 1;</code>
+       */
+      public int getText() {
+        return text_;
+      }
+      /**
+       * <code>optional int32 text = 1;</code>
+       */
+      public Builder setText(int value) {
+        bitField0_ |= 0x00000001;
+        text_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 text = 1;</code>
+       */
+      public Builder clearText() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        text_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CSPlayerCardsData)
+    }
+
+    // @@protoc_insertion_point(class_scope:CSPlayerCardsData)
+    private static final com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData();
+    }
+
+    public static com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<CSPlayerCardsData> PARSER =
+        new com.google.protobuf.AbstractParser<CSPlayerCardsData>() {
+      public CSPlayerCardsData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new CSPlayerCardsData(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CSPlayerCardsData> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CSEnterRoom_descriptor;
   private static
@@ -25868,6 +29393,26 @@ public final class GameProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_SCPaiInfo3_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCPlayerHistoryData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCPlayerHistoryData_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCPlayerHistoryCardsData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCPlayerHistoryCardsData_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCPlayerHistoryCompareData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCPlayerHistoryCompareData_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CSPlayerCardsData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CSPlayerCardsData_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -25929,9 +29474,19 @@ public final class GameProtocol {
       "\0132\013.PlayerCard\"C\n\rSCPaiBaseInfo\022\021\n\tpaiSt",
       "atus\030\001 \002(\005\022\r\n\005count\030\002 \001(\t\022\020\n\010zhuangid\030\003 " +
       "\001(\t\"G\n\nSCPaiInfo3\022\030\n\004bets\030\004 \001(\0132\n.Player" +
-      "Bet\022\037\n\ncardResult\030\005 \001(\0132\013.CardResultB,\n\034" +
-      "com.mzm.firephoenix.protobufB\014GameProtoc" +
-      "ol"
+      "Bet\022\037\n\ncardResult\030\005 \001(\0132\013.CardResult\"R\n\023" +
+      "SCPlayerHistoryData\022;\n\030scPlayerHistoryCa" +
+      "rdsData\030\001 \003(\0132\031.SCPlayerHistoryCardsData" +
+      "\"\272\001\n\030SCPlayerHistoryCardsData\022\016\n\006credit\030" +
+      "\001 \002(\005\022\013\n\003win\030\002 \002(\005\022\013\n\003bet\030\003 \002(\005\022\017\n\007oneCa" +
+      "rd\030\004 \002(\t\022\021\n\tguardCard\030\005 \001(\t\022\017\n\007twoCard\030\006" +
+      " \002(\t\022?\n\032scPlayerHistoryCompareData\030\007 \003(\013" +
+      "2\033.SCPlayerHistoryCompareData\"^\n\032SCPlaye",
+      "rHistoryCompareData\022\020\n\010contrast\030\001 \002(\005\022\r\n" +
+      "\005point\030\002 \002(\005\022\r\n\005guess\030\003 \002(\005\022\020\n\010openCard\030" +
+      "\004 \002(\005\"!\n\021CSPlayerCardsData\022\014\n\004text\030\001 \001(\005" +
+      "B,\n\034com.mzm.firephoenix.protobufB\014GamePr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -26149,6 +29704,30 @@ public final class GameProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCPaiInfo3_descriptor,
         new java.lang.String[] { "Bets", "CardResult", });
+    internal_static_SCPlayerHistoryData_descriptor =
+      getDescriptor().getMessageTypes().get(34);
+    internal_static_SCPlayerHistoryData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCPlayerHistoryData_descriptor,
+        new java.lang.String[] { "ScPlayerHistoryCardsData", });
+    internal_static_SCPlayerHistoryCardsData_descriptor =
+      getDescriptor().getMessageTypes().get(35);
+    internal_static_SCPlayerHistoryCardsData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCPlayerHistoryCardsData_descriptor,
+        new java.lang.String[] { "Credit", "Win", "Bet", "OneCard", "GuardCard", "TwoCard", "ScPlayerHistoryCompareData", });
+    internal_static_SCPlayerHistoryCompareData_descriptor =
+      getDescriptor().getMessageTypes().get(36);
+    internal_static_SCPlayerHistoryCompareData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCPlayerHistoryCompareData_descriptor,
+        new java.lang.String[] { "Contrast", "Point", "Guess", "OpenCard", });
+    internal_static_CSPlayerCardsData_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_CSPlayerCardsData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CSPlayerCardsData_descriptor,
+        new java.lang.String[] { "Text", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

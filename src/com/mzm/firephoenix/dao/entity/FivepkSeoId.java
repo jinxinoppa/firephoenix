@@ -20,28 +20,117 @@ public class FivepkSeoId extends AbstractEntity {
 	@Column(columnName = "prefab_five_bars")
 	private byte prefabFiveBars;
 	@Column(columnName = "prefab_five_bars_count")
-	private int prefabFiveBarsCount;
+	private double prefabFiveBarsCount;
 	@Column(columnName = "prefab_royal_flush")
 	private byte prefabRoyalFlush;
 	@Column(columnName = "prefab_royal_flush_count")
-	private int prefabRoyalFlushCount;
+	private double prefabRoyalFlushCount;
 	@Column(columnName = "prefab_five_of_a_kind")
 	private byte prefabFiveOfAKind;
 	@Column(columnName = "prefab_five_of_a_kind_count")
-	private int prefabFiveOfAKindCount;
+	private double prefabFiveOfAKindCount;
+
+	@Column(columnName = "prefab_five_of_a_kind_compare")
+	private int prefabFiveOfAKindCompare;
+
 	@Column(columnName = "prefab_straight_flush")
 	private byte prefabStraightFlush;
 	@Column(columnName = "prefab_straight_flush_count")
-	private int prefabStraightFlushCount;
+	private double prefabStraightFlushCount;
 	@Column(columnName = "prefab_four_of_a_kind_joker")
 	private byte prefabFourOfAKindJoker;
 	@Column(columnName = "prefab_four_of_a_kind_joker_count")
-	private int prefabFourOfAKindJokerCount;
+	private double prefabFourOfAKindJokerCount;
+
+	@Column(columnName = "prefab_four_of_a_kind_Joker_two_fourteen")
+	private int prefabFourOfAKindJokerTwoFourteen;
+
+	@Column(columnName = "prefab_four_of_a_kind_J_A")
+	private byte prefabFourOfAKindJA;
+	@Column(columnName = "prefab_four_of_a_kind_J_A_count")
+	private double prefabFourOfAKindJACount;
+	@Column(columnName = "prefab_four_of_a_kind_ja")
+	private byte prefabFourOfAKindJa;
+
+	@Column(columnName = "prefab_four_of_a_kind_T_T")
+	private byte prefabFourOfAKindTT;
+	@Column(columnName = "prefab_four_of_a_kind_T_T_count")
+	private double prefabFourOfAKindTTCount;
+
+	@Column(columnName = "prefab_four_of_a_kind_two_ten")
+	private byte prefabFourOfAKindTwoTen;
+	
+	@Column(columnName = "prefab_four_of_a_kind_two_ten_two")
+	private byte prefabFourOfAKindTwoTenTwo;
+	@Column(columnName = "prefab_four_of_a_kind_two_ten_continue")
+	private String prefabFourOfAKindTwoTenContinue;
+	
+	@Column(columnName = "prefab_full_house")
+	private byte prefabFullHouse;
+	@Column(columnName = "prefab_flush")
+	private byte prefabFlush;
+	@Column(columnName = "prefab_straight")
+	private byte prefabStraight;
+	@Column(columnName = "prefab_three_of_a_kind")
+	private byte prefabThreeOfAKind;
+	@Column(columnName = "prefab_two_pairs")
+	private byte prefabTwoPairs;
+	@Column(columnName = "prefab_seven_better")
+	private byte prefabSevenBetter;
+	@Column(columnName = "prefab_four_flush")
+	private byte prefabFourFlush;
+	@Column(columnName = "prefab_four_straight")
+	private byte prefabFourStraight;
+	@Column(columnName = "prefab_seven_better_keep")
+	private byte prefabSevenBetterKeep;
+	
+	@Column(columnName = "prefab_joker")
+	private byte prefabJoker;
+
 	@Column(columnName = "seo_machine_play_count")
 	private long seoMachinePlayCount;
+	@Column(columnName = "machine_auto")
+	private int machineAuto;
+
+	public int getMachineAuto() {
+		return machineAuto;
+	}
+
+	public void setMachineAuto(int machineAuto) {
+		this.machineAuto = machineAuto;
+		updateFieldsList.add("machineAuto");
+	}
 
 	public byte getPrefab(int prefabCards) {
 		switch (prefabCards) {
+			case -3 :
+				return prefabSevenBetterKeep;
+			case -2 :
+				return prefabFourStraight;
+			case -1 :
+				return prefabFourFlush;
+			case 1 :
+				return prefabSevenBetter;
+			case 2 :
+				return prefabTwoPairs;
+			case 3 :
+				return prefabThreeOfAKind;
+			case 5 :
+				return prefabStraight;
+			case 7 :
+				return prefabFlush;
+			case 10 :
+				return prefabFullHouse;
+			case 48 :
+				return prefabFourOfAKindTwoTenTwo;	
+			case 49 :
+				return prefabFourOfAKindTT;
+			case 50 :
+				return prefabFourOfAKindTwoTen;
+			case 78 :
+				return prefabFourOfAKindJA;
+			case 79 :
+				return prefabFourOfAKindJa;
 			case 80 :
 				return prefabFourOfAKindJoker;
 			case 120 :
@@ -52,6 +141,8 @@ public class FivepkSeoId extends AbstractEntity {
 				return prefabRoyalFlush;
 			case 1000 :
 				return prefabFiveBars;
+			case 9999 :
+				return prefabJoker;
 			default :
 				throw new NoSuchFieldError("no such field :[" + prefabCards + "]");
 		}
@@ -134,38 +225,38 @@ public class FivepkSeoId extends AbstractEntity {
 		updateFieldsList.add("seoMachinePlayCount");
 	}
 
-	public int getPrefabFiveBarsCount() {
+	public double getPrefabFiveBarsCount() {
 		return prefabFiveBarsCount;
 	}
 
-	public void setPrefabFiveBarsCount(int prefabFiveBarsCount) {
+	public void setPrefabFiveBarsCount(double prefabFiveBarsCount) {
 		this.prefabFiveBarsCount = prefabFiveBarsCount;
 		updateFieldsList.add("prefabFiveBarsCount");
 	}
 
-	public int getPrefabRoyalFlushCount() {
+	public double getPrefabRoyalFlushCount() {
 		return prefabRoyalFlushCount;
 	}
 
-	public void setPrefabRoyalFlushCount(int prefabRoyalFlushCount) {
+	public void setPrefabRoyalFlushCount(double prefabRoyalFlushCount) {
 		this.prefabRoyalFlushCount = prefabRoyalFlushCount;
 		updateFieldsList.add("prefabRoyalFlushCount");
 	}
 
-	public int getPrefabFiveOfAKindCount() {
+	public double getPrefabFiveOfAKindCount() {
 		return prefabFiveOfAKindCount;
 	}
 
-	public void setPrefabFiveOfAKindCount(int prefabFiveOfAKindCount) {
+	public void setPrefabFiveOfAKindCount(double prefabFiveOfAKindCount) {
 		this.prefabFiveOfAKindCount = prefabFiveOfAKindCount;
 		updateFieldsList.add("prefabFiveOfAKindCount");
 	}
 
-	public int getPrefabStraightFlushCount() {
+	public double getPrefabStraightFlushCount() {
 		return prefabStraightFlushCount;
 	}
 
-	public void setPrefabStraightFlushCount(int prefabStraightFlushCount) {
+	public void setPrefabStraightFlushCount(double prefabStraightFlushCount) {
 		this.prefabStraightFlushCount = prefabStraightFlushCount;
 		updateFieldsList.add("prefabStraightFlushCount");
 	}
@@ -179,12 +270,178 @@ public class FivepkSeoId extends AbstractEntity {
 		updateFieldsList.add("prefabFourOfAKindJoker");
 	}
 
-	public int getPrefabFourOfAKindJokerCount() {
+	public double getPrefabFourOfAKindJokerCount() {
 		return prefabFourOfAKindJokerCount;
 	}
 
-	public void setPrefabFourOfAKindJokerCount(int prefabFourOfAKindJokerCount) {
+	public void setPrefabFourOfAKindJokerCount(double prefabFourOfAKindJokerCount) {
 		this.prefabFourOfAKindJokerCount = prefabFourOfAKindJokerCount;
 		updateFieldsList.add("prefabFourOfAKindJokerCount");
+	}
+
+	public byte getPrefabFourOfAKindJa() {
+		return prefabFourOfAKindJa;
+	}
+
+	public void setPrefabFourOfAKindJa(byte prefabFourOfAKindJa) {
+		this.prefabFourOfAKindJa = prefabFourOfAKindJa;
+	}
+
+	public byte getPrefabFourOfAKindTwoTen() {
+		return prefabFourOfAKindTwoTen;
+	}
+
+	public void setPrefabFourOfAKindTwoTen(byte prefabFourOfAKindTwoTen) {
+		this.prefabFourOfAKindTwoTen = prefabFourOfAKindTwoTen;
+	}
+
+	public byte getPrefabFullHouse() {
+		return prefabFullHouse;
+	}
+
+	public void setPrefabFullHouse(byte prefabFullHouse) {
+		this.prefabFullHouse = prefabFullHouse;
+	}
+
+	public byte getPrefabFlush() {
+		return prefabFlush;
+	}
+
+	public void setPrefabFlush(byte prefabFlush) {
+		this.prefabFlush = prefabFlush;
+	}
+
+	public byte getPrefabStraight() {
+		return prefabStraight;
+	}
+
+	public void setPrefabStraight(byte prefabStraight) {
+		this.prefabStraight = prefabStraight;
+	}
+
+	public byte getPrefabThreeOfAKind() {
+		return prefabThreeOfAKind;
+	}
+
+	public void setPrefabThreeOfAKind(byte prefabThreeOfAKind) {
+		this.prefabThreeOfAKind = prefabThreeOfAKind;
+	}
+
+	public byte getPrefabTwoPairs() {
+		return prefabTwoPairs;
+	}
+
+	public void setPrefabTwoPairs(byte prefabTwoPairs) {
+		this.prefabTwoPairs = prefabTwoPairs;
+	}
+
+	public byte getPrefabSevenBetter() {
+		return prefabSevenBetter;
+	}
+
+	public void setPrefabSevenBetter(byte prefabSevenBetter) {
+		this.prefabSevenBetter = prefabSevenBetter;
+	}
+
+	public byte getPrefabFourFlush() {
+		return prefabFourFlush;
+	}
+
+	public void setPrefabFourFlush(byte prefabFourFlush) {
+		this.prefabFourFlush = prefabFourFlush;
+	}
+
+	public byte getPrefabFourStraight() {
+		return prefabFourStraight;
+	}
+
+	public void setPrefabFourStraight(byte prefabFourStraight) {
+		this.prefabFourStraight = prefabFourStraight;
+	}
+
+	public byte getPrefabSevenBetterKeep() {
+		return prefabSevenBetterKeep;
+	}
+
+	public void setPrefabSevenBetterKeep(byte prefabSevenBetterKeep) {
+		this.prefabSevenBetterKeep = prefabSevenBetterKeep;
+	}
+
+	public int getPrefabFiveOfAKindCompare() {
+		return prefabFiveOfAKindCompare;
+	}
+
+	public void setPrefabFiveOfAKindCompare(int prefabFiveOfAKindCompare) {
+		this.prefabFiveOfAKindCompare = prefabFiveOfAKindCompare;
+
+	}
+
+	public int getPrefabFourOfAKindJokerTwoFourteen() {
+		return prefabFourOfAKindJokerTwoFourteen;
+	}
+
+	public void setPrefabFourOfAKindJokerTwoFourteen(int prefabFourOfAKindJokerTwoFourteen) {
+		this.prefabFourOfAKindJokerTwoFourteen = prefabFourOfAKindJokerTwoFourteen;
+		updateFieldsList.add("prefabFourOfAKindJokerTwoFourteen");
+	}
+
+	public byte getPrefabFourOfAKindJA() {
+		return prefabFourOfAKindJA;
+	}
+
+	public void setPrefabFourOfAKindJA(byte prefabFourOfAKindJA) {
+		this.prefabFourOfAKindJA = prefabFourOfAKindJA;
+	}
+
+	public byte getPrefabFourOfAKindTT() {
+		return prefabFourOfAKindTT;
+	}
+
+	public void setPrefabFourOfAKindTT(byte prefabFourOfAKindTT) {
+		this.prefabFourOfAKindTT = prefabFourOfAKindTT;
+	}
+
+	public double getPrefabFourOfAKindJACount() {
+		return prefabFourOfAKindJACount;
+	}
+
+	public void setPrefabFourOfAKindJACount(double prefabFourOfAKindJACount) {
+		this.prefabFourOfAKindJACount = prefabFourOfAKindJACount;
+		updateFieldsList.add("prefabFourOfAKindJACount");
+	}
+
+	public double getPrefabFourOfAKindTTCount() {
+		return prefabFourOfAKindTTCount;
+	}
+
+	public void setPrefabFourOfAKindTTCount(double prefabFourOfAKindTTCount) {
+		this.prefabFourOfAKindTTCount = prefabFourOfAKindTTCount;
+		updateFieldsList.add("prefabFourOfAKindTTCount");
+	}
+
+	public byte getPrefabJoker() {
+		return prefabJoker;
+	}
+
+	public void setPrefabJoker(byte prefabJoker) {
+		this.prefabJoker = prefabJoker;
+	}
+
+	public String getPrefabFourOfAKindTwoTenContinue() {
+		return prefabFourOfAKindTwoTenContinue;
+	}
+
+	public void setPrefabFourOfAKindTwoTenContinue(String prefabFourOfAKindTwoTenContinue) {
+		this.prefabFourOfAKindTwoTenContinue = prefabFourOfAKindTwoTenContinue;
+		updateFieldsList.add("prefabFourOfAKindTwoTenContinue");
+	}
+
+	public byte getPrefabFourOfAKindTwoTenTwo() {
+		return prefabFourOfAKindTwoTenTwo;
+	}
+
+	public void setPrefabFourOfAKindTwoTenTwo(byte prefabFourOfAKindTwoTenTwo) {
+		this.prefabFourOfAKindTwoTenTwo = prefabFourOfAKindTwoTenTwo;
+		updateFieldsList.add("prefabFourOfAKindTwoTenTwo");
 	}
 }

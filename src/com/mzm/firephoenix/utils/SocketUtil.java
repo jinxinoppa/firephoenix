@@ -137,6 +137,9 @@ public class SocketUtil {
 			case 65546 :
 			case 65547 :
 			case 65548 :
+			case 65549 :
+			case 65551 :
+			case 131081 :
 				return "card";
 			case 131075 :
 			case 131076 :
@@ -144,6 +147,15 @@ public class SocketUtil {
 			case 131078 :
 			case 131079 :
 				return "machine";
+			default :
+				return null;
+		}
+	}
+	
+	public static String getLogicMethodName(int cmdNumber) {
+		switch (cmdNumber) {
+			case 65551 :
+				return "csPlayerCardsData";
 			default :
 				return null;
 		}

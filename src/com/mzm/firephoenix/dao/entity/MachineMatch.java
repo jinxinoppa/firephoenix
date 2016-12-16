@@ -56,6 +56,7 @@ public class MachineMatch extends AbstractEntity{
 	}
 	public void setOriderMachineNumber(int oriderMachineNumber) {
 		this.oriderMachineNumber = oriderMachineNumber;
+		updateFieldsList.add("oriderMachineNumber");
 	}
 	public int getId() {
 		return id;
