@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.mina.core.session.IoSession;
 
+import com.mzm.firephoenix.constant.GameConstant;
+
 public class GameCache {
 	private static volatile Map<String, List<IoSession>> seoIdSessionMap = new ConcurrentHashMap<String, List<IoSession>>();
 
@@ -134,5 +136,24 @@ public class GameCache {
 		machineInfo.setMachineType(machineType);
 		machineInfo.setAccountId(accountId);
 		return machineInfo;
+	}
+
+	private static final Map<String, Map<Integer, List<Integer>>> prefabCardsPoolMap = new HashMap<String, Map<Integer, List<Integer>>>();
+
+	public static List<Integer> addPrefabCardsPoolRandomSize(String machineId, int winType) {
+		Map<Integer, List<Integer>> subMap = prefabCardsPoolMap.get(machineId);
+		if (subMap == null) {
+			subMap = new HashMap<Integer, List<Integer>>();
+			prefabCardsPoolMap.put(machineId, subMap);
+		}
+		List<Integer> randomSizeList = subMap.get(winType);
+		if (randomSizeList == null) {
+			randomSizeList = new ArrayList<Integer>();
+			subMap.put(winType, randomSizeList);
+		}
+//		if (randomSizeList.size() >= 24) {
+//			randomSizeList.clear();
+//		}
+		return randomSizeList;
 	}
 }

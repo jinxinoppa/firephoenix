@@ -78,7 +78,7 @@ public class FivepkPlayerInfo extends AbstractEntity {
 
 	public String getCompareHistoryCards() {
 		if (compareHistoryCards == null){
-			compareHistoryCards = "";
+			compareHistoryCards = "0,0,0,0,0,0";
 		}
 		return compareHistoryCards;
 	}

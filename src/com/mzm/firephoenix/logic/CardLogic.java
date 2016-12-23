@@ -16,12 +16,15 @@ import org.springframework.stereotype.Component;
 
 import com.mzm.firephoenix.cache.GameCache;
 import com.mzm.firephoenix.cache.PlayerInfo;
+import com.mzm.firephoenix.constant.CardsPoolUnit;
+import com.mzm.firephoenix.constant.ErrorCode;
 import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.Order;
 import com.mzm.firephoenix.dao.QueryMeta;
 import com.mzm.firephoenix.dao.entity.AccessPoints;
 import com.mzm.firephoenix.dao.entity.FivepkDefault;
+import com.mzm.firephoenix.dao.entity.FivepkPath;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 import com.mzm.firephoenix.dao.entity.FivepkPrefab;
 import com.mzm.firephoenix.dao.entity.FivepkPrefabRandom;
@@ -32,7 +35,6 @@ import com.mzm.firephoenix.dao.entity.MachineMatch;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCCoinScore;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCCompareHistoryCards;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
-import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
@@ -61,28 +63,28 @@ public class CardLogic {
 	public Builder csCards(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		int startIndex = content.getCsCards().getStartIndex();
 		int betScore = content.getCsCards().getBetScore();
 		if (startIndex != 0 && startIndex != 1) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD.getErrorCode());
 		}
 		if (betScore != GameConstant.BETSCORE_100 && betScore != GameConstant.BETSCORE_500 && betScore != GameConstant.BETSCORE_1000 && betScore != GameConstant.BETSCORE_2000) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_BET_SCORE_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_BET_SCORE.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		if (betScore > fivepkPlayerInfo.getScore()) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_BET_SCORE_NOT_ENOUGH_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_BET_SCORE_NOT_ENOUGH.getErrorCode());
 		}
 		String machineId = (String) session.getAttribute("machineId");
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{machineId}, new String[]{"seoMachineId"});
 		List<FivepkPrefabRandom> fivepkPrefabRandomList = jdbcDaoSupport.query(FivepkPrefabRandom.class);
 		List<FivepkPrefab> fivepkPrefabList = jdbcDaoSupport.query(FivepkPrefab.class);
-		CardResult cr = new CardResult();
+		CardResult cr = new CardResult();//(CardResult)session.getAttribute("cardResult");
 		FivepkPrefab fivepkPrefab = null;
 		double winCount = 0;
 		byte keepCard = 0;
@@ -93,6 +95,7 @@ public class CardLogic {
 		int totalWinCount = 0;
 		int plusWinCount = 0;
 		int fourOfAKindJokerTwoFourteen = fivepkSeoId.getPrefabFourOfAKindJokerTwoFourteen();
+		CardsPoolUnit cardsPoolUnit = null;
 		if (startIndex == 0) {
 			for (int i = 0; i < fivepkPrefabList.size(); i++) {
 				fivepkPrefab = fivepkPrefabList.get(i);
@@ -130,8 +133,11 @@ public class CardLogic {
 						continueArr = fivepkPrefab.getPrefab(prefab).split(",");
 						int randomQuantity = RandomUtils.nextInt(Integer.parseInt(continueArr[0]), Integer.parseInt(continueArr[1]));
 						StringBuffer sb = new StringBuffer();
-						for (int j = 0; j < randomQuantity; j++) {
-							sb.append(RandomUtils.nextLong(fivepkSeoId.getSeoMachinePlayCount() + (j * 20), fivepkSeoId.getSeoMachinePlayCount() + 20)).append(",");
+						long randomSeoMachinePlayCount = RandomUtils.nextLong(fivepkSeoId.getSeoMachinePlayCount(), fivepkSeoId.getSeoMachinePlayCount() + 20);
+						sb.append(randomSeoMachinePlayCount).append(",");
+						for (int j = 1; j < randomQuantity; j++) {
+							randomSeoMachinePlayCount = RandomUtils.nextLong(randomSeoMachinePlayCount + 1, randomSeoMachinePlayCount + 20);
+							sb.append(randomSeoMachinePlayCount).append(",");
 						}
 						sb.deleteCharAt(sb.lastIndexOf(","));
 						fivepkSeoId.setPrefabFourOfAKindTwoTenContinue(sb.toString());
@@ -168,21 +174,17 @@ public class CardLogic {
 					}
 				} else if (fivepkPrefab.getPrefabCards() == 80) {
 					prefab = fivepkSeoId.getPrefab(fivepkPrefab.getPrefabCards());
-					prefab = Integer.parseInt(fivepkPrefab.getPrefab(prefab).split(",")[0]);
-					if (prefab == 0) {
+					if (prefab == 7){
+						fivepkSeoId.setPrefabFourOfAKindJokerCount(0);
 						continue;
 					}
-					if (fourOfAKindJokerTwoFourteen == 0){
+					prefab = Integer.parseInt(fivepkPrefab.getPrefab(prefab).split(",")[0]);
+					if (fivepkSeoId.getPrefabFourOfAKindJokerCount() == 0 && prefab != 0){
 						fourOfAKindJokerTwoFourteen = Integer.parseInt(fivepkPrefab.getPrefab(fivepkSeoId.getPrefab(fivepkPrefab.getPrefabCards())).split(",")[RandomUtils.nextInt(0, 2)]);
 						fivepkSeoId.setPrefabFourOfAKindJokerTwoFourteen(fourOfAKindJokerTwoFourteen);
+						fivepkSeoId.setPrefabFourOfAKindJokerCount(fivepkSeoId.getSeoMachinePlayCount() + 10);
 					}
-					fivepkSeoId.setPrefabFourOfAKindJokerCount(fivepkSeoId.getPrefabFourOfAKindJokerCount() + winCount);
-					if (fivepkSeoId.getPrefabFourOfAKindJokerCount() >= totalWinCount * fourOfAKindJokerTwoFourteen) {
-						cr.setWinType(fivepkPrefab.getPrefabCards());
-						break;
-					}
-					fivepkSeoId.setPrefabFourOfAKindJokerCount(fivepkSeoId.getSeoMachinePlayCount() + 10);
-					if (fivepkSeoId.getPrefabFourOfAKindJokerCount() <= fivepkSeoId.getSeoMachinePlayCount()) {
+					if (fivepkSeoId.getPrefabFourOfAKindJokerCount() == fivepkSeoId.getSeoMachinePlayCount()) {
 						cr.setWinType(fivepkPrefab.getPrefabCards());
 						break;
 					}
@@ -346,191 +348,255 @@ public class CardLogic {
 			cr.setStartIndex(1);
 			session.setAttribute("cardResult", cr);
 			byte[] cardArray = new byte[5];
+			
+			
+//			cr.setWinType(80);
+			if (machineId.equals("CEHFH-0001")){
+				cr.setWinType(49);
+			} else if (machineId.equals("CEHFH-0002")){
+				cr.setWinType(120);
+			} else if (machineId.equals("CEHFH-0004")){
+				cr.setWinType(78);
+			} else if (machineId.equals("CEHFH-0005")){
+				cr.setWinType(80);
+			} else if (machineId.equals("CEHFH-0006")){
+				cr.setWinType(250);
+			}  else if (machineId.equals("CEHFH-0007")){
+				cr.setWinType(500);
+			} else if (machineId.equals("CEHFH-0003")){
+				cr.setWinType(1000);
+			}
+			int randomSize = -1;
+			List<CardsPoolUnit> winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType());
 			if (cr.getWinType() == 49) {
-				cardArray = Arrays.copyOf(GameConstant.WINPOOLFOUROFAKINDTWOTEN[RandomUtils.nextInt(0, GameConstant.WINPOOLFOUROFAKINDTWOTEN.length)], cardArray.length);
-
-				randomRemove = 4;// RandomUtils.nextInt(0, 4);
-				keepCard = cardArray[randomRemove];
-				int replaceCard = 0;
-				while (true) {
-					boolean isRepeat = false;
-					replaceCard = RandomUtils.nextInt(0, 53);
-					for (int i = 0; i < 4; i++) {
-						if (cardArray[i] == (byte) replaceCard) {
-							isRepeat = true;
-							break;
-						}
+				while(true){
+					randomSize = 0;//RandomUtils.nextInt(0, winPoolList.size());
+					List<Integer> repeatedRandomSizeList = GameCache.addPrefabCardsPoolRandomSize(machineId, cr.getWinType());
+//					if (machineId.equals("CEHFH-0001")){
+//						randomSize = 0;
+//					} else if (machineId.equals("CEHFH-0002")){
+//						randomSize = 60;
+//					} else if (machineId.equals("CEHFH-0003")){
+//						randomSize = 120;
+//					}
+					randomSize = randomSize + repeatedRandomSizeList.size();
+					if (repeatedRandomSizeList.contains(randomSize)){
+						continue;
 					}
-					if (!isRepeat) {
-						break;
+					repeatedRandomSizeList.add(randomSize);
+					if (repeatedRandomSizeList.size() >= winPoolList.size()) {
+						repeatedRandomSizeList.clear();
 					}
+					break;
 				}
-				cardArray[randomRemove] = (byte) replaceCard;
-				cr.setReplaceCard(cardArray[randomRemove]);
-				List<Byte> keepList = new ArrayList<Byte>();
-				for (byte j = 0; j < 5; j++) {
-					if (j != (byte) randomRemove) {
-						keepList.add(j);
-					}
-				}
+				cardsPoolUnit = winPoolList.get(randomSize);
+				cardArray = Arrays.copyOf(cardsPoolUnit.getFirst(), cardArray.length);
+//
+//				randomRemove = 4;// RandomUtils.nextInt(0, 4);
+//				keepCard = cardArray[randomRemove];
+//				int replaceCard = 0;
+//				while (true) {
+//					boolean isRepeat = false;
+//					replaceCard = RandomUtils.nextInt(1, 53);
+//					for (int i = 0; i < 4; i++) {
+//						if (cardArray[i] == (byte) replaceCard) {
+//							isRepeat = true;
+//							break;
+//						}
+//					}
+//					if (!isRepeat) {
+//						break;
+//					}
+//				}
+//				cardArray[randomRemove] = (byte) replaceCard;
+//				cr.setReplaceCard(cardArray[randomRemove]);
+//				List<Byte> keepList = new ArrayList<Byte>();
+//				for (byte j = 0; j < 5; j++) {
+//					if (j != (byte) randomRemove) {
+//						keepList.add(j);
+//					}
+//				}
 				cr.setWinType2(49);
-				cr.setWinType(50);
+				cr.setWinType(cardsPoolUnit.getWinType());
 				cr.setCards(cardArray);
-				cr.setKeepCards(ArrayUtils.toPrimitive(keepList.toArray(new Byte[keepList.size()])));
-				cr.setKeepCard(keepCard);
+				byte[] keepArray = new byte[cardsPoolUnit.getKeep().length];
+				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
+				cr.setKeepCard(randomSize);
 			} else if (cr.getWinType() == 78) {
-				cardArray = Arrays.copyOf(GameConstant.WINPOOLFOUROFAKINDJA[RandomUtils.nextInt(0, GameConstant.WINPOOLFOUROFAKINDJA.length)], cardArray.length);
-
-				randomRemove = 3;// RandomUtils.nextInt(0, 4);
-				keepCard = cardArray[randomRemove];
-				int replaceCard = 0;
-				while (true) {
-					boolean isRepeat = false;
-					replaceCard = RandomUtils.nextInt(0, 53);
-					for (int i = 0; i < 5; i++) {
-						if (cardArray[i] == (byte) replaceCard) {
-							isRepeat = true;
-							break;
-						}
+				while(true){
+					randomSize = 0;//RandomUtils.nextInt(0, winPoolList.size());
+					List<Integer> repeatedRandomSizeList = GameCache.addPrefabCardsPoolRandomSize(machineId, cr.getWinType());
+//					if (machineId.equals("CEHFH-0001")){
+//						randomSize = 0;
+//					} else if (machineId.equals("CEHFH-0002")){
+//						randomSize = 60;
+//					} else if (machineId.equals("CEHFH-0003")){
+//						randomSize = 120;
+//					}
+					randomSize = randomSize + repeatedRandomSizeList.size();
+					if (repeatedRandomSizeList.contains(randomSize)){
+						continue;
 					}
-					if (!isRepeat) {
-						break;
+					repeatedRandomSizeList.add(randomSize);
+					if (repeatedRandomSizeList.size() >= winPoolList.size()) {
+						repeatedRandomSizeList.clear();
 					}
+					break;
 				}
-				cardArray[randomRemove] = (byte) replaceCard;
-				cr.setReplaceCard(cardArray[randomRemove]);
-				List<Byte> keepList = new ArrayList<Byte>();
-				for (byte j = 0; j < 5; j++) {
-					if (j != (byte) randomRemove) {
-						keepList.add(j);
-					}
-				}
+				cardsPoolUnit = winPoolList.get(randomSize);
+				cardArray = Arrays.copyOf(cardsPoolUnit.getFirst(), cardArray.length);
+				cr.setWinType(cardsPoolUnit.getWinType());
+				cr.setCards(cardArray);
+				byte[] keepArray = new byte[cardsPoolUnit.getKeep().length];
+				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
+				cr.setKeepCard(randomSize);
 				cr.setWinType2(78);
-				cr.setWinType(3);
-				cr.setCards(cardArray);
-				cr.setKeepCards(new byte[]{0,1,2}
-//				ArrayUtils.toPrimitive(keepList.toArray(new Byte[keepList.size()]))
-				);
-				cr.setKeepCard(keepCard);
 			} else if (cr.getWinType() == 80) {
-				cardArray = Arrays.copyOf(GameConstant.WINPOOLFOUROFAKINDJOKER[RandomUtils.nextInt(0, GameConstant.WINPOOLFOUROFAKINDJOKER.length)], cardArray.length);
-
-				randomRemove = 4;// RandomUtils.nextInt(0, 4);
-				keepCard = cardArray[randomRemove];
-				int replaceCard = 0;
-				while (true) {
-					boolean isRepeat = false;
-					replaceCard = RandomUtils.nextInt(0, 53);
-					for (int i = 0; i < 4; i++) {
-						if (cardArray[i] == (byte) replaceCard) {
-							isRepeat = true;
-							break;
-						}
+				while(true){
+					randomSize = 0;//RandomUtils.nextInt(0, winPoolList.size());
+					List<Integer> repeatedRandomSizeList = GameCache.addPrefabCardsPoolRandomSize(machineId, cr.getWinType());
+//					if (machineId.equals("CEHFH-0001")){
+//						randomSize = 0;
+//					} else if (machineId.equals("CEHFH-0002")){
+//						randomSize = 60;
+//					} else if (machineId.equals("CEHFH-0003")){
+//						randomSize = 120;
+//					}
+					randomSize = randomSize + repeatedRandomSizeList.size();
+					if (repeatedRandomSizeList.contains(randomSize)){
+						continue;
 					}
-					if (!isRepeat) {
-						break;
+					repeatedRandomSizeList.add(randomSize);
+					if (repeatedRandomSizeList.size() >= winPoolList.size()) {
+						repeatedRandomSizeList.clear();
 					}
+					break;
 				}
-				cardArray[randomRemove] = (byte) replaceCard;
-				cr.setReplaceCard(cardArray[randomRemove]);
-				List<Byte> keepList = new ArrayList<Byte>();
-				for (byte j = 0; j < 5; j++) {
-					if (j != (byte) randomRemove) {
-						keepList.add(j);
-					}
-				}
+				cardsPoolUnit = winPoolList.get(randomSize);
+				cardArray = Arrays.copyOf(cardsPoolUnit.getFirst(), cardArray.length);
+				cr.setWinType(cardsPoolUnit.getWinType());
 				cr.setCards(cardArray);
-				cr.setKeepCards(ArrayUtils.toPrimitive(keepList.toArray(new Byte[keepList.size()])));
-				cr.setKeepCard(keepCard);
+				byte[] keepArray = new byte[cardsPoolUnit.getKeep().length];
+				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
+				cr.setKeepCard(randomSize);
+				cr.setWinType2(80);
 			} else if (cr.getWinType() == 120) {
-				cardArray = Arrays.copyOf(GameConstant.WINPOOLSTRAIGHTFLUSH[RandomUtils.nextInt(0, GameConstant.WINPOOLSTRAIGHTFLUSH.length)], cardArray.length);
-				sameColor = CardUtil.getCardColor(cardArray[0]) - 1;
-				sameColor = 13 * sameColor;
-				randomRemove = RandomUtils.nextInt(0, 5);
-				while (true) {
-					sameColor2 = 13 * RandomUtils.nextInt(0, 4);
-					if (sameColor != sameColor2) {
-						break;
+				while(true){
+					randomSize = 0;//RandomUtils.nextInt(0, winPoolList.size());
+					List<Integer> repeatedRandomSizeList = GameCache.addPrefabCardsPoolRandomSize(machineId, cr.getWinType());
+//					if (machineId.equals("CEHFH-0001")){
+//						randomSize = 0;
+//					} else if (machineId.equals("CEHFH-0002")){
+//						randomSize = 60;
+//					} else if (machineId.equals("CEHFH-0003")){
+//						randomSize = 120;
+//					}
+					randomSize = randomSize + repeatedRandomSizeList.size();
+					if (repeatedRandomSizeList.contains(randomSize)){
+						continue;
 					}
-				}
-				keepCard = cardArray[randomRemove];
-				cardArray[randomRemove] = (byte) (sameColor2 + RandomUtils.nextInt(2, 14));
-				cr.setReplaceCard(cardArray[randomRemove]);
-				List<Byte> keepList = new ArrayList<Byte>();
-				for (byte j = 0; j < 5; j++) {
-					if (j != (byte) randomRemove) {
-						keepList.add(j);
+					repeatedRandomSizeList.add(randomSize);
+					if (repeatedRandomSizeList.size() >= winPoolList.size()) {
+						repeatedRandomSizeList.clear();
 					}
+					break;
 				}
-				cr.setCards(cardArray);
-				cr.setKeepCards(ArrayUtils.toPrimitive(keepList.toArray(new Byte[keepList.size()])));
-				cr.setKeepCard(keepCard);
-				cr.setWinType(110);
+				cardsPoolUnit = winPoolList.get(randomSize);
+				cardArray = Arrays.copyOf(cardsPoolUnit.getFirst(), cardArray.length);
+				
 				cr.setWinType2(120);
-			} else if (cr.getWinType() == 250) {
-				cardArray = Arrays.copyOf(GameConstant.WINPOOLFIVEOFAKIND[RandomUtils.nextInt(0, GameConstant.WINPOOLFIVEOFAKIND.length)], cardArray.length);
-				Map<Byte, List<Byte>> indexMap = new HashMap<Byte, List<Byte>>();
-				for (byte j = 0; j < cardArray.length; j++) {
-					byte cardValue = (byte) CardUtil.getCardValue(cardArray[j]);
-					List<Byte> subList = indexMap.get(cardValue);
-					if (subList == null) {
-						subList = new ArrayList<Byte>();
-						indexMap.put(cardValue, subList);
-					}
-					subList.add(j);
-				}
-				for (Byte key : indexMap.keySet()) {
-					if (indexMap.get(key).size() >= 3) {
-						cr.setKeepCards(ArrayUtils.toPrimitive(indexMap.get(key).toArray(new Byte[indexMap.get(key).size()])));
-					}
-				}
+				cr.setWinType(cardsPoolUnit.getWinType());
 				cr.setCards(cardArray);
-				randomRemove = 4;
-				keepCard = cardArray[randomRemove];
-				cardArray[randomRemove] = (byte) 1;
-				cr.setReplaceCard(cardArray[randomRemove]);
-				cr.setKeepCard(keepCard);
+				byte[] keepArray = new byte[cardsPoolUnit.getKeep().length];
+				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
+				cr.setKeepCard(randomSize);
+			} else if (cr.getWinType() == 250) {
+				while(true){
+					randomSize = 0;//RandomUtils.nextInt(0, winPoolList.size());
+					List<Integer> repeatedRandomSizeList = GameCache.addPrefabCardsPoolRandomSize(machineId, cr.getWinType());
+//					if (machineId.equals("CEHFH-0001")){
+//						randomSize = 0;
+//					} else if (machineId.equals("CEHFH-0002")){
+//						randomSize = 60;
+//					} else if (machineId.equals("CEHFH-0003")){
+//						randomSize = 120;
+//					}
+					randomSize = randomSize + repeatedRandomSizeList.size();
+					if (repeatedRandomSizeList.contains(randomSize)){
+						continue;
+					}
+					repeatedRandomSizeList.add(randomSize);
+					if (repeatedRandomSizeList.size() >= winPoolList.size()) {
+						repeatedRandomSizeList.clear();
+					}
+					break;
+				}
+				cardsPoolUnit = winPoolList.get(randomSize);
+				cardArray = Arrays.copyOf(cardsPoolUnit.getFirst(), cardArray.length);
+				cr.setWinType(cardsPoolUnit.getWinType());
+				cr.setCards(cardArray);
+				byte[] keepArray = new byte[cardsPoolUnit.getKeep().length];
+				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
+				cr.setKeepCard(randomSize);
 				cr.setWinType2(250);
 			} else if (cr.getWinType() == 500) {
-				cardArray = Arrays.copyOf(GameConstant.WINPOOLROYALFLUSH[RandomUtils.nextInt(0, GameConstant.WINPOOLROYALFLUSH.length)], cardArray.length);
-				sameColor = CardUtil.getCardColor(cardArray[0]) - 1;
-				sameColor = 13 * sameColor;
-				randomRemove = RandomUtils.nextInt(0, 5);
-				while (true) {
-					sameColor2 = 13 * RandomUtils.nextInt(0, 4);
-					if (sameColor != sameColor2) {
-						break;
+				while(true){
+					randomSize = 0;//RandomUtils.nextInt(0, winPoolList.size());
+					List<Integer> repeatedRandomSizeList = GameCache.addPrefabCardsPoolRandomSize(machineId, cr.getWinType());
+//					if (machineId.equals("CEHFH-0001")){
+//						randomSize = 0;
+//					} else if (machineId.equals("CEHFH-0002")){
+//						randomSize = 60;
+//					} else if (machineId.equals("CEHFH-0003")){
+//						randomSize = 120;
+//					}
+					randomSize = randomSize + repeatedRandomSizeList.size();
+					if (repeatedRandomSizeList.contains(randomSize)){
+						continue;
 					}
-				}
-				keepCard = cardArray[randomRemove];
-				cardArray[randomRemove] = (byte) (sameColor2 + RandomUtils.nextInt(2, 14));
-				cr.setReplaceCard(cardArray[randomRemove]);
-				List<Byte> keepList = new ArrayList<Byte>();
-				for (byte j = 0; j < 5; j++) {
-					if (j != (byte) randomRemove) {
-						keepList.add(j);
+					repeatedRandomSizeList.add(randomSize);
+					if (repeatedRandomSizeList.size() >= winPoolList.size()) {
+						repeatedRandomSizeList.clear();
 					}
+					break;
 				}
+				cardsPoolUnit = winPoolList.get(randomSize);
+				cardArray = Arrays.copyOf(cardsPoolUnit.getFirst(), cardArray.length);
+				cr.setWinType(cardsPoolUnit.getWinType());
 				cr.setCards(cardArray);
-				cr.setKeepCards(ArrayUtils.toPrimitive(keepList.toArray(new Byte[keepList.size()])));
-				cr.setKeepCard(keepCard);
-				cr.setWinType(110);
+				byte[] keepArray = new byte[cardsPoolUnit.getKeep().length];
+				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
+				cr.setKeepCard(randomSize);
 				cr.setWinType2(500);
 			} else if (cr.getWinType() == 1000) {
-				cardArray = Arrays.copyOf(GameConstant.WINPOOLFIVEBARS, cardArray.length);
-				randomRemove = RandomUtils.nextInt(0, 5);
-				keepCard = cardArray[randomRemove];
-				cardArray[randomRemove] = (byte) 53;//(RandomUtils.nextInt(2, 10));
-				cr.setReplaceCard(cardArray[randomRemove]);
-				List<Byte> keepList = new ArrayList<Byte>();
-				for (byte j = 0; j < 5; j++) {
-//					if (j != (byte) randomRemove) {
-						keepList.add(j);
+				while(true){
+					randomSize = 0;//RandomUtils.nextInt(0, winPoolList.size());
+					List<Integer> repeatedRandomSizeList = GameCache.addPrefabCardsPoolRandomSize(machineId, cr.getWinType());
+//					if (machineId.equals("CEHFH-0001")){
+//						randomSize = 0;
+//					} else if (machineId.equals("CEHFH-0002")){
+//						randomSize = 60;
+//					} else if (machineId.equals("CEHFH-0003")){
+//						randomSize = 120;
 //					}
+					randomSize = randomSize + repeatedRandomSizeList.size();
+					if (repeatedRandomSizeList.contains(randomSize)){
+						continue;
+					}
+					repeatedRandomSizeList.add(randomSize);
+					if (repeatedRandomSizeList.size() >= winPoolList.size()) {
+						repeatedRandomSizeList.clear();
+					}
+					break;
 				}
+				cardsPoolUnit = winPoolList.get(randomSize);
+				cardArray = Arrays.copyOf(cardsPoolUnit.getFirst(), cardArray.length);
+				cr.setWinType(cardsPoolUnit.getWinType());
 				cr.setCards(cardArray);
-				cr.setKeepCards(ArrayUtils.toPrimitive(keepList.toArray(new Byte[keepList.size()])));
-				cr.setKeepCard(keepCard);
+				byte[] keepArray = new byte[cardsPoolUnit.getKeep().length];
+				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
+				cr.setKeepCard(randomSize);
+				cr.setWinType2(1000);
 			} else {
 				CardUtil.firstRandomCards(cr, fivepkSeoId, fivepkPrefabRandomList);
 			}
@@ -544,14 +610,17 @@ public class CardLogic {
 			String keepCards = Arrays.toString(cr.getKeepCards());
 			keepCards = keepCards.substring(1, keepCards.length() - 1);
 			cr.setGuardCard(keepCards);
+			if (cr.getWinType2() == 120 || cr.getWinType2() == 500){
+				return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(cr.getWinType()).setCards(cardsStr).setHoldCards(keepCards).setPreSound(1));
+			}
 			return MessageContent.newBuilder().setResult(0).setScCards(SCCards.newBuilder().setCardRate(cr.getWinType()).setCards(cardsStr).setHoldCards(keepCards));
 		} else {
 			cr = (CardResult) session.getAttribute("cardResult");
 			if (cr == null) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT.getErrorCode());
 			}
 			if (cr.getStartIndex() != 1) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX.getErrorCode());
 			}
 			String holdCards = content.getCsCards().getHoldCards();
 			boolean prefabKeepCard = false;
@@ -572,86 +641,58 @@ public class CardLogic {
 			} else {
 				cr.setKeepCards(null);
 			}
-			if (cr.getKeepCard() != 0) {
-				if (cr.getWinType2() == 49 && prefabKeepCard) {
-					byte[] cardArray2 = cr.getCards();
-					for (int j = 0; j < cardArray2.length; j++) {
-						if (cardArray2[j] == cr.getReplaceCard()) {
-							randomRemove = j;
-							break;
-						}
-					}
-					cardArray2[randomRemove] = cr.getKeepCard();
+			if (cr.getKeepCard() > -1 && prefabKeepCard) {
+				List<CardsPoolUnit> winPoolList = null;
+				if (cr.getWinType2() == 49) {
+					winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType2());
+					cardsPoolUnit = winPoolList.get(cr.getKeepCard());
 					fivepkSeoId.setPrefabFourOfAKindTTCount(0);
+					cr.setCards(cardsPoolUnit.getSecond());
 					cr.setWinType(50);
-				} else if (cr.getWinType2() == 78 && prefabKeepCard) {
-					byte[] cardArray2 = cr.getCards();
-					for (int j = 0; j < cardArray2.length; j++) {
-						if (cardArray2[j] == cr.getReplaceCard()) {
-							randomRemove = j;
-							break;
-						}
-					}
-					cardArray2[randomRemove] = cr.getKeepCard();
+				} else if (cr.getWinType2() == 78) {
+					winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType2());
+					cardsPoolUnit = winPoolList.get(cr.getKeepCard());
+					cr.setCards(cardsPoolUnit.getSecond());
 					fivepkSeoId.setPrefabFourOfAKindJACount(0);
 					cr.setWinType(80);
 					fourOfAKindJokerTwoFourteen = 0;
-				} else if (cr.getWinType() == 80 && prefabKeepCard) {
-					byte[] cardArray2 = cr.getCards();
-					for (int j = 0; j < cardArray2.length; j++) {
-						if (cardArray2[j] == cr.getReplaceCard()) {
-							randomRemove = j;
-							break;
-						}
-					}
-					cardArray2[randomRemove] = cr.getKeepCard();
+				} else if (cr.getWinType2() == 80) {
+					winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType2());
+					cardsPoolUnit = winPoolList.get(cr.getKeepCard());
+					cr.setCards(cardsPoolUnit.getSecond());
 					fivepkSeoId.setPrefabFourOfAKindJokerCount(0);
-				} else if (cr.getWinType2() == 120 && prefabKeepCard) {
-					byte[] cardArray2 = cr.getCards();
-					for (int j = 0; j < cardArray2.length; j++) {
-						if (cardArray2[j] == cr.getReplaceCard()) {
-							randomRemove = j;
-							break;
-						}
-					}
-					cardArray2[randomRemove] = cr.getKeepCard();
+					fivepkSeoId.setPrefabFourOfAKindJoker((byte)7);
+					cr.setWinType(80);
+				} else if (cr.getWinType2() == 120) {
+					winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType2());
+					cardsPoolUnit = winPoolList.get(cr.getKeepCard());
 					fivepkSeoId.setPrefabStraightFlushCount(0);
+					cr.setCards(cardsPoolUnit.getSecond());
 					cr.setWinType(120);
-				} else if (cr.getWinType2() == 250 && prefabKeepCard) {
-					byte[] cardArray2 = cr.getCards();
-					for (int j = 0; j < cardArray2.length; j++) {
-						if (cardArray2[j] == cr.getReplaceCard()) {
-							randomRemove = j;
-							break;
-						}
-					}
-					cardArray2[randomRemove] = cr.getKeepCard();
+				} else if (cr.getWinType2() == 250) {
+					winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType2());
+					cardsPoolUnit = winPoolList.get(cr.getKeepCard());
+					cr.setCards(cardsPoolUnit.getSecond());
 					fivepkSeoId.setPrefabFiveOfAKindCount(0);
 					cr.setWinType(250);
-				} else if (cr.getWinType2() == 500 && prefabKeepCard) {
-					byte[] cardArray2 = cr.getCards();
-					for (int j = 0; j < cardArray2.length; j++) {
-						if (cardArray2[j] == cr.getReplaceCard()) {
-							randomRemove = j;
-							break;
-						}
-					}
-					cardArray2[randomRemove] = cr.getKeepCard();
+				} else if (cr.getWinType2() == 500) {
+					winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType2());
+					cardsPoolUnit = winPoolList.get(cr.getKeepCard());
+					cr.setCards(cardsPoolUnit.getSecond());
 					fivepkSeoId.setPrefabRoyalFlushCount(0);
 					cr.setWinType(500);
-				} else if (cr.getWinType() == 1000 && prefabKeepCard) {
-					byte[] cardArray2 = cr.getCards();
-					for (int j = 0; j < cardArray2.length; j++) {
-						if (cardArray2[j] == cr.getReplaceCard()) {
-							randomRemove = j;
-							break;
-						}
-					}
-					cardArray2[randomRemove] = cr.getKeepCard();
+				} else if (cr.getWinType2() == 1000) {
+					winPoolList = GameConstant.WINPOOLMAP.get(cr.getWinType2());
+					cardsPoolUnit = winPoolList.get(cr.getKeepCard());
+					cr.setCards(cardsPoolUnit.getSecond());
 					fivepkSeoId.setPrefabFiveBarsCount(0);
+					cr.setWinType(1000);
 				}
 			} else {
 				cr = CardUtil.secondRandomCards(cr, fivepkSeoId, fivepkPrefabRandomList);
+				if (cr.getWinType() == 80){
+					fourOfAKindJokerTwoFourteen = 0;
+				}
 			}
 			int winType = cr.getWinType();
 			int score = 0;
@@ -685,6 +726,7 @@ public class CardLogic {
 			session.setAttribute("cardResult", cr);
 			java.sql.Date oneday = new java.sql.Date(new java.util.Date().getTime());
 			if (startIndex == 1) {
+				FivepkPath fivepkPath=(FivepkPath) session.getAttribute("fivepkPath");
 				MachineGain machineGain = jdbcDaoSupport.queryOne(MachineGain.class, new Object[]{session.getAttribute("machineId"), oneday}, null, new String[]{"seoMachineId", "oneday"});
 				if (machineGain == null) {
 					jdbcDaoSupport.save(new MachineGain((String) session.getAttribute("machineId"), GameCache.getPlayerInfo(accountId).getSeoId(), oneday));
@@ -696,12 +738,15 @@ public class CardLogic {
 					jdbcDaoSupport.save(new MachineDefault((String) session.getAttribute("machineId"), GameCache.getPlayerInfo(accountId).getSeoId(), oneday));
 					machineDefault = jdbcDaoSupport.queryOne(MachineDefault.class, new Object[]{session.getAttribute("machineId"), oneday}, null, new String[]{"seoMachineId", "oneday"});
 				}
-				//FivepkDefault fivepkDefault = new FivepkDefault(fivepkPlayerInfo.getNickName(), machineId, fivepkPlayerInfo.getScore(), betScore);
 				if (score > 0) {
 					machineDefault.setWinNumber(machineDefault.getWinNumber() + 1);
 				}
+				fivepkPath.setPlayNumber(fivepkPath.getPlayNumber()+1);
+				fivepkPath.setBeginPoint(fivepkPlayerInfo.getScore());
+				session.setAttribute("fivepkPath", fivepkPath);
+				//fivepkPath.setWinPoint(winPoint);
+				//fivepkPath.setPlayPoint(fivepkPath.getPlayPoint()+betScore);
 				machineDefault.setPlayNumber(machineDefault.getPlayNumber() + 1);
-				machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + score);
 				machineDefault.setPlaySumPoint(machineDefault.getPlaySumPoint() + betScore);
 				switch (cr.getWinType()) {
 					case 1 :// 一对
@@ -727,6 +772,62 @@ public class CardLogic {
 						break;
 					case 80 :// 大四梅
 						machineDefault.setBigFourKind(machineDefault.getBigFourKind() + 1);
+						if(fivepkSeoId.getPrefabFourOfAKindJokerTwoFourteen()>1){
+						switch(fivepkSeoId.getPrefabFourOfAKindJokerTwoFourteen()){
+						case 2 :
+							machineDefault.setFour2(machineDefault.getFour2() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + score);
+							break;
+						case 3 :
+							machineDefault.setFour3(machineDefault.getFour3() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*2));
+							break;
+						case 4 :
+							machineDefault.setFour4(machineDefault.getFour4() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*3));
+							break;
+						case 5 :
+							machineDefault.setFour5(machineDefault.getFour5() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*4));
+							break;
+						case 6 :
+							machineDefault.setFour6(machineDefault.getFour6() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*5));
+							break;
+						case 7 :
+							machineDefault.setFour7(machineDefault.getFour7() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*6));
+							break;
+						case 8 :
+							machineDefault.setFour8(machineDefault.getFour8() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*7));
+							break;
+						case 9 :
+							machineDefault.setFour9(machineDefault.getFour9() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*8));
+							break;
+						case 10 :
+							machineDefault.setFour10(machineDefault.getFour10() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*9));
+							break;
+						case 11 :
+							machineDefault.setFour11(machineDefault.getFour11() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*10));
+							break;
+						case 12 :
+							machineDefault.setFour12(machineDefault.getFour12() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*11));
+							break;
+						case 13 :
+							machineDefault.setFour13(machineDefault.getFour13() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*12));
+							break;
+						case 14 :
+							machineDefault.setFour14(machineDefault.getFour14() + 1);
+							machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + (score*13));
+							break;
+						}
+						}
 						break;
 					case 81 :// 正宗大四梅
 						machineDefault.setBigFourKind(machineDefault.getBigFourKind() + 1);
@@ -739,6 +840,11 @@ public class CardLogic {
 						break;
 					case 250 :// 五梅
 						machineDefault.setFiveKind(machineDefault.getFiveKind() + 1);
+						if(fivepkSeoId.getPrefabFiveOfAKindCompare()==1){
+							machineDefault.setFive1(machineDefault.getFive1()+1);
+						}else if(fivepkSeoId.getPrefabFiveOfAKindCompare()==2){
+							machineDefault.setFive2(machineDefault.getFive2()+1);
+						}
 						break;
 					case 500 :// 同花大顺
 						machineDefault.setRoyalFlush(machineDefault.getRoyalFlush() + 1);
@@ -750,6 +856,7 @@ public class CardLogic {
 						machineDefault.setFiveBars(machineDefault.getFiveBars() + 1);
 						break;
 				}
+				machineDefault.setWinSumPoint(machineDefault.getWinSumPoint() + score);
 				MachineMatch machineMatch = jdbcDaoSupport.queryOne(MachineMatch.class, new Object[]{session.getAttribute("machineId"), oneday}, null, new String[]{"seoMachineId", "oneday"});
 				if (machineMatch == null) {
 					jdbcDaoSupport.save(new MachineMatch((String) session.getAttribute("machineId"), GameCache.getPlayerInfo(accountId).getSeoId(), oneday));
@@ -771,9 +878,11 @@ public class CardLogic {
 			String defsult=fivepkPlayerInfo.getNickName()+"|"+machineId+"|"+fivepkPlayerInfo.getScore()+"|"+
 			betScore+"|"+cr.getOneCard()+"|"+cr.getGuardCard()+"|"+cardsStr+"|"+cr.getWinType();
 			session.setAttribute("defsult",defsult);
+			FivepkPath fivepkPath=(FivepkPath) session.getAttribute("fivepkPath");
+			fivepkPath.setPlayPoint(fivepkPath.getPlayPoint()+betScore);
 			if(winType==0){
 				FivepkDefault fivepkDefault=new FivepkDefault(fivepkPlayerInfo.getNickName(),machineId,fivepkPlayerInfo.getScore(),
-						betScore,0,cr.getOneCard(),cr.getGuardCard(),cardsStr,
+						betScore,score,cr.getOneCard(),cr.getGuardCard(),cardsStr,
 						cr.getWinType(),0,"");
 				jdbcDaoSupport.save(fivepkDefault);
 				session.removeAttribute("defsult");
@@ -794,11 +903,11 @@ public class CardLogic {
 	public Builder ccCompareHistoryCards(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		String compareHistoryCards = fivepkPlayerInfo.getCompareHistoryCards();
 		if (compareHistoryCards == null) {
@@ -818,30 +927,30 @@ public class CardLogic {
 	public Builder csCompareCard(IoSession session, MessageContent content) {
 		int bigSmall = content.getCsCompareCard().getBigSmall();
 		if (bigSmall != 0 && bigSmall != 1) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER.getErrorCode());
 		}
 		int five = content.getCsCompareCard().getFive();
 		if (five != 0 && five != 1) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER.getErrorCode());
 		}
 		int betScore = content.getCsCompareCard().getBetScore();
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT.getErrorCode());
 		}
 		if (betScore != cr.getWin() && betScore != cr.getWin() / 2 && betScore != cr.getWin() * 2) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_BETSCORE_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_BETSCORE.getErrorCode());
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		if (betScore > fivepkPlayerInfo.getScore() + cr.getWin() - cr.getBet()) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH.getErrorCode());
 		}
 		int compareCard = 0;
 		int score = 0;
@@ -862,8 +971,8 @@ public class CardLogic {
 			return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(0));
 		} else {
 			String[] compareHistoryCardsArray = fivepkPlayerInfo.getCompareHistoryCards().split(",");
-			boolean isRepeated = false;
 			while (true) {
+				boolean isRepeated = false;
 				compareCard = CardUtil.compareCard();
 				for (int i = 0; i < compareHistoryCardsArray.length; i++) {
 					if (compareHistoryCardsArray[i].equals(String.valueOf(compareCard))) {
@@ -927,8 +1036,10 @@ public class CardLogic {
 			
 			if(bigSmall==0){
 				cr.setBetType(cr.getBetType()+"1-");
-			}else{
+			}else if(bigSmall==1){
 				cr.setBetType(cr.getBetType()+"0-");
+			}else{
+				cr.setBetType(cr.getBetType()+"2-");
 			}
 			cr.setBetType(cr.getBetType()+cardValue);
 			cr.setBetType(cr.getBetType()+",");
@@ -977,18 +1088,19 @@ public class CardLogic {
 					machineMatch.setOriderMachineNumber(machineMatch.getOriderMachineNumber() + 1);
 					machineMatch.setOriderMachineMoney(machineMatch.getOriderMachineMoney() + 50000);// 爆机彩金
 					machineMatch.setWinPoint(machineMatch.getWinPoint() + 50000);
-				}else if (cr.getWin() >= 75000) {
+				}
+				if (cr.getWin() >= 75000) {
 					// cr.setWin(cr.getWin() + cr.getWinCount() * 4000);
 					// score += cr.getWin() + cr.getWinCount() * 4000;
 					cr.setGiftWin(cr.getWinCount() * 4000);
 					machineMatch.setPassNumber(machineMatch.getPassNumber() + 1);// 过关次数
 					if(cr.getPassMath()==0){
 						machineMatch.setPassMoney(machineMatch.getPassMoney() + cr.getPassScore());// 过关彩金
-						machineMatch.setWinPoint(machineMatch.getWinPoint()+cr.getPassScore());
+						//machineMatch.setWinPoint(machineMatch.getWinPoint()+cr.getPassScore());
 						cr.setPassMath(1);
 					}else{
 						machineMatch.setPassMoney(machineMatch.getPassMoney() + 4000);// 过关彩金
-						machineMatch.setWinPoint(machineMatch.getWinPoint() + 4000);
+						//machineMatch.setWinPoint(machineMatch.getWinPoint() + 4000);
 					}
 				}
 
@@ -1036,12 +1148,14 @@ public class CardLogic {
 					// if (machineMatch.getWinPoint() > 0){
 					// jdbcDaoSupport.update(machineMatch);
 					// }
+					String defsultStr = (String)session.getAttribute("defsult");
+					if(defsultStr != null && !defsultStr.isEmpty()){
+						String defsult[]= defsultStr.split("\\|");
+						FivepkDefault fivepkDefault=new FivepkDefault(defsult[0],defsult[1],Integer.parseInt(defsult[2]),Integer.parseInt(defsult[3]),0,defsult[4],defsult[5],defsult[6],Integer.parseInt(defsult[7]),betScore,cr.getBetType());
+						jdbcDaoSupport.save(fivepkDefault);
+						session.removeAttribute("defsult");
+					}
 				}
-				String defsultStr = (String)session.getAttribute("defsult");
-				String defsult[]= defsultStr.split("\\|");
-				FivepkDefault fivepkDefault=new FivepkDefault(defsult[0],defsult[1],Integer.parseInt(defsult[2]),Integer.parseInt(defsult[3]),0,defsult[4],defsult[5],defsult[6],Integer.parseInt(defsult[7]),betScore,cr.getBetType());
-				jdbcDaoSupport.save(fivepkDefault);
-				session.removeAttribute("defsult");
 			}
 
 		}
@@ -1062,24 +1176,24 @@ public class CardLogic {
 		machineGain.setAddPlayPoint((int) machineMatch.getPlayPoint() + (int) machineDefault.getPlaySumPoint());
 		jdbcDaoSupport.update(machineGain);
 		cr.setBetScore(betScore);
-		return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(cr.getWin()));
+		return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(2).setWinScore(cr.getWin()));
 	}
 
 	public Builder csWin(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_CARD_RESULT.getErrorCode());
 		}
 		if (cr.getStartIndex() != 1) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_START_INDEX.getErrorCode());
 		}
 		fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
 		java.sql.Date oneday = new java.sql.Date(new java.util.Date().getTime());
@@ -1099,6 +1213,18 @@ public class CardLogic {
 			machineMatch.setWinPoint(machineMatch.getWinPoint() + totalHalfWin);
 		}
 		jdbcDaoSupport.update(machineMatch);
+		FivepkPath fivepkPath=(FivepkPath) session.getAttribute("fivepkPath");
+		fivepkPath.setWinPoint(fivepkPath.getWinPoint()+cr.getWin());
+		if (cr.getWin() >= 75000) {
+			machineMatch.setWinPoint(machineMatch.getWinPoint()+cr.getPassScore());
+		}
+		String defsultStr = (String)session.getAttribute("defsult");
+		if(defsultStr != null && !defsultStr.isEmpty()){
+			String defsult[]= defsultStr.split("\\|");
+			FivepkDefault fivepkDefault=new FivepkDefault(defsult[0],defsult[1],Integer.parseInt(defsult[2]),Integer.parseInt(defsult[3]),cr.getWin(),defsult[4],defsult[5],defsult[6],Integer.parseInt(defsult[7]),cr.getBetScore(),cr.getBetType());
+			jdbcDaoSupport.save(fivepkDefault);
+			session.removeAttribute("defsult");
+		}
 		cr.reset();
 		session.setAttribute("cardResult", cr);
 		if (session.getAttribute("compareCard") != null) {
@@ -1106,16 +1232,10 @@ public class CardLogic {
 			session.removeAttribute("compareCard");
 		}
 		jdbcDaoSupport.update(fivepkPlayerInfo);
-		
-		//fivepkPlayerInfo.getNickName()+","+machineId+","+fivepkPlayerInfo.getScore()+","+
-		//betScore+","+(String)session.getAttribute("cardsStr")+","+(String)session.getAttribute("keepCards")+","+cardsStr+","+cr.getWinType();
-		//String name, String machineId, int credit,int bet, int win, String oneCard, String guardCard, String twoCard,int cardType, int guessPoint, String guessType
-		String defsultStr = (String)session.getAttribute("defsult");
-		String defsult[]= defsultStr.split("\\|");
-		//String compare[]=((String)session.getAttribute("compare")).split("|");
-		FivepkDefault fivepkDefault=new FivepkDefault(defsult[0],defsult[1],Integer.parseInt(defsult[2]),Integer.parseInt(defsult[3]),0,defsult[4],defsult[5],defsult[6],Integer.parseInt(defsult[7]),cr.getBetScore(),cr.getBetType());
-		jdbcDaoSupport.save(fivepkDefault);
-		session.removeAttribute("defsult");
+		//jdbcDaoSupport.update(machineMatch);
+		fivepkPath.setEndPoint(fivepkPlayerInfo.getScore());
+		fivepkPath.setWinNumber(fivepkPath.getWinNumber()+1);
+		session.setAttribute("fivepkPath", fivepkPath);
 		return MessageContent.newBuilder().setResult(0);
 	}
 
@@ -1124,27 +1244,32 @@ public class CardLogic {
 		int score = content.getCcCoinScore().getScore();
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
 		if (playerInfo.getAccountType() == GameConstant.ACCOUNT_TYPE_GUEST) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_GUEST_COINSCORE_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_CARD_GUEST_COINSCORE.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null) {
 			if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore())) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_COIN_SCORE_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_COIN_SCORE.getErrorCode());
 			}
 		} else {
 			if ((coin * 100 + score) != (fivepkPlayerInfo.getCoin() * 100 + fivepkPlayerInfo.getScore() - cr.getBet())) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_COIN_SCORE_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_COIN_SCORE.getErrorCode());
 			}
 			cr.setBet(0);
 			session.setAttribute("cardResult", cr);
+		}
+		FivepkPath fivepkPath=(FivepkPath) session.getAttribute("fivepkPath");
+		if (fivepkPath != null){
+			fivepkPath.setAccessPoint(fivepkPath.getAccessPoint()+(fivepkPlayerInfo.getScore()-score));
+			session.setAttribute("fivepkPath", fivepkPath);
 		}
 		AccessPoints accessPoints = new AccessPoints();
 		accessPoints.setNickName(playerInfo.getNickName());
@@ -1164,7 +1289,7 @@ public class CardLogic {
 	public Builder csCompareHistoryOneCard(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		int compareCard = CardUtil.compareCard();
 		session.setAttribute("compareCard", compareCard);
@@ -1174,21 +1299,21 @@ public class CardLogic {
 	public Builder csFourKindTime(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
 		if (cr == null){
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		String machineId = (String) session.getAttribute("machineId");
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{machineId}, new String[]{"seoMachineId"});
 		int fourOfAKindJokerTwoFourteen = fivepkSeoId.getPrefabFourOfAKindJokerTwoFourteen();
 		if (fourOfAKindJokerTwoFourteen == 0){
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}   
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		cr.setWin(cr.getWin() * fourOfAKindJokerTwoFourteen);
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
@@ -1216,6 +1341,10 @@ public class CardLogic {
 	}
 	
 	public void csMachineAuto(IoSession session, MessageContent content){
+		Long accountId = (Long) session.getAttribute("accountId");
+		if (accountId == null) {
+			return;
+		}
 		int auto=content.getCsMachineAuto().getAuto();
 		FivepkSeoId fivepkSeoId=jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{session.getAttribute("machineId")}, null, new String[]{"seoMachineId"});
 		fivepkSeoId.setMachineAuto(auto);
@@ -1223,6 +1352,10 @@ public class CardLogic {
 	}
 	
 	public Builder csPlayerCardsData(IoSession session, MessageContent content){
+		Long accountId = (Long) session.getAttribute("accountId");
+		if (accountId == null) {
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
+		}
 		String machineId = (String) session.getAttribute("machineId");
 		List<FivepkDefault> fivepkDefaultList=jdbcDaoSupport.query(FivepkDefault.class, new Object[]{machineId}, new QueryMeta(0, 10, "id", Order.DESC), new String[]{"machineId"});
 		SCPlayerHistoryData.Builder listBuilder = SCPlayerHistoryData.newBuilder();
@@ -1253,6 +1386,20 @@ public class CardLogic {
 	}
 	
 	public Builder csCardsBet(IoSession session, MessageContent content){
+//		Long accountId = (Long) session.getAttribute("accountId");
+//		if (accountId == null) {
+//			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
+//		}
+//		int betScore = content.getCsCardsBet().getBetScore();
+//		if (betScore <= 0 || betScore > 2000){
+//			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_SMS_INVALID_PARAMETER.getErrorCode());
+//		}
+//		CardResult cr = (CardResult)session.getAttribute("cardResult");;
+//		if (cr == null){
+//			cr = new CardResult();
+//		}
+//		cr.setBet(betScore);
+//		session.setAttribute("cardResult", cr);
 		return MessageContent.newBuilder().setResult(0);
 	}
 }

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import com.mzm.firephoenix.cache.GameCache;
 import com.mzm.firephoenix.cache.PlayerInfo;
+import com.mzm.firephoenix.constant.ErrorCode;
 import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.QueryMeta;
@@ -26,7 +27,6 @@ import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 import com.mzm.firephoenix.dao.entity.FivepkSeoIdList;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCBinding;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName;
-import com.mzm.firephoenix.protobuf.CoreProtocol.ErrorCode;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
@@ -56,14 +56,14 @@ public class AccountLogic {
 		String password = content.getCsRegister().getPassword();
 		String seoid = content.getCsRegister().getSeoid();
 		if (account.isEmpty() || password.isEmpty() || seoid.isEmpty()) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_UNAME_UPASS_USEOID_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_UNAME_UPASS_USEOID.getErrorCode());
 		}
 		if (!account.matches("^[A-Za-z0-9]{5,17}$")) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_NAME_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_NAME.getErrorCode());
 		}
 		List<String> seoIdList = jdbcDaoSupport.queryGroupBy(FivepkSeoIdList.class, new QueryMeta("seoid"));
 		if (!seoIdList.contains(seoid)) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_LOGIN_SEOID_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_LOGIN_SEOID.getErrorCode());
 		}
 		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
 		if (fivepkAccount == null) {
@@ -99,7 +99,7 @@ public class AccountLogic {
 				throw e;
 			}
 		} else {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_EXIT.getErrorCode());
 		}
 		return MessageContent.newBuilder().setResult(0).setScRegister(SCRegister.newBuilder().setAccount(account));
 	}
@@ -108,49 +108,51 @@ public class AccountLogic {
 		String name = content.getCsLogin().getAccount();
 		String password = content.getCsLogin().getPassword();
 		String seoid = (String) session.getAttribute(GameConstant.SESSION_IS_REGISTERED);
-		long accountId = 0;
+		Long accountId = (long) 0;
 		if (seoid == null) {
 			FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{name}, new String[]{"name"});
 			if (fivepkAccount == null) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 			} else if (!fivepkAccount.getPassword().equals(password)) {
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PWD_WRONG_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PWD_WRONG.getErrorCode());
 			}
 			accountId = fivepkAccount.getAccountId();
 			PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
 			if (playerInfo != null) {
 				IoSession ioSession = playerInfo.getPlayerInfoSession();
 				accountId = (long) ioSession.removeAttribute("accountId");
-				CardResult cr = (CardResult) ioSession.removeAttribute("cardResult");
-				String machineId = (String) ioSession.removeAttribute("machineId");
-				GameCache.removeIoSession(playerInfo.getSeoId(), ioSession);
-				GameCache.removePlayerInfo(accountId);
-				if (cr != null && cr.getWin() > 0) {
-					FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
-					fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
-					jdbcDaoSupport.update(fivepkPlayerInfo);
-				}
-				if (machineId != null) {
-					GameCache.updateMachineInfo(playerInfo.getSeoId(),machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
-					List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
-					for (IoSession ioSession2 : sessionList) {
-						if (!ioSession2.isClosing() && ioSession2.isConnected() && (Long) ioSession2.getAttribute("accountId") != accountId) {
-							MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
-							returnMessagePack.setCmd(Cmd.CMD_MACHINE_INFO);
-							returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScMachineInfo(SCMachineInfo.newBuilder().setMachineId(machineId).setMachineType(GameConstant.MACHINE_TYPE_FREE)));
-							logger.info("sent message pack : " + returnMessagePack.toString());
-							ioSession2.write(returnMessagePack);
+				if (accountId != null){
+					CardResult cr = (CardResult) ioSession.removeAttribute("cardResult");
+					String machineId = (String) ioSession.removeAttribute("machineId");
+					GameCache.removeIoSession(playerInfo.getSeoId(), ioSession);
+					GameCache.removePlayerInfo(accountId);
+					if (cr != null && cr.getWin() > 0) {
+						FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
+						fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
+						jdbcDaoSupport.update(fivepkPlayerInfo);
+					}
+					if (machineId != null) {
+						GameCache.updateMachineInfo(playerInfo.getSeoId(),machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
+						List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
+						for (IoSession ioSession2 : sessionList) {
+							if (!ioSession2.isClosing() && ioSession2.isConnected() && (Long) ioSession2.getAttribute("accountId") != accountId) {
+								MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+								returnMessagePack.setCmd(Cmd.CMD_MACHINE_INFO);
+								returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScMachineInfo(SCMachineInfo.newBuilder().setMachineId(machineId).setMachineType(GameConstant.MACHINE_TYPE_FREE)));
+								logger.info("sent message pack : " + returnMessagePack.toString());
+								ioSession2.write(returnMessagePack);
+							}
 						}
 					}
+					
+					MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+					returnMessagePack.setCmd(Cmd.CMD_LOGIN);
+					returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_LOGIN_OTHER_DEVICES.getErrorCode()));
+					logger.info("sent message pack : " + returnMessagePack.toString());
+					ioSession.write(returnMessagePack);
+					ioSession.closeOnFlush();
+					return MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED.getErrorCode());
 				}
-				
-				MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
-				returnMessagePack.setCmd(Cmd.CMD_LOGIN);
-				returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED_VALUE));
-				logger.info("sent message pack : " + returnMessagePack.toString());
-				ioSession.write(returnMessagePack);
-				ioSession.closeOnFlush();
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED_VALUE);
 			}
 			seoid = fivepkAccount.getSeoid();
 			fivepkAccount.setAccountIp((String)session.getAttribute("ipAddress"));
@@ -199,7 +201,7 @@ public class AccountLogic {
 			fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 			if (fivepkPlayerInfo == null) {
 				logger.debug("guest login wrong account : [" + accountId + "]");
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 			}
 			pic = fivepkPlayerInfo.getPic();
 		}
@@ -216,32 +218,32 @@ public class AccountLogic {
 		String password = content.getCcBinding().getPassword();
 		String seoid = content.getCcBinding().getSeoid();
 		if (account.isEmpty() || password.isEmpty() || seoid.isEmpty()) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_UNAME_UPASS_USEOID_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_UNAME_UPASS_USEOID.getErrorCode());
 		}
 		if (!account.matches("^[A-Za-z0-9]{5,17}$")) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_NAME_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_NAME.getErrorCode());
 		}
 		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
 		if (fivepkAccount != null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_EXIST_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_EXIST.getErrorCode());
 		}
 		List<String> seoIdList = jdbcDaoSupport.queryGroupBy(FivepkSeoIdList.class, new QueryMeta("seoid"));
 		if (!seoIdList.contains(seoid)) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_LOGIN_SEOID_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_LOGIN_SEOID.getErrorCode());
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{accountId});
 		if (fivepkAccount == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		} else if (fivepkAccount.getAccountType() == 1) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_BUILDING_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NO_BUILDING.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		if (fivepkPlayerInfo.getNickName().startsWith("游客")) {
 			fivepkPlayerInfo.setNickName(fivepkPlayerInfo.getNickName().replace("游客", "玩家"));
@@ -261,15 +263,15 @@ public class AccountLogic {
 	public Builder ccHeadPic(IoSession session, MessageContent content) {
 		byte headpic = (byte) content.getCcHeadPic().getHeadPic();
 		if (headpic < 0 && headpic > 6) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_HEAD_PIC_NOT_EXIST_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_HEAD_PIC_NOT_EXIST.getErrorCode());
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		fivepkPlayerInfo.setPic(headpic);
 		jdbcDaoSupport.update(fivepkPlayerInfo);
@@ -280,26 +282,26 @@ public class AccountLogic {
 	public Builder ccNickName(IoSession session, MessageContent content) {
 		String nickName = content.getCcNickName().getNickName();
 		if (nickName == null || nickName.isEmpty()) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_ILLEGAL_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_ILLEGAL.getErrorCode());
 		}
 		for (int i = 0; i < GameConstant.NICKNAMECHECK.length; i++) {
 			if (nickName.equals(GameConstant.NICKNAMECHECK[i])){
-				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_LAW_VALUE);
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_LAW.getErrorCode());
 			}
 		}
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{nickName}, new String[]{"nickName"});
 		if (fivepkPlayerInfo != null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_REPEATED_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_REPEATED.getErrorCode());
 		}
 		fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		} else if (fivepkPlayerInfo.getNickNameCount() >= 1) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_COUNT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NICK_NAME_COUNT.getErrorCode());
 		}
 		fivepkPlayerInfo.setNickName(nickName);
 		fivepkPlayerInfo.setNickNameCount(fivepkPlayerInfo.getNickNameCount() + 1);
@@ -311,7 +313,7 @@ public class AccountLogic {
 	public Builder csLoginOut(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT_VALUE);
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		offlineLogic.sessionClosed(session);
 		return MessageContent.newBuilder().setResult(0);

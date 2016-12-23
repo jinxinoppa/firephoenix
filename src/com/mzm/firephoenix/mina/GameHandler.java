@@ -42,8 +42,10 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		try {
 			messagePack = MessagePack.parseFrom(msg);
 		} catch (InvalidProtocolBufferException e) {
+			logger.error(e, e);
 			return;
 		} catch (Exception e) {
+			logger.error(e, e);
 			return;
 		}
 		logger.info("receive message pack : " + messagePack.toString());
@@ -55,8 +57,12 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 		// System.out.println("toString : " +
 		// messagePack.getContent().toString());
 		int cmdNumber = messagePack.getCmd().getNumber();
-		if (cmdNumber == 65541) {
+		if (cmdNumber == 65540) {
 			logger.info("session : [" + session.getId() + " ] ip address : [" + session.getAttribute("ipAddress") + "] heart beat");
+			MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+			returnMessagePack.setCmd(Cmd.valueOf(cmdNumber));
+			logger.info("sent message pack : " + returnMessagePack.toString());
+			session.write(returnMessagePack);
 			return;
 		}
 		String logicName = SocketUtil.getLogicName(cmdNumber);

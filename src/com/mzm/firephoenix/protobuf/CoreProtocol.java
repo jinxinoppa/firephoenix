@@ -823,582 +823,6 @@ public final class CoreProtocol {
     // @@protoc_insertion_point(enum_scope:Cmd)
   }
 
-  /**
-   * Protobuf enum {@code ErrorCode}
-   */
-  public enum ErrorCode
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>ERROR_ACCOUNT_EXIT = 1001;</code>
-     *
-     * <pre>
-     *账号存在
-     * </pre>
-     */
-    ERROR_ACCOUNT_EXIT(0, 1001),
-    /**
-     * <code>ERROR_MUTI_LOGIN = 1002;</code>
-     *
-     * <pre>
-     *重复登陆
-     * </pre>
-     */
-    ERROR_MUTI_LOGIN(1, 1002),
-    /**
-     * <code>ERROR_PWD_WRONG = 1003;</code>
-     *
-     * <pre>
-     *密码错误
-     * </pre>
-     */
-    ERROR_PWD_WRONG(2, 1003),
-    /**
-     * <code>ERROR_PLAYER_NOT_EXIT = 1004;</code>
-     *
-     * <pre>
-     *玩家不存在
-     * </pre>
-     */
-    ERROR_PLAYER_NOT_EXIT(3, 1004),
-    /**
-     * <code>ERROR_SMS_INVALID_PARAMETER = 1017;</code>
-     *
-     * <pre>
-     *传递的参数不正确
-     * </pre>
-     */
-    ERROR_SMS_INVALID_PARAMETER(4, 1017),
-    /**
-     * <code>ERROR_ACCOUNT_RECONNECT = 1018;</code>
-     *
-     * <pre>
-     *请重新登录
-     * </pre>
-     */
-    ERROR_ACCOUNT_RECONNECT(5, 1018),
-    /**
-     * <code>ERROR_CARD_BET_SCORE_0 = 2000;</code>
-     *
-     * <pre>
-     *比倍分数不能为0
-     * </pre>
-     */
-    ERROR_CARD_BET_SCORE_0(6, 2000),
-    /**
-     * <code>ERROR_CARD_GUEST_COINSCORE = 2001;</code>
-     *
-     * <pre>
-     *游客不能存取分
-     * </pre>
-     */
-    ERROR_CARD_GUEST_COINSCORE(7, 2001),
-    /**
-     * <code>ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;</code>
-     *
-     * <pre>
-     *发牌下分分数不足
-     * </pre>
-     */
-    ERROR_CARD_BET_SCORE_NOT_ENOUGH(8, 2002),
-    /**
-     * <code>ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;</code>
-     *
-     * <pre>
-     *比倍下分分数不足
-     * </pre>
-     */
-    ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH(9, 2003),
-    /**
-     * <code>ERROR_NO_BUILDING = 2004;</code>
-     *
-     * <pre>
-     *已经绑定的玩家不能再次绑定
-     * </pre>
-     */
-    ERROR_NO_BUILDING(10, 2004),
-    /**
-     * <code>ERROR_NICK_NAME_ILLEGAL = 2005;</code>
-     *
-     * <pre>
-     *昵称不能为空
-     * </pre>
-     */
-    ERROR_NICK_NAME_ILLEGAL(11, 2005),
-    /**
-     * <code>ERROR_NO_LOGIN_SEOID = 2006;</code>
-     *
-     * <pre>
-     *代理商没有注册
-     * </pre>
-     */
-    ERROR_NO_LOGIN_SEOID(12, 2006),
-    /**
-     * <code>ERROR_NICK_NAME_COUNT = 2007;</code>
-     *
-     * <pre>
-     *昵称只能修改一次
-     * </pre>
-     */
-    ERROR_NICK_NAME_COUNT(13, 2007),
-    /**
-     * <code>ERROR_USER_NAME = 2008;</code>
-     *
-     * <pre>
-     *用户名必须为6~18位字母或数字
-     * </pre>
-     */
-    ERROR_USER_NAME(14, 2008),
-    /**
-     * <code>ERROR_USER_EXIST = 2009;</code>
-     *
-     * <pre>
-     *被绑定的用户已存在
-     * </pre>
-     */
-    ERROR_USER_EXIST(15, 2009),
-    /**
-     * <code>ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED = 2011;</code>
-     *
-     * <pre>
-     *您的帐号已经被登陆
-     * </pre>
-     */
-    ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED(16, 2011),
-    /**
-     * <code>ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD = 2012;</code>
-     *
-     * <pre>
-     *既不是第一手牌也不是第二手牌
-     * </pre>
-     */
-    ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD(17, 2012),
-    /**
-     * <code>ERROR_CARD_BET_SCORE = 2013;</code>
-     *
-     * <pre>
-     *比倍分数不正确
-     * </pre>
-     */
-    ERROR_CARD_BET_SCORE(18, 2013),
-    /**
-     * <code>ERROR_UNAME_UPASS_USEOID = 2014;</code>
-     *
-     * <pre>
-     *用户名密码代理商不可以为空
-     * </pre>
-     */
-    ERROR_UNAME_UPASS_USEOID(19, 2014),
-    /**
-     * <code>ERROR_NOT_MACHINE = 2015;</code>
-     *
-     * <pre>
-     *该机器不存在
-     * </pre>
-     */
-    ERROR_NOT_MACHINE(20, 2015),
-    /**
-     * <code>ERROR_MACHINE_STAY = 2016;</code>
-     *
-     * <pre>
-     *留机时异常
-     * </pre>
-     */
-    ERROR_MACHINE_STAY(21, 2016),
-    /**
-     * <code>ERROR_NOT_CARD_RESULT = 2017;</code>
-     *
-     * <pre>
-     *请从新开始下注
-     * </pre>
-     */
-    ERROR_NOT_CARD_RESULT(22, 2017),
-    /**
-     * <code>ERROR_BETSCORE = 2018;</code>
-     *
-     * <pre>
-     *下注分数不正确
-     * </pre>
-     */
-    ERROR_BETSCORE(23, 2018),
-    /**
-     * <code>ERROR_COIN_SCORE = 2019;</code>
-     *
-     * <pre>
-     *存取分计算错误
-     * </pre>
-     */
-    ERROR_COIN_SCORE(24, 2019),
-    /**
-     * <code>ERROR_HEAD_PIC_NOT_EXIST = 2020;</code>
-     *
-     * <pre>
-     *没有这个头像
-     * </pre>
-     */
-    ERROR_HEAD_PIC_NOT_EXIST(25, 2020),
-    /**
-     * <code>ERROR_MACHINE_TYPE_ONLINE = 2021;</code>
-     *
-     * <pre>
-     *该机台有玩家
-     * </pre>
-     */
-    ERROR_MACHINE_TYPE_ONLINE(26, 2021),
-    /**
-     * <code>ERROR_START_INDEX = 2022;</code>
-     *
-     * <pre>
-     *发牌顺序不对不是第二手牌得分
-     * </pre>
-     */
-    ERROR_START_INDEX(27, 2022),
-    /**
-     * <code>ERROR_NICK_NAME_REPEATED = 2023;</code>
-     *
-     * <pre>
-     *该昵称已被注册,请更换其他昵称
-     * </pre>
-     */
-    ERROR_NICK_NAME_REPEATED(28, 2023),
-    /**
-     * <code>ERROR_NICK_NAME_LAW = 2024;</code>
-     *
-     * <pre>
-     *非法昵称！！
-     * </pre>
-     */
-    ERROR_NICK_NAME_LAW(29, 2024),
-    ;
-
-    /**
-     * <code>ERROR_ACCOUNT_EXIT = 1001;</code>
-     *
-     * <pre>
-     *账号存在
-     * </pre>
-     */
-    public static final int ERROR_ACCOUNT_EXIT_VALUE = 1001;
-    /**
-     * <code>ERROR_MUTI_LOGIN = 1002;</code>
-     *
-     * <pre>
-     *重复登陆
-     * </pre>
-     */
-    public static final int ERROR_MUTI_LOGIN_VALUE = 1002;
-    /**
-     * <code>ERROR_PWD_WRONG = 1003;</code>
-     *
-     * <pre>
-     *密码错误
-     * </pre>
-     */
-    public static final int ERROR_PWD_WRONG_VALUE = 1003;
-    /**
-     * <code>ERROR_PLAYER_NOT_EXIT = 1004;</code>
-     *
-     * <pre>
-     *玩家不存在
-     * </pre>
-     */
-    public static final int ERROR_PLAYER_NOT_EXIT_VALUE = 1004;
-    /**
-     * <code>ERROR_SMS_INVALID_PARAMETER = 1017;</code>
-     *
-     * <pre>
-     *传递的参数不正确
-     * </pre>
-     */
-    public static final int ERROR_SMS_INVALID_PARAMETER_VALUE = 1017;
-    /**
-     * <code>ERROR_ACCOUNT_RECONNECT = 1018;</code>
-     *
-     * <pre>
-     *请重新登录
-     * </pre>
-     */
-    public static final int ERROR_ACCOUNT_RECONNECT_VALUE = 1018;
-    /**
-     * <code>ERROR_CARD_BET_SCORE_0 = 2000;</code>
-     *
-     * <pre>
-     *比倍分数不能为0
-     * </pre>
-     */
-    public static final int ERROR_CARD_BET_SCORE_0_VALUE = 2000;
-    /**
-     * <code>ERROR_CARD_GUEST_COINSCORE = 2001;</code>
-     *
-     * <pre>
-     *游客不能存取分
-     * </pre>
-     */
-    public static final int ERROR_CARD_GUEST_COINSCORE_VALUE = 2001;
-    /**
-     * <code>ERROR_CARD_BET_SCORE_NOT_ENOUGH = 2002;</code>
-     *
-     * <pre>
-     *发牌下分分数不足
-     * </pre>
-     */
-    public static final int ERROR_CARD_BET_SCORE_NOT_ENOUGH_VALUE = 2002;
-    /**
-     * <code>ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH = 2003;</code>
-     *
-     * <pre>
-     *比倍下分分数不足
-     * </pre>
-     */
-    public static final int ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH_VALUE = 2003;
-    /**
-     * <code>ERROR_NO_BUILDING = 2004;</code>
-     *
-     * <pre>
-     *已经绑定的玩家不能再次绑定
-     * </pre>
-     */
-    public static final int ERROR_NO_BUILDING_VALUE = 2004;
-    /**
-     * <code>ERROR_NICK_NAME_ILLEGAL = 2005;</code>
-     *
-     * <pre>
-     *昵称不能为空
-     * </pre>
-     */
-    public static final int ERROR_NICK_NAME_ILLEGAL_VALUE = 2005;
-    /**
-     * <code>ERROR_NO_LOGIN_SEOID = 2006;</code>
-     *
-     * <pre>
-     *代理商没有注册
-     * </pre>
-     */
-    public static final int ERROR_NO_LOGIN_SEOID_VALUE = 2006;
-    /**
-     * <code>ERROR_NICK_NAME_COUNT = 2007;</code>
-     *
-     * <pre>
-     *昵称只能修改一次
-     * </pre>
-     */
-    public static final int ERROR_NICK_NAME_COUNT_VALUE = 2007;
-    /**
-     * <code>ERROR_USER_NAME = 2008;</code>
-     *
-     * <pre>
-     *用户名必须为6~18位字母或数字
-     * </pre>
-     */
-    public static final int ERROR_USER_NAME_VALUE = 2008;
-    /**
-     * <code>ERROR_USER_EXIST = 2009;</code>
-     *
-     * <pre>
-     *被绑定的用户已存在
-     * </pre>
-     */
-    public static final int ERROR_USER_EXIST_VALUE = 2009;
-    /**
-     * <code>ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED = 2011;</code>
-     *
-     * <pre>
-     *您的帐号已经被登陆
-     * </pre>
-     */
-    public static final int ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED_VALUE = 2011;
-    /**
-     * <code>ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD = 2012;</code>
-     *
-     * <pre>
-     *既不是第一手牌也不是第二手牌
-     * </pre>
-     */
-    public static final int ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD_VALUE = 2012;
-    /**
-     * <code>ERROR_CARD_BET_SCORE = 2013;</code>
-     *
-     * <pre>
-     *比倍分数不正确
-     * </pre>
-     */
-    public static final int ERROR_CARD_BET_SCORE_VALUE = 2013;
-    /**
-     * <code>ERROR_UNAME_UPASS_USEOID = 2014;</code>
-     *
-     * <pre>
-     *用户名密码代理商不可以为空
-     * </pre>
-     */
-    public static final int ERROR_UNAME_UPASS_USEOID_VALUE = 2014;
-    /**
-     * <code>ERROR_NOT_MACHINE = 2015;</code>
-     *
-     * <pre>
-     *该机器不存在
-     * </pre>
-     */
-    public static final int ERROR_NOT_MACHINE_VALUE = 2015;
-    /**
-     * <code>ERROR_MACHINE_STAY = 2016;</code>
-     *
-     * <pre>
-     *留机时异常
-     * </pre>
-     */
-    public static final int ERROR_MACHINE_STAY_VALUE = 2016;
-    /**
-     * <code>ERROR_NOT_CARD_RESULT = 2017;</code>
-     *
-     * <pre>
-     *请从新开始下注
-     * </pre>
-     */
-    public static final int ERROR_NOT_CARD_RESULT_VALUE = 2017;
-    /**
-     * <code>ERROR_BETSCORE = 2018;</code>
-     *
-     * <pre>
-     *下注分数不正确
-     * </pre>
-     */
-    public static final int ERROR_BETSCORE_VALUE = 2018;
-    /**
-     * <code>ERROR_COIN_SCORE = 2019;</code>
-     *
-     * <pre>
-     *存取分计算错误
-     * </pre>
-     */
-    public static final int ERROR_COIN_SCORE_VALUE = 2019;
-    /**
-     * <code>ERROR_HEAD_PIC_NOT_EXIST = 2020;</code>
-     *
-     * <pre>
-     *没有这个头像
-     * </pre>
-     */
-    public static final int ERROR_HEAD_PIC_NOT_EXIST_VALUE = 2020;
-    /**
-     * <code>ERROR_MACHINE_TYPE_ONLINE = 2021;</code>
-     *
-     * <pre>
-     *该机台有玩家
-     * </pre>
-     */
-    public static final int ERROR_MACHINE_TYPE_ONLINE_VALUE = 2021;
-    /**
-     * <code>ERROR_START_INDEX = 2022;</code>
-     *
-     * <pre>
-     *发牌顺序不对不是第二手牌得分
-     * </pre>
-     */
-    public static final int ERROR_START_INDEX_VALUE = 2022;
-    /**
-     * <code>ERROR_NICK_NAME_REPEATED = 2023;</code>
-     *
-     * <pre>
-     *该昵称已被注册,请更换其他昵称
-     * </pre>
-     */
-    public static final int ERROR_NICK_NAME_REPEATED_VALUE = 2023;
-    /**
-     * <code>ERROR_NICK_NAME_LAW = 2024;</code>
-     *
-     * <pre>
-     *非法昵称！！
-     * </pre>
-     */
-    public static final int ERROR_NICK_NAME_LAW_VALUE = 2024;
-
-
-    public final int getNumber() {
-      return value;
-    }
-
-    public static ErrorCode valueOf(int value) {
-      switch (value) {
-        case 1001: return ERROR_ACCOUNT_EXIT;
-        case 1002: return ERROR_MUTI_LOGIN;
-        case 1003: return ERROR_PWD_WRONG;
-        case 1004: return ERROR_PLAYER_NOT_EXIT;
-        case 1017: return ERROR_SMS_INVALID_PARAMETER;
-        case 1018: return ERROR_ACCOUNT_RECONNECT;
-        case 2000: return ERROR_CARD_BET_SCORE_0;
-        case 2001: return ERROR_CARD_GUEST_COINSCORE;
-        case 2002: return ERROR_CARD_BET_SCORE_NOT_ENOUGH;
-        case 2003: return ERROR_CARD_COMPARE_CARD_BET_SCORE_NOT_ENOUGH;
-        case 2004: return ERROR_NO_BUILDING;
-        case 2005: return ERROR_NICK_NAME_ILLEGAL;
-        case 2006: return ERROR_NO_LOGIN_SEOID;
-        case 2007: return ERROR_NICK_NAME_COUNT;
-        case 2008: return ERROR_USER_NAME;
-        case 2009: return ERROR_USER_EXIST;
-        case 2011: return ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED;
-        case 2012: return ERROR_NOT_ONE_CARD_AND_NOT_TWO_CARD;
-        case 2013: return ERROR_CARD_BET_SCORE;
-        case 2014: return ERROR_UNAME_UPASS_USEOID;
-        case 2015: return ERROR_NOT_MACHINE;
-        case 2016: return ERROR_MACHINE_STAY;
-        case 2017: return ERROR_NOT_CARD_RESULT;
-        case 2018: return ERROR_BETSCORE;
-        case 2019: return ERROR_COIN_SCORE;
-        case 2020: return ERROR_HEAD_PIC_NOT_EXIST;
-        case 2021: return ERROR_MACHINE_TYPE_ONLINE;
-        case 2022: return ERROR_START_INDEX;
-        case 2023: return ERROR_NICK_NAME_REPEATED;
-        case 2024: return ERROR_NICK_NAME_LAW;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<ErrorCode>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<ErrorCode>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ErrorCode>() {
-            public ErrorCode findValueByNumber(int number) {
-              return ErrorCode.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.mzm.firephoenix.protobuf.CoreProtocol.getDescriptor().getEnumTypes().get(1);
-    }
-
-    private static final ErrorCode[] VALUES = values();
-
-    public static ErrorCode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private ErrorCode(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:ErrorCode)
-  }
-
   public interface MessagePackOrBuilder extends
       // @@protoc_insertion_point(interface_extends:MessagePack)
       com.google.protobuf.MessageOrBuilder {
@@ -20581,6 +20005,23 @@ public final class CoreProtocol {
      * </pre>
      */
     int getRealKind();
+
+    /**
+     * <code>optional int32 preSound = 5;</code>
+     *
+     * <pre>
+     *前兆音1-有
+     * </pre>
+     */
+    boolean hasPreSound();
+    /**
+     * <code>optional int32 preSound = 5;</code>
+     *
+     * <pre>
+     *前兆音1-有
+     * </pre>
+     */
+    int getPreSound();
   }
   /**
    * Protobuf type {@code SCCards}
@@ -20598,6 +20039,7 @@ public final class CoreProtocol {
       cards_ = "";
       holdCards_ = "";
       realKind_ = 0;
+      preSound_ = 0;
     }
 
     @java.lang.Override
@@ -20647,6 +20089,11 @@ public final class CoreProtocol {
             case 32: {
               bitField0_ |= 0x00000008;
               realKind_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              preSound_ = input.readInt32();
               break;
             }
           }
@@ -20829,6 +20276,29 @@ public final class CoreProtocol {
       return realKind_;
     }
 
+    public static final int PRESOUND_FIELD_NUMBER = 5;
+    private int preSound_;
+    /**
+     * <code>optional int32 preSound = 5;</code>
+     *
+     * <pre>
+     *前兆音1-有
+     * </pre>
+     */
+    public boolean hasPreSound() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 preSound = 5;</code>
+     *
+     * <pre>
+     *前兆音1-有
+     * </pre>
+     */
+    public int getPreSound() {
+      return preSound_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -20861,6 +20331,9 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, realKind_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, preSound_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -20885,6 +20358,10 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, realKind_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, preSound_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -21006,6 +20483,8 @@ public final class CoreProtocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         realKind_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        preSound_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -21046,6 +20525,10 @@ public final class CoreProtocol {
           to_bitField0_ |= 0x00000008;
         }
         result.realKind_ = realKind_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.preSound_ = preSound_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -21077,6 +20560,9 @@ public final class CoreProtocol {
         }
         if (other.hasRealKind()) {
           setRealKind(other.getRealKind());
+        }
+        if (other.hasPreSound()) {
+          setPreSound(other.getPreSound());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -21404,6 +20890,54 @@ public final class CoreProtocol {
       public Builder clearRealKind() {
         bitField0_ = (bitField0_ & ~0x00000008);
         realKind_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int preSound_ ;
+      /**
+       * <code>optional int32 preSound = 5;</code>
+       *
+       * <pre>
+       *前兆音1-有
+       * </pre>
+       */
+      public boolean hasPreSound() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 preSound = 5;</code>
+       *
+       * <pre>
+       *前兆音1-有
+       * </pre>
+       */
+      public int getPreSound() {
+        return preSound_;
+      }
+      /**
+       * <code>optional int32 preSound = 5;</code>
+       *
+       * <pre>
+       *前兆音1-有
+       * </pre>
+       */
+      public Builder setPreSound(int value) {
+        bitField0_ |= 0x00000010;
+        preSound_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 preSound = 5;</code>
+       *
+       * <pre>
+       *前兆音1-有
+       * </pre>
+       */
+      public Builder clearPreSound() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        preSound_ = 0;
         onChanged();
         return this;
       }
@@ -37861,91 +37395,69 @@ public final class CoreProtocol {
       "\016\n\006notice\030\001 \002(\t\"B\n\007CSCards\022\022\n\nstartIndex" +
       "\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\tholdCards\030\003 " +
       "\001(\t\"\036\n\nCSCardsBet\022\020\n\010betScore\030\001 \002(\005\"\036\n\nS" +
-      "CCardsBet\022\020\n\010betScore\030\001 \001(\005\"O\n\007SCCards\022\020" +
+      "CCardsBet\022\020\n\010betScore\030\001 \001(\005\"a\n\007SCCards\022\020" +
       "\n\010cardRate\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdC" +
-      "ards\030\003 \001(\t\022\020\n\010realKind\030\004 \001(\005\"&\n\025CCCompar" +
-      "eHistoryCards\022\r\n\005cards\030\001 \002(\t\"A\n\rCSCompar" +
-      "eCard\022\020\n\010bigSmall\030\001 \002(\005\022\020\n\010betScore\030\002 \002(" +
-      "\005\022\014\n\004five\030\003 \002(\005\"6\n\rSCCompareCard\022\023\n\013comp",
-      "areCard\030\001 \002(\005\022\020\n\010winScore\030\002 \002(\005\".\n\027CSCom" +
-      "pareHistoryOneCard\022\023\n\013compareCard\030\001 \002(\005\"" +
-      ".\n\027SCCompareHistoryOneCard\022\023\n\013compareCar" +
-      "d\030\001 \002(\005\"\024\n\005CSWin\022\013\n\003win\030\001 \001(\005\"*\n\013CCCoinS" +
-      "core\022\r\n\005score\030\001 \002(\005\022\014\n\004coin\030\002 \002(\005\"5\n\nCCN" +
-      "ickName\022\020\n\010nickName\030\001 \002(\t\022\025\n\rnickNameCou" +
-      "nt\030\002 \001(\005\"\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"$" +
-      "\n\rCSMachineList\022\023\n\013machineList\030\001 \002(\005\"6\n\r" +
-      "SCMachineList\022%\n\rscMachineInfo\030\001 \003(\0132\016.S" +
-      "CMachineInfo\"V\n\rSCMachineInfo\022\021\n\tmachine",
-      "Id\030\001 \002(\t\022\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030\003 \001" +
-      "(\005\022\020\n\010nickName\030\004 \001(\t\"#\n\016CCEnterMachine\022\021" +
-      "\n\tmachineId\030\001 \002(\t\"#\n\016CCLeaveMachine\022\021\n\tm" +
-      "achineId\030\001 \002(\t\"7\n\rCCMachineStay\022\021\n\tmachi" +
-      "neId\030\001 \002(\t\022\023\n\013machineType\030\002 \001(\005\"=\n\tCCBin" +
-      "ding\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022" +
-      "\r\n\005seoid\030\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010nick" +
-      "name\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003 \001(" +
-      "\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSDepo" +
-      "sitStore\022\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositStore",
-      "\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCSDep" +
-      "ositDraw\022\020\n\010drawGold\030\001 \001(\005\".\n\rSCDepositD" +
-      "raw\022\014\n\004gold\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n\rCS" +
-      "DepositGive\022\020\n\010targetid\030\001 \001(\t\022\020\n\010drawGol" +
-      "d\030\002 \001(\005\" \n\rSCDepositGive\022\017\n\007deposit\030\002 \001(" +
-      "\005\"V\n\020SCDepositReceive\022\020\n\010senderid\030\001 \001(\t\022" +
-      "\021\n\treceiveid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007depo" +
-      "sit\030\004 \001(\005\"\"\n\016CSFourKindTime\022\020\n\010multiple\030" +
-      "\001 \002(\005\"\"\n\016SCFourKindTime\022\020\n\010multiple\030\001 \002(" +
-      "\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 \001(\t\"\035\n\rCSMachineA",
-      "uto\022\014\n\004auto\030\001 \002(\005*\336\007\n\003Cmd\022\023\n\rCMD_GETSERV" +
-      "ER\020\201\200\004\022\022\n\014CMD_REGISTER\020\202\200\004\022\017\n\tCMD_LOGIN\020" +
-      "\203\200\004\022\025\n\017CMD_GUEST_LOGIN\020\205\200\004\022\017\n\tCMD_HEART\020" +
-      "\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\tCMD_CARDS\020\207\200\004\022\027\n\021C" +
-      "MD_COMPARE_CARDS\020\210\200\004\022\037\n\031CMD_COMPARE_HIST" +
-      "ORY_CARDS\020\211\200\004\022\r\n\007CMD_WIN\020\212\200\004\022\024\n\016CMD_COIN" +
-      "_SCORE\020\213\200\004\022\033\n\025CMD_COMPARE_ONE_CARDS\020\214\200\004\022" +
-      "\030\n\022CMD_FOUR_KIND_TIME\020\215\200\004\022\026\n\020CMD_MACHINE" +
-      "_AUTO\020\216\200\004\022\026\n\020CMD_DATA_DISPLAY\020\217\200\004\022\032\n\024CMD" +
-      "_PLAYER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLAYER_PIC\020",
-      "\202\200\010\022\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020CMD_MACHI" +
-      "NE_INFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER\020\205\200\010\022\027\n\021" +
-      "CMD_MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MACHINE_STA" +
-      "Y\020\207\200\010\022\030\n\022CMD_PLAYER_BINDING\020\210\200\010\022\022\n\014CMD_C" +
-      "ARD_BET\020\211\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014\022\021\n\013CMD_" +
-      "OUTROOM\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022\021\n\013CMD_P" +
-      "AIINFO\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD_STANDUP" +
-      "\020\206\200\014\022\024\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCMD_YAZHU\020" +
-      "\213\200\014\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_STATICS\020" +
-      "\220\200\014\022\021\n\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DOWN_ZHUAN",
-      "G\020\222\200\014\022\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD_ROOM_UI" +
-      "DS\020\224\200\014\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225\200\014\022\034\n\026CM" +
-      "D_ROOM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_CARD_INF" +
-      "O\020\241\200\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023\n\rCMD_PA" +
-      "IINFO_3\020\243\200\014\022\020\n\nCMD_NOTICE\020\244\200\014\022\023\n\rCMD_LOG" +
-      "IN_OUT\020\245\200\014*\364\006\n\tErrorCode\022\027\n\022ERROR_ACCOUN" +
-      "T_EXIT\020\351\007\022\025\n\020ERROR_MUTI_LOGIN\020\352\007\022\024\n\017ERRO" +
-      "R_PWD_WRONG\020\353\007\022\032\n\025ERROR_PLAYER_NOT_EXIT\020" +
-      "\354\007\022 \n\033ERROR_SMS_INVALID_PARAMETER\020\371\007\022\034\n\027" +
-      "ERROR_ACCOUNT_RECONNECT\020\372\007\022\033\n\026ERROR_CARD",
-      "_BET_SCORE_0\020\320\017\022\037\n\032ERROR_CARD_GUEST_COIN" +
-      "SCORE\020\321\017\022$\n\037ERROR_CARD_BET_SCORE_NOT_ENO" +
-      "UGH\020\322\017\0221\n,ERROR_CARD_COMPARE_CARD_BET_SC" +
-      "ORE_NOT_ENOUGH\020\323\017\022\026\n\021ERROR_NO_BUILDING\020\324" +
-      "\017\022\034\n\027ERROR_NICK_NAME_ILLEGAL\020\325\017\022\031\n\024ERROR" +
-      "_NO_LOGIN_SEOID\020\326\017\022\032\n\025ERROR_NICK_NAME_CO" +
-      "UNT\020\327\017\022\024\n\017ERROR_USER_NAME\020\330\017\022\025\n\020ERROR_US" +
-      "ER_EXIST\020\331\017\022\'\n\"ERROR_YOUR_ACCOUNT_HAS_BE" +
-      "EN_LANDED\020\333\017\022(\n#ERROR_NOT_ONE_CARD_AND_N" +
-      "OT_TWO_CARD\020\334\017\022\031\n\024ERROR_CARD_BET_SCORE\020\335",
-      "\017\022\035\n\030ERROR_UNAME_UPASS_USEOID\020\336\017\022\026\n\021ERRO" +
-      "R_NOT_MACHINE\020\337\017\022\027\n\022ERROR_MACHINE_STAY\020\340" +
-      "\017\022\032\n\025ERROR_NOT_CARD_RESULT\020\341\017\022\023\n\016ERROR_B" +
-      "ETSCORE\020\342\017\022\025\n\020ERROR_COIN_SCORE\020\343\017\022\035\n\030ERR" +
-      "OR_HEAD_PIC_NOT_EXIST\020\344\017\022\036\n\031ERROR_MACHIN" +
-      "E_TYPE_ONLINE\020\345\017\022\026\n\021ERROR_START_INDEX\020\346\017" +
-      "\022\035\n\030ERROR_NICK_NAME_REPEATED\020\347\017\022\030\n\023ERROR" +
-      "_NICK_NAME_LAW\020\350\017B,\n\034com.mzm.firephoenix" +
-      ".protobufB\014CoreProtocol"
+      "ards\030\003 \001(\t\022\020\n\010realKind\030\004 \001(\005\022\020\n\010preSound" +
+      "\030\005 \001(\005\"&\n\025CCCompareHistoryCards\022\r\n\005cards" +
+      "\030\001 \002(\t\"A\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(" +
+      "\005\022\020\n\010betScore\030\002 \002(\005\022\014\n\004five\030\003 \002(\005\"6\n\rSCC",
+      "ompareCard\022\023\n\013compareCard\030\001 \002(\005\022\020\n\010winSc" +
+      "ore\030\002 \002(\005\".\n\027CSCompareHistoryOneCard\022\023\n\013" +
+      "compareCard\030\001 \002(\005\".\n\027SCCompareHistoryOne" +
+      "Card\022\023\n\013compareCard\030\001 \002(\005\"\024\n\005CSWin\022\013\n\003wi" +
+      "n\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 \002(\005\022\014\n" +
+      "\004coin\030\002 \002(\005\"5\n\nCCNickName\022\020\n\010nickName\030\001 " +
+      "\002(\t\022\025\n\rnickNameCount\030\002 \001(\005\"\034\n\tCCHeadPic\022" +
+      "\017\n\007headPic\030\001 \002(\005\"$\n\rCSMachineList\022\023\n\013mac" +
+      "hineList\030\001 \002(\005\"6\n\rSCMachineList\022%\n\rscMac" +
+      "hineInfo\030\001 \003(\0132\016.SCMachineInfo\"V\n\rSCMach",
+      "ineInfo\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineTyp" +
+      "e\030\002 \002(\005\022\013\n\003pic\030\003 \001(\005\022\020\n\010nickName\030\004 \001(\t\"#" +
+      "\n\016CCEnterMachine\022\021\n\tmachineId\030\001 \002(\t\"#\n\016C" +
+      "CLeaveMachine\022\021\n\tmachineId\030\001 \002(\t\"7\n\rCCMa" +
+      "chineStay\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineT" +
+      "ype\030\002 \001(\005\"=\n\tCCBinding\022\017\n\007account\030\001 \002(\t\022" +
+      "\020\n\010password\030\002 \002(\t\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPl" +
+      "ayerUpdate\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password" +
+      "\030\002 \001(\t\022\013\n\003pic\030\003 \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003s" +
+      "ex\030\005 \001(\005\"\036\n\016CSDepositStore\022\014\n\004gold\030\001 \001(\005",
+      "\"/\n\016SCDepositStore\022\014\n\004gold\030\001 \001(\005\022\017\n\007depo" +
+      "sit\030\002 \001(\005\"!\n\rCSDepositDraw\022\020\n\010drawGold\030\001" +
+      " \001(\005\".\n\rSCDepositDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007d" +
+      "eposit\030\002 \001(\005\"3\n\rCSDepositGive\022\020\n\010targeti" +
+      "d\030\001 \001(\t\022\020\n\010drawGold\030\002 \001(\005\" \n\rSCDepositGi" +
+      "ve\022\017\n\007deposit\030\002 \001(\005\"V\n\020SCDepositReceive\022" +
+      "\020\n\010senderid\030\001 \001(\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004" +
+      "gold\030\003 \001(\005\022\017\n\007deposit\030\004 \001(\005\"\"\n\016CSFourKin" +
+      "dTime\022\020\n\010multiple\030\001 \002(\005\"\"\n\016SCFourKindTim" +
+      "e\022\020\n\010multiple\030\001 \002(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001",
+      " \001(\t\"\035\n\rCSMachineAuto\022\014\n\004auto\030\001 \002(\005*\336\007\n\003" +
+      "Cmd\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTER" +
+      "\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGIN" +
+      "\020\205\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\t" +
+      "CMD_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022\037" +
+      "\n\031CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_W" +
+      "IN\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\033\n\025CMD_COMP" +
+      "ARE_ONE_CARDS\020\214\200\004\022\030\n\022CMD_FOUR_KIND_TIME\020" +
+      "\215\200\004\022\026\n\020CMD_MACHINE_AUTO\020\216\200\004\022\026\n\020CMD_DATA_" +
+      "DISPLAY\020\217\200\004\022\032\n\024CMD_PLAYER_NICK_NAME\020\201\200\010\022",
+      "\024\n\016CMD_PLAYER_PIC\020\202\200\010\022\026\n\020CMD_MACHINE_LIS" +
+      "T\020\203\200\010\022\026\n\020CMD_MACHINE_INFO\020\204\200\010\022\027\n\021CMD_MAC" +
+      "HINE_ENTER\020\205\200\010\022\027\n\021CMD_MACHINE_LEAVE\020\206\200\010\022" +
+      "\026\n\020CMD_MACHINE_STAY\020\207\200\010\022\030\n\022CMD_PLAYER_BI" +
+      "NDING\020\210\200\010\022\022\n\014CMD_CARD_BET\020\211\200\010\022\023\n\rCMD_ENT" +
+      "ERROOM\020\201\200\014\022\021\n\013CMD_OUTROOM\020\202\200\014\022\022\n\014CMD_ROO" +
+      "MINFO\020\203\200\014\022\021\n\013CMD_PAIINFO\020\204\200\014\022\r\n\007CMD_SIT\020" +
+      "\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014\022\024\n\016CMD_ROB_ZHUANG" +
+      "\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n" +
+      "\020CMD_ROOM_STATICS\020\220\200\014\022\021\n\013CMD_QZ_LIST\020\221\200\014",
+      "\022\025\n\017CMD_DOWN_ZHUANG\020\222\200\014\022\022\n\014CMD_BET_LIST\020" +
+      "\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014\022\032\n\024CMD_ROOM_PLA" +
+      "YER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PLAYER_CHANGE\020\240" +
+      "\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021CMD_PAI_BASE_" +
+      "INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014\022\020\n\nCMD_NOT" +
+      "ICE\020\244\200\014\022\023\n\rCMD_LOGIN_OUT\020\245\200\014B,\n\034com.mzm." +
+      "firephoenix.protobufB\014CoreProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -38061,7 +37573,7 @@ public final class CoreProtocol {
     internal_static_SCCards_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SCCards_descriptor,
-        new java.lang.String[] { "CardRate", "Cards", "HoldCards", "RealKind", });
+        new java.lang.String[] { "CardRate", "Cards", "HoldCards", "RealKind", "PreSound", });
     internal_static_CCCompareHistoryCards_descriptor =
       getDescriptor().getMessageTypes().get(17);
     internal_static_CCCompareHistoryCards_fieldAccessorTable = new

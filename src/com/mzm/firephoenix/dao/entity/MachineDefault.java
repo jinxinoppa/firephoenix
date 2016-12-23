@@ -48,6 +48,38 @@ public class MachineDefault extends AbstractEntity {
 	private int sevenBetter;
 	@Column(columnName = "oneday")
 	private Date oneday;
+	
+	@Column(columnName = "four2")
+	private int four2;
+	@Column(columnName = "four3")
+	private int four3;
+	@Column(columnName = "four4")
+	private int four4;
+	@Column(columnName = "four5")
+	private int four5;
+	@Column(columnName = "four6")
+	private int four6;
+	@Column(columnName = "four7")
+	private int four7;
+	@Column(columnName = "four8")
+	private int four8;
+	@Column(columnName = "four9")
+	private int four9;
+	@Column(columnName = "four10")
+	private int four10;
+	@Column(columnName = "four11")
+	private int four11;
+	@Column(columnName = "four12")
+	private int four12;
+	@Column(columnName = "four13")
+	private int four13;
+	@Column(columnName = "four14")
+	private int four14;
+	@Column(columnName = "five1")
+	private int five1;
+	@Column(columnName = "five2")
+	private int five2;
+
 
 	public MachineDefault() {
 
@@ -254,6 +286,142 @@ public class MachineDefault extends AbstractEntity {
 	public void setSevenBetter(int sevenBetter) {
 		this.sevenBetter = sevenBetter;
 		updateFieldsList.add("sevenBetter");
+	}
+	
+	public int getFour2() {
+		return four2;
+	}
+
+	public void setFour2(int four2) {
+		this.four2 = four2;
+		updateFieldsList.add("four2");
+	}
+
+	public int getFour3() {
+		return four3;
+	}
+
+	public void setFour3(int four3) {
+		this.four3 = four3;
+		updateFieldsList.add("four3");
+	}
+
+	public int getFour4() {
+		return four4;
+	}
+
+	public void setFour4(int four4) {
+		this.four4 = four4;
+		updateFieldsList.add("four4");
+	}
+
+	public int getFour5() {
+		return four5;
+	}
+
+	public void setFour5(int four5) {
+		this.four5 = four5;
+		updateFieldsList.add("four5");
+	}
+
+	public int getFour6() {
+		return four6;
+	}
+
+	public void setFour6(int four6) {
+		this.four6 = four6;
+		updateFieldsList.add("four6");
+	}
+
+	public int getFour7() {
+		return four7;
+	}
+
+	public void setFour7(int four7) {
+		this.four7 = four7;
+		updateFieldsList.add("four7");
+	}
+
+	public int getFour8() {
+		return four8;
+	}
+
+	public void setFour8(int four8) {
+		this.four8 = four8;
+		updateFieldsList.add("four8");
+	}
+
+	public int getFour9() {
+		return four9;
+	}
+
+	public void setFour9(int four9) {
+		this.four9 = four9;
+		updateFieldsList.add("four9");
+	}
+
+	public int getFour10() {
+		return four10;
+	}
+
+	public void setFour10(int four10) {
+		this.four10 = four10;
+		updateFieldsList.add("four10");
+	}
+
+	public int getFour11() {
+		return four11;
+	}
+
+	public void setFour11(int four11) {
+		this.four11 = four11;
+		updateFieldsList.add("four11");
+	}
+
+	public int getFour12() {
+		return four12;
+	}
+
+	public void setFour12(int four12) {
+		
+		this.four12 = four12;
+		updateFieldsList.add("four12");
+	}
+
+	public int getFour13() {
+		return four13;
+	}
+
+	public void setFour13(int four13) {
+		this.four13 = four13;
+		updateFieldsList.add("four13");
+	}
+
+	public int getFour14() {
+		return four14;
+	}
+
+	public void setFour14(int four14) {
+		this.four14 = four14;
+		updateFieldsList.add("four14");
+	}
+
+	public int getFive1() {
+		return five1;
+	}
+
+	public void setFive1(int five1) {
+		this.five1 = five1;
+		updateFieldsList.add("five1");
+	}
+
+	public int getFive2() {
+		return five2;
+	}
+
+	public void setFive2(int five2) {
+		this.five2 = five2;
+		updateFieldsList.add("five2");
 	}
 
 }

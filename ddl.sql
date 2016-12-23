@@ -325,7 +325,6 @@ CREATE TABLE `fivepk_default` (
 
 #2016-12-16
 alter table fivepk_seo add COLUMN prefab_joker int(20) DEFAULT 4 after prefab_seven_better_keep;
-
 alter table fivepk_seo add COLUMN prefab_four_of_a_kind_two_ten_continue varchar(255) DEFAULT null after prefab_four_of_a_kind_two_ten;
 alter table fivepk_seo add COLUMN prefab_four_of_a_kind_two_ten_two int(5) DEFAULT 7 after prefab_four_of_a_kind_two_ten;
 
@@ -344,3 +343,24 @@ alter table machine_default add four13 int(10) default '0';
 alter table machine_default add four14 int(10) default '0';
 alter table machine_default add five1 int(10) default '0';
 alter table machine_default add five2 int(10) default '0';
+
+CREATE TABLE `fivepk_path` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(10) DEFAULT NULL,
+  `machine_id` varchar(10) DEFAULT NULL,
+  `win_point` int(20) DEFAULT '0',
+  `play_point` int(20) DEFAULT '0',
+  `win_number` int(20) DEFAULT '0',
+  `play_number` int(20) DEFAULT '0',
+  `begin_point` int(20) DEFAULT '0',
+  `end_point` int(20) DEFAULT '0',
+  `access_point` int(10) DEFAULT '0',
+  `begin_time` timestamp NULL DEFAULT NULL,
+  `end_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `login_ip` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#2016-12-21
+alter table fivepk_seo modify prefab_four_of_a_kind_ja int(20) DEFAULT '3';
+alter table fivepk_seo modify prefab_four_of_a_kind_two_ten int(20) DEFAULT '3';

@@ -74,7 +74,7 @@
 	<bean id="sessionConfig" factory-bean="ioAcceptor16777"
 		factory-method="getSessionConfig">
 
-		<property name="bothIdleTime" value="35" />
+		<property name="bothIdleTime" value="300" />
 		<property name="receiveBufferSize" value="32768" />
 	</bean>
 

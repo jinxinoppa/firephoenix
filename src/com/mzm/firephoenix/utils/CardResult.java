@@ -15,7 +15,7 @@ public class CardResult {
 	private int giftWin = 0;
 	private int startIndex;
 	private int jokerCount = 0;
-	private byte keepCard = 0;
+	private int keepCard = -1;
 	private byte replaceCard = 0;
 	private List<Integer> halfWin = new ArrayList<Integer>();
 
@@ -43,6 +43,8 @@ public class CardResult {
 		setWinCount(0);
 		setGiftWin(0);
 		halfWin.clear();
+		setWinType(0);
+		isWin = false;
 	}
 
 	
@@ -148,11 +150,11 @@ public class CardResult {
 		this.jokerCount = jokerCount;
 	}
 
-	public byte getKeepCard() {
+	public int getKeepCard() {
 		return keepCard;
 	}
 
-	public void setKeepCard(byte keepCard) {
+	public void setKeepCard(int keepCard) {
 		this.keepCard = keepCard;
 	}
 

@@ -12,7 +12,10 @@ import com.mzm.firephoenix.cache.GameCache;
 import com.mzm.firephoenix.cache.PlayerInfo;
 import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
+import com.mzm.firephoenix.dao.entity.FivepkDefault;
+import com.mzm.firephoenix.dao.entity.FivepkPath;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
+import com.mzm.firephoenix.dao.entity.FivepkSeoId;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
@@ -64,6 +67,14 @@ public class OfflineLogic {
 					ioSession.write(returnMessagePack);
 				}
 			}
+			FivepkSeoId fivepkSeoId=jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{machineId}, null, new String[]{"seoMachineId"});
+			fivepkSeoId.setMachineAuto(0);
+			jdbcDaoSupport.update(fivepkSeoId);
+			
+			FivepkPath fivepkPath=(FivepkPath) session.getAttribute("fivepkPath");
+			jdbcDaoSupport.save(fivepkPath);
+			session.removeAttribute("fivepkPath");
 		}
+		
 	}
 }
