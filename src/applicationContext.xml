@@ -31,7 +31,7 @@
 		<property name="jdbcUrl"
 			value="jdbc:mysql://127.0.0.1:3306/fivepk?useUnicode=true&amp;characterEncoding=utf8" />
 		<property name="user" value="jinxin" />
-		<property name="password" value="123456" />
+		<property name="password" value="12345679" />
 		<property name="maxStatements">
 			<value>0</value>
 		</property>

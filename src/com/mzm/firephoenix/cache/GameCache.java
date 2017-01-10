@@ -9,8 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.mina.core.session.IoSession;
 
-import com.mzm.firephoenix.constant.GameConstant;
-
 public class GameCache {
 	private static volatile Map<String, List<IoSession>> seoIdSessionMap = new ConcurrentHashMap<String, List<IoSession>>();
 
@@ -46,6 +44,10 @@ public class GameCache {
 			playerInfo.setPlayerInfoSession(playerInfoSession);
 			playerInfo.setAccountType(accountType);
 		}
+		for (Long key : playerInfoMap.keySet()) {
+			System.out.println(key);
+		}
+		System.out.println("Put");
 		return playerInfo;
 	}
 
@@ -59,6 +61,10 @@ public class GameCache {
 			playerInfo.setNickName(nickName);
 			playerInfo.setAccountType(accountType);
 		}
+		for (Long key : playerInfoMap.keySet()) {
+			System.out.println(key);
+		}
+		System.out.println("Put");
 		return playerInfo;
 	}
 
@@ -71,6 +77,10 @@ public class GameCache {
 			playerInfo.setPic(pic);
 			playerInfo.setNickName(nickName);
 		}
+		for (Long key : playerInfoMap.keySet()) {
+			System.out.println(key);
+		}
+		System.out.println("Put");
 		return playerInfo;
 	}
 
@@ -78,65 +88,77 @@ public class GameCache {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		playerInfo.setSeoId(seoId);
 		playerInfo.setAccountType(accountType);
+		for (Long key : playerInfoMap.keySet()) {
+			System.out.println(key);
+		}
+		System.out.println("Put");
 		return playerInfo;
 	}
 
 	public static synchronized PlayerInfo getPlayerInfo(long accountId) {
+		for (Long key : playerInfoMap.keySet()) {
+			System.out.println(key);
+		}
+		System.out.println("Login");
 		return playerInfoMap.get(accountId);
 	}
 
 	public static synchronized void removePlayerInfo(long accountId) {
+		for (Long key : playerInfoMap.keySet()) {
+			System.out.println(key);
+		}
+		System.out.println("remove");
 		playerInfoMap.remove(accountId);
 	}
 
-	private static volatile Map<String, Map<String, MachineInfo>> seoIdMachineInfoMap = new ConcurrentHashMap<String, Map<String, MachineInfo>>();
-
-	public static synchronized MachineInfo getMachineInfo(String seoId, String machineId) {
-		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
-		if (machineIdMap == null) {
-			machineIdMap = new HashMap<String, MachineInfo>();
-			seoIdMachineInfoMap.put(seoId, machineIdMap);
-		}
-		MachineInfo machineInfo = machineIdMap.get(machineId);
-		if (machineInfo == null) {
-			machineInfo = new MachineInfo();
-			machineIdMap.put(machineId, machineInfo);
-		}
-		return machineInfo;
-	}
-
-	public static synchronized MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId, Date stayTime) {
-		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
-		if (machineIdMap == null) {
-			machineIdMap = new HashMap<String, MachineInfo>();
-			seoIdMachineInfoMap.put(seoId, machineIdMap);
-		}
-		MachineInfo machineInfo = machineIdMap.get(machineId);
-		if (machineInfo == null) {
-			machineInfo = new MachineInfo();
-			machineIdMap.put(machineId, machineInfo);
-		}
-		machineInfo.setMachineType(machineType);
-		machineInfo.setAccountId(accountId);
-		machineInfo.setStayTime(stayTime);
-		return machineInfo;
-	}
-
-	public static synchronized MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId) {
-		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
-		if (machineIdMap == null) {
-			machineIdMap = new HashMap<String, MachineInfo>();
-			seoIdMachineInfoMap.put(seoId, machineIdMap);
-		}
-		MachineInfo machineInfo = machineIdMap.get(machineId);
-		if (machineInfo == null) {
-			machineInfo = new MachineInfo();
-			machineIdMap.put(machineId, machineInfo);
-		}
-		machineInfo.setMachineType(machineType);
-		machineInfo.setAccountId(accountId);
-		return machineInfo;
-	}
+//	private static volatile Map<String, Map<String, MachineInfo>> seoIdMachineInfoMap = new ConcurrentHashMap<String, Map<String, MachineInfo>>();
+//
+//	public static synchronized MachineInfo getMachineInfo(String seoId, String machineId) {
+//		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
+//		if (machineIdMap == null) {
+//			machineIdMap = new HashMap<String, MachineInfo>();
+//			seoIdMachineInfoMap.put(seoId, machineIdMap);
+//		}
+//		MachineInfo machineInfo = machineIdMap.get(machineId);
+//		if (machineInfo == null) {
+//			machineInfo = new MachineInfo();
+//			machineIdMap.put(machineId, machineInfo);
+//		}
+//		return machineInfo;
+//	}
+//
+//	public static synchronized MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId, Date stayTime) {
+//		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
+//		if (machineIdMap == null) {
+//			machineIdMap = new HashMap<String, MachineInfo>();
+//			seoIdMachineInfoMap.put(seoId, machineIdMap);
+//		}
+//		MachineInfo machineInfo = machineIdMap.get(machineId);
+//		if (machineInfo == null) {
+//			machineInfo = new MachineInfo();
+//			machineIdMap.put(machineId, machineInfo);
+//		}
+//		machineInfo.setMachineType(machineType);
+//		machineInfo.setAccountId(accountId);
+//		machineInfo.setStayTime(stayTime);
+//		return machineInfo;
+//	}
+//
+//	public static synchronized MachineInfo updateMachineInfo(String seoId, String machineId, int machineType, long accountId) {
+//		Map<String, MachineInfo> machineIdMap = seoIdMachineInfoMap.get(seoId);
+//		if (machineIdMap == null) {
+//			machineIdMap = new HashMap<String, MachineInfo>();
+//			seoIdMachineInfoMap.put(seoId, machineIdMap);
+//		}
+//		MachineInfo machineInfo = machineIdMap.get(machineId);
+//		if (machineInfo == null) {
+//			machineInfo = new MachineInfo();
+//			machineIdMap.put(machineId, machineInfo);
+//		}
+//		machineInfo.setMachineType(machineType);
+//		machineInfo.setAccountId(accountId);
+//		return machineInfo;
+//	}
 
 	private static final Map<String, Map<Integer, List<Integer>>> prefabCardsPoolMap = new HashMap<String, Map<Integer, List<Integer>>>();
 
@@ -151,9 +173,16 @@ public class GameCache {
 			randomSizeList = new ArrayList<Integer>();
 			subMap.put(winType, randomSizeList);
 		}
-//		if (randomSizeList.size() >= 24) {
-//			randomSizeList.clear();
-//		}
+		if (randomSizeList.size() >= 24) {
+			randomSizeList.clear();
+		}
 		return randomSizeList;
 	}
+	
+	private static final Map<String, Integer> forceSevenBetterMap = new HashMap<String, Integer>();
+
+	public static Map<String, Integer> getForcesevenbettermap() {
+		return forceSevenBetterMap;
+	}
+	
 }

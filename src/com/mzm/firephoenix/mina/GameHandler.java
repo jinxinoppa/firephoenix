@@ -48,7 +48,10 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 			logger.error(e, e);
 			return;
 		}
-		logger.info("receive message pack : " + messagePack.toString());
+//		int cmdNumber1 = messagePack.getCmd().getNumber();
+//		if (cmdNumber1 != 65540) {
+			logger.info("receive message pack : " + messagePack.toString() + " session id : " + session.getId());
+//		}
 		// System.out.println("number : " + messagePack.getCmd().getNumber());
 		// System.out.println("name : " + messagePack.getCmd().name());
 		// System.out.println("toString : " + messagePack.getCmd().toString());
@@ -104,14 +107,14 @@ public class GameHandler extends IoHandlerAdapter implements ApplicationContextA
 			logger.error(e, e);
 		}
 		long diff = System.currentTimeMillis() - start;
-		if (diff > 1000) {
-			logger.info("spending too much time on logicName : [" + logicName + "] methodName : [" + methodName + "]");
+		if (diff > 3000) {
+			logger.error("spending too much time on logicName : [" + logicName + "] methodName : [" + methodName + "]");
 		}
 		if (cmdNumber != Cmd.CMD_FOUR_KIND_TIME_VALUE) {
 			MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
 			returnMessagePack.setCmd(Cmd.valueOf(cmdNumber));
 			returnMessagePack.setContent(returnBuilder);
-			logger.info("sent message pack : " + returnBuilder.toString());
+			logger.info("sent message pack : " + returnBuilder.toString() + " session id : " + session.getId());
 			session.write(returnMessagePack);
 		}
 	}

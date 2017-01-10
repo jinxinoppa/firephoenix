@@ -36,7 +36,9 @@ public enum ErrorCode {
 	ERROR_START_INDEX(2022), // 发牌顺序不对不是第二手牌得分
 	ERROR_NICK_NAME_REPEATED(2023), // 该昵称已被注册,请更换其他昵称
 
-	ERROR_NICK_NAME_LAW(2024);// 非法昵称！！
+	ERROR_NICK_NAME_LAW(2024),// 非法昵称！！
+	ERROR_FOUR_OF_A_KIND_JOKER_TWO_FOURTEEN_ZERO(2025),//正宗大四梅彩蛋倍数为0
+	ERROR_NET_WORK_ERROR(2026);//服务器断开连接
 
 	private int errorCode;
 

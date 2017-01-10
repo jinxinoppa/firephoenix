@@ -91,7 +91,24 @@ public class FivepkSeoId extends AbstractEntity {
 	private long seoMachinePlayCount;
 	@Column(columnName = "machine_auto")
 	private int machineAuto;
+	@Column(columnName = "compare_history_cards")
+	private String compareHistoryCards;
 
+	@Column(columnName = "prefab_force_seven_better")
+	private byte prefabForceSevenBetter;
+	@Column(columnName = "prefab_force_seven_better_count")
+	private byte prefabForceSevenBetterCount;
+	
+	
+	@Column(columnName = "prefab_compare_buff")
+	private int prefabCompareBuff;
+	@Column(columnName = "prefab_compare_cut_down")
+	private byte prefabCompareCutDown;
+	@Column(columnName = "prefab_compare_cut_down_count")
+	private byte prefabCompareCutDownCount;
+	@Column(columnName = "prefab_compare_seven_joker")
+	private byte prefabCompareSevenJoker;
+	
 	public int getMachineAuto() {
 		return machineAuto;
 	}
@@ -141,6 +158,10 @@ public class FivepkSeoId extends AbstractEntity {
 				return prefabRoyalFlush;
 			case 1000 :
 				return prefabFiveBars;
+			case 9997 :
+				return prefabCompareCutDown;
+			case 9998 :
+				return prefabForceSevenBetter;
 			case 9999 :
 				return prefabJoker;
 			default :
@@ -443,5 +464,73 @@ public class FivepkSeoId extends AbstractEntity {
 	public void setPrefabFourOfAKindTwoTenTwo(byte prefabFourOfAKindTwoTenTwo) {
 		this.prefabFourOfAKindTwoTenTwo = prefabFourOfAKindTwoTenTwo;
 		updateFieldsList.add("prefabFourOfAKindTwoTenTwo");
+	}
+	
+	public String getCompareHistoryCards() {
+		return compareHistoryCards;
+	}
+
+	public void setCompareHistoryCards(String compareHistoryCards) {
+		this.compareHistoryCards = compareHistoryCards;
+		updateFieldsList.add("compareHistoryCards");
+	}
+	public void firstInLastOut(int compareCard) {
+		if (compareHistoryCards != null) {
+			StringBuffer sb = new StringBuffer();
+			sb.append(compareCard).append(",").append(compareHistoryCards.substring(0, compareHistoryCards.lastIndexOf(",") == -1 ? 0 : compareHistoryCards.lastIndexOf(",")));
+			setCompareHistoryCards(sb.toString());
+		}
+	}
+
+	public byte getPrefabForceSevenBetter() {
+		return prefabForceSevenBetter;
+	}
+
+	public void setPrefabForceSevenBetter(byte prefabForceSevenBetter) {
+		this.prefabForceSevenBetter = prefabForceSevenBetter;
+	}
+
+	public byte getPrefabForceSevenBetterCount() {
+		return prefabForceSevenBetterCount;
+	}
+
+	public void setPrefabForceSevenBetterCount(byte prefabForceSevenBetterCount) {
+		this.prefabForceSevenBetterCount = prefabForceSevenBetterCount;
+		updateFieldsList.add("prefabForceSevenBetterCount");
+	}
+
+	public int getPrefabCompareBuff() {
+		return prefabCompareBuff;
+	}
+
+	public void setPrefabCompareBuff(int prefabCompareBuff) {
+		this.prefabCompareBuff = prefabCompareBuff;
+		updateFieldsList.add("prefabCompareBuff");
+	}
+
+	public byte getPrefabCompareCutDown() {
+		return prefabCompareCutDown;
+	}
+
+	public void setPrefabCompareCutDown(byte prefabCompareCutDown) {
+		this.prefabCompareCutDown = prefabCompareCutDown;
+	}
+
+	public byte getPrefabCompareCutDownCount() {
+		return prefabCompareCutDownCount;
+	}
+
+	public void setPrefabCompareCutDownCount(byte prefabCompareCutDownCount) {
+		this.prefabCompareCutDownCount = prefabCompareCutDownCount;
+		updateFieldsList.add("prefabCompareCutDownCount");
+	}
+
+	public byte getPrefabCompareSevenJoker() {
+		return prefabCompareSevenJoker;
+	}
+
+	public void setPrefabCompareSevenJoker(byte prefabCompareSevenJoker) {
+		this.prefabCompareSevenJoker = prefabCompareSevenJoker;
+		updateFieldsList.add("prefabCompareSevenJoker");
 	}
 }

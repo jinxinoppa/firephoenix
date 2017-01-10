@@ -266,21 +266,6 @@ alter table fivepk_seo add COLUMN prefab_seven_better_keep int(20) DEFAULT 4 aft
 
 #2016-12-14
 
-create table fivepk_default(
-id int(20) auto_increment primary key,
-name varchar(20) default null,
-machine_id varchar(20) default null,
-credit int(10) default 0,
-bet int(10) default 0,
-win int(10) default 0,
-one_card varchar(20) default null,
-guard_card varchar(10) default null,
-two_card varchar(20) default null,
-card_type varchar(10) default null,
-guess_point int(10) default 0,
-guess_type varchar(200) default null
-);
-
 alter table fivepk_seo add COLUMN prefab_five_of_a_kind_compare int(20) DEFAULT 1 after prefab_five_of_a_kind_count;
 alter table fivepk_prefab modify prefab_0 VARCHAR(255) DEFAULT '0' NOT NULL;
 alter table fivepk_prefab modify prefab_1 VARCHAR(255) DEFAULT '0' NOT NULL;
@@ -303,8 +288,6 @@ alter table fivepk_seo add COLUMN prefab_four_of_a_kind_J_A int(20) DEFAULT 6 af
 alter table fivepk_seo add COLUMN prefab_four_of_a_kind_T_T int(20) DEFAULT 6 after prefab_four_of_a_kind_JA;
 alter table fivepk_seo add COLUMN prefab_four_of_a_kind_J_A_count int(20) DEFAULT 0 after prefab_four_of_a_kind_J_A;
 alter table fivepk_seo add COLUMN prefab_four_of_a_kind_T_T_count int(20) DEFAULT 0 after prefab_four_of_a_kind_T_T;
-
-alter table fivepk_default add fivepk_time timestamp default current_timestamp on update current_timestamp ;
 
 CREATE TABLE `fivepk_default` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
@@ -361,6 +344,39 @@ CREATE TABLE `fivepk_path` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+#2016-12-20
+alter table fivepk_seo add compare_history_cards varchar(50) default null;
+
 #2016-12-21
 alter table fivepk_seo modify prefab_four_of_a_kind_ja int(20) DEFAULT '3';
 alter table fivepk_seo modify prefab_four_of_a_kind_two_ten int(20) DEFAULT '3';
+
+#2016-12-22
+update role set name='管理员' where id=1;
+update role set name='开分员' where id=2;
+
+#2016-12-27
+alter table fivepk_seo add prefab_force_seven_better TINYINT default 4;
+alter table fivepk_seo add prefab_force_seven_better_count SMALLINT default 0;
+
+alter table fivepk_default modify guess_point varchar(200) default '';
+
+#2016-12-28
+alter table fivepk_seo add prefab_compare_buff INT default 60000;
+alter table fivepk_seo add prefab_compare_cut_down SMALLINT default 4;
+alter table fivepk_seo add prefab_compare_cut_down_count SMALLINT default 0;
+alter table fivepk_seo add prefab_compare_seven_joker SMALLINT default 0;
+
+#2016-12-29
+alter table fivepk_seo modify prefab_four_of_a_kind_Joker_two_fourteen int(20) DEFAULT '2'
+
+#2016-12-30
+alter table fivepk_seo modify prefab_four_of_a_kind_joker int(20) DEFAULT '7';
+alter table fivepk_seo modify prefab_four_of_a_kind_Joker_two_fourteen int(20) DEFAULT '0';
+
+#2017-1-3
+insert role(id,name) value(3,'超级管理员');
+
+#2017-1-10
+alter table fivepk_seo modify prefab_four_of_a_kind_J_A_count double DEFAULT 0;
+alter table fivepk_seo modify prefab_four_of_a_kind_T_T_count double DEFAULT 0;

@@ -23,7 +23,7 @@ public class GameConstant {
 	public final static int MACHINE_TYPE_FREE = 0;
 	public final static int MACHINE_TYPE_ONLINE = 1;
 	public final static int MACHINE_TYPE_STAY = 2;
-	public final static String MACHINE_SEOID_GUEST = "CE";
+	public final static String MACHINE_SEOID_GUEST = "YK";
 
 	public final static double[] FIVEPREFAB = new double[]{0.9, 0.91, 0.92, 0.93, 0.94, 0.95};
 	public final static double[] FIVEPREFAB2 = new double[]{0.95, 0.96, 0.97, 0.98};
@@ -35,7 +35,7 @@ public class GameConstant {
 	public final static byte[][] WINPOOLFOUROFAKINDJA = {{11, 24, 37, 53, 1}};
 	public final static byte[][] WINPOOLFIVEOFAKIND = {{2, 15, 28, 41, 53}, {3, 16, 29, 42, 53}, {4, 17, 30, 43, 53}, {5, 18, 31, 44, 53}, {6, 19, 32, 45, 53}, {7, 20, 33, 46, 53}, {8, 21, 34, 47, 53}, {9, 22, 35, 48, 53}
 	};
-	public final static Map<Integer,  List<CardsPoolUnit>> WINPOOLMAP = new HashMap<Integer, List<CardsPoolUnit>>(7);
+	public final static Map<Integer,  List<CardsPoolUnit>> WINPOOLMAP = new HashMap<Integer, List<CardsPoolUnit>>();
 	
 	public final static Map<String, Map<Integer, Double>> RANDOMBUFF = new HashMap<String, Map<Integer,Double>>();
 

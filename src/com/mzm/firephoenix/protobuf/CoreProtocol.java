@@ -365,6 +365,14 @@ public final class CoreProtocol {
      * </pre>
      */
     CMD_LOGIN_OUT(44, 196645),
+    /**
+     * <code>CMD_NET_WORK_ERROR = 196646;</code>
+     *
+     * <pre>
+     *服务器断开连接
+     * </pre>
+     */
+    CMD_NET_WORK_ERROR(45, 196646),
     ;
 
     /**
@@ -719,6 +727,14 @@ public final class CoreProtocol {
      * </pre>
      */
     public static final int CMD_LOGIN_OUT_VALUE = 196645;
+    /**
+     * <code>CMD_NET_WORK_ERROR = 196646;</code>
+     *
+     * <pre>
+     *服务器断开连接
+     * </pre>
+     */
+    public static final int CMD_NET_WORK_ERROR_VALUE = 196646;
 
 
     public final int getNumber() {
@@ -772,6 +788,7 @@ public final class CoreProtocol {
         case 196643: return CMD_PAIINFO_3;
         case 196644: return CMD_NOTICE;
         case 196645: return CMD_LOGIN_OUT;
+        case 196646: return CMD_NET_WORK_ERROR;
         default: return null;
       }
     }
@@ -2494,6 +2511,19 @@ public final class CoreProtocol {
     com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineAutoOrBuilder getCsMachineAutoOrBuilder();
 
     /**
+     * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+     */
+    boolean hasScMachineAuto();
+    /**
+     * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto getScMachineAuto();
+    /**
+     * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+     */
+    com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAutoOrBuilder getScMachineAutoOrBuilder();
+
+    /**
      * <code>optional .SCPlayerHistoryData scPlayerHistoryData = 35;</code>
      */
     boolean hasScPlayerHistoryData();
@@ -3009,7 +3039,7 @@ public final class CoreProtocol {
             }
             case 282: {
               com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000002) == 0x00000002)) {
+              if (((bitField1_ & 0x00000004) == 0x00000004)) {
                 subBuilder = scPlayerHistoryData_.toBuilder();
               }
               scPlayerHistoryData_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.PARSER, extensionRegistry);
@@ -3017,12 +3047,12 @@ public final class CoreProtocol {
                 subBuilder.mergeFrom(scPlayerHistoryData_);
                 scPlayerHistoryData_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000002;
+              bitField1_ |= 0x00000004;
               break;
             }
             case 290: {
               com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000004) == 0x00000004)) {
+              if (((bitField1_ & 0x00000008) == 0x00000008)) {
                 subBuilder = csPlayerCardsData_.toBuilder();
               }
               csPlayerCardsData_ = input.readMessage(com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.PARSER, extensionRegistry);
@@ -3030,12 +3060,12 @@ public final class CoreProtocol {
                 subBuilder.mergeFrom(csPlayerCardsData_);
                 csPlayerCardsData_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000004;
+              bitField1_ |= 0x00000008;
               break;
             }
             case 298: {
               com.mzm.firephoenix.protobuf.CoreProtocol.CSCardsBet.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000008) == 0x00000008)) {
+              if (((bitField1_ & 0x00000010) == 0x00000010)) {
                 subBuilder = csCardsBet_.toBuilder();
               }
               csCardsBet_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.CSCardsBet.PARSER, extensionRegistry);
@@ -3043,12 +3073,12 @@ public final class CoreProtocol {
                 subBuilder.mergeFrom(csCardsBet_);
                 csCardsBet_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000008;
+              bitField1_ |= 0x00000010;
               break;
             }
             case 306: {
               com.mzm.firephoenix.protobuf.CoreProtocol.SCCardsBet.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000010) == 0x00000010)) {
+              if (((bitField1_ & 0x00000020) == 0x00000020)) {
                 subBuilder = scCardsBet_.toBuilder();
               }
               scCardsBet_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCCardsBet.PARSER, extensionRegistry);
@@ -3056,7 +3086,20 @@ public final class CoreProtocol {
                 subBuilder.mergeFrom(scCardsBet_);
                 scCardsBet_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000010;
+              bitField1_ |= 0x00000020;
+              break;
+            }
+            case 314: {
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder subBuilder = null;
+              if (((bitField1_ & 0x00000002) == 0x00000002)) {
+                subBuilder = scMachineAuto_.toBuilder();
+              }
+              scMachineAuto_ = input.readMessage(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(scMachineAuto_);
+                scMachineAuto_ = subBuilder.buildPartial();
+              }
+              bitField1_ |= 0x00000002;
               break;
             }
           }
@@ -4102,13 +4145,34 @@ public final class CoreProtocol {
       return csMachineAuto_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.CSMachineAuto.getDefaultInstance() : csMachineAuto_;
     }
 
+    public static final int SCMACHINEAUTO_FIELD_NUMBER = 39;
+    private com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto scMachineAuto_;
+    /**
+     * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+     */
+    public boolean hasScMachineAuto() {
+      return ((bitField1_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto getScMachineAuto() {
+      return scMachineAuto_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.getDefaultInstance() : scMachineAuto_;
+    }
+    /**
+     * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+     */
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAutoOrBuilder getScMachineAutoOrBuilder() {
+      return scMachineAuto_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.getDefaultInstance() : scMachineAuto_;
+    }
+
     public static final int SCPLAYERHISTORYDATA_FIELD_NUMBER = 35;
     private com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData scPlayerHistoryData_;
     /**
      * <code>optional .SCPlayerHistoryData scPlayerHistoryData = 35;</code>
      */
     public boolean hasScPlayerHistoryData() {
-      return ((bitField1_ & 0x00000002) == 0x00000002);
+      return ((bitField1_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .SCPlayerHistoryData scPlayerHistoryData = 35;</code>
@@ -4129,7 +4193,7 @@ public final class CoreProtocol {
      * <code>optional .CSPlayerCardsData csPlayerCardsData = 36;</code>
      */
     public boolean hasCsPlayerCardsData() {
-      return ((bitField1_ & 0x00000004) == 0x00000004);
+      return ((bitField1_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .CSPlayerCardsData csPlayerCardsData = 36;</code>
@@ -4150,7 +4214,7 @@ public final class CoreProtocol {
      * <code>optional .CSCardsBet csCardsBet = 37;</code>
      */
     public boolean hasCsCardsBet() {
-      return ((bitField1_ & 0x00000008) == 0x00000008);
+      return ((bitField1_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .CSCardsBet csCardsBet = 37;</code>
@@ -4171,7 +4235,7 @@ public final class CoreProtocol {
      * <code>optional .SCCardsBet scCardsBet = 38;</code>
      */
     public boolean hasScCardsBet() {
-      return ((bitField1_ & 0x00000010) == 0x00000010);
+      return ((bitField1_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .SCCardsBet scCardsBet = 38;</code>
@@ -4358,6 +4422,12 @@ public final class CoreProtocol {
           return false;
         }
       }
+      if (hasScMachineAuto()) {
+        if (!getScMachineAuto().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasScPlayerHistoryData()) {
         if (!getScPlayerHistoryData().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -4475,17 +4545,20 @@ public final class CoreProtocol {
       if (((bitField1_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(34, getCsMachineAuto());
       }
-      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      if (((bitField1_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(35, getScPlayerHistoryData());
       }
-      if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      if (((bitField1_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(36, getCsPlayerCardsData());
       }
-      if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      if (((bitField1_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(37, getCsCardsBet());
       }
-      if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(38, getScCardsBet());
+      }
+      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(39, getScMachineAuto());
       }
       unknownFields.writeTo(output);
     }
@@ -4628,21 +4701,25 @@ public final class CoreProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(34, getCsMachineAuto());
       }
-      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      if (((bitField1_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(35, getScPlayerHistoryData());
       }
-      if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      if (((bitField1_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(36, getCsPlayerCardsData());
       }
-      if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      if (((bitField1_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(37, getCsCardsBet());
       }
-      if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(38, getScCardsBet());
+      }
+      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(39, getScMachineAuto());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4787,6 +4864,7 @@ public final class CoreProtocol {
           getCsFourKindTimeFieldBuilder();
           getScFourKindTimeFieldBuilder();
           getCsMachineAutoFieldBuilder();
+          getScMachineAutoFieldBuilder();
           getScPlayerHistoryDataFieldBuilder();
           getCsPlayerCardsDataFieldBuilder();
           getCsCardsBetFieldBuilder();
@@ -4985,30 +5063,36 @@ public final class CoreProtocol {
           csMachineAutoBuilder_.clear();
         }
         bitField1_ = (bitField1_ & ~0x00000001);
+        if (scMachineAutoBuilder_ == null) {
+          scMachineAuto_ = null;
+        } else {
+          scMachineAutoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x00000002);
         if (scPlayerHistoryDataBuilder_ == null) {
           scPlayerHistoryData_ = null;
         } else {
           scPlayerHistoryDataBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000002);
+        bitField1_ = (bitField1_ & ~0x00000004);
         if (csPlayerCardsDataBuilder_ == null) {
           csPlayerCardsData_ = null;
         } else {
           csPlayerCardsDataBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000004);
+        bitField1_ = (bitField1_ & ~0x00000008);
         if (csCardsBetBuilder_ == null) {
           csCardsBet_ = null;
         } else {
           csCardsBetBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000008);
+        bitField1_ = (bitField1_ & ~0x00000010);
         if (scCardsBetBuilder_ == null) {
           scCardsBet_ = null;
         } else {
           scCardsBetBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000010);
+        bitField1_ = (bitField1_ & ~0x00000020);
         return this;
       }
 
@@ -5294,29 +5378,37 @@ public final class CoreProtocol {
         if (((from_bitField1_ & 0x00000002) == 0x00000002)) {
           to_bitField1_ |= 0x00000002;
         }
+        if (scMachineAutoBuilder_ == null) {
+          result.scMachineAuto_ = scMachineAuto_;
+        } else {
+          result.scMachineAuto_ = scMachineAutoBuilder_.build();
+        }
+        if (((from_bitField1_ & 0x00000004) == 0x00000004)) {
+          to_bitField1_ |= 0x00000004;
+        }
         if (scPlayerHistoryDataBuilder_ == null) {
           result.scPlayerHistoryData_ = scPlayerHistoryData_;
         } else {
           result.scPlayerHistoryData_ = scPlayerHistoryDataBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000004) == 0x00000004)) {
-          to_bitField1_ |= 0x00000004;
+        if (((from_bitField1_ & 0x00000008) == 0x00000008)) {
+          to_bitField1_ |= 0x00000008;
         }
         if (csPlayerCardsDataBuilder_ == null) {
           result.csPlayerCardsData_ = csPlayerCardsData_;
         } else {
           result.csPlayerCardsData_ = csPlayerCardsDataBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000008) == 0x00000008)) {
-          to_bitField1_ |= 0x00000008;
+        if (((from_bitField1_ & 0x00000010) == 0x00000010)) {
+          to_bitField1_ |= 0x00000010;
         }
         if (csCardsBetBuilder_ == null) {
           result.csCardsBet_ = csCardsBet_;
         } else {
           result.csCardsBet_ = csCardsBetBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000010) == 0x00000010)) {
-          to_bitField1_ |= 0x00000010;
+        if (((from_bitField1_ & 0x00000020) == 0x00000020)) {
+          to_bitField1_ |= 0x00000020;
         }
         if (scCardsBetBuilder_ == null) {
           result.scCardsBet_ = scCardsBet_;
@@ -5440,6 +5532,9 @@ public final class CoreProtocol {
         }
         if (other.hasCsMachineAuto()) {
           mergeCsMachineAuto(other.getCsMachineAuto());
+        }
+        if (other.hasScMachineAuto()) {
+          mergeScMachineAuto(other.getScMachineAuto());
         }
         if (other.hasScPlayerHistoryData()) {
           mergeScPlayerHistoryData(other.getScPlayerHistoryData());
@@ -5594,6 +5689,11 @@ public final class CoreProtocol {
         }
         if (hasCsMachineAuto()) {
           if (!getCsMachineAuto().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasScMachineAuto()) {
+          if (!getScMachineAuto().isInitialized()) {
             return false;
           }
         }
@@ -10300,6 +10400,124 @@ public final class CoreProtocol {
         return csMachineAutoBuilder_;
       }
 
+      private com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto scMachineAuto_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAutoOrBuilder> scMachineAutoBuilder_;
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public boolean hasScMachineAuto() {
+        return ((bitField1_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto getScMachineAuto() {
+        if (scMachineAutoBuilder_ == null) {
+          return scMachineAuto_ == null ? com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.getDefaultInstance() : scMachineAuto_;
+        } else {
+          return scMachineAutoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public Builder setScMachineAuto(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto value) {
+        if (scMachineAutoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          scMachineAuto_ = value;
+          onChanged();
+        } else {
+          scMachineAutoBuilder_.setMessage(value);
+        }
+        bitField1_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public Builder setScMachineAuto(
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder builderForValue) {
+        if (scMachineAutoBuilder_ == null) {
+          scMachineAuto_ = builderForValue.build();
+          onChanged();
+        } else {
+          scMachineAutoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField1_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public Builder mergeScMachineAuto(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto value) {
+        if (scMachineAutoBuilder_ == null) {
+          if (((bitField1_ & 0x00000002) == 0x00000002) &&
+              scMachineAuto_ != null &&
+              scMachineAuto_ != com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.getDefaultInstance()) {
+            scMachineAuto_ =
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.newBuilder(scMachineAuto_).mergeFrom(value).buildPartial();
+          } else {
+            scMachineAuto_ = value;
+          }
+          onChanged();
+        } else {
+          scMachineAutoBuilder_.mergeFrom(value);
+        }
+        bitField1_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public Builder clearScMachineAuto() {
+        if (scMachineAutoBuilder_ == null) {
+          scMachineAuto_ = null;
+          onChanged();
+        } else {
+          scMachineAutoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder getScMachineAutoBuilder() {
+        bitField1_ |= 0x00000002;
+        onChanged();
+        return getScMachineAutoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAutoOrBuilder getScMachineAutoOrBuilder() {
+        if (scMachineAutoBuilder_ != null) {
+          return scMachineAutoBuilder_.getMessageOrBuilder();
+        } else {
+          return scMachineAuto_ == null ?
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.getDefaultInstance() : scMachineAuto_;
+        }
+      }
+      /**
+       * <code>optional .SCMachineAuto scMachineAuto = 39;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAutoOrBuilder> 
+          getScMachineAutoFieldBuilder() {
+        if (scMachineAutoBuilder_ == null) {
+          scMachineAutoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAutoOrBuilder>(
+                  getScMachineAuto(),
+                  getParentForChildren(),
+                  isClean());
+          scMachineAuto_ = null;
+        }
+        return scMachineAutoBuilder_;
+      }
+
       private com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData scPlayerHistoryData_ = null;
       private com.google.protobuf.SingleFieldBuilder<
           com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.Builder, com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryDataOrBuilder> scPlayerHistoryDataBuilder_;
@@ -10307,7 +10525,7 @@ public final class CoreProtocol {
        * <code>optional .SCPlayerHistoryData scPlayerHistoryData = 35;</code>
        */
       public boolean hasScPlayerHistoryData() {
-        return ((bitField1_ & 0x00000002) == 0x00000002);
+        return ((bitField1_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .SCPlayerHistoryData scPlayerHistoryData = 35;</code>
@@ -10332,7 +10550,7 @@ public final class CoreProtocol {
         } else {
           scPlayerHistoryDataBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         return this;
       }
       /**
@@ -10346,7 +10564,7 @@ public final class CoreProtocol {
         } else {
           scPlayerHistoryDataBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         return this;
       }
       /**
@@ -10354,7 +10572,7 @@ public final class CoreProtocol {
        */
       public Builder mergeScPlayerHistoryData(com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData value) {
         if (scPlayerHistoryDataBuilder_ == null) {
-          if (((bitField1_ & 0x00000002) == 0x00000002) &&
+          if (((bitField1_ & 0x00000004) == 0x00000004) &&
               scPlayerHistoryData_ != null &&
               scPlayerHistoryData_ != com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.getDefaultInstance()) {
             scPlayerHistoryData_ =
@@ -10366,7 +10584,7 @@ public final class CoreProtocol {
         } else {
           scPlayerHistoryDataBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         return this;
       }
       /**
@@ -10379,14 +10597,14 @@ public final class CoreProtocol {
         } else {
           scPlayerHistoryDataBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000002);
+        bitField1_ = (bitField1_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .SCPlayerHistoryData scPlayerHistoryData = 35;</code>
        */
       public com.mzm.firephoenix.protobuf.GameProtocol.SCPlayerHistoryData.Builder getScPlayerHistoryDataBuilder() {
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         onChanged();
         return getScPlayerHistoryDataFieldBuilder().getBuilder();
       }
@@ -10425,7 +10643,7 @@ public final class CoreProtocol {
        * <code>optional .CSPlayerCardsData csPlayerCardsData = 36;</code>
        */
       public boolean hasCsPlayerCardsData() {
-        return ((bitField1_ & 0x00000004) == 0x00000004);
+        return ((bitField1_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .CSPlayerCardsData csPlayerCardsData = 36;</code>
@@ -10450,7 +10668,7 @@ public final class CoreProtocol {
         } else {
           csPlayerCardsDataBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         return this;
       }
       /**
@@ -10464,7 +10682,7 @@ public final class CoreProtocol {
         } else {
           csPlayerCardsDataBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         return this;
       }
       /**
@@ -10472,7 +10690,7 @@ public final class CoreProtocol {
        */
       public Builder mergeCsPlayerCardsData(com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData value) {
         if (csPlayerCardsDataBuilder_ == null) {
-          if (((bitField1_ & 0x00000004) == 0x00000004) &&
+          if (((bitField1_ & 0x00000008) == 0x00000008) &&
               csPlayerCardsData_ != null &&
               csPlayerCardsData_ != com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.getDefaultInstance()) {
             csPlayerCardsData_ =
@@ -10484,7 +10702,7 @@ public final class CoreProtocol {
         } else {
           csPlayerCardsDataBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         return this;
       }
       /**
@@ -10497,14 +10715,14 @@ public final class CoreProtocol {
         } else {
           csPlayerCardsDataBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000004);
+        bitField1_ = (bitField1_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .CSPlayerCardsData csPlayerCardsData = 36;</code>
        */
       public com.mzm.firephoenix.protobuf.GameProtocol.CSPlayerCardsData.Builder getCsPlayerCardsDataBuilder() {
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         onChanged();
         return getCsPlayerCardsDataFieldBuilder().getBuilder();
       }
@@ -10543,7 +10761,7 @@ public final class CoreProtocol {
        * <code>optional .CSCardsBet csCardsBet = 37;</code>
        */
       public boolean hasCsCardsBet() {
-        return ((bitField1_ & 0x00000008) == 0x00000008);
+        return ((bitField1_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .CSCardsBet csCardsBet = 37;</code>
@@ -10568,7 +10786,7 @@ public final class CoreProtocol {
         } else {
           csCardsBetBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         return this;
       }
       /**
@@ -10582,7 +10800,7 @@ public final class CoreProtocol {
         } else {
           csCardsBetBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         return this;
       }
       /**
@@ -10590,7 +10808,7 @@ public final class CoreProtocol {
        */
       public Builder mergeCsCardsBet(com.mzm.firephoenix.protobuf.CoreProtocol.CSCardsBet value) {
         if (csCardsBetBuilder_ == null) {
-          if (((bitField1_ & 0x00000008) == 0x00000008) &&
+          if (((bitField1_ & 0x00000010) == 0x00000010) &&
               csCardsBet_ != null &&
               csCardsBet_ != com.mzm.firephoenix.protobuf.CoreProtocol.CSCardsBet.getDefaultInstance()) {
             csCardsBet_ =
@@ -10602,7 +10820,7 @@ public final class CoreProtocol {
         } else {
           csCardsBetBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         return this;
       }
       /**
@@ -10615,14 +10833,14 @@ public final class CoreProtocol {
         } else {
           csCardsBetBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000008);
+        bitField1_ = (bitField1_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .CSCardsBet csCardsBet = 37;</code>
        */
       public com.mzm.firephoenix.protobuf.CoreProtocol.CSCardsBet.Builder getCsCardsBetBuilder() {
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         onChanged();
         return getCsCardsBetFieldBuilder().getBuilder();
       }
@@ -10661,7 +10879,7 @@ public final class CoreProtocol {
        * <code>optional .SCCardsBet scCardsBet = 38;</code>
        */
       public boolean hasScCardsBet() {
-        return ((bitField1_ & 0x00000010) == 0x00000010);
+        return ((bitField1_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .SCCardsBet scCardsBet = 38;</code>
@@ -10686,7 +10904,7 @@ public final class CoreProtocol {
         } else {
           scCardsBetBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         return this;
       }
       /**
@@ -10700,7 +10918,7 @@ public final class CoreProtocol {
         } else {
           scCardsBetBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         return this;
       }
       /**
@@ -10708,7 +10926,7 @@ public final class CoreProtocol {
        */
       public Builder mergeScCardsBet(com.mzm.firephoenix.protobuf.CoreProtocol.SCCardsBet value) {
         if (scCardsBetBuilder_ == null) {
-          if (((bitField1_ & 0x00000010) == 0x00000010) &&
+          if (((bitField1_ & 0x00000020) == 0x00000020) &&
               scCardsBet_ != null &&
               scCardsBet_ != com.mzm.firephoenix.protobuf.CoreProtocol.SCCardsBet.getDefaultInstance()) {
             scCardsBet_ =
@@ -10720,7 +10938,7 @@ public final class CoreProtocol {
         } else {
           scCardsBetBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         return this;
       }
       /**
@@ -10733,14 +10951,14 @@ public final class CoreProtocol {
         } else {
           scCardsBetBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000010);
+        bitField1_ = (bitField1_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .SCCardsBet scCardsBet = 38;</code>
        */
       public com.mzm.firephoenix.protobuf.CoreProtocol.SCCardsBet.Builder getScCardsBetBuilder() {
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         onChanged();
         return getScCardsBetFieldBuilder().getBuilder();
       }
@@ -12410,7 +12628,7 @@ public final class CoreProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 loginOut = 1;</code>
+     * <code>required string loginOut = 1;</code>
      *
      * <pre>
      *退出帐号
@@ -12418,13 +12636,22 @@ public final class CoreProtocol {
      */
     boolean hasLoginOut();
     /**
-     * <code>required int32 loginOut = 1;</code>
+     * <code>required string loginOut = 1;</code>
      *
      * <pre>
      *退出帐号
      * </pre>
      */
-    int getLoginOut();
+    java.lang.String getLoginOut();
+    /**
+     * <code>required string loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getLoginOutBytes();
   }
   /**
    * Protobuf type {@code CSLoginOut}
@@ -12438,7 +12665,7 @@ public final class CoreProtocol {
       super(builder);
     }
     private CSLoginOut() {
-      loginOut_ = 0;
+      loginOut_ = "";
     }
 
     @java.lang.Override
@@ -12468,9 +12695,10 @@ public final class CoreProtocol {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              loginOut_ = input.readInt32();
+              loginOut_ = bs;
               break;
             }
           }
@@ -12500,9 +12728,9 @@ public final class CoreProtocol {
 
     private int bitField0_;
     public static final int LOGINOUT_FIELD_NUMBER = 1;
-    private int loginOut_;
+    private volatile java.lang.Object loginOut_;
     /**
-     * <code>required int32 loginOut = 1;</code>
+     * <code>required string loginOut = 1;</code>
      *
      * <pre>
      *退出帐号
@@ -12512,14 +12740,45 @@ public final class CoreProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 loginOut = 1;</code>
+     * <code>required string loginOut = 1;</code>
      *
      * <pre>
      *退出帐号
      * </pre>
      */
-    public int getLoginOut() {
-      return loginOut_;
+    public java.lang.String getLoginOut() {
+      java.lang.Object ref = loginOut_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          loginOut_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string loginOut = 1;</code>
+     *
+     * <pre>
+     *退出帐号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getLoginOutBytes() {
+      java.lang.Object ref = loginOut_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        loginOut_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -12539,7 +12798,7 @@ public final class CoreProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, loginOut_);
+        output.writeBytes(1, getLoginOutBytes());
       }
       unknownFields.writeTo(output);
     }
@@ -12552,7 +12811,7 @@ public final class CoreProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, loginOut_);
+          .computeBytesSize(1, getLoginOutBytes());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -12666,7 +12925,7 @@ public final class CoreProtocol {
       }
       public Builder clear() {
         super.clear();
-        loginOut_ = 0;
+        loginOut_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -12713,7 +12972,9 @@ public final class CoreProtocol {
       public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut other) {
         if (other == com.mzm.firephoenix.protobuf.CoreProtocol.CSLoginOut.getDefaultInstance()) return this;
         if (other.hasLoginOut()) {
-          setLoginOut(other.getLoginOut());
+          bitField0_ |= 0x00000001;
+          loginOut_ = other.loginOut_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -12746,9 +13007,9 @@ public final class CoreProtocol {
       }
       private int bitField0_;
 
-      private int loginOut_ ;
+      private java.lang.Object loginOut_ = "";
       /**
-       * <code>required int32 loginOut = 1;</code>
+       * <code>required string loginOut = 1;</code>
        *
        * <pre>
        *退出帐号
@@ -12758,30 +13019,65 @@ public final class CoreProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 loginOut = 1;</code>
+       * <code>required string loginOut = 1;</code>
        *
        * <pre>
        *退出帐号
        * </pre>
        */
-      public int getLoginOut() {
-        return loginOut_;
+      public java.lang.String getLoginOut() {
+        java.lang.Object ref = loginOut_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            loginOut_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 loginOut = 1;</code>
+       * <code>required string loginOut = 1;</code>
        *
        * <pre>
        *退出帐号
        * </pre>
        */
-      public Builder setLoginOut(int value) {
-        bitField0_ |= 0x00000001;
+      public com.google.protobuf.ByteString
+          getLoginOutBytes() {
+        java.lang.Object ref = loginOut_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          loginOut_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public Builder setLoginOut(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         loginOut_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 loginOut = 1;</code>
+       * <code>required string loginOut = 1;</code>
        *
        * <pre>
        *退出帐号
@@ -12789,7 +13085,24 @@ public final class CoreProtocol {
        */
       public Builder clearLoginOut() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        loginOut_ = 0;
+        loginOut_ = getDefaultInstance().getLoginOut();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string loginOut = 1;</code>
+       *
+       * <pre>
+       *退出帐号
+       * </pre>
+       */
+      public Builder setLoginOutBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        loginOut_ = value;
         onChanged();
         return this;
       }
@@ -37107,6 +37420,438 @@ public final class CoreProtocol {
 
   }
 
+  public interface SCMachineAutoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SCMachineAuto)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 auto = 1;</code>
+     *
+     * <pre>
+     *1-自动;0-手动
+     * </pre>
+     */
+    boolean hasAuto();
+    /**
+     * <code>required int32 auto = 1;</code>
+     *
+     * <pre>
+     *1-自动;0-手动
+     * </pre>
+     */
+    int getAuto();
+  }
+  /**
+   * Protobuf type {@code SCMachineAuto}
+   */
+  public  static final class SCMachineAuto extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SCMachineAuto)
+      SCMachineAutoOrBuilder {
+    // Use SCMachineAuto.newBuilder() to construct.
+    private SCMachineAuto(com.google.protobuf.GeneratedMessage.Builder builder) {
+      super(builder);
+    }
+    private SCMachineAuto() {
+      auto_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SCMachineAuto(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry) {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              auto_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw new RuntimeException(e.setUnfinishedMessage(this));
+      } catch (java.io.IOException e) {
+        throw new RuntimeException(
+            new com.google.protobuf.InvalidProtocolBufferException(
+                e.getMessage()).setUnfinishedMessage(this));
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineAuto_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineAuto_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int AUTO_FIELD_NUMBER = 1;
+    private int auto_;
+    /**
+     * <code>required int32 auto = 1;</code>
+     *
+     * <pre>
+     *1-自动;0-手动
+     * </pre>
+     */
+    public boolean hasAuto() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 auto = 1;</code>
+     *
+     * <pre>
+     *1-自动;0-手动
+     * </pre>
+     */
+    public int getAuto() {
+      return auto_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasAuto()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, auto_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, auto_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SCMachineAuto}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SCMachineAuto)
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAutoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineAuto_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineAuto_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.class, com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.Builder.class);
+      }
+
+      // Construct using com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        auto_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.internal_static_SCMachineAuto_descriptor;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto getDefaultInstanceForType() {
+        return com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.getDefaultInstance();
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto build() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto buildPartial() {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto result = new com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.auto_ = auto_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto) {
+          return mergeFrom((com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto other) {
+        if (other == com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto.getDefaultInstance()) return this;
+        if (other.hasAuto()) {
+          setAuto(other.getAuto());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasAuto()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int auto_ ;
+      /**
+       * <code>required int32 auto = 1;</code>
+       *
+       * <pre>
+       *1-自动;0-手动
+       * </pre>
+       */
+      public boolean hasAuto() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 auto = 1;</code>
+       *
+       * <pre>
+       *1-自动;0-手动
+       * </pre>
+       */
+      public int getAuto() {
+        return auto_;
+      }
+      /**
+       * <code>required int32 auto = 1;</code>
+       *
+       * <pre>
+       *1-自动;0-手动
+       * </pre>
+       */
+      public Builder setAuto(int value) {
+        bitField0_ |= 0x00000001;
+        auto_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 auto = 1;</code>
+       *
+       * <pre>
+       *1-自动;0-手动
+       * </pre>
+       */
+      public Builder clearAuto() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        auto_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SCMachineAuto)
+    }
+
+    // @@protoc_insertion_point(class_scope:SCMachineAuto)
+    private static final com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto();
+    }
+
+    public static com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    public static final com.google.protobuf.Parser<SCMachineAuto> PARSER =
+        new com.google.protobuf.AbstractParser<SCMachineAuto>() {
+      public SCMachineAuto parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        try {
+          return new SCMachineAuto(input, extensionRegistry);
+        } catch (RuntimeException e) {
+          if (e.getCause() instanceof
+              com.google.protobuf.InvalidProtocolBufferException) {
+            throw (com.google.protobuf.InvalidProtocolBufferException)
+                e.getCause();
+          }
+          throw e;
+        }
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SCMachineAuto> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineAuto getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_MessagePack_descriptor;
   private static
@@ -37332,6 +38077,11 @@ public final class CoreProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CSMachineAuto_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SCMachineAuto_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SCMachineAuto_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -37344,7 +38094,7 @@ public final class CoreProtocol {
       "\n\022CoreProtocol.proto\032\022GameProtocol.proto" +
       "\"f\n\013MessagePack\022\021\n\003cmd\030\001 \002(\0162\004.Cmd\022\017\n\007ve" +
       "rsion\030\002 \001(\005\022\021\n\tsessionId\030\003 \001(\005\022 \n\007conten" +
-      "t\030\004 \001(\0132\017.MessageContent\"\312\n\n\016MessageCont" +
+      "t\030\004 \001(\0132\017.MessageContent\"\361\n\n\016MessageCont" +
       "ent\022\016\n\006result\030\001 \002(\005\022\017\n\007message\030\002 \001(\t\022!\n\013" +
       "lcRetServer\030\003 \001(\0132\014.LCRetServer\022\037\n\ncsReg" +
       "ister\030\004 \001(\0132\013.CSRegsiter\022\037\n\nscRegister\030\005" +
@@ -37374,90 +38124,93 @@ public final class CoreProtocol {
       "reHistoryOneCard\022\'\n\016csFourKindTime\030  \001(\013" +
       "2\017.CSFourKindTime\022\'\n\016scFourKindTime\030! \001(" +
       "\0132\017.SCFourKindTime\022%\n\rcsMachineAuto\030\" \001(" +
-      "\0132\016.CSMachineAuto\0221\n\023scPlayerHistoryData" +
-      "\030# \001(\0132\024.SCPlayerHistoryData\022-\n\021csPlayer" +
-      "CardsData\030$ \001(\0132\022.CSPlayerCardsData\022\037\n\nc" +
-      "sCardsBet\030% \001(\0132\013.CSCardsBet\022\037\n\nscCardsB" +
-      "et\030& \001(\0132\013.SCCardsBet\"-\n\013LCRetServer\022\020\n\010" +
-      "serverip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\">\n\nCSRegsit" +
-      "er\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n",
-      "\005seoid\030\003 \001(\t\"\036\n\nCSLoginOut\022\020\n\010loginOut\030\001" +
-      " \002(\005\"\036\n\nSCLoginOut\022\020\n\010loginOut\030\001 \001(\005\"\035\n\n" +
-      "SCRegister\022\017\n\007account\030\001 \002(\t\",\n\007CSLogin\022\017" +
-      "\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"k\n\007SCL" +
-      "ogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\r\n\005s" +
-      "core\030\003 \002(\005\022\014\n\004coin\030\004 \001(\005\022\025\n\rnickNameCoun" +
-      "t\030\005 \002(\005\022\r\n\005seoid\030\006 \002(\t\"\037\n\014CSGuestLogin\022\017" +
-      "\n\007account\030\001 \001(\t\"d\n\014SCGuestLogin\022\017\n\007accou" +
-      "nt\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020\n\010nickname\030\003 \002(\t\022" +
-      "\r\n\005score\030\004 \002(\005\022\025\n\rnickNameCount\030\005 \002(\005\"\034\n",
-      "\014CSPlayerInfo\022\014\n\004guid\030\001 \002(\t\"\032\n\010SCNotice\022" +
-      "\016\n\006notice\030\001 \002(\t\"B\n\007CSCards\022\022\n\nstartIndex" +
-      "\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\tholdCards\030\003 " +
-      "\001(\t\"\036\n\nCSCardsBet\022\020\n\010betScore\030\001 \002(\005\"\036\n\nS" +
-      "CCardsBet\022\020\n\010betScore\030\001 \001(\005\"a\n\007SCCards\022\020" +
-      "\n\010cardRate\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdC" +
-      "ards\030\003 \001(\t\022\020\n\010realKind\030\004 \001(\005\022\020\n\010preSound" +
-      "\030\005 \001(\005\"&\n\025CCCompareHistoryCards\022\r\n\005cards" +
-      "\030\001 \002(\t\"A\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(" +
-      "\005\022\020\n\010betScore\030\002 \002(\005\022\014\n\004five\030\003 \002(\005\"6\n\rSCC",
-      "ompareCard\022\023\n\013compareCard\030\001 \002(\005\022\020\n\010winSc" +
-      "ore\030\002 \002(\005\".\n\027CSCompareHistoryOneCard\022\023\n\013" +
-      "compareCard\030\001 \002(\005\".\n\027SCCompareHistoryOne" +
-      "Card\022\023\n\013compareCard\030\001 \002(\005\"\024\n\005CSWin\022\013\n\003wi" +
-      "n\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 \002(\005\022\014\n" +
-      "\004coin\030\002 \002(\005\"5\n\nCCNickName\022\020\n\010nickName\030\001 " +
-      "\002(\t\022\025\n\rnickNameCount\030\002 \001(\005\"\034\n\tCCHeadPic\022" +
-      "\017\n\007headPic\030\001 \002(\005\"$\n\rCSMachineList\022\023\n\013mac" +
-      "hineList\030\001 \002(\005\"6\n\rSCMachineList\022%\n\rscMac" +
-      "hineInfo\030\001 \003(\0132\016.SCMachineInfo\"V\n\rSCMach",
-      "ineInfo\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineTyp" +
-      "e\030\002 \002(\005\022\013\n\003pic\030\003 \001(\005\022\020\n\010nickName\030\004 \001(\t\"#" +
-      "\n\016CCEnterMachine\022\021\n\tmachineId\030\001 \002(\t\"#\n\016C" +
-      "CLeaveMachine\022\021\n\tmachineId\030\001 \002(\t\"7\n\rCCMa" +
-      "chineStay\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineT" +
-      "ype\030\002 \001(\005\"=\n\tCCBinding\022\017\n\007account\030\001 \002(\t\022" +
-      "\020\n\010password\030\002 \002(\t\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPl" +
-      "ayerUpdate\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password" +
-      "\030\002 \001(\t\022\013\n\003pic\030\003 \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003s" +
-      "ex\030\005 \001(\005\"\036\n\016CSDepositStore\022\014\n\004gold\030\001 \001(\005",
-      "\"/\n\016SCDepositStore\022\014\n\004gold\030\001 \001(\005\022\017\n\007depo" +
-      "sit\030\002 \001(\005\"!\n\rCSDepositDraw\022\020\n\010drawGold\030\001" +
-      " \001(\005\".\n\rSCDepositDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007d" +
-      "eposit\030\002 \001(\005\"3\n\rCSDepositGive\022\020\n\010targeti" +
-      "d\030\001 \001(\t\022\020\n\010drawGold\030\002 \001(\005\" \n\rSCDepositGi" +
-      "ve\022\017\n\007deposit\030\002 \001(\005\"V\n\020SCDepositReceive\022" +
-      "\020\n\010senderid\030\001 \001(\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004" +
-      "gold\030\003 \001(\005\022\017\n\007deposit\030\004 \001(\005\"\"\n\016CSFourKin" +
-      "dTime\022\020\n\010multiple\030\001 \002(\005\"\"\n\016SCFourKindTim" +
-      "e\022\020\n\010multiple\030\001 \002(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001",
-      " \001(\t\"\035\n\rCSMachineAuto\022\014\n\004auto\030\001 \002(\005*\336\007\n\003" +
-      "Cmd\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTER" +
-      "\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGIN" +
-      "\020\205\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\t" +
-      "CMD_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022\037" +
-      "\n\031CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_W" +
-      "IN\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\033\n\025CMD_COMP" +
-      "ARE_ONE_CARDS\020\214\200\004\022\030\n\022CMD_FOUR_KIND_TIME\020" +
-      "\215\200\004\022\026\n\020CMD_MACHINE_AUTO\020\216\200\004\022\026\n\020CMD_DATA_" +
-      "DISPLAY\020\217\200\004\022\032\n\024CMD_PLAYER_NICK_NAME\020\201\200\010\022",
-      "\024\n\016CMD_PLAYER_PIC\020\202\200\010\022\026\n\020CMD_MACHINE_LIS" +
-      "T\020\203\200\010\022\026\n\020CMD_MACHINE_INFO\020\204\200\010\022\027\n\021CMD_MAC" +
-      "HINE_ENTER\020\205\200\010\022\027\n\021CMD_MACHINE_LEAVE\020\206\200\010\022" +
-      "\026\n\020CMD_MACHINE_STAY\020\207\200\010\022\030\n\022CMD_PLAYER_BI" +
-      "NDING\020\210\200\010\022\022\n\014CMD_CARD_BET\020\211\200\010\022\023\n\rCMD_ENT" +
-      "ERROOM\020\201\200\014\022\021\n\013CMD_OUTROOM\020\202\200\014\022\022\n\014CMD_ROO" +
-      "MINFO\020\203\200\014\022\021\n\013CMD_PAIINFO\020\204\200\014\022\r\n\007CMD_SIT\020" +
-      "\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014\022\024\n\016CMD_ROB_ZHUANG" +
-      "\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n" +
-      "\020CMD_ROOM_STATICS\020\220\200\014\022\021\n\013CMD_QZ_LIST\020\221\200\014",
-      "\022\025\n\017CMD_DOWN_ZHUANG\020\222\200\014\022\022\n\014CMD_BET_LIST\020" +
-      "\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014\022\032\n\024CMD_ROOM_PLA" +
-      "YER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PLAYER_CHANGE\020\240" +
-      "\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021CMD_PAI_BASE_" +
-      "INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014\022\020\n\nCMD_NOT" +
-      "ICE\020\244\200\014\022\023\n\rCMD_LOGIN_OUT\020\245\200\014B,\n\034com.mzm." +
-      "firephoenix.protobufB\014CoreProtocol"
+      "\0132\016.CSMachineAuto\022%\n\rscMachineAuto\030\' \001(\013" +
+      "2\016.SCMachineAuto\0221\n\023scPlayerHistoryData\030" +
+      "# \001(\0132\024.SCPlayerHistoryData\022-\n\021csPlayerC" +
+      "ardsData\030$ \001(\0132\022.CSPlayerCardsData\022\037\n\ncs" +
+      "CardsBet\030% \001(\0132\013.CSCardsBet\022\037\n\nscCardsBe" +
+      "t\030& \001(\0132\013.SCCardsBet\"-\n\013LCRetServer\022\020\n\010s" +
+      "erverip\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\">\n\nCSRegsite",
+      "r\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n\005" +
+      "seoid\030\003 \001(\t\"\036\n\nCSLoginOut\022\020\n\010loginOut\030\001 " +
+      "\002(\t\"\036\n\nSCLoginOut\022\020\n\010loginOut\030\001 \001(\005\"\035\n\nS" +
+      "CRegister\022\017\n\007account\030\001 \002(\t\",\n\007CSLogin\022\017\n" +
+      "\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"k\n\007SCLo" +
+      "gin\022\013\n\003pic\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\r\n\005sc" +
+      "ore\030\003 \002(\005\022\014\n\004coin\030\004 \001(\005\022\025\n\rnickNameCount" +
+      "\030\005 \002(\005\022\r\n\005seoid\030\006 \002(\t\"\037\n\014CSGuestLogin\022\017\n" +
+      "\007account\030\001 \001(\t\"d\n\014SCGuestLogin\022\017\n\007accoun" +
+      "t\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020\n\010nickname\030\003 \002(\t\022\r",
+      "\n\005score\030\004 \002(\005\022\025\n\rnickNameCount\030\005 \002(\005\"\034\n\014" +
+      "CSPlayerInfo\022\014\n\004guid\030\001 \002(\t\"\032\n\010SCNotice\022\016" +
+      "\n\006notice\030\001 \002(\t\"B\n\007CSCards\022\022\n\nstartIndex\030" +
+      "\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\tholdCards\030\003 \001" +
+      "(\t\"\036\n\nCSCardsBet\022\020\n\010betScore\030\001 \002(\005\"\036\n\nSC" +
+      "CardsBet\022\020\n\010betScore\030\001 \001(\005\"a\n\007SCCards\022\020\n" +
+      "\010cardRate\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCa" +
+      "rds\030\003 \001(\t\022\020\n\010realKind\030\004 \001(\005\022\020\n\010preSound\030" +
+      "\005 \001(\005\"&\n\025CCCompareHistoryCards\022\r\n\005cards\030" +
+      "\001 \002(\t\"A\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005",
+      "\022\020\n\010betScore\030\002 \002(\005\022\014\n\004five\030\003 \002(\005\"6\n\rSCCo" +
+      "mpareCard\022\023\n\013compareCard\030\001 \002(\005\022\020\n\010winSco" +
+      "re\030\002 \002(\005\".\n\027CSCompareHistoryOneCard\022\023\n\013c" +
+      "ompareCard\030\001 \002(\005\".\n\027SCCompareHistoryOneC" +
+      "ard\022\023\n\013compareCard\030\001 \002(\005\"\024\n\005CSWin\022\013\n\003win" +
+      "\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 \002(\005\022\014\n\004" +
+      "coin\030\002 \002(\005\"5\n\nCCNickName\022\020\n\010nickName\030\001 \002" +
+      "(\t\022\025\n\rnickNameCount\030\002 \001(\005\"\034\n\tCCHeadPic\022\017" +
+      "\n\007headPic\030\001 \002(\005\"$\n\rCSMachineList\022\023\n\013mach" +
+      "ineList\030\001 \002(\005\"6\n\rSCMachineList\022%\n\rscMach",
+      "ineInfo\030\001 \003(\0132\016.SCMachineInfo\"V\n\rSCMachi" +
+      "neInfo\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineType" +
+      "\030\002 \002(\005\022\013\n\003pic\030\003 \001(\005\022\020\n\010nickName\030\004 \001(\t\"#\n" +
+      "\016CCEnterMachine\022\021\n\tmachineId\030\001 \002(\t\"#\n\016CC" +
+      "LeaveMachine\022\021\n\tmachineId\030\001 \002(\t\"7\n\rCCMac" +
+      "hineStay\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineTy" +
+      "pe\030\002 \001(\005\"=\n\tCCBinding\022\017\n\007account\030\001 \002(\t\022\020" +
+      "\n\010password\030\002 \002(\t\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPla" +
+      "yerUpdate\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password\030" +
+      "\002 \001(\t\022\013\n\003pic\030\003 \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003se",
+      "x\030\005 \001(\005\"\036\n\016CSDepositStore\022\014\n\004gold\030\001 \001(\005\"" +
+      "/\n\016SCDepositStore\022\014\n\004gold\030\001 \001(\005\022\017\n\007depos" +
+      "it\030\002 \001(\005\"!\n\rCSDepositDraw\022\020\n\010drawGold\030\001 " +
+      "\001(\005\".\n\rSCDepositDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007de" +
+      "posit\030\002 \001(\005\"3\n\rCSDepositGive\022\020\n\010targetid" +
+      "\030\001 \001(\t\022\020\n\010drawGold\030\002 \001(\005\" \n\rSCDepositGiv" +
+      "e\022\017\n\007deposit\030\002 \001(\005\"V\n\020SCDepositReceive\022\020" +
+      "\n\010senderid\030\001 \001(\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004g" +
+      "old\030\003 \001(\005\022\017\n\007deposit\030\004 \001(\005\"\"\n\016CSFourKind" +
+      "Time\022\020\n\010multiple\030\001 \002(\005\"\"\n\016SCFourKindTime",
+      "\022\020\n\010multiple\030\001 \002(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 " +
+      "\001(\t\"\035\n\rCSMachineAuto\022\014\n\004auto\030\001 \002(\005\"\035\n\rSC" +
+      "MachineAuto\022\014\n\004auto\030\001 \002(\005*\370\007\n\003Cmd\022\023\n\rCMD" +
+      "_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTER\020\202\200\004\022\017\n\tCM" +
+      "D_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGIN\020\205\200\004\022\017\n\tCM" +
+      "D_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\tCMD_CARDS\020" +
+      "\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022\037\n\031CMD_COMP" +
+      "ARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_WIN\020\212\200\004\022\024\n\016" +
+      "CMD_COIN_SCORE\020\213\200\004\022\033\n\025CMD_COMPARE_ONE_CA" +
+      "RDS\020\214\200\004\022\030\n\022CMD_FOUR_KIND_TIME\020\215\200\004\022\026\n\020CMD",
+      "_MACHINE_AUTO\020\216\200\004\022\026\n\020CMD_DATA_DISPLAY\020\217\200" +
+      "\004\022\032\n\024CMD_PLAYER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLA" +
+      "YER_PIC\020\202\200\010\022\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020C" +
+      "MD_MACHINE_INFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER" +
+      "\020\205\200\010\022\027\n\021CMD_MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MAC" +
+      "HINE_STAY\020\207\200\010\022\030\n\022CMD_PLAYER_BINDING\020\210\200\010\022" +
+      "\022\n\014CMD_CARD_BET\020\211\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014" +
+      "\022\021\n\013CMD_OUTROOM\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022" +
+      "\021\n\013CMD_PAIINFO\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD" +
+      "_STANDUP\020\206\200\014\022\024\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCM",
+      "D_YAZHU\020\213\200\014\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_" +
+      "STATICS\020\220\200\014\022\021\n\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DO" +
+      "WN_ZHUANG\020\222\200\014\022\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD" +
+      "_ROOM_UIDS\020\224\200\014\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225" +
+      "\200\014\022\034\n\026CMD_ROOM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_" +
+      "CARD_INFO\020\241\200\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023" +
+      "\n\rCMD_PAIINFO_3\020\243\200\014\022\020\n\nCMD_NOTICE\020\244\200\014\022\023\n" +
+      "\rCMD_LOGIN_OUT\020\245\200\014\022\030\n\022CMD_NET_WORK_ERROR" +
+      "\020\246\200\014B,\n\034com.mzm.firephoenix.protobufB\014Co" +
+      "reProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -37483,7 +38236,7 @@ public final class CoreProtocol {
     internal_static_MessageContent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MessageContent_descriptor,
-        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CcNickName", "CcHeadPic", "ScMachineList", "ScMachineInfo", "CcEnterMachine", "CcLeaveMachine", "CcMachineStay", "CcBinding", "ScNotice", "CsMachineList", "CsLoginOut", "ScLoginOut", "CsCompareHistoryOneCard", "SCCompareHistoryOneCard", "CsFourKindTime", "ScFourKindTime", "CsMachineAuto", "ScPlayerHistoryData", "CsPlayerCardsData", "CsCardsBet", "ScCardsBet", });
+        new java.lang.String[] { "Result", "Message", "LcRetServer", "CsRegister", "ScRegister", "CsLogin", "ScLogin", "CsGuestLogin", "ScGuestLogin", "CsCards", "ScCards", "CcCompareHistoryCards", "CsCompareCard", "ScCompareCard", "CsWin", "CcCoinScore", "CcNickName", "CcHeadPic", "ScMachineList", "ScMachineInfo", "CcEnterMachine", "CcLeaveMachine", "CcMachineStay", "CcBinding", "ScNotice", "CsMachineList", "CsLoginOut", "ScLoginOut", "CsCompareHistoryOneCard", "SCCompareHistoryOneCard", "CsFourKindTime", "ScFourKindTime", "CsMachineAuto", "ScMachineAuto", "ScPlayerHistoryData", "CsPlayerCardsData", "CsCardsBet", "ScCardsBet", });
     internal_static_LCRetServer_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_LCRetServer_fieldAccessorTable = new
@@ -37741,6 +38494,12 @@ public final class CoreProtocol {
     internal_static_CSMachineAuto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSMachineAuto_descriptor,
+        new java.lang.String[] { "Auto", });
+    internal_static_SCMachineAuto_descriptor =
+      getDescriptor().getMessageTypes().get(45);
+    internal_static_SCMachineAuto_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SCMachineAuto_descriptor,
         new java.lang.String[] { "Auto", });
     com.mzm.firephoenix.protobuf.GameProtocol.getDescriptor();
   }

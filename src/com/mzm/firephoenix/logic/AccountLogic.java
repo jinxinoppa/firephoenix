@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -23,8 +24,12 @@ import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
 import com.mzm.firephoenix.dao.QueryMeta;
 import com.mzm.firephoenix.dao.entity.FivepkAccount;
+import com.mzm.firephoenix.dao.entity.FivepkDefault;
+import com.mzm.firephoenix.dao.entity.FivepkPath;
 import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
+import com.mzm.firephoenix.dao.entity.FivepkSeoId;
 import com.mzm.firephoenix.dao.entity.FivepkSeoIdList;
+import com.mzm.firephoenix.dao.entity.MachineMatch;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCBinding;
 import com.mzm.firephoenix.protobuf.CoreProtocol.CCNickName;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
@@ -35,6 +40,7 @@ import com.mzm.firephoenix.protobuf.CoreProtocol.SCGuestLogin;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCLogin;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCRegister;
+import com.mzm.firephoenix.utils.AES;
 import com.mzm.firephoenix.utils.CardResult;
 
 /**
@@ -69,11 +75,14 @@ public class AccountLogic {
 		if (fivepkAccount == null) {
 			fivepkAccount = new FivepkAccount(account, password, seoid, GameConstant.ACCOUNT_TYPE_PLAYER, (String)session.getAttribute("ipAddress"));
 			jdbcDaoSupport.save(fivepkAccount);
+			
+//			FivepkPlayerInfo nickName=jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{"玩家@" + fivepkAccount.getAccountId()}, new String[]{"nickName"});
+//			
+//			if(nickName == null){
+//				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_USER_NAME.getErrorCode());
+//			}
+			
 			fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{account}, new String[]{"name"});
-//			fivepkAccount.setName(account);
-//			fivepkAccount.setPassword(password);
-//			fivepkAccount.setSeoid(seoid);
-//			fivepkAccount.setAccountType(GameConstant.ACCOUNT_TYPE_PLAYER);
 			try {
 //				int generatedKey = jdbcDaoSupport.getJdbcTemplate().execute(new ConnectionCallback<Integer>() {
 //
@@ -90,13 +99,14 @@ public class AccountLogic {
 //						return generatedKey;
 //					}
 //				});
-				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(fivepkAccount.getAccountId(), "玩家@" + fivepkAccount.getAccountId(), GameConstant.ACCOUNT_DEFAULT_PIC, 20000);
+				
+				FivepkPlayerInfo fivepkPlayerInfo = new FivepkPlayerInfo(fivepkAccount.getAccountId(), "玩家@" + fivepkAccount.getAccountId(), GameConstant.ACCOUNT_DEFAULT_PIC, 0);
 
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 				session.setAttributeIfAbsent(GameConstant.SESSION_IS_REGISTERED, seoid);
 				session.setAttributeIfAbsent("accountId", fivepkPlayerInfo.getAccountId());
 			} catch (Exception e) {
-				throw e;
+				logger.error(e, e);
 			}
 		} else {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_EXIT.getErrorCode());
@@ -121,18 +131,32 @@ public class AccountLogic {
 			if (playerInfo != null) {
 				IoSession ioSession = playerInfo.getPlayerInfoSession();
 				accountId = (long) ioSession.removeAttribute("accountId");
-				if (accountId != null){
+				String newIpAddress = (String) session.getAttribute("ipAddress");
+				String oldIpAddress = (String) ioSession.getAttribute("ipAddress");
+				if (accountId != null 
+//						&& !newIpAddress.equals(oldIpAddress)
+						){
 					CardResult cr = (CardResult) ioSession.removeAttribute("cardResult");
 					String machineId = (String) ioSession.removeAttribute("machineId");
 					GameCache.removeIoSession(playerInfo.getSeoId(), ioSession);
 					GameCache.removePlayerInfo(accountId);
+					FivepkAccount ioFivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{accountId});
+					ioFivepkAccount.setAccountInfo(0);
+					jdbcDaoSupport.update(ioFivepkAccount);
 					if (cr != null && cr.getWin() > 0) {
 						FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
-						fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin());
+						fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin() + cr.getWinSevenFive() * cr.getWinCount() * 4000);
 						jdbcDaoSupport.update(fivepkPlayerInfo);
 					}
 					if (machineId != null) {
-						GameCache.updateMachineInfo(playerInfo.getSeoId(),machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
+//						GameCache.updateMachineInfo(playerInfo.getSeoId(),machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
+
+						FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{playerInfo.getSeoId(), machineId}, null, new String[]{"seoId", "seoMachineId"});
+						if (fivepkSeoId != null) {
+							fivepkSeoId.setSeoMachineType(GameConstant.MACHINE_TYPE_FREE);
+							fivepkSeoId.setAccountId(0);
+							jdbcDaoSupport.update(fivepkSeoId);
+						}
 						List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
 						for (IoSession ioSession2 : sessionList) {
 							if (!ioSession2.isClosing() && ioSession2.isConnected() && (Long) ioSession2.getAttribute("accountId") != accountId) {
@@ -148,14 +172,17 @@ public class AccountLogic {
 					MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
 					returnMessagePack.setCmd(Cmd.CMD_LOGIN);
 					returnMessagePack.setContent(MessageContent.newBuilder().setResult(ErrorCode.ERROR_LOGIN_OTHER_DEVICES.getErrorCode()));
-					logger.info("sent message pack : " + returnMessagePack.toString());
+					logger.info("sent message pack : " + returnMessagePack.toString() + " session id : " + ioSession.getId());
 					ioSession.write(returnMessagePack);
 					ioSession.closeOnFlush();
 					return MessageContent.newBuilder().setResult(ErrorCode.ERROR_YOUR_ACCOUNT_HAS_BEEN_LANDED.getErrorCode());
 				}
+			} else {
+				logger.info("---------------------------------------------------------------------------------");
 			}
 			seoid = fivepkAccount.getSeoid();
 			fivepkAccount.setAccountIp((String)session.getAttribute("ipAddress"));
+			fivepkAccount.setAccountInfo(1);
 			jdbcDaoSupport.update(fivepkAccount);
 		} else {
 			accountId = (Long) session.getAttribute("accountId");
@@ -181,7 +208,7 @@ public class AccountLogic {
 
 					@Override
 					public Integer doInConnection(Connection arg0) throws SQLException, DataAccessException {
-						String sql = "insert into `fivepk_account` (seoid) values (\"CE\")";
+						String sql = "insert into `fivepk_account` (seoid, account_ip) values (\"YK\", \"" + session.getAttribute("ipAddress") + "\")";
 						PreparedStatement pstmt = (PreparedStatement) arg0.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 						pstmt.executeUpdate();
 						ResultSet rs = pstmt.getGeneratedKeys();
@@ -195,7 +222,7 @@ public class AccountLogic {
 				fivepkPlayerInfo = new FivepkPlayerInfo(generatedKey, "游客@" + generatedKey, pic, 20000);
 				jdbcDaoSupport.save(fivepkPlayerInfo);
 			} catch (Exception e) {
-				throw e;
+				logger.error(e, e);
 			}
 		} else {
 			fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
@@ -247,8 +274,9 @@ public class AccountLogic {
 		}
 		if (fivepkPlayerInfo.getNickName().startsWith("游客")) {
 			fivepkPlayerInfo.setNickName(fivepkPlayerInfo.getNickName().replace("游客", "玩家"));
-			jdbcDaoSupport.update(fivepkPlayerInfo);
 		}
+		fivepkPlayerInfo.setScore(0);
+		jdbcDaoSupport.update(fivepkPlayerInfo);
 		fivepkAccount.setName(account);
 		fivepkAccount.setPassword(password);
 		fivepkAccount.setSeoid(seoid);
@@ -311,11 +339,96 @@ public class AccountLogic {
 	}
 
 	public Builder csLoginOut(IoSession session, MessageContent content) {
-		Long accountId = (Long) session.getAttribute("accountId");
-		if (accountId == null) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
+		String loginOutAccount = content.getCsLoginOut().getLoginOut();
+		FivepkAccount fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{loginOutAccount}, new String[]{"name"});
+		if (fivepkAccount == null){
+			FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{loginOutAccount});
+			if (fivepkPlayerInfo == null) {
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
+			}
+			fivepkAccount = jdbcDaoSupport.queryOne(FivepkAccount.class, new Object[]{fivepkPlayerInfo.getAccountId()});
+			if (fivepkAccount == null){
+				return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
+			}
 		}
-		offlineLogic.sessionClosed(session);
+		fivepkAccount.setAccountInfo(0);
+		jdbcDaoSupport.update(fivepkAccount);
+		PlayerInfo playerInfo = GameCache.getPlayerInfo(fivepkAccount.getAccountId());
+		if (playerInfo != null){
+			
+			long accountId = 0;
+			CardResult cr = null;
+			String machineId = null;
+			if (session.containsAttribute("accountId")) {
+				accountId = (long) session.removeAttribute("accountId");
+			}
+			if (session.containsAttribute("cardResult")) {
+				cr = (CardResult) session.removeAttribute("cardResult");
+			}
+			if (session.containsAttribute("machineId")) {
+				machineId = (String) session.removeAttribute("machineId");
+			}
+			GameCache.removeIoSession(playerInfo.getSeoId(), session);
+			GameCache.removePlayerInfo(accountId);
+			if (cr != null && (cr.getWin() > 0 || cr.getBet() > 0)) {
+				FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
+				if (fivepkPlayerInfo == null) {
+					return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
+				}
+				fivepkPlayerInfo.setScore(cr.getWin() + fivepkPlayerInfo.getScore() - cr.getBet() + cr.getGiftWin() + cr.getWinSevenFive() * cr.getWinCount() * 4000);
+				jdbcDaoSupport.update(fivepkPlayerInfo);
+			}
+			if (machineId != null) {
+//				GameCache.updateMachineInfo(playerInfo.getSeoId(), machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
+				List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(playerInfo.getSeoId());
+				for (IoSession ioSession : sessionList) {
+					if (!ioSession.isClosing() && ioSession.isConnected() && (Long) ioSession.getAttribute("accountId") != accountId) {
+						MessagePack.Builder returnMessagePack = MessagePack.newBuilder();
+						returnMessagePack.setCmd(Cmd.CMD_MACHINE_INFO);
+						returnMessagePack.setContent(MessageContent.newBuilder().setResult(0).setScMachineInfo(SCMachineInfo.newBuilder().setMachineId(machineId).setMachineType(GameConstant.MACHINE_TYPE_FREE)));
+						logger.info("sent message pack : " + returnMessagePack.toString());
+						ioSession.write(returnMessagePack);
+					}
+				}
+				FivepkSeoId fivepkSeoId=jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{machineId}, null, new String[]{"seoMachineId"});
+				fivepkSeoId.setSeoMachineType(GameConstant.MACHINE_TYPE_FREE);
+				fivepkSeoId.setAccountId(0);
+				fivepkSeoId.setMachineAuto(0);
+				jdbcDaoSupport.update(fivepkSeoId);
+				
+				String defsultStr = (String)session.getAttribute("defsult");
+				if(defsultStr != null && !defsultStr.isEmpty()){
+					String defsult[]= defsultStr.split("\\|");
+					FivepkDefault fivepkDefault=new FivepkDefault(defsult[0],defsult[1],Integer.parseInt(defsult[2]),Integer.parseInt(defsult[3]),cr.getWin(),defsult[4],defsult[5],defsult[6],Integer.parseInt(defsult[7]),cr.getBetScore(),cr.getBetType());
+					jdbcDaoSupport.save(fivepkDefault);
+					session.removeAttribute("defsult");
+					cr.setBetType("");
+				}
+				
+				FivepkPath fivepkPath=(FivepkPath) session.getAttribute("fivepkPath");
+				jdbcDaoSupport.save(fivepkPath);
+				session.removeAttribute("fivepkPath");
+				
+				MachineMatch machineMatch=(MachineMatch)session.getAttribute("machineMatch");
+				if(machineMatch!=null){
+					if (cr.getBetType() != null && cr.getBetType()!="" && cr.getWin() > 0) {
+						machineMatch.setWinPoint(machineMatch.getWinPoint() + cr.getWin());
+					}
+					if (!cr.getHalfWin().isEmpty()) {
+						int totalHalfWin = 0;
+						for (int i = 0; i < cr.getHalfWin().size(); i++) {
+							totalHalfWin += cr.getHalfWin().get(i);
+						}
+						machineMatch.setWinPoint(machineMatch.getWinPoint() + totalHalfWin);
+					}
+					if (cr.getWin() >= 75000) {
+						machineMatch.setWinPoint(machineMatch.getWinPoint()+cr.getPassScore());
+					}
+					jdbcDaoSupport.update(machineMatch);
+					session.removeAttribute("machineMatch");
+				}
+			}
+		}
 		return MessageContent.newBuilder().setResult(0);
 	}
 
@@ -341,5 +454,5 @@ public class AccountLogic {
 		}
 		return hexValue.toString();
 	}
-
+	
 }

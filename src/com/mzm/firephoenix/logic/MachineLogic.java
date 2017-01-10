@@ -1,6 +1,5 @@
 package com.mzm.firephoenix.logic;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +15,9 @@ import com.mzm.firephoenix.cache.PlayerInfo;
 import com.mzm.firephoenix.constant.ErrorCode;
 import com.mzm.firephoenix.constant.GameConstant;
 import com.mzm.firephoenix.dao.JdbcDaoSupport;
+import com.mzm.firephoenix.dao.entity.AccessPoints;
 import com.mzm.firephoenix.dao.entity.FivepkPath;
+import com.mzm.firephoenix.dao.entity.FivepkPlayerInfo;
 import com.mzm.firephoenix.dao.entity.FivepkSeoId;
 import com.mzm.firephoenix.protobuf.CoreProtocol.Cmd;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent;
@@ -24,6 +25,7 @@ import com.mzm.firephoenix.protobuf.CoreProtocol.MessageContent.Builder;
 import com.mzm.firephoenix.protobuf.CoreProtocol.MessagePack;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineInfo;
 import com.mzm.firephoenix.protobuf.CoreProtocol.SCMachineList;
+import com.mzm.firephoenix.utils.CardResult;
 
 /**
  * 
@@ -46,13 +48,18 @@ public class MachineLogic {
 		if (fivepkSeoId == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_MACHINE.getErrorCode());
 		}
-		MachineInfo machineInfo = GameCache.getMachineInfo(fivepkSeoId.getSeoId(), fivepkSeoId.getSeoMachineId());
-		if (machineInfo.getMachineType() == GameConstant.MACHINE_TYPE_ONLINE) {
+//		MachineInfo machineInfo = GameCache.getMachineInfo(fivepkSeoId.getSeoId(), fivepkSeoId.getSeoMachineId());
+		if (fivepkSeoId.getSeoMachineType() == GameConstant.MACHINE_TYPE_ONLINE) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_MACHINE_TYPE_ONLINE.getErrorCode());
-		} else if (machineInfo.getMachineType() == GameConstant.MACHINE_TYPE_STAY && machineInfo.getStayTime() != null && machineInfo.getStayTime().after(new Date())) {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_MACHINE_STAY.getErrorCode());
+		} 
+		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
+		if (fivepkPlayerInfo == null) {
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
-		machineInfo = GameCache.updateMachineInfo(fivepkSeoId.getSeoId(), fivepkSeoId.getSeoMachineId(), GameConstant.MACHINE_TYPE_ONLINE, accountId);
+//		else if (fivepkSeoId.getSeoMachineType() == GameConstant.MACHINE_TYPE_STAY && fivepkSeoId.getSeoMachineStayTime() != null && fivepkSeoId.getSeoMachineStayTime().after(new Date())) {
+//			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_MACHINE_STAY.getErrorCode());
+//		}
+//		machineInfo = GameCache.updateMachineInfo(fivepkSeoId.getSeoId(), fivepkSeoId.getSeoMachineId(), GameConstant.MACHINE_TYPE_ONLINE, accountId);
 		List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(fivepkSeoId.getSeoId());
 		for (IoSession ioSession : sessionList) {
 			if (!ioSession.isClosing() && ioSession.isConnected() && (Long) ioSession.getAttribute("accountId") != accountId) {
@@ -63,10 +70,14 @@ public class MachineLogic {
 				ioSession.write(returnMessagePack);
 			}
 		}
+		fivepkSeoId.setSeoMachineType(GameConstant.MACHINE_TYPE_ONLINE);
+		fivepkSeoId.setAccountId(accountId);
+		jdbcDaoSupport.update(fivepkSeoId);
 		session.setAttribute("machineId", machineId);
 		FivepkPath fivepkPath=new FivepkPath();
 		fivepkPath.setMachineId(machineId);
 		fivepkPath.setName(playerInfo.getNickName());
+		fivepkPath.setBeginPoint(fivepkPlayerInfo.getScore());
 		fivepkPath.setLoginIp((String)session.getAttribute("ipAddress"));
 		fivepkPath.setBeginTime(new java.sql.Timestamp(System.currentTimeMillis()));
 		session.setAttribute("fivepkPath", fivepkPath);
@@ -84,7 +95,21 @@ public class MachineLogic {
 		if (fivepkSeoId == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_MACHINE.getErrorCode());
 		}
-		GameCache.updateMachineInfo(playerInfo.getSeoId(), machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
+		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
+		if (fivepkPlayerInfo == null) {
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
+		}
+		CardResult cr = (CardResult) session.getAttribute("cardResult");
+		if (cr != null){
+			fivepkPlayerInfo.setScore(fivepkPlayerInfo.getScore() - cr.getBet());
+			jdbcDaoSupport.update(fivepkPlayerInfo);
+			cr.setBet(0);
+		}
+		
+//		GameCache.updateMachineInfo(playerInfo.getSeoId(), machineId, GameConstant.MACHINE_TYPE_FREE, 0, null);
+		fivepkSeoId.setSeoMachineType(GameConstant.MACHINE_TYPE_FREE);
+		fivepkSeoId.setAccountId(0);
+		jdbcDaoSupport.update(fivepkSeoId);
 		List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(fivepkSeoId.getSeoId());
 		for (IoSession ioSession : sessionList) {
 			if (!ioSession.isClosing() && ioSession.isConnected() && (Long) ioSession.getAttribute("accountId") != accountId) {
@@ -109,18 +134,24 @@ public class MachineLogic {
 		}
 		String machineId = content.getCcMachineStay().getMachineId();
 		int machineType = content.getCcMachineStay().getMachineType();
+		if (machineType != 1 && machineType != 0){
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_MACHINE_STAY.getErrorCode());
+		}
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{playerInfo.getSeoId(), machineId}, null, new String[]{"seoId", "seoMachineId"});
 		if (fivepkSeoId == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_MACHINE.getErrorCode());
 		}
 		if (machineType == 1) {
-			GameCache.updateMachineInfo(playerInfo.getSeoId(), machineId, GameConstant.MACHINE_TYPE_STAY, accountId, new Date(System.currentTimeMillis() + 1000 * 3600));
+//			GameCache.updateMachineInfo(playerInfo.getSeoId(), machineId, GameConstant.MACHINE_TYPE_STAY, accountId, new Date(System.currentTimeMillis() + 1000 * 3600));
+			fivepkSeoId.setSeoMachineType(GameConstant.MACHINE_TYPE_STAY);
+			fivepkSeoId.setAccountId(accountId);
 		} else if (machineType == 0) {
-			GameCache.updateMachineInfo(playerInfo.getSeoId(), machineId, GameConstant.MACHINE_TYPE_ONLINE, accountId, null);
-		} else {
-			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_MACHINE_STAY.getErrorCode());
+//			GameCache.updateMachineInfo(playerInfo.getSeoId(), machineId, GameConstant.MACHINE_TYPE_ONLINE, accountId, null);
+			fivepkSeoId.setSeoMachineType(GameConstant.MACHINE_TYPE_ONLINE);
+			fivepkSeoId.setAccountId(accountId);
 		}
+		jdbcDaoSupport.update(fivepkSeoId);
 		return MessageContent.newBuilder().setResult(0);
 	}
 
@@ -140,12 +171,30 @@ public class MachineLogic {
 		SCMachineInfo.Builder infoBuilder = null;
 		long machineInfoAccountId = 0;
 		for (FivepkSeoId fivepkSeoId : fivepkSeoIdList) {
+			machineInfoAccountId = fivepkSeoId.getAccountId();
+			PlayerInfo playerInfo1 = GameCache.getPlayerInfo(machineInfoAccountId);
+			if (machineInfoAccountId != 0 && playerInfo1 == null){
+				machineInfoAccountId = 0;
+				fivepkSeoId.setSeoMachineType(GameConstant.MACHINE_TYPE_FREE);
+				fivepkSeoId.setAccountId(0);
+				jdbcDaoSupport.update(fivepkSeoId);
+				
+				List<IoSession> sessionList = GameCache.getSeoIdIoSessionList(fivepkSeoId.getSeoId());
+				for (IoSession ioSession : sessionList) {
+					if (!ioSession.isClosing() && ioSession.isConnected() && (Long) ioSession.getAttribute("accountId") != accountId) {
+						MessagePack.Builder returnMessagePack1 = MessagePack.newBuilder();
+						returnMessagePack1.setCmd(Cmd.CMD_MACHINE_INFO);
+						returnMessagePack1.setContent(MessageContent.newBuilder().setResult(0).setScMachineInfo(SCMachineInfo.newBuilder().setMachineId(fivepkSeoId.getSeoMachineId()).setMachineType(GameConstant.MACHINE_TYPE_FREE)));
+						logger.info("sent message pack : " + returnMessagePack1.toString());
+						ioSession.write(returnMessagePack1);
+					}
+				}
+			}
 			String seoMachineId = fivepkSeoId.getSeoMachineId();
-			MachineInfo machineInfo = GameCache.getMachineInfo(fivepkSeoId.getSeoId(), seoMachineId);
+//			MachineInfo machineInfo = GameCache.getMachineInfo(fivepkSeoId.getSeoId(), seoMachineId);
 			infoBuilder = SCMachineInfo.newBuilder();
-			infoBuilder.setMachineId(seoMachineId).setMachineType(machineInfo.getMachineType());
-			machineInfoAccountId = machineInfo.getAccountId();
-			playerInfo = GameCache.getPlayerInfo(machineInfoAccountId);
+			infoBuilder.setMachineId(seoMachineId).setMachineType(fivepkSeoId.getSeoMachineType());
+			
 			if (machineInfoAccountId != 0 && playerInfo != null) {
 				infoBuilder.setPic(playerInfo.getPic()).setNickName(playerInfo.getNickName());
 			}

@@ -24,10 +24,14 @@ public class CardResult {
 	private int winType2 = 0;
 	
 	private String betType="";
-	private int betScore=0;
+	private String betScore="";
 	private String guardCard="";
 	private String oneCard="";
 	
+	private int betMath = 0;//比倍次数 0为第一次比倍
+	
+	private int winSevenFive = 0;
+	private boolean subCompareWinCount = false;
 	
 	public int getStartIndex() {
 		return startIndex;
@@ -102,11 +106,11 @@ public class CardResult {
 		this.physicalNumberOfRow = physicalNumberOfRow;
 	}
 
-	boolean isWin() {
+	public boolean isWin() {
 		return isWin;
 	}
 
-	void setWin(boolean isWin) {
+	public void setWin(boolean isWin) {
 		this.isWin = isWin;
 	}
 
@@ -198,11 +202,11 @@ public class CardResult {
 		this.winType2 = winType2;
 	}
 
-	public int getBetScore() {
+	public String getBetScore() {
 		return betScore;
 	}
 
-	public void setBetScore(int betScore) {
+	public void setBetScore(String betScore) {
 		this.betScore = betScore;
 	}
 
@@ -212,6 +216,30 @@ public class CardResult {
 
 	public void setOneCard(String oneCard) {
 		this.oneCard = oneCard;
+	}
+
+	public int getWinSevenFive() {
+		return winSevenFive;
+	}
+
+	public void setWinSevenFive(int winSevenFive) {
+		this.winSevenFive = winSevenFive;
+	}
+
+	public int getBetMath() {
+		return betMath;
+	}
+
+	public void setBetMath(int betMath) {
+		this.betMath = betMath;
+	}
+	
+	public boolean isSubCompareWinCount() {
+		return subCompareWinCount;
+	}
+
+	public void setSubCompareWinCount(boolean subCompareWinCount) {
+		this.subCompareWinCount = subCompareWinCount;
 	}
 
 }

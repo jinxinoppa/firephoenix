@@ -67,6 +67,7 @@ enum Cmd {
 
 	CMD_NOTICE = 0x030024; //公告
 	CMD_LOGIN_OUT = 0x030025;//退出
+	CMD_NET_WORK_ERROR = 0x030026;//服务器断开连接
 }
 
 //协议内容，内部为每次通信的数据模型
@@ -117,6 +118,7 @@ message MessageContent {
 	optional SCFourKindTime scFourKindTime =33;
 	
 	optional CSMachineAuto csMachineAuto =34;//获取当前状态是自动还是手动
+	optional SCMachineAuto scMachineAuto =39;
 	
 	optional SCPlayerHistoryData scPlayerHistoryData =35;
 	optional CSPlayerCardsData csPlayerCardsData =36;
@@ -138,7 +140,7 @@ message CSRegsiter {
 }
 
 message CSLoginOut {
-	required int32 loginOut = 1;//退出帐号
+	required string loginOut = 1;//退出帐号
 }
 
 message SCLoginOut {
@@ -345,6 +347,9 @@ message CSMachineAuto{
 	required int32 auto =1;//1-自动;0-手动
 }
 
+message SCMachineAuto{
+	required int32 auto =1;//1-自动;0-手动
+}
 
 
 

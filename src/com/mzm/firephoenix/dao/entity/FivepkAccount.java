@@ -1,7 +1,10 @@
 package com.mzm.firephoenix.dao.entity;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
+import com.mzm.firephoenix.utils.AES;
 
 @Entity(tableName = "fivepk_account", primaryKey = "accountId")
 public class FivepkAccount extends AbstractEntity {
@@ -19,11 +22,13 @@ public class FivepkAccount extends AbstractEntity {
 	private Date createDate;
 	@Column(columnName = "account_ip")
 	private String accountIp;
+	@Column(columnName = "account_info")
+	private int accountInfo;
 	public FivepkAccount() {
 	}
 	public FivepkAccount(String name, String password, String seoid, byte accountType, String accountIp) {
 		this.name = name;
-		this.password = password;
+		this.password = password;//new String(AES.encrypt(password, null));
 		this.seoid = seoid;
 		this.accountType = accountType;
 		this.accountIp = accountIp;
@@ -100,6 +105,13 @@ public class FivepkAccount extends AbstractEntity {
 	public void setAccountIp(String accountIp) {
 		this.accountIp = accountIp;
 		updateFieldsList.add("accountIp");
+	}
+	public int getAccountInfo() {
+		return accountInfo;
+	}
+	public void setAccountInfo(int accountInfo) {
+		this.accountInfo = accountInfo;
+		updateFieldsList.add("accountInfo");
 	}
 
 }

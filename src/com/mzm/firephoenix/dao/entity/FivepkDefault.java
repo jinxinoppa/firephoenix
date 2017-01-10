@@ -22,14 +22,14 @@ public class FivepkDefault extends AbstractEntity{
 	@Column(columnName = "card_type")
 	private int cardType;
 	@Column(columnName = "guess_point")
-	private int guessPoint;
+	private String guessPoint;
 	@Column(columnName = "guess_type")
 	private String guessType;
 	
 	public FivepkDefault() {	}
 
 
-	public FivepkDefault(String name, String machineId, int credit,int bet, int win, String oneCard, String guardCard, String twoCard,int cardType, int guessPoint, String guessType) {
+	public FivepkDefault(String name, String machineId, int credit,int bet, int win, String oneCard, String guardCard, String twoCard,int cardType, String guessPoint, String guessType) {
 		this.name = name;
 		this.machineId = machineId;
 		this.credit = credit;
@@ -145,11 +145,11 @@ public class FivepkDefault extends AbstractEntity{
 		updateFieldsList.add("cardType");
 	}
 
-	public int getGuessPoint() {
+	public String getGuessPoint() {
 		return guessPoint;
 	}
 
-	public void setGuessPoint(int guessPoint) {
+	public void setGuessPoint(String guessPoint) {
 		this.guessPoint = guessPoint;
 		updateFieldsList.add("guessPoint");
 	}
