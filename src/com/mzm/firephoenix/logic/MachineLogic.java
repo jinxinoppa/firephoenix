@@ -195,8 +195,8 @@ public class MachineLogic {
 			infoBuilder = SCMachineInfo.newBuilder();
 			infoBuilder.setMachineId(seoMachineId).setMachineType(fivepkSeoId.getSeoMachineType());
 			
-			if (machineInfoAccountId != 0 && playerInfo != null) {
-				infoBuilder.setPic(playerInfo.getPic()).setNickName(playerInfo.getNickName());
+			if (machineInfoAccountId != 0 && playerInfo1 != null) {
+				infoBuilder.setPic(playerInfo1.getPic()).setNickName(playerInfo1.getNickName());
 			}
 			listBuilder.addScMachineInfo(infoBuilder);
 		}

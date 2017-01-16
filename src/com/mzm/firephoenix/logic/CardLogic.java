@@ -506,7 +506,9 @@ public class CardLogic {
 				cr.setKeepCards(Arrays.copyOf(cardsPoolUnit.getKeep(), keepArray.length));
 				cr.setKeepCard(randomSize);
 				cr.setWinType2(1000);
-			} else if (loseCount != null && loseCount > forceSevenBetterCount){
+			} else if (
+					loseCount != null && loseCount > forceSevenBetterCount
+					){
 				cr.setWinType(1);
 				int randomSevenBetterCards = RandomUtils.nextInt(7, 14);
 				int firstRandomSevenBetterCards = randomSevenBetterCards + 13 * RandomUtils.nextInt(0, 2);
@@ -1125,8 +1127,23 @@ public class CardLogic {
 		String machineId = (String) session.getAttribute("machineId");
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{machineId}, new String[]{"seoMachineId"});
 		FivepkPrefabRandom fivepkPrefabRandom = jdbcDaoSupport.queryOne(FivepkPrefabRandom.class, new Object[]{"9997"}, new String[]{"prefabCards"});
+		String[] compareHistoryCardsArray = fivepkSeoId.getCompareHistoryCards().split(",");
 		if (betScore == 0) {
-			compareCard = CardUtil.compareCard();
+			while (true) {
+				boolean isRepeated = false;
+				compareCard = CardUtil.compareCard();
+				for (int i = 0; i < compareHistoryCardsArray.length; i++) {
+					if (compareHistoryCardsArray[i].equals(String.valueOf(compareCard))) {
+						isRepeated = true;
+						break;
+					}
+				}
+				if (isRepeated) {
+					isRepeated = false;
+					continue;
+				}
+				break;
+			}
 			session.setAttribute("compareCard", compareCard);
 			return MessageContent.newBuilder().setResult(0).setScCompareCard(SCCompareCard.newBuilder().setCompareCard(compareCard).setWinScore(0));
 		} else {
@@ -1138,7 +1155,6 @@ public class CardLogic {
 				fivepkSeoId.setPrefabCompareCutDownCount((byte)RandomUtils.nextInt(Integer.parseInt(compareCutDownArr[0]), Integer.parseInt(compareCutDownArr[1]) + 1));
 			}
 			
-			String[] compareHistoryCardsArray = fivepkSeoId.getCompareHistoryCards().split(",");
 			while (true) {
 				boolean isRepeated = false;
 				compareCard = CardUtil.compareCard();
@@ -1337,9 +1353,11 @@ public class CardLogic {
 			}
 			cr.setBetType(cr.getBetType()+",");
 			if (isWin) {
-				cr.setPassScore(cr.getPassScore()+4000);;
+				cr.setPassScore(cr.getPassScore()+4000);
 				machineMatch.setWinNumber(machineMatch.getWinNumber() + 1);
+				//machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
 				if (compareCard == 53) {
+					machineMatch.setPlayPoint(machineMatch.getPlayPoint() + betScore);
 					int randomTimes = prefabCompareSevenJoker;
 					switch (randomTimes) {
 						case 3 :
@@ -1636,7 +1654,28 @@ public class CardLogic {
 		if (accountId == null) {
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
+		String machineId = (String) session.getAttribute("machineId");
+		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{machineId}, new String[]{"seoMachineId"});
+		if (fivepkSeoId == null){
+			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_MACHINE.getErrorCode());
+		}
+		String[] compareHistoryCardsArray = fivepkSeoId.getCompareHistoryCards().split(",");
 		int compareCard = CardUtil.compareCard();
+		while (true) {
+			boolean isRepeated = false;
+			compareCard = CardUtil.compareCard();
+			for (int i = 0; i < compareHistoryCardsArray.length; i++) {
+				if (compareHistoryCardsArray[i].equals(String.valueOf(compareCard))) {
+					isRepeated = true;
+					break;
+				}
+			}
+			if (isRepeated) {
+				isRepeated = false;
+				continue;
+			}
+			break;
+		}
 		session.setAttribute("compareCard", compareCard);
 		return MessageContent.newBuilder().setResult(0).setSCCompareHistoryOneCard(SCCompareHistoryOneCard.newBuilder().setCompareCard(compareCard));
 	}

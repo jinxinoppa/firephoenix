@@ -380,3 +380,16 @@ insert role(id,name) value(3,'超级管理员');
 #2017-1-10
 alter table fivepk_seo modify prefab_four_of_a_kind_J_A_count double DEFAULT 0;
 alter table fivepk_seo modify prefab_four_of_a_kind_T_T_count double DEFAULT 0;
+
+#2017-1-12
+alter table seoid_diamond modify seoid varchar(100);
+
+#2017-1-13
+create table seopath(
+id int(50) auto_increment primary key,
+machine varchar(20) default null,
+sname varchar(20) default null,
+str varchar(200) default null,
+nowtime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+insert role(id,name) value(4,'财务员');
