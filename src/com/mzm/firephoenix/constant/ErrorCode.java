@@ -38,7 +38,10 @@ public enum ErrorCode {
 
 	ERROR_NICK_NAME_LAW(2024),// 非法昵称！！
 	ERROR_FOUR_OF_A_KIND_JOKER_TWO_FOURTEEN_ZERO(2025),//正宗大四梅彩蛋倍数为0
-	ERROR_NET_WORK_ERROR(2026);//服务器断开连接
+	ERROR_NET_WORK_ERROR(2026),//服务器断开连接
+	
+	ERROR_IMPORT_COIN(2027),//请洗钻或取分
+	ERROR_IMPORT_SCORE(2028);//请将分数存入保险箱
 
 	private int errorCode;
 

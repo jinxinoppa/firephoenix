@@ -393,3 +393,13 @@ str varchar(200) default null,
 nowtime timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
 insert role(id,name) value(4,'财务员');
+
+#2017-1-17
+alter table fivepk_default add one_card_type int(10) DEFAULT '0';
+
+#2017-1-19
+alter table fivepk_service add coin int(10) default '0';
+alter table fivepk_service change ports score int(10) default '0';
+
+#2017-1-20
+alter table `fivepk_default` add index index_machine_id(machine_id);

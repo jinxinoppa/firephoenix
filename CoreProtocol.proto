@@ -155,6 +155,7 @@ message SCRegister {
 message CSLogin{
 	required string account = 1;//玩家账号
 	required string password = 2;//密码
+	required string udid = 3;
 }
 
 message SCLogin{

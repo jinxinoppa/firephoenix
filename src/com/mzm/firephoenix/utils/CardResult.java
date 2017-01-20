@@ -22,6 +22,7 @@ public class CardResult {
 	private int passScore = 0;// 缓存过关彩金
 	private int passMath = 0;// 过关次数
 	private int winType2 = 0;
+	private int winType3=0;//第一首派型
 	
 	private String betType="";
 	private String betScore="";
@@ -240,6 +241,14 @@ public class CardResult {
 
 	public void setSubCompareWinCount(boolean subCompareWinCount) {
 		this.subCompareWinCount = subCompareWinCount;
+	}
+
+	public int getWinType3() {
+		return winType3;
+	}
+
+	public void setWinType3(int winType3) {
+		this.winType3 = winType3;
 	}
 
 }

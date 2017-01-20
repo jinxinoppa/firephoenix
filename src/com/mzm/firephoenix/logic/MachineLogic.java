@@ -40,20 +40,24 @@ public class MachineLogic {
 	public Builder ccEnterMachine(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
+			logger.error("accountId:"+accountId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		String machineId = content.getCcEnterMachine().getMachineId();
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{playerInfo.getSeoId(), machineId}, null, new String[]{"seoId", "seoMachineId"});
 		if (fivepkSeoId == null) {
+			logger.error("fivepkSeoId is null,seoid:"+playerInfo.getSeoId()+"  machineId:"+machineId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_MACHINE.getErrorCode());
 		}
 //		MachineInfo machineInfo = GameCache.getMachineInfo(fivepkSeoId.getSeoId(), fivepkSeoId.getSeoMachineId());
 		if (fivepkSeoId.getSeoMachineType() == GameConstant.MACHINE_TYPE_ONLINE) {
+			logger.error("fivepkSeoId.getSeoMachineType():"+fivepkSeoId.getSeoMachineType());
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_MACHINE_TYPE_ONLINE.getErrorCode());
 		} 
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
+			logger.error("fivepkPlayerInfo is null, accountId :"+accountId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 //		else if (fivepkSeoId.getSeoMachineType() == GameConstant.MACHINE_TYPE_STAY && fivepkSeoId.getSeoMachineStayTime() != null && fivepkSeoId.getSeoMachineStayTime().after(new Date())) {
@@ -88,15 +92,18 @@ public class MachineLogic {
 		String machineId = content.getCcLeaveMachine().getMachineId();
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
+			logger.error("accountId:"+accountId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{playerInfo.getSeoId(), machineId}, null, new String[]{"seoId", "seoMachineId"});
 		if (fivepkSeoId == null) {
+			logger.error("fivepkSeoId is null, seoid:"+playerInfo.getSeoId()+" machineId:"+machineId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_MACHINE.getErrorCode());
 		}
 		FivepkPlayerInfo fivepkPlayerInfo = jdbcDaoSupport.queryOne(FivepkPlayerInfo.class, new Object[]{accountId});
 		if (fivepkPlayerInfo == null) {
+			logger.error("fivepkPlayerInfo is null, accountId:"+accountId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_PLAYER_NOT_EXIT.getErrorCode());
 		}
 		CardResult cr = (CardResult) session.getAttribute("cardResult");
@@ -130,16 +137,19 @@ public class MachineLogic {
 	public Builder ccMachineStay(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
+			logger.error("accountId:"+accountId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		String machineId = content.getCcMachineStay().getMachineId();
 		int machineType = content.getCcMachineStay().getMachineType();
 		if (machineType != 1 && machineType != 0){
+			logger.error("machineType:"+machineType);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_MACHINE_STAY.getErrorCode());
 		}
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
 		FivepkSeoId fivepkSeoId = jdbcDaoSupport.queryOne(FivepkSeoId.class, new Object[]{playerInfo.getSeoId(), machineId}, null, new String[]{"seoId", "seoMachineId"});
 		if (fivepkSeoId == null) {
+			logger.error("fivepkSeoId is null, seoid:"+playerInfo.getSeoId()+" machineId:"+machineId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_NOT_MACHINE.getErrorCode());
 		}
 		if (machineType == 1) {
@@ -158,10 +168,12 @@ public class MachineLogic {
 	public Builder csMachineList(IoSession session, MessageContent content) {
 		Long accountId = (Long) session.getAttribute("accountId");
 		if (accountId == null) {
+			logger.error("accountId:"+accountId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		PlayerInfo playerInfo = GameCache.getPlayerInfo(accountId);
 		if (playerInfo == null){
+			logger.error("playerInfo is null, accountId:"+accountId);
 			return MessageContent.newBuilder().setResult(ErrorCode.ERROR_ACCOUNT_RECONNECT.getErrorCode());
 		}
 		List<FivepkSeoId> fivepkSeoIdList = jdbcDaoSupport.query(FivepkSeoId.class, new Object[]{playerInfo.getSeoId()}, null, new String[]{"seoId"});

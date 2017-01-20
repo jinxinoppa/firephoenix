@@ -89,7 +89,7 @@ public class OfflineLogic {
 			String defsultStr = (String)session.getAttribute("defsult");
 			if(defsultStr != null && !defsultStr.isEmpty()){
 				String defsult[]= defsultStr.split("\\|");
-				FivepkDefault fivepkDefault=new FivepkDefault(defsult[0],defsult[1],Integer.parseInt(defsult[2]),Integer.parseInt(defsult[3]),cr.getWin(),defsult[4],defsult[5],defsult[6],Integer.parseInt(defsult[7]),cr.getBetScore(),cr.getBetType());
+				FivepkDefault fivepkDefault=new FivepkDefault(defsult[0],defsult[1],Integer.parseInt(defsult[2]),Integer.parseInt(defsult[3]),cr.getWin(),defsult[4],defsult[5],defsult[6],Integer.parseInt(defsult[7]),cr.getBetScore(),cr.getBetType(),Integer.parseInt(defsult[8]));
 				jdbcDaoSupport.save(fivepkDefault);
 				session.removeAttribute("defsult");
 				cr.setBetType("");
@@ -119,4 +119,5 @@ public class OfflineLogic {
 			}
 		}
 	}
+
 }

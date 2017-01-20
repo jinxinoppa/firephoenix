@@ -14157,6 +14157,20 @@ public final class CoreProtocol {
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
+
+    /**
+     * <code>required string udid = 3;</code>
+     */
+    boolean hasUdid();
+    /**
+     * <code>required string udid = 3;</code>
+     */
+    java.lang.String getUdid();
+    /**
+     * <code>required string udid = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getUdidBytes();
   }
   /**
    * Protobuf type {@code CSLogin}
@@ -14176,6 +14190,7 @@ public final class CoreProtocol {
     private CSLogin() {
       account_ = "";
       password_ = "";
+      udid_ = "";
     }
 
     @java.lang.Override
@@ -14215,6 +14230,12 @@ public final class CoreProtocol {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
               password_ = bs;
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              udid_ = bs;
               break;
             }
           }
@@ -14351,6 +14372,48 @@ public final class CoreProtocol {
       }
     }
 
+    public static final int UDID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object udid_;
+    /**
+     * <code>required string udid = 3;</code>
+     */
+    public boolean hasUdid() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string udid = 3;</code>
+     */
+    public java.lang.String getUdid() {
+      java.lang.Object ref = udid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          udid_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string udid = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUdidBytes() {
+      java.lang.Object ref = udid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        udid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -14365,6 +14428,10 @@ public final class CoreProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasUdid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -14376,6 +14443,9 @@ public final class CoreProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getPasswordBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getUdidBytes());
       }
       unknownFields.writeTo(output);
     }
@@ -14393,6 +14463,10 @@ public final class CoreProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getPasswordBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getUdidBytes());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -14514,6 +14588,8 @@ public final class CoreProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         password_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        udid_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -14546,6 +14622,10 @@ public final class CoreProtocol {
           to_bitField0_ |= 0x00000002;
         }
         result.password_ = password_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.udid_ = udid_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -14572,6 +14652,11 @@ public final class CoreProtocol {
           password_ = other.password_;
           onChanged();
         }
+        if (other.hasUdid()) {
+          bitField0_ |= 0x00000004;
+          udid_ = other.udid_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -14582,6 +14667,9 @@ public final class CoreProtocol {
           return false;
         }
         if (!hasPassword()) {
+          return false;
+        }
+        if (!hasUdid()) {
           return false;
         }
         return true;
@@ -14802,6 +14890,82 @@ public final class CoreProtocol {
   }
   bitField0_ |= 0x00000002;
         password_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object udid_ = "";
+      /**
+       * <code>required string udid = 3;</code>
+       */
+      public boolean hasUdid() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string udid = 3;</code>
+       */
+      public java.lang.String getUdid() {
+        java.lang.Object ref = udid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            udid_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string udid = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUdidBytes() {
+        java.lang.Object ref = udid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          udid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string udid = 3;</code>
+       */
+      public Builder setUdid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        udid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string udid = 3;</code>
+       */
+      public Builder clearUdid() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        udid_ = getDefaultInstance().getUdid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string udid = 3;</code>
+       */
+      public Builder setUdidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        udid_ = value;
         onChanged();
         return this;
       }
@@ -38134,83 +38298,83 @@ public final class CoreProtocol {
       "r\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n\005" +
       "seoid\030\003 \001(\t\"\036\n\nCSLoginOut\022\020\n\010loginOut\030\001 " +
       "\002(\t\"\036\n\nSCLoginOut\022\020\n\010loginOut\030\001 \001(\005\"\035\n\nS" +
-      "CRegister\022\017\n\007account\030\001 \002(\t\",\n\007CSLogin\022\017\n" +
-      "\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"k\n\007SCLo" +
-      "gin\022\013\n\003pic\030\001 \002(\005\022\020\n\010nickname\030\002 \002(\t\022\r\n\005sc" +
-      "ore\030\003 \002(\005\022\014\n\004coin\030\004 \001(\005\022\025\n\rnickNameCount" +
-      "\030\005 \002(\005\022\r\n\005seoid\030\006 \002(\t\"\037\n\014CSGuestLogin\022\017\n" +
-      "\007account\030\001 \001(\t\"d\n\014SCGuestLogin\022\017\n\007accoun" +
-      "t\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020\n\010nickname\030\003 \002(\t\022\r",
-      "\n\005score\030\004 \002(\005\022\025\n\rnickNameCount\030\005 \002(\005\"\034\n\014" +
-      "CSPlayerInfo\022\014\n\004guid\030\001 \002(\t\"\032\n\010SCNotice\022\016" +
-      "\n\006notice\030\001 \002(\t\"B\n\007CSCards\022\022\n\nstartIndex\030" +
-      "\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n\tholdCards\030\003 \001" +
-      "(\t\"\036\n\nCSCardsBet\022\020\n\010betScore\030\001 \002(\005\"\036\n\nSC" +
-      "CardsBet\022\020\n\010betScore\030\001 \001(\005\"a\n\007SCCards\022\020\n" +
-      "\010cardRate\030\001 \002(\005\022\r\n\005cards\030\002 \002(\t\022\021\n\tholdCa" +
-      "rds\030\003 \001(\t\022\020\n\010realKind\030\004 \001(\005\022\020\n\010preSound\030" +
-      "\005 \001(\005\"&\n\025CCCompareHistoryCards\022\r\n\005cards\030" +
-      "\001 \002(\t\"A\n\rCSCompareCard\022\020\n\010bigSmall\030\001 \002(\005",
-      "\022\020\n\010betScore\030\002 \002(\005\022\014\n\004five\030\003 \002(\005\"6\n\rSCCo" +
-      "mpareCard\022\023\n\013compareCard\030\001 \002(\005\022\020\n\010winSco" +
-      "re\030\002 \002(\005\".\n\027CSCompareHistoryOneCard\022\023\n\013c" +
-      "ompareCard\030\001 \002(\005\".\n\027SCCompareHistoryOneC" +
-      "ard\022\023\n\013compareCard\030\001 \002(\005\"\024\n\005CSWin\022\013\n\003win" +
-      "\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005score\030\001 \002(\005\022\014\n\004" +
-      "coin\030\002 \002(\005\"5\n\nCCNickName\022\020\n\010nickName\030\001 \002" +
-      "(\t\022\025\n\rnickNameCount\030\002 \001(\005\"\034\n\tCCHeadPic\022\017" +
-      "\n\007headPic\030\001 \002(\005\"$\n\rCSMachineList\022\023\n\013mach" +
-      "ineList\030\001 \002(\005\"6\n\rSCMachineList\022%\n\rscMach",
-      "ineInfo\030\001 \003(\0132\016.SCMachineInfo\"V\n\rSCMachi" +
-      "neInfo\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineType" +
-      "\030\002 \002(\005\022\013\n\003pic\030\003 \001(\005\022\020\n\010nickName\030\004 \001(\t\"#\n" +
-      "\016CCEnterMachine\022\021\n\tmachineId\030\001 \002(\t\"#\n\016CC" +
-      "LeaveMachine\022\021\n\tmachineId\030\001 \002(\t\"7\n\rCCMac" +
-      "hineStay\022\021\n\tmachineId\030\001 \002(\t\022\023\n\013machineTy" +
-      "pe\030\002 \001(\005\"=\n\tCCBinding\022\017\n\007account\030\001 \002(\t\022\020" +
-      "\n\010password\030\002 \002(\t\022\r\n\005seoid\030\003 \002(\t\"^\n\016CSPla" +
-      "yerUpdate\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password\030" +
-      "\002 \001(\t\022\013\n\003pic\030\003 \001(\t\022\016\n\006mobile\030\004 \001(\t\022\013\n\003se",
-      "x\030\005 \001(\005\"\036\n\016CSDepositStore\022\014\n\004gold\030\001 \001(\005\"" +
-      "/\n\016SCDepositStore\022\014\n\004gold\030\001 \001(\005\022\017\n\007depos" +
-      "it\030\002 \001(\005\"!\n\rCSDepositDraw\022\020\n\010drawGold\030\001 " +
-      "\001(\005\".\n\rSCDepositDraw\022\014\n\004gold\030\001 \001(\005\022\017\n\007de" +
-      "posit\030\002 \001(\005\"3\n\rCSDepositGive\022\020\n\010targetid" +
-      "\030\001 \001(\t\022\020\n\010drawGold\030\002 \001(\005\" \n\rSCDepositGiv" +
-      "e\022\017\n\007deposit\030\002 \001(\005\"V\n\020SCDepositReceive\022\020" +
-      "\n\010senderid\030\001 \001(\t\022\021\n\treceiveid\030\002 \001(\t\022\014\n\004g" +
-      "old\030\003 \001(\005\022\017\n\007deposit\030\004 \001(\005\"\"\n\016CSFourKind" +
-      "Time\022\020\n\010multiple\030\001 \002(\005\"\"\n\016SCFourKindTime",
-      "\022\020\n\010multiple\030\001 \002(\005\"\027\n\005CSSMS\022\016\n\006mobile\030\001 " +
-      "\001(\t\"\035\n\rCSMachineAuto\022\014\n\004auto\030\001 \002(\005\"\035\n\rSC" +
-      "MachineAuto\022\014\n\004auto\030\001 \002(\005*\370\007\n\003Cmd\022\023\n\rCMD" +
-      "_GETSERVER\020\201\200\004\022\022\n\014CMD_REGISTER\020\202\200\004\022\017\n\tCM" +
-      "D_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_LOGIN\020\205\200\004\022\017\n\tCM" +
-      "D_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004\022\017\n\tCMD_CARDS\020" +
-      "\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210\200\004\022\037\n\031CMD_COMP" +
-      "ARE_HISTORY_CARDS\020\211\200\004\022\r\n\007CMD_WIN\020\212\200\004\022\024\n\016" +
-      "CMD_COIN_SCORE\020\213\200\004\022\033\n\025CMD_COMPARE_ONE_CA" +
-      "RDS\020\214\200\004\022\030\n\022CMD_FOUR_KIND_TIME\020\215\200\004\022\026\n\020CMD",
-      "_MACHINE_AUTO\020\216\200\004\022\026\n\020CMD_DATA_DISPLAY\020\217\200" +
-      "\004\022\032\n\024CMD_PLAYER_NICK_NAME\020\201\200\010\022\024\n\016CMD_PLA" +
-      "YER_PIC\020\202\200\010\022\026\n\020CMD_MACHINE_LIST\020\203\200\010\022\026\n\020C" +
-      "MD_MACHINE_INFO\020\204\200\010\022\027\n\021CMD_MACHINE_ENTER" +
-      "\020\205\200\010\022\027\n\021CMD_MACHINE_LEAVE\020\206\200\010\022\026\n\020CMD_MAC" +
-      "HINE_STAY\020\207\200\010\022\030\n\022CMD_PLAYER_BINDING\020\210\200\010\022" +
-      "\022\n\014CMD_CARD_BET\020\211\200\010\022\023\n\rCMD_ENTERROOM\020\201\200\014" +
-      "\022\021\n\013CMD_OUTROOM\020\202\200\014\022\022\n\014CMD_ROOMINFO\020\203\200\014\022" +
-      "\021\n\013CMD_PAIINFO\020\204\200\014\022\r\n\007CMD_SIT\020\205\200\014\022\021\n\013CMD" +
-      "_STANDUP\020\206\200\014\022\024\n\016CMD_ROB_ZHUANG\020\210\200\014\022\017\n\tCM",
-      "D_YAZHU\020\213\200\014\022\016\n\010CMD_CHAT\020\216\200\014\022\026\n\020CMD_ROOM_" +
-      "STATICS\020\220\200\014\022\021\n\013CMD_QZ_LIST\020\221\200\014\022\025\n\017CMD_DO" +
-      "WN_ZHUANG\020\222\200\014\022\022\n\014CMD_BET_LIST\020\223\200\014\022\023\n\rCMD" +
-      "_ROOM_UIDS\020\224\200\014\022\032\n\024CMD_ROOM_PLAYER_LIST\020\225" +
-      "\200\014\022\034\n\026CMD_ROOM_PLAYER_CHANGE\020\240\200\014\022\023\n\rCMD_" +
-      "CARD_INFO\020\241\200\014\022\027\n\021CMD_PAI_BASE_INFO\020\242\200\014\022\023" +
-      "\n\rCMD_PAIINFO_3\020\243\200\014\022\020\n\nCMD_NOTICE\020\244\200\014\022\023\n" +
-      "\rCMD_LOGIN_OUT\020\245\200\014\022\030\n\022CMD_NET_WORK_ERROR" +
-      "\020\246\200\014B,\n\034com.mzm.firephoenix.protobufB\014Co" +
-      "reProtocol"
+      "CRegister\022\017\n\007account\030\001 \002(\t\":\n\007CSLogin\022\017\n" +
+      "\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\014\n\004udid" +
+      "\030\003 \002(\t\"k\n\007SCLogin\022\013\n\003pic\030\001 \002(\005\022\020\n\010nickna" +
+      "me\030\002 \002(\t\022\r\n\005score\030\003 \002(\005\022\014\n\004coin\030\004 \001(\005\022\025\n" +
+      "\rnickNameCount\030\005 \002(\005\022\r\n\005seoid\030\006 \002(\t\"\037\n\014C" +
+      "SGuestLogin\022\017\n\007account\030\001 \001(\t\"d\n\014SCGuestL" +
+      "ogin\022\017\n\007account\030\001 \002(\t\022\013\n\003pic\030\002 \002(\005\022\020\n\010ni",
+      "ckname\030\003 \002(\t\022\r\n\005score\030\004 \002(\005\022\025\n\rnickNameC" +
+      "ount\030\005 \002(\005\"\034\n\014CSPlayerInfo\022\014\n\004guid\030\001 \002(\t" +
+      "\"\032\n\010SCNotice\022\016\n\006notice\030\001 \002(\t\"B\n\007CSCards\022" +
+      "\022\n\nstartIndex\030\001 \002(\005\022\020\n\010betScore\030\002 \001(\005\022\021\n" +
+      "\tholdCards\030\003 \001(\t\"\036\n\nCSCardsBet\022\020\n\010betSco" +
+      "re\030\001 \002(\005\"\036\n\nSCCardsBet\022\020\n\010betScore\030\001 \001(\005" +
+      "\"a\n\007SCCards\022\020\n\010cardRate\030\001 \002(\005\022\r\n\005cards\030\002" +
+      " \002(\t\022\021\n\tholdCards\030\003 \001(\t\022\020\n\010realKind\030\004 \001(" +
+      "\005\022\020\n\010preSound\030\005 \001(\005\"&\n\025CCCompareHistoryC" +
+      "ards\022\r\n\005cards\030\001 \002(\t\"A\n\rCSCompareCard\022\020\n\010",
+      "bigSmall\030\001 \002(\005\022\020\n\010betScore\030\002 \002(\005\022\014\n\004five" +
+      "\030\003 \002(\005\"6\n\rSCCompareCard\022\023\n\013compareCard\030\001" +
+      " \002(\005\022\020\n\010winScore\030\002 \002(\005\".\n\027CSCompareHisto" +
+      "ryOneCard\022\023\n\013compareCard\030\001 \002(\005\".\n\027SCComp" +
+      "areHistoryOneCard\022\023\n\013compareCard\030\001 \002(\005\"\024" +
+      "\n\005CSWin\022\013\n\003win\030\001 \001(\005\"*\n\013CCCoinScore\022\r\n\005s" +
+      "core\030\001 \002(\005\022\014\n\004coin\030\002 \002(\005\"5\n\nCCNickName\022\020" +
+      "\n\010nickName\030\001 \002(\t\022\025\n\rnickNameCount\030\002 \001(\005\"" +
+      "\034\n\tCCHeadPic\022\017\n\007headPic\030\001 \002(\005\"$\n\rCSMachi" +
+      "neList\022\023\n\013machineList\030\001 \002(\005\"6\n\rSCMachine",
+      "List\022%\n\rscMachineInfo\030\001 \003(\0132\016.SCMachineI" +
+      "nfo\"V\n\rSCMachineInfo\022\021\n\tmachineId\030\001 \002(\t\022" +
+      "\023\n\013machineType\030\002 \002(\005\022\013\n\003pic\030\003 \001(\005\022\020\n\010nic" +
+      "kName\030\004 \001(\t\"#\n\016CCEnterMachine\022\021\n\tmachine" +
+      "Id\030\001 \002(\t\"#\n\016CCLeaveMachine\022\021\n\tmachineId\030" +
+      "\001 \002(\t\"7\n\rCCMachineStay\022\021\n\tmachineId\030\001 \002(" +
+      "\t\022\023\n\013machineType\030\002 \001(\005\"=\n\tCCBinding\022\017\n\007a" +
+      "ccount\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n\005seoid\030" +
+      "\003 \002(\t\"^\n\016CSPlayerUpdate\022\020\n\010nickname\030\001 \001(" +
+      "\t\022\020\n\010password\030\002 \001(\t\022\013\n\003pic\030\003 \001(\t\022\016\n\006mobi",
+      "le\030\004 \001(\t\022\013\n\003sex\030\005 \001(\005\"\036\n\016CSDepositStore\022" +
+      "\014\n\004gold\030\001 \001(\005\"/\n\016SCDepositStore\022\014\n\004gold\030" +
+      "\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"!\n\rCSDepositDraw\022" +
+      "\020\n\010drawGold\030\001 \001(\005\".\n\rSCDepositDraw\022\014\n\004go" +
+      "ld\030\001 \001(\005\022\017\n\007deposit\030\002 \001(\005\"3\n\rCSDepositGi" +
+      "ve\022\020\n\010targetid\030\001 \001(\t\022\020\n\010drawGold\030\002 \001(\005\" " +
+      "\n\rSCDepositGive\022\017\n\007deposit\030\002 \001(\005\"V\n\020SCDe" +
+      "positReceive\022\020\n\010senderid\030\001 \001(\t\022\021\n\treceiv" +
+      "eid\030\002 \001(\t\022\014\n\004gold\030\003 \001(\005\022\017\n\007deposit\030\004 \001(\005" +
+      "\"\"\n\016CSFourKindTime\022\020\n\010multiple\030\001 \002(\005\"\"\n\016",
+      "SCFourKindTime\022\020\n\010multiple\030\001 \002(\005\"\027\n\005CSSM" +
+      "S\022\016\n\006mobile\030\001 \001(\t\"\035\n\rCSMachineAuto\022\014\n\004au" +
+      "to\030\001 \002(\005\"\035\n\rSCMachineAuto\022\014\n\004auto\030\001 \002(\005*" +
+      "\370\007\n\003Cmd\022\023\n\rCMD_GETSERVER\020\201\200\004\022\022\n\014CMD_REGI" +
+      "STER\020\202\200\004\022\017\n\tCMD_LOGIN\020\203\200\004\022\025\n\017CMD_GUEST_L" +
+      "OGIN\020\205\200\004\022\017\n\tCMD_HEART\020\204\200\004\022\r\n\007CMD_SMS\020\206\200\004" +
+      "\022\017\n\tCMD_CARDS\020\207\200\004\022\027\n\021CMD_COMPARE_CARDS\020\210" +
+      "\200\004\022\037\n\031CMD_COMPARE_HISTORY_CARDS\020\211\200\004\022\r\n\007C" +
+      "MD_WIN\020\212\200\004\022\024\n\016CMD_COIN_SCORE\020\213\200\004\022\033\n\025CMD_" +
+      "COMPARE_ONE_CARDS\020\214\200\004\022\030\n\022CMD_FOUR_KIND_T",
+      "IME\020\215\200\004\022\026\n\020CMD_MACHINE_AUTO\020\216\200\004\022\026\n\020CMD_D" +
+      "ATA_DISPLAY\020\217\200\004\022\032\n\024CMD_PLAYER_NICK_NAME\020" +
+      "\201\200\010\022\024\n\016CMD_PLAYER_PIC\020\202\200\010\022\026\n\020CMD_MACHINE" +
+      "_LIST\020\203\200\010\022\026\n\020CMD_MACHINE_INFO\020\204\200\010\022\027\n\021CMD" +
+      "_MACHINE_ENTER\020\205\200\010\022\027\n\021CMD_MACHINE_LEAVE\020" +
+      "\206\200\010\022\026\n\020CMD_MACHINE_STAY\020\207\200\010\022\030\n\022CMD_PLAYE" +
+      "R_BINDING\020\210\200\010\022\022\n\014CMD_CARD_BET\020\211\200\010\022\023\n\rCMD" +
+      "_ENTERROOM\020\201\200\014\022\021\n\013CMD_OUTROOM\020\202\200\014\022\022\n\014CMD" +
+      "_ROOMINFO\020\203\200\014\022\021\n\013CMD_PAIINFO\020\204\200\014\022\r\n\007CMD_" +
+      "SIT\020\205\200\014\022\021\n\013CMD_STANDUP\020\206\200\014\022\024\n\016CMD_ROB_ZH",
+      "UANG\020\210\200\014\022\017\n\tCMD_YAZHU\020\213\200\014\022\016\n\010CMD_CHAT\020\216\200" +
+      "\014\022\026\n\020CMD_ROOM_STATICS\020\220\200\014\022\021\n\013CMD_QZ_LIST" +
+      "\020\221\200\014\022\025\n\017CMD_DOWN_ZHUANG\020\222\200\014\022\022\n\014CMD_BET_L" +
+      "IST\020\223\200\014\022\023\n\rCMD_ROOM_UIDS\020\224\200\014\022\032\n\024CMD_ROOM" +
+      "_PLAYER_LIST\020\225\200\014\022\034\n\026CMD_ROOM_PLAYER_CHAN" +
+      "GE\020\240\200\014\022\023\n\rCMD_CARD_INFO\020\241\200\014\022\027\n\021CMD_PAI_B" +
+      "ASE_INFO\020\242\200\014\022\023\n\rCMD_PAIINFO_3\020\243\200\014\022\020\n\nCMD" +
+      "_NOTICE\020\244\200\014\022\023\n\rCMD_LOGIN_OUT\020\245\200\014\022\030\n\022CMD_" +
+      "NET_WORK_ERROR\020\246\200\014B,\n\034com.mzm.firephoeni" +
+      "x.protobufB\014CoreProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -38272,7 +38436,7 @@ public final class CoreProtocol {
     internal_static_CSLogin_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CSLogin_descriptor,
-        new java.lang.String[] { "Account", "Password", });
+        new java.lang.String[] { "Account", "Password", "Udid", });
     internal_static_SCLogin_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_SCLogin_fieldAccessorTable = new

@@ -32,6 +32,22 @@ public class GameCache {
 
 	private static volatile Map<Long, PlayerInfo> playerInfoMap = new ConcurrentHashMap<Long, PlayerInfo>();
 
+	public static synchronized PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, String seoId, IoSession playerInfoSession, byte accountType, String udid) {
+		PlayerInfo playerInfo = playerInfoMap.get(accountId);
+		if (playerInfo == null) {
+			playerInfo = new PlayerInfo(pic, nickName, seoId, playerInfoSession, accountType, udid);
+			playerInfoMap.put(accountId, playerInfo);
+		} else {
+			playerInfo.setPic(pic);
+			playerInfo.setNickName(nickName);
+			playerInfo.setSeoId(seoId);
+			playerInfo.setPlayerInfoSession(playerInfoSession);
+			playerInfo.setAccountType(accountType);
+			playerInfo.setUdid(udid);
+		}
+		return playerInfo;
+	}
+	
 	public static synchronized PlayerInfo putPlayerInfo(long accountId, int pic, String nickName, String seoId, IoSession playerInfoSession, byte accountType) {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		if (playerInfo == null) {
@@ -44,10 +60,6 @@ public class GameCache {
 			playerInfo.setPlayerInfoSession(playerInfoSession);
 			playerInfo.setAccountType(accountType);
 		}
-		for (Long key : playerInfoMap.keySet()) {
-			System.out.println(key);
-		}
-		System.out.println("Put");
 		return playerInfo;
 	}
 
@@ -61,10 +73,6 @@ public class GameCache {
 			playerInfo.setNickName(nickName);
 			playerInfo.setAccountType(accountType);
 		}
-		for (Long key : playerInfoMap.keySet()) {
-			System.out.println(key);
-		}
-		System.out.println("Put");
 		return playerInfo;
 	}
 
@@ -77,10 +85,6 @@ public class GameCache {
 			playerInfo.setPic(pic);
 			playerInfo.setNickName(nickName);
 		}
-		for (Long key : playerInfoMap.keySet()) {
-			System.out.println(key);
-		}
-		System.out.println("Put");
 		return playerInfo;
 	}
 
@@ -88,26 +92,14 @@ public class GameCache {
 		PlayerInfo playerInfo = playerInfoMap.get(accountId);
 		playerInfo.setSeoId(seoId);
 		playerInfo.setAccountType(accountType);
-		for (Long key : playerInfoMap.keySet()) {
-			System.out.println(key);
-		}
-		System.out.println("Put");
 		return playerInfo;
 	}
 
 	public static synchronized PlayerInfo getPlayerInfo(long accountId) {
-		for (Long key : playerInfoMap.keySet()) {
-			System.out.println(key);
-		}
-		System.out.println("Login");
 		return playerInfoMap.get(accountId);
 	}
 
 	public static synchronized void removePlayerInfo(long accountId) {
-		for (Long key : playerInfoMap.keySet()) {
-			System.out.println(key);
-		}
-		System.out.println("remove");
 		playerInfoMap.remove(accountId);
 	}
 

@@ -25,11 +25,13 @@ public class FivepkDefault extends AbstractEntity{
 	private String guessPoint;
 	@Column(columnName = "guess_type")
 	private String guessType;
+	@Column(columnName = "one_card_type")
+	private int oneCardType;
 	
 	public FivepkDefault() {	}
 
 
-	public FivepkDefault(String name, String machineId, int credit,int bet, int win, String oneCard, String guardCard, String twoCard,int cardType, String guessPoint, String guessType) {
+	public FivepkDefault(String name, String machineId, int credit,int bet, int win, String oneCard, String guardCard, String twoCard,int cardType, String guessPoint, String guessType, int oneCardType) {
 		this.name = name;
 		this.machineId = machineId;
 		this.credit = credit;
@@ -41,6 +43,7 @@ public class FivepkDefault extends AbstractEntity{
 		this.cardType = cardType;
 		this.guessPoint = guessPoint;
 		this.guessType = guessType;
+		this.oneCardType=oneCardType;
 		insertFieldsList.add("name");
 		insertFieldsList.add("machineId");
 		insertFieldsList.add("credit");
@@ -52,6 +55,7 @@ public class FivepkDefault extends AbstractEntity{
 		insertFieldsList.add("cardType");
 		insertFieldsList.add("guessPoint");
 		insertFieldsList.add("guessType");
+		insertFieldsList.add("oneCardType");
 	}
 
 
@@ -161,6 +165,17 @@ public class FivepkDefault extends AbstractEntity{
 	public void setGuessType(String guessType) {
 		this.guessType = guessType;
 		updateFieldsList.add("guessType");
+	}
+
+
+	public int getOneCardType() {
+		return oneCardType;
+	}
+
+
+	public void setOneCardType(int oneCardType) {
+		this.oneCardType = oneCardType;
+		updateFieldsList.add("oneCardType");
 	}
 	
 	
